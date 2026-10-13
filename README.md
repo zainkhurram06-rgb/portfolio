@@ -6,26 +6,27 @@ The whole site is one file: `index.html`. Open it in a browser, or host it on an
 
 ## What's on the page
 
-- **Hero**: an iridescent liquid-chrome sculpture that slowly morphs, leans toward the cursor and melts away as you scroll, behind an editorial headline.
-- **Brands & ventures**: a slow marquee of the brands and ventures worked with.
-- **About**: a statement that lights up word by word as you scroll, plus key numbers.
-- **Selected work**: six project cards. Each opens a full case study (overview, role, numbers, what I did) with a "next project" link. Every project has its own art-directed sculpture: the real VisaPro creatives, a chrome orbit (global distribution), a silver star (pre-launch), a ceramic knot (outbound system), rippling silk (clothing brand) and ceramic steps (leadership).
-- **Expertise**: six services in an expandable list.
-- **Approach**: four working principles.
-- **Contact**: email, copy button and a small chrome sculpture, then a full-width name in the footer with Karachi local time.
+Laid out like a presentation deck: dotted background, white-framed rounded cards.
+
+- **Hero**: the "Portfolio 2026" wordmark and a 3D collage of the real VisaPro creatives (a printed ad and a phone post) with facts from the campaign, reacting to the mouse.
+- **Behind the Campaigns**: short bio, contact details and a 3D profile badge on a lanyard you can drag and swing.
+- **Career Overview**: timeline of roles. **Marketing Toolkit**: 3D keycaps for channels and tools. **Capabilities** list.
+- **Selected Work**: six project cards. Each opens a full case study with a "next project" link.
+- **Contact**: email, copy button and Karachi local time.
 
 ## How it works
 
-- Light theme, fonts from Google Fonts (Inter Tight and Instrument Serif).
-- 3D uses [three.js](https://threejs.org) r169 and smooth scrolling uses [Lenis](https://lenis.darkroom.engineering) 1.1.20, both loaded from the jsDelivr CDN. Every sculpture is built in code, so there are no model files to host.
-- If WebGL is not available, the page shows soft placeholder shapes and all content stays readable.
-- Visitors who turn on "reduce motion" get a still version without the loader or smooth scrolling.
+- Fonts from Google Fonts (Outfit).
+- 3D uses [three.js](https://threejs.org) r169 and smooth scrolling uses [Lenis](https://lenis.darkroom.engineering) 1.1.20, both from the jsDelivr CDN.
+- Without WebGL, the hero shows the creatives as flat images and the badge as a flat card. Content stays readable.
+- Visitors who turn on "reduce motion" get a still version.
+- **Your photo**: the badge currently shows "ZK". When you have a photo, it can replace the monogram on the badge card.
 
 ## Editing
 
 - **Text**: edit it directly in `index.html`. Each project has a card (`<a class="card">`) and a full case study (`<article class="case">`) near the end of the page.
 - **Images**: the two VisaPro creatives are embedded inside `index.html` as `data:image/webp;base64,...` so the file works on its own. To swap one, replace that `src="data:..."` value with a path to your own image file, for example `src="images/new-campaign.webp"`, and upload the image next to `index.html`.
-- **Colours**: the palette is defined at the top of the `<style>` block in `:root`. Card background tones are the `.tone-*` classes.
+- **Colours**: the palette is defined at the top of the `<style>` block in `:root`. Card background tones are the `.t-*` classes.
 
 ## Publish with GitHub Pages
 
