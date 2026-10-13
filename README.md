@@ -6,30 +6,26 @@ The whole site is one file: `index.html`. Open it in a browser, or host it on an
 
 ## What's on the page
 
-- **Hero**: headline with 3D props (chat bubble, megaphone, heart, play button, chart and more) that follow the mouse, dodge the cursor, and spin when clicked.
-- **About**: a 3D "ZK" monogram on a name badge, a short point of view, and key numbers.
-- **Selected work**: six projects, each on its own colour set with a 3D prop:
-  - VisaPro campaigns: the real campaign creatives (click to view full size) plus a funnel that leads drop into
-  - VisaPro global distribution: a globe with the webinar travelling to each market
-  - Startup Ninja: a teaser poster with a spinning shuriken
-  - Onease: a paper plane flying the outbound loop
-  - Eloit: a t-shirt on a hanger that swings when you scroll
-  - Cedar: a chess king for leadership
-- **Approach**: four working principles as sticky notes.
-- **Contact**: email, copy button, and an envelope with a letter popping out.
+- **Hero**: an iridescent liquid-chrome sculpture that slowly morphs, leans toward the cursor and melts away as you scroll, behind an editorial headline.
+- **Brands & ventures**: a slow marquee of the brands and ventures worked with.
+- **About**: a statement that lights up word by word as you scroll, plus key numbers.
+- **Selected work**: six project cards. Each opens a full case study (overview, role, numbers, what I did) with a "next project" link. Every project has its own art-directed sculpture: the real VisaPro creatives, a chrome orbit (global distribution), a silver star (pre-launch), a ceramic knot (outbound system), rippling silk (clothing brand) and ceramic steps (leadership).
+- **Expertise**: six services in an expandable list.
+- **Approach**: four working principles.
+- **Contact**: email, copy button and a small chrome sculpture, then a full-width name in the footer with Karachi local time.
 
 ## How it works
 
-- Light theme, fonts from Google Fonts (Bricolage Grotesque and Figtree).
-- The 3D layer uses [three.js](https://threejs.org) r169, loaded from the jsDelivr CDN. Every 3D object is built in code, so there are no model files to host.
-- If WebGL is not available, the page shows simple coloured shapes instead, and all content stays readable.
-- Visitors who turn on "reduce motion" in their system settings get a still version.
+- Light theme, fonts from Google Fonts (Inter Tight and Instrument Serif).
+- 3D uses [three.js](https://threejs.org) r169 and smooth scrolling uses [Lenis](https://lenis.darkroom.engineering) 1.1.20, both loaded from the jsDelivr CDN. Every sculpture is built in code, so there are no model files to host.
+- If WebGL is not available, the page shows soft placeholder shapes and all content stays readable.
+- Visitors who turn on "reduce motion" get a still version without the loader or smooth scrolling.
 
 ## Editing
 
-- **Text**: edit it directly in `index.html`. Each project is an `<article class="case">` block.
+- **Text**: edit it directly in `index.html`. Each project has a card (`<a class="card">`) and a full case study (`<article class="case">`) near the end of the page.
 - **Images**: the two VisaPro creatives are embedded inside `index.html` as `data:image/webp;base64,...` so the file works on its own. To swap one, replace that `src="data:..."` value with a path to your own image file, for example `src="images/new-campaign.webp"`, and upload the image next to `index.html`.
-- **Colours**: the palette is defined at the top of the `<style>` block in `:root`.
+- **Colours**: the palette is defined at the top of the `<style>` block in `:root`. Card background tones are the `.tone-*` classes.
 
 ## Publish with GitHub Pages
 
