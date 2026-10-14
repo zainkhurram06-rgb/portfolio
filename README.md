@@ -6,9 +6,9 @@ The whole site is one file: `index.html`. Open it in a browser, or host it on an
 
 ## What's on the page
 
-Dotted paper background, black ink, Arial Black headlines and flat colour cards.
+Styled like a printed poster: a black hero and contact section with lime accents, condensed headlines, a handwritten script for accents, tape and a sticker, and sharp-edged cards on dotted paper in between.
 
-- **Hero**: the "Portfolio 2026" wordmark and a 3D collage of the real VisaPro creatives (a printed ad and a phone post) that reacts to the mouse.
+- **Hero**: a poster layout. "I plan it. I do it." in big condensed type, a strip of real work in black and white (colour on hover), an "Open to work" sticker, and two short blocks on what clients get.
 - **About**: short bio, roles, email and phone, a 3D profile badge on a lanyard you can drag, tools and what I do.
 - **Work**: four projects (VisaPro, Startup Ninja, Onease, my e-commerce stores). Each has the brief, what I did, my part, a visual and a strip of work samples.
 - **Gallery**: every piece of work in one wall, with filters per project. Any image opens bigger in a viewer with arrows.
@@ -18,11 +18,11 @@ Dotted paper background, black ink, Arial Black headlines and flat colour cards.
 
 ## How it works
 
-- Headlines use Arial Black and body text uses Arial. Archivo (Google Fonts) is a fallback for phones without Arial Black.
+- Fonts from Google Fonts: Anton for headlines, Caveat Brush for the handwritten accents. Body text is Arial.
 - 3D uses [three.js](https://threejs.org) r169 from the jsDelivr CDN. Scrolling is the browser's own.
-- Without WebGL, the hero shows the creatives as flat images and the badge as a flat card. Content stays readable.
+- Without WebGL, the badge shows as a flat card. Content stays readable.
 - Visitors who turn on "reduce motion" get a still version.
-- **Your photo**: the badge currently shows "ZK". When you have a photo, it can replace the monogram on the badge card.
+- **Your photo**: the taped frame in the hero and the badge both show "ZK" for now. Your photo goes in the frame (`.hp-frame`) and can replace the monogram on the badge.
 
 ## Editing
 
