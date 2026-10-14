@@ -8,11 +8,13 @@ The whole site is one file: `index.html`. Open it in a browser, or host it on an
 
 Laid out like a presentation deck: dotted background, white-framed rounded cards.
 
-- **Hero**: the "Portfolio 2026" wordmark and a 3D collage of the real VisaPro creatives (a printed ad and a phone post) with facts from the campaign, reacting to the mouse.
-- **Behind the Campaigns**: short bio, contact details and a 3D profile badge on a lanyard you can drag and swing.
-- **Career Overview**: timeline of roles. **Marketing Toolkit**: 3D keycaps for channels and tools. **Capabilities** list.
-- **Selected Work**: six project cards. Each opens a full case study with a "next project" link.
-- **Contact**: email, copy button and Karachi local time.
+- **Hero**: the "Portfolio 2026" wordmark and a 3D collage of the real VisaPro creatives (a printed ad and a phone post) that reacts to the mouse.
+- **A bit about me**: short bio, email, phone, location and a 3D profile badge on a lanyard you can drag and swing.
+- **Experience**: where I've worked, what I do, and the tools I use as 3D keycaps.
+- **My work**: four projects shown in full on the page (VisaPro, Startup Ninja, Onease, my e-commerce stores). Each has the brief, what I did, my part and a visual.
+- **How I work**: four steps.
+- **Cedar Executive Business Society** and **Why me** cards.
+- **Contact**: email, phone, copy button and Karachi local time.
 
 ## How it works
 
@@ -24,9 +26,9 @@ Laid out like a presentation deck: dotted background, white-framed rounded cards
 
 ## Editing
 
-- **Text**: edit it directly in `index.html`. Each project has a card (`<a class="card">`) and a full case study (`<article class="case">`) near the end of the page.
-- **Images**: the two VisaPro creatives are embedded inside `index.html` as `data:image/webp;base64,...` so the file works on its own. To swap one, replace that `src="data:..."` value with a path to your own image file, for example `src="images/new-campaign.webp"`, and upload the image next to `index.html`.
-- **Colours**: the palette is defined at the top of the `<style>` block in `:root`. Card background tones are the `.t-*` classes.
+- **Text**: edit it directly in `index.html`. Each project is an `<article class="proj">` inside the `#work` section.
+- **Images**: the VisaPro creatives are embedded inside `index.html` as `data:image/webp;base64,...` so the file works on its own. To swap one, replace that `src="data:..."` value with a path to your own image file, for example `src="images/new-campaign.webp"`, and upload the image next to `index.html`.
+- **Colours**: the palette is defined at the top of the `<style>` block in `:root`.
 
 ## Publish with GitHub Pages
 
