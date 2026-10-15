@@ -6,7 +6,7 @@ The whole site is one file: `index.html`. Open it in a browser, or host it on an
 
 ## What's on the page
 
-Zain's own design: dotted paper background, black ink, Arial Black headlines, white cards and flat colour blocks.
+Zain's own design: dotted paper background, black ink, white cards and flat colour blocks. Cards and buttons have ink outlines and hard shadows, like printed stickers, with handwritten notes, a highlighter on key words and a moving strip of services under the hero.
 
 - **Hero**: the "Portfolio" wordmark, a one-line intro, services, two buttons, and floating cards for VisaPro, Startup Ninja and Onease.
 - **About**: short bio, roles, tools and what I can do for you.
@@ -17,7 +17,7 @@ Zain's own design: dotted paper background, black ink, Arial Black headlines, wh
 
 ## How it works
 
-- Headlines use Arial Black. Phones that don't have it get Archivo Black from Google Fonts, which looks almost the same.
+- Fonts from Google Fonts: Bricolage Grotesque for headlines and text, Instrument Serif italic for the accent words, Caveat for the handwritten notes.
 - No frameworks. Scrolling is the browser's own.
 
 ## Editing
