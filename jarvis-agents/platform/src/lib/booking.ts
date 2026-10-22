@@ -89,24 +89,38 @@ export type BookingResult =
   | { ok: false; reason: "slot_taken" | "not_found" | "bookings_off" };
 
 export async function createBooking(biz: Biz, input: NewBooking): Promise<BookingResult> {
-  if (biz.bookingMode !== "internal") return { ok: false, reason: "bookings_off" };
+  const byOwner = input.source === "owner" || input.source === "phone";
+  if (biz.bookingMode !== "internal" && !byOwner) return { ok: false, reason: "bookings_off" };
 
   const start = DateTime.fromISO(input.start, { setZone: true });
   if (!start.isValid) return { ok: false, reason: "not_found" };
   const localDate = start.setZone(biz.timezone).toISODate()!;
 
-  // re-check against live data, never trust the slot the browser sent
-  const slots = await getSlots(biz, input.serviceId, localDate, input.staffId);
-  const slot = slots.find((s) => DateTime.fromISO(s.start).toMillis() === start.toMillis());
-  if (!slot) return { ok: false, reason: "slot_taken" };
+  const [service] = await db.select().from(t.services)
+    .where(and(eq(t.services.id, input.serviceId), eq(t.services.businessId, biz.id)));
+  if (!service) return { ok: false, reason: "not_found" };
 
-  const [service] = await db.select().from(t.services).where(eq(t.services.id, input.serviceId));
+  let staffIds: string[];
+  if (byOwner && input.staffId) {
+    // the owner can squeeze someone in outside the online rules (walk-ins,
+    // after hours). the database still refuses a real double booking.
+    const [person] = await db.select({ id: t.staff.id }).from(t.staff)
+      .where(and(eq(t.staff.id, input.staffId), eq(t.staff.businessId, biz.id)));
+    if (!person) return { ok: false, reason: "not_found" };
+    staffIds = [person.id];
+  } else {
+    // re-check against live data, never trust the slot the browser sent
+    const slots = await getSlots(biz, input.serviceId, localDate, input.staffId);
+    const slot = slots.find((s) => DateTime.fromISO(s.start).toMillis() === start.toMillis());
+    if (!slot) return { ok: false, reason: "slot_taken" };
+    staffIds = slot.staffIds;
+  }
   const phone = input.phone?.trim() || null;
   const email = input.email?.trim().toLowerCase() || null;
   // clinics never keep free-text notes on bookings, so no health details end up stored
   const note = biz.niche === "clinic" ? null : input.note?.trim().slice(0, 500) || null;
 
-  for (const staffId of slot.staffIds) {
+  for (const staffId of staffIds) {
     try {
       const result = await db.transaction(async (tx) => {
         const match = phone
