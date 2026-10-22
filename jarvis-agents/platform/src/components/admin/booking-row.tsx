@@ -4,6 +4,7 @@ import { Badge } from "./ui";
 export type Row = {
   id: string; when: string; customer: string; phone: string | null;
   service: string; staff: string; status: "confirmed" | "cancelled" | "completed" | "no_show"; source: string;
+  details?: string;          // answers to the trade's booking questions
 };
 
 const STATUS = {
@@ -35,6 +36,7 @@ export function BookingRow({ r }: { r: Row }) {
           {r.phone && <> · <a className="underline-offset-2 hover:underline" href={`tel:${r.phone.replace(/[^\d+]/g, "")}`}>{r.phone}</a></>}
           {r.source !== "online" && " · added by you"}
         </div>
+        {r.details && <div className="text-sm font-medium text-stone-700">{r.details}</div>}
       </div>
       <Badge tone={s.tone}>{s.label}</Badge>
       {r.status === "confirmed" && (

@@ -1,0 +1,47 @@
+{
+  "medical": {
+    "clinic_services_title": "Care for you and your family",
+    "clinic_stories_title": "What our patients say"
+  },
+  "dermatology": {
+    "clinic_services_title": "Healthy skin, expert care",
+    "clinic_services_intro": "Medical and cosmetic dermatology under one roof, explained clearly and done properly."
+  },
+  "dental": {
+    "clinic_services_title": "Care for every smile"
+  },
+  "carwash": {
+    "hs_fast_response": "Drive in or book a detail",
+    "hs_quote_title": "Ask about detailing or fleets",
+    "hs_quote_sub": "Tell us about your car and we'll get back to you fast.",
+    "hs_quote_button": "Send enquiry",
+    "hs_quote_message": "Car make and model, what you need",
+    "hs_services_title": "Washes and details for every car",
+    "hs_services_intro": "From a quick exterior wash to a full interior and exterior detail, with clear prices.",
+    "hs_step1_title": "Book or drive in",
+    "hs_step1": "Pick a time online for detailing, or just drive in for a wash.",
+    "hs_step2_title": "We get to work",
+    "hs_step2": "We tell you the time and price up front, then take care of every panel and seat.",
+    "hs_step3_title": "Drive away shining",
+    "hs_step3": "Quick check together before you go. Not happy, we fix it.",
+    "hs_reviews_title": "Drivers who keep coming back",
+    "hs_cta_title": "Car need a clean today?"
+  },
+  "autorepair": {
+    "hs_fast_response": "Same-week appointments",
+    "hs_quote_title": "Get a repair quote",
+    "hs_quote_sub": "Tell us what's going on with your car and we'll call you back with a price.",
+    "hs_quote_button": "Request a quote",
+    "hs_quote_message": "Year, make, model and what's wrong",
+    "hs_services_title": "Servicing, repairs and diagnostics",
+    "hs_services_intro": "Honest diagnosis, a clear quote before any work starts, and the job done right first time.",
+    "hs_step1_title": "Book a slot",
+    "hs_step1": "Pick a time online or call. Tell us the car and the problem.",
+    "hs_step2_title": "We diagnose and quote",
+    "hs_step2": "We find the fault and call you with the price before we touch anything.",
+    "hs_step3_title": "Back on the road",
+    "hs_step3": "Repaired, checked and ready, with the old parts there if you want to see them.",
+    "hs_reviews_title": "Drivers who trust us with their cars",
+    "hs_cta_title": "Car making a strange noise?"
+  }
+}

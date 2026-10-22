@@ -5,6 +5,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { fill, type Labels } from "@/lib/labels";
+import type { BookingField } from "@/lib/niches";
 
 type Service = { id: string; name: string; description: string; durationMin: number; price: string | null };
 type Person = { id: string; name: string; title: string };
@@ -18,6 +19,7 @@ type Props = {
   timezone: string;
   phone: string | null;
   isClinic: boolean;
+  fields: BookingField[];      // this trade's extra questions
   services: Service[];
   staff: Person[];
   L: Labels;
@@ -65,12 +67,17 @@ export function BookingFlow(p: Props) {
   async function book(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!service || !slot) return;
-    const f = Object.fromEntries(new FormData(e.currentTarget)) as Record<string, string>;
+    const all = Object.fromEntries(new FormData(e.currentTarget)) as Record<string, string>;
+    const details: Record<string, string> = {};
+    const f: Record<string, string> = {};
+    for (const [k, v] of Object.entries(all)) {
+      if (k.startsWith("d_")) details[k.slice(2)] = v; else f[k] = v;
+    }
     setStatus("sending"); setError("");
     const res = await fetch(`/api/sites/${p.slug}/bookings`, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ ...f, serviceId: service.id, staffId: person || undefined, start: slot.start }),
+      body: JSON.stringify({ ...f, details, serviceId: service.id, staffId: person || undefined, start: slot.start }),
     }).catch(() => null);
     if (res?.ok) { setStatus("done"); return; }
     setStatus("form");
@@ -166,6 +173,17 @@ export function BookingFlow(p: Props) {
             <input name="name" placeholder={p.L.bk_full_name} required maxLength={80} />
             <input name="phone" placeholder={p.L.bk_mobile} type="tel" required maxLength={40} />
             <input name="email" placeholder={p.L.form_email} type="email" maxLength={120} />
+            {p.fields.map((field) => {
+              const text = (k: string) => (p.L as Record<string, string>)[k] ?? k;
+              return field.kind === "select" ? (
+                <select key={field.key} name={`d_${field.key}`} required={field.required} defaultValue="">
+                  <option value="" disabled>{text(`bf_${field.key}`)}</option>
+                  {field.options.map((o) => <option key={o} value={o}>{text(`bfo_${o}`)}</option>)}
+                </select>
+              ) : (
+                <input key={field.key} name={`d_${field.key}`} placeholder={text(`bf_${field.key}`)} required={field.required} maxLength={field.max} />
+              );
+            })}
             {!p.isClinic && <textarea name="note" placeholder={p.L.bk_note} rows={2} maxLength={500} />}
             <button className="bk-btn" disabled={status === "sending"}>{status === "sending" ? p.L.bk_booking : p.L.bk_confirm}</button>
           </form>

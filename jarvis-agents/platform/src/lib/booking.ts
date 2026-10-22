@@ -1,10 +1,11 @@
 // Booking against the real database: load what is needed for one day, ask the
 // slot engine, and create bookings safely.
 
-import { and, asc, eq, gt, inArray, lt } from "drizzle-orm";
+import { and, asc, eq, gt, inArray, lt, sql } from "drizzle-orm";
 import { DateTime } from "luxon";
 import { db, t } from "@/db";
 import { availableSlots, type Busy, type Slot } from "./slots";
+import { isHealth } from "./niches";
 
 type Biz = typeof t.businesses.$inferSelect;
 
@@ -81,6 +82,7 @@ export type NewBooking = {
   phone?: string;
   email?: string;
   note?: string;
+  details?: Record<string, string>;   // already checked with cleanDetails
   source?: "online" | "owner" | "phone";
 };
 
@@ -117,12 +119,16 @@ export async function createBooking(biz: Biz, input: NewBooking): Promise<Bookin
   }
   const phone = input.phone?.trim() || null;
   const email = input.email?.trim().toLowerCase() || null;
-  // clinics never keep free-text notes on bookings, so no health details end up stored
-  const note = biz.niche === "clinic" ? null : input.note?.trim().slice(0, 500) || null;
+  // healthcare never keeps free-text notes on bookings, so no health details end up stored
+  const note = isHealth(biz.niche) ? null : input.note?.trim().slice(0, 500) || null;
 
   for (const staffId of staffIds) {
+   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
       const result = await db.transaction(async (tx) => {
+        // bookings for the same person queue up here instead of racing. without
+        // this, postgres's overlap guard can deadlock two simultaneous bookings.
+        await tx.execute(sql`select pg_advisory_xact_lock(hashtextextended(${staffId}, 0))`);
         const match = phone
           ? and(eq(t.customers.businessId, biz.id), eq(t.customers.phone, phone))
           : email
@@ -148,24 +154,34 @@ export async function createBooking(biz: Biz, input: NewBooking): Promise<Bookin
           endsAt: start.plus({ minutes: service.durationMin }).toJSDate(),
           source: input.source ?? "online",
           note,
+          details: input.details ?? {},
         }).returning();
         return booking;
       });
       return { ok: true, bookingId: result.id, startsAt: result.startsAt, staffId };
     } catch (e) {
+      const code = pgCode(e);
       // the database's overlap guard fired: someone grabbed this person a moment
       // ago. try the next free person for the same slot.
-      if (isOverlap(e)) continue;
+      if (code === "23P01") break;
+      // two people booking the same person at the same instant can make postgres
+      // cancel one of them as a deadlock. that's not a "no", so wait a beat and retry.
+      if ((code === "40P01" || code === "40001") && attempt < 3) {
+        await new Promise((r) => setTimeout(r, 20 + Math.random() * 80));
+        continue;
+      }
       throw e;
     }
+   }
   }
   return { ok: false, reason: "slot_taken" };
 }
 
-function isOverlap(e: unknown) {
-  const code = (e as { code?: string; cause?: { code?: string } })?.code
-    ?? (e as { cause?: { code?: string } })?.cause?.code;
-  return code === "23P01"; // exclusion_violation
+// the postgres error code, whether drizzle wrapped the error or not
+function pgCode(e: unknown): string | undefined {
+  const err = e as { code?: unknown; cause?: { code?: unknown } };
+  const c = typeof err?.cause?.code === "string" ? err.cause.code : err?.code;
+  return typeof c === "string" ? c : undefined;
 }
 
 // days in the next few weeks that have at least one opening, for the date picker

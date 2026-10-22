@@ -2,7 +2,7 @@
 Run MARK from the command line.
 
     python -m agents.mark demo --lead lead.json
-    python -m agents.mark demo --name "Bright Smile Dental" --niche clinic --country GB --city Leeds --phone "+44 113 555 0101"
+    python -m agents.mark demo --name "Bright Smile Dental" --niche dental --country GB --city Leeds --phone "+44 113 555 0101"
     python -m agents.mark demo --lead lead.json --dry-run          (show what would be created)
     python -m agents.mark demo --lead lead.json --brains codex     (pick the brain)
 
@@ -19,7 +19,7 @@ from pydantic import ValidationError
 
 from .brains import BrainError
 from .mark import make_demo
-from .plan import Lead
+from .plan import NICHES, Lead
 
 
 def main():
@@ -27,7 +27,7 @@ def main():
     sub = p.add_subparsers(dest="cmd", required=True)
     d = sub.add_parser("demo", help="build a demo for one lead")
     d.add_argument("--lead", help="JSON file with the lead")
-    d.add_argument("--name"); d.add_argument("--niche", choices=["salon", "clinic", "homeservices"])
+    d.add_argument("--name"); d.add_argument("--niche", choices=NICHES)
     d.add_argument("--country"); d.add_argument("--city"); d.add_argument("--phone")
     d.add_argument("--email"); d.add_argument("--address"); d.add_argument("--instagram")
     d.add_argument("--services", help="what they offer, free text")

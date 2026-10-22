@@ -17,7 +17,10 @@ import {
 } from "drizzle-orm/pg-core";
 import type { SiteContent } from "@/lib/content";
 
-export const niche = pgEnum("niche", ["salon", "clinic", "homeservices"]);
+// keep in step with src/lib/niches.ts
+export const niche = pgEnum("niche", [
+  "salon", "dental", "homeservices", "medical", "dermatology", "carwash", "autorepair",
+]);
 export const businessStatus = pgEnum("business_status", ["demo", "active", "paused"]);
 // internal: we take bookings. external: we send people to their own system
 // (clinics that must keep patient data elsewhere). off: enquiry form only.
@@ -143,7 +146,7 @@ export const customers = pgTable("customers", {
   name: text("name").notNull(),
   phone: text("phone"),
   email: text("email"),
-  notes: text("notes"),                          // owner's own notes. never shown for clinics
+  notes: text("notes"),                          // owner's own notes. never kept for healthcare
   createdAt: created(),
 }, (t) => [
   index("customers_business").on(t.businessId),
@@ -161,6 +164,8 @@ export const bookings = pgTable("bookings", {
   status: bookingStatus("status").notNull().default("confirmed"),
   source: bookingSource("source").notNull().default("online"),
   note: text("note"),
+  // answers to the niche's booking questions (vehicle size, new patient...). see niches.ts
+  details: jsonb("details").$type<Record<string, string>>().notNull().default({}),
   createdAt: created(),
 }, (t) => [
   index("bookings_business_time").on(t.businessId, t.startsAt),

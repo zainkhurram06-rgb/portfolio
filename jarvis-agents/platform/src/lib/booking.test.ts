@@ -16,7 +16,7 @@ after(async () => {
   await sql.end();
 });
 
-async function testBusiness(staffCount: number, niche: "salon" | "clinic" = "salon") {
+async function testBusiness(staffCount: number, niche: "salon" | "dental" = "salon") {
   const { business } = await createBusiness({
     name: `Booking Test ${Math.random().toString(36).slice(2, 7)}`,
     niche, theme: niche, country: "AE", currency: "AED", timezone: "Asia/Dubai",
@@ -72,7 +72,7 @@ test("a made-up time that was never offered is refused", async () => {
 });
 
 test("clinics never store booking notes", async () => {
-  const { business, service, date } = await testBusiness(1, "clinic");
+  const { business, service, date } = await testBusiness(1, "dental");
   const [slot] = await getSlots(business, service.id, date);
   const res = await createBooking(business, { serviceId: service.id, start: slot.start, name: "Y", phone: "+971500000400", note: "tooth pain" });
   assert.ok(res.ok);
@@ -88,4 +88,15 @@ test("the same customer double-tapping book gets one booking, no crash", async (
   assert.equal(results.filter((r) => r.ok).length, 1);
   const people = await db.select().from(t.customers).where(eq(t.customers.businessId, business.id));
   assert.equal(people.length, 1);
+});
+
+test("stress: 8 people at once, 2 staff, 10 different times: always exactly 2 bookings, never an error", async () => {
+  const { business, service } = await testBusiness(2);
+  for (let day = 4; day < 14; day++) {
+    const date = DateTime.now().setZone("Asia/Dubai").plus({ days: day }).toISODate()!;
+    const [slot] = await getSlots(business, service.id, date);
+    const results = await Promise.all(Array.from({ length: 8 }, (_, i) =>
+      createBooking(business, { serviceId: service.id, start: slot.start, name: `S${i}`, phone: `+97155${day}${i}0000` })));
+    assert.equal(results.filter((r) => r.ok).length, 2, `day ${day}`);
+  }
 });

@@ -14,6 +14,7 @@ import { createBooking } from "@/lib/booking";
 import { ICONS, siteContentSchema } from "@/lib/content";
 import { hhmmToMin } from "@/lib/fmt";
 import { THEMES } from "@/themes";
+import { isHealth } from "@/lib/niches";
 
 const str = (f: FormData, k: string) => String(f.get(k) ?? "").trim();
 const done = (path = "/admin") => revalidatePath(path, "layout");
@@ -53,8 +54,8 @@ export async function saveCustomer(form: FormData) {
     name: str(form, "name"),
     phone: str(form, "phone") || null,
     email: str(form, "email") || null,
-    // clinics never keep notes, so no health details get stored by accident
-    notes: biz.niche === "clinic" ? null : str(form, "notes").slice(0, 2000) || null,
+    // healthcare never keeps notes, so no health details get stored by accident
+    notes: isHealth(biz.niche) ? null : str(form, "notes").slice(0, 2000) || null,
   }).where(and(eq(t.customers.id, str(form, "id")), eq(t.customers.businessId, biz.id)));
   done();
 }

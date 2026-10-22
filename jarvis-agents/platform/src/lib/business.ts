@@ -8,6 +8,7 @@ import { eq } from "drizzle-orm";
 import { z } from "zod";
 import { db, t } from "@/db";
 import { ICONS, siteContentSchema } from "./content";
+import { NICHE_KEYS } from "./niches";
 
 const minutes = z.string().regex(/^\d{2}:\d{2}$/, "use HH:MM").transform((s) => {
   const [h, m] = s.split(":").map(Number);
@@ -17,7 +18,7 @@ const minutes = z.string().regex(/^\d{2}:\d{2}$/, "use HH:MM").transform((s) => 
 export const newBusinessSchema = z.object({
   slug: z.string().regex(/^[a-z0-9-]{3,48}$/).optional(),
   name: z.string().min(1).max(120),
-  niche: z.enum(["salon", "clinic", "homeservices"]),
+  niche: z.enum(NICHE_KEYS),
   theme: z.string().min(1).max(60),
   country: z.string().length(2).transform((s) => s.toUpperCase()),
   language: z.string().min(2).max(10).default("en"),

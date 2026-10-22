@@ -60,6 +60,22 @@ class Labels(unittest.TestCase):
             self.assertEqual(mark.translate_labels("es", "x", log=lambda m: None), {})
 
 
+class Niches(unittest.TestCase):
+    def test_every_trade_has_a_design(self):
+        from agents.mark.plan import NICHES
+        self.assertEqual(set(mark.THEME_FOR), set(NICHES))
+
+    def test_trade_wording_reaches_the_translator(self):
+        self.assertIn("Car need a clean", mark.english_for("carwash")["hs_cta_title"])
+        self.assertEqual(mark.english_for("salon")["hs_cta_title"], mark.LABELS_EN["hs_cta_title"])
+
+    def test_platform_and_mark_agree_on_niches(self):
+        ts = (Path(__file__).resolve().parents[2] / "platform/src/lib/niches.ts").read_text(encoding="utf-8")
+        from agents.mark.plan import NICHES
+        for n in NICHES:
+            self.assertIn(f'"{n}"', ts)
+
+
 class Brains(unittest.TestCase):
     def test_pulls_json_out_of_chatter(self):
         self.assertEqual(json.loads(_json_from_text('Sure! ```json\n{"a": 1}\n``` hope that helps')), {"a": 1})

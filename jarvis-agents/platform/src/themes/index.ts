@@ -3,6 +3,7 @@
 
 import type { ComponentType } from "react";
 import type { SiteData } from "@/lib/site";
+import type { Niche } from "@/lib/niches";
 import Clinic from "./clinic";
 import { css as clinicCss } from "./clinic/css";
 import HomeServices from "./homeservices";
@@ -12,18 +13,22 @@ import { css as salonCss } from "./salon/css";
 
 export type Theme = {
   name: string;
-  niche: "salon" | "clinic" | "homeservices";
+  niches: Niche[];          // trades this design suits
   label: string;
   Component: ComponentType<{ d: SiteData }>;
   css: string;
 };
 
 export const THEMES: Record<string, Theme> = {
-  clinic: { name: "clinic", niche: "clinic", label: "Calm clinic", Component: Clinic, css: clinicCss },
-  homeservices: { name: "homeservices", niche: "homeservices", label: "Bold trades", Component: HomeServices, css: homeCss },
-  salon: { name: "salon", niche: "salon", label: "Editorial salon", Component: Salon, css: salonCss },
+  clinic: { name: "clinic", niches: ["dental", "medical", "dermatology"], label: "Calm clinic", Component: Clinic, css: clinicCss },
+  homeservices: { name: "homeservices", niches: ["homeservices", "carwash", "autorepair"], label: "Bold and direct", Component: HomeServices, css: homeCss },
+  salon: { name: "salon", niches: ["salon"], label: "Editorial salon", Component: Salon, css: salonCss },
 };
 
 export function themeFor(name: string, niche: string): Theme {
-  return THEMES[name] ?? Object.values(THEMES).find((t) => t.niche === niche) ?? THEMES.clinic;
+  return THEMES[name] ?? Object.values(THEMES).find((t) => t.niches.includes(niche as Niche)) ?? THEMES.clinic;
+}
+
+export function themesFor(niche: string) {
+  return Object.values(THEMES).filter((t) => t.niches.includes(niche as Niche));
 }

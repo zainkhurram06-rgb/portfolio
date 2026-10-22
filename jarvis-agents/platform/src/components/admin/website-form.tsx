@@ -64,7 +64,7 @@ export function WebsiteForm({ c, theme, themes, niche, siteUrl }: Props) {
           <Field name="Highlights" hint="3 or 4 short points, one per line.">
             <textarea className={input} name="highlights" rows={4} defaultValue={lines(c.highlights)} required />
           </Field>
-          {niche === "homeservices" && (
+          {["homeservices", "carwash", "autorepair"].includes(niche) && (
             <Field name="Areas you cover" hint="One per line.">
               <textarea className={input} name="areasServed" rows={4} defaultValue={lines(c.areasServed)} />
             </Field>

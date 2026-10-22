@@ -94,7 +94,7 @@ export const loadSite = cache(async (site: string): Promise<SiteData | null> => 
     : biz.bookingMode === "external" && biz.externalBookingUrl ? biz.externalBookingUrl
     : `${base}/#contact`;
 
-  const L = labelsFor(biz.content.labels);
+  const L = labelsFor(biz.content.labels, biz.niche);
   return {
     biz,
     c: biz.content,

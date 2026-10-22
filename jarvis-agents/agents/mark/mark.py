@@ -22,11 +22,20 @@ PLATFORM_URL = os.environ.get("PLATFORM_URL", "http://localhost:3000").rstrip("/
 PLATFORM_TOKEN = os.environ.get("INTERNAL_API_TOKEN", "")
 DEMO_EMAIL_DOMAIN = os.environ.get("DEMO_EMAIL_DOMAIN", "demo.local")
 
-THEME_FOR = {"salon": "salon", "clinic": "clinic", "homeservices": "homeservices"}
+# the design each trade starts with. keep in step with platform/src/lib/niches.ts
+THEME_FOR = {"salon": "salon", "dental": "clinic", "medical": "clinic", "dermatology": "clinic",
+             "carwash": "homeservices", "autorepair": "homeservices", "homeservices": "homeservices"}
+LOCAL_TRADES = {"homeservices", "carwash", "autorepair"}
 
 # the platform's fixed website words (buttons, headings, form fields), in English
-LABELS_EN = json.loads((Path(__file__).resolve().parents[2] / "platform" / "src" / "lib" / "labels.en.json")
-                       .read_text(encoding="utf-8"))
+_LIB = Path(__file__).resolve().parents[2] / "platform" / "src" / "lib"
+LABELS_EN = json.loads((_LIB / "labels.en.json").read_text(encoding="utf-8"))
+LABELS_NICHE_EN = json.loads((_LIB / "labels.niches.en.json").read_text(encoding="utf-8"))
+
+
+def english_for(niche: str) -> dict:
+    """The shared site words with that trade's own wording on top, as the platform does."""
+    return {**LABELS_EN, **LABELS_NICHE_EN.get(niche, {})}
 Labels = create_model("Labels", **{k: (str, ...) for k in LABELS_EN})
 PLACEHOLDER = re.compile(r"\{\w+\}")
 
@@ -51,9 +60,14 @@ Rules you never break:
   text, light a very pale background.
 - Icons: pick each service's icon from this list only: {", ".join(ICONS)}.
 - Currency and timezone must be correct for the country and city.
-- clinic: calm and reassuring, never mention specific medical outcomes.
-  salon: aspirational and personal. homeservices: fast, honest, local, and list
-  4 to 8 nearby areas in areasServed."""
+- dental, medical, dermatology: calm and reassuring. Never promise medical
+  outcomes or mention specific conditions being cured.
+- salon: aspirational and personal.
+- carwash: quick, clean, proud of the finish. Services are wash packages and
+  details, priced by vehicle size if the lead gives sizes.
+- autorepair: honest and plain spoken. Stress quotes before work, no surprises.
+- homeservices: fast, honest, local.
+- For homeservices, carwash and autorepair, list 4 to 8 nearby areas in areasServed."""
 
 
 def _prompt(lead: Lead) -> str:
@@ -71,7 +85,7 @@ def _valid_hex(c: str) -> bool:
     return bool(re.fullmatch(r"#[0-9a-fA-F]{6}", c or ""))
 
 
-def translate_labels(language: str, brains: Optional[str], log=print) -> dict:
+def translate_labels(language: str, brains: Optional[str], log=print, niche: str = "") -> dict:
     """The site's fixed words in the lead's language. English needs nothing.
     If every brain fails the demo still ships, just with English buttons."""
     if (language or "en").split("-")[0].lower() == "en":
@@ -80,7 +94,7 @@ def translate_labels(language: str, brains: Optional[str], log=print) -> dict:
               "the way a local business would say it. Keep every {placeholder} exactly as written. "
               "Never use em dashes.")
     prompt = (f"Translate every value into the language with code '{language}'. Keep the keys.\n"
-              + json.dumps(LABELS_EN, ensure_ascii=False, indent=1))
+              + json.dumps(english_for(niche), ensure_ascii=False, indent=1))
     try:
         out = think(system, prompt, Labels, order=brains, log=log).model_dump()
     except BrainError as e:
@@ -88,8 +102,9 @@ def translate_labels(language: str, brains: Optional[str], log=print) -> dict:
         return {}
     # a translation that lost a {placeholder} would show broken text. use English there.
     for k, v in out.items():
-        if set(PLACEHOLDER.findall(v)) != set(PLACEHOLDER.findall(LABELS_EN[k])) or not v.strip():
-            out[k] = LABELS_EN[k]
+        source = english_for(niche)[k]
+        if set(PLACEHOLDER.findall(v)) != set(PLACEHOLDER.findall(source)) or not v.strip():
+            out[k] = source
     return {k: v[:300] for k, v in out.items()}
 
 
@@ -129,7 +144,7 @@ def build_payload(lead: Lead, plan: Plan, theme: Optional[str] = None, labels: O
             "highlights": [h[:60] for h in c.highlights[:4]],
             "reviews": reviews,
             "faqs": [f.model_dump() for f in c.faqs[:6]],
-            "areasServed": c.areasServed[:12] if lead.niche == "homeservices" else [],
+            "areasServed": c.areasServed[:12] if lead.niche in LOCAL_TRADES else [],
             "palette": palette,
             "headingFont": c.headingFont,
             "bodyFont": c.bodyFont,
@@ -175,7 +190,7 @@ def make_demo(lead: Lead, brains: Optional[str] = None, theme: Optional[str] = N
     plan = think(SYSTEM, _prompt(lead), Plan, order=brains, log=log)
     if plan.hours_are_guessed:
         log("MARK: no hours on the lead, used typical hours for the trade")
-    labels = translate_labels(plan.language or lead.language or "en", label_brains or brains, log)
+    labels = translate_labels(plan.language or lead.language or "en", label_brains or brains, log, niche=lead.niche)
     payload = build_payload(lead, plan, theme, labels)
     if dry_run:
         return {"payload": payload}

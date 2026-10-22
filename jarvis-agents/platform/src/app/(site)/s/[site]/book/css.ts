@@ -31,8 +31,8 @@ button, input, textarea { font: inherit; color: inherit; }
 .bk-summary dt { color: color-mix(in srgb, var(--dark) 55%, white); }
 .bk-summary dd { font-weight: 600; text-align: right; }
 .bk-summary form { display: grid; gap: 10px; border-top: 1px solid color-mix(in srgb, var(--dark) 10%, white); padding-top: 18px; }
-.bk-summary input, .bk-summary textarea { width: 100%; padding: 13px 14px; border-radius: 12px; border: 1.5px solid color-mix(in srgb, var(--dark) 12%, white); background: #fff; }
-.bk-summary input:focus, .bk-summary textarea:focus { outline: none; border-color: var(--primary); }
+.bk-summary input, .bk-summary textarea, .bk-summary select { width: 100%; font: inherit; color: inherit; padding: 13px 14px; border-radius: 12px; border: 1.5px solid color-mix(in srgb, var(--dark) 12%, white); background: #fff; }
+.bk-summary input:focus, .bk-summary textarea:focus, .bk-summary select:focus { outline: none; border-color: var(--primary); }
 .bk-btn { display: inline-block; text-align: center; padding: 15px 22px; border-radius: 999px; border: 0; background: var(--primary); color: #fff; font-weight: 700; cursor: pointer; text-decoration: none; }
 .bk-btn:disabled { opacity: .6; }
 .bk-error { color: #b42318; margin-top: 12px; font-weight: 600; }

@@ -3,6 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { BookingFlow } from "@/components/site/booking-flow";
 import { DemoRibbon } from "@/components/site/bits";
 import { loadSite } from "@/lib/site";
+import { fieldsFor, isHealth } from "@/lib/niches";
 import { fill } from "@/lib/labels";
 import { css } from "./css";
 
@@ -37,7 +38,8 @@ export default async function BookPage({ params }: Props) {
           locale={`${d.biz.language}-${d.biz.country}`}
           timezone={d.biz.timezone}
           phone={d.biz.phone}
-          isClinic={d.biz.niche === "clinic"}
+          isClinic={isHealth(d.biz.niche)}
+          fields={fieldsFor(d.biz.niche)}
           services={d.services}
           staff={d.staff}
           L={d.L}

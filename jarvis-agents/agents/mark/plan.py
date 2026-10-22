@@ -10,7 +10,9 @@ from typing import List, Literal, Optional
 
 from pydantic import BaseModel, Field
 
-Niche = Literal["salon", "clinic", "homeservices"]
+# keep in step with platform/src/lib/niches.ts
+NICHES = ["salon", "dental", "medical", "dermatology", "carwash", "autorepair", "homeservices"]
+Niche = Literal[tuple(NICHES)]  # type: ignore[valid-type]
 
 ICONS = [
     "tooth", "heart", "stethoscope", "baby", "eye", "bone", "brain", "pill",
@@ -96,7 +98,7 @@ class PlanContent(BaseModel):
     highlights: List[str] = Field(min_length=3, max_length=4,
                                   description="short and true: features of booking with them, never invented awards or years")
     faqs: List[Faq] = Field(default_factory=list, max_length=4)
-    areasServed: List[str] = Field(default_factory=list, description="home services only: nearby towns")
+    areasServed: List[str] = Field(default_factory=list, description="home services, car wash and auto repair only: nearby areas")
     palette: Palette
     headingFont: HeadingFont
     bodyFont: BodyFont

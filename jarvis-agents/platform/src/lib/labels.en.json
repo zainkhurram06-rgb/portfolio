@@ -17,7 +17,6 @@
   "google_rating": "Google rating",
   "google_reviews": "{n} Google reviews",
   "stars": "stars",
-
   "form_name": "Your name",
   "form_phone": "Phone",
   "form_email": "Email (optional)",
@@ -27,7 +26,6 @@
   "form_sending": "Sending...",
   "form_sent": "Thanks, we've got your message and will get back to you soon.",
   "form_error": "That didn't send. Please call us instead.",
-
   "clinic_book_online": "Book online",
   "clinic_book_online_sub": "Pick a time that suits you",
   "clinic_what_we_do": "What we do",
@@ -42,7 +40,6 @@
   "clinic_no_medical": "Please don't include medical details here",
   "clinic_faq_title": "Questions, answered",
   "clinic_band_title": "We'd love to see you",
-
   "hs_fast_response": "Fast response, call any time",
   "hs_serving": "Serving {areas}",
   "hs_and_nearby": "and nearby",
@@ -67,7 +64,6 @@
   "hs_faq_title": "Common questions",
   "hs_contact": "Contact",
   "hs_hours": "Hours",
-
   "salon_see_work": "See our work",
   "salon_view_services": "View services",
   "salon_studio": "The studio",
@@ -82,7 +78,6 @@
   "salon_visit": "Visit",
   "salon_chair_title": "Your chair is waiting",
   "salon_message_title": "Questions? Message us",
-
   "bk_title_times": "Times shown in {place} time.",
   "bk_back_to": "Back to {name}",
   "bk_choose_service": "Choose a service",
@@ -108,5 +103,24 @@
   "bk_done_title": "You're booked in",
   "bk_done_text": "We'll send you a reminder before your appointment. Need to change it? Just call us.",
   "bk_taken": "Sorry, that time was just taken. Please pick another.",
-  "bk_error": "Something went wrong. Please call us."
+  "bk_error": "Something went wrong. Please call us.",
+  "bf_client_type": "Have you visited us before?",
+  "bf_patient_type": "Have you visited us before?",
+  "bfo_new": "First visit",
+  "bfo_returning": "I've been before",
+  "bf_insurance": "Insurance provider (optional)",
+  "bf_visit_kind": "Type of visit",
+  "bfo_medical": "Medical skin concern",
+  "bfo_cosmetic": "Cosmetic treatment",
+  "bf_vehicle_size": "Vehicle size",
+  "bfo_car": "Car / hatchback",
+  "bfo_suv": "SUV / 4x4",
+  "bfo_van": "Van / pickup truck",
+  "bf_vehicle": "Make and model (e.g. 2019 Toyota Corolla)",
+  "bf_mileage": "Mileage (optional)",
+  "bf_drop_off": "Will you wait or drop the car off?",
+  "bfo_wait": "I'll wait",
+  "bfo_drop_off": "I'll drop it off",
+  "bf_job_address": "Address for the job",
+  "bk_details": "A few details"
 }

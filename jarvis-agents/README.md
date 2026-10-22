@@ -15,7 +15,9 @@ Zain's agent team, plus the platform they sell.
 
 ```
 platform/        the product. one web app serving every client business, like Shopify
-  src/themes/      website designs (clinic, homeservices, salon). add more here
+  src/themes/      website designs (skins). add more here
+  src/lib/niches.ts  the trades: salon, dental, medical, dermatology, carwash,
+                   autorepair, homeservices. each has its own booking questions
   src/app/(site)/  every client's public website + booking page
   src/app/(admin)/ the owner dashboard: Today, Calendar, Customers, Messages,
                    Services, Team & hours, My website, Settings
@@ -48,9 +50,12 @@ npm run seed                      # three example businesses
 npm run dev                       # http://localhost:3000/admin
 ```
 
-Example sites: `http://localhost:3000/s/luna-hair-studio`, `/s/harbour-dental`,
-`/s/coastline-plumbing`. Dashboard logins: `owner@luna.example`,
-`owner@harbour.example`, `owner@coastline.example`, password `demo-password`.
+Example sites: `/s/luna-hair-studio` (salon), `/s/harbour-dental` (dental),
+`/s/clearskin-dermatology`, `/s/gleam-car-spa` (car wash), `/s/northline-auto`
+(mechanic), `/s/coastline-plumbing` (home services). Dashboard logins are
+`owner@<name>.example` (luna, harbour, clearskin, gleam, northline, coastline),
+password `demo-password`. `npx tsx --env-file=.env.local scripts/demo-data.ts <slug>`
+fills one with a realistic week of bookings.
 
 ```powershell
 # 2. MARK, in a second window
@@ -58,7 +63,7 @@ cd jarvis-agents
 pip install -r requirements.txt
 $env:INTERNAL_API_TOKEN = "the same token as in .env.local"
 $env:ANTHROPIC_API_KEY  = "sk-ant-..."          # or DEEPSEEK_API_KEY, or neither if codex is installed
-python -m agents.mark demo --name "Bright Smile Dental" --niche clinic --country GB --city Leeds --phone "+44 113 555 0101"
+python -m agents.mark demo --name "Bright Smile Dental" --niche dental --country GB --city Leeds --phone "+44 113 555 0101"
 ```
 
 MARK prints the demo's website link and a demo dashboard login.
@@ -86,11 +91,14 @@ Tried in order until one works. Set the order with `MARK_BRAINS`.
   from the lead only, in code, after the AI has written.
 - Demo logins are never the business's real email.
 - Demo sites carry a "demo preview" bar and are hidden from Google.
-- Clinic accounts never store notes on bookings or customers, so no patient
-  health details end up in the database (HIPAA, GDPR). Clinics that must keep
-  bookings in their own system use "external booking" mode.
-- The database itself refuses double bookings, even if two customers press
-  book at the same second.
+- Healthcare accounts (dental, medical, dermatology) never store notes on
+  bookings or customers, and their booking questions never ask about symptoms,
+  so no patient health details end up in the database (HIPAA, GDPR). Clinics
+  that must keep bookings in their own system use "external booking" mode.
+- Booking questions are fixed per trade. Answers outside those questions are
+  thrown away before they reach the database.
+- The database itself refuses double bookings, even if eight customers press
+  book at the same second (tested).
 
 ## Tests
 

@@ -1,9 +1,10 @@
 // Three made-up businesses, one per niche, in three countries. Used to see and
 // test everything locally. Run:  npm run seed
-// Running it again adds them again with -2 slugs, so reset first if you want a clean slate.
+// Safe to run again: businesses that already exist are skipped.
 
 import { createBusiness, type NewBusiness } from "../src/lib/business";
-import { sql } from "../src/db";
+import { eq } from "drizzle-orm";
+import { db, sql, t } from "../src/db";
 
 const weekdays = (start: string, end: string, days = [1, 2, 3, 4, 5]) =>
   days.map((weekday) => ({ weekday, start, end }));
@@ -50,7 +51,7 @@ const demos: NewBusiness[] = [
   {
     slug: "harbour-dental",
     name: "Harbour Dental",
-    niche: "clinic",
+    niche: "dental",
     theme: "clinic",
     country: "GB", currency: "GBP", timezone: "Europe/London", language: "en",
     phone: "+44 20 7946 0321", email: "reception@harbourdental.example",
@@ -122,10 +123,114 @@ const demos: NewBusiness[] = [
     hours: weekdays("07:00", "17:00", [1, 2, 3, 4, 5, 6]),
     owner: { name: "Coastline Owner", email: "owner@coastline.example", password: "demo-password" },
   },
+  {
+    slug: "gleam-car-spa",
+    name: "Gleam Car Spa",
+    niche: "carwash",
+    theme: "homeservices",
+    country: "US", currency: "USD", timezone: "America/Chicago", language: "en",
+    phone: "+1 713 555 0148", email: "hello@gleamcarspa.example",
+    address: "2410 Westheimer Rd, Houston, TX 77098", city: "Houston",
+    reminderChannel: "sms",
+    content: {
+      tagline: "Hand wash and detailing",
+      headline: "A showroom shine, without the wait",
+      subheadline: "Hand washes, interior cleans and full details. Book a detail online or just drive in.",
+      ctaLabel: "Book a detail",
+      aboutTitle: "Washed by hand, checked by eye",
+      about: "Every car is washed by hand with pH-neutral soap and fresh microfibre, so there are no swirl marks from old brushes.\n\nWe tell you the price before we start and walk round the car with you when it's done.",
+      highlights: ["Hand wash only", "Prices by vehicle size", "Online booking for details", "Done while you wait"],
+      reviews: [], faqs: [{ q: "Do I need to book a wash?", a: "No, washes are drive-in. Book online for details so we can hold a bay for you." }],
+      areasServed: ["Montrose", "River Oaks", "Midtown", "Rice Village", "Upper Kirby"],
+      palette: { primary: "#0e7490", accent: "#22d3ee", dark: "#0b1220", light: "#f0f9ff" },
+      headingFont: "Sora", bodyFont: "Inter",
+      logoUrl: null, heroImage: null, gallery: [], instagram: null, facebook: null, rating: 4.8, reviewCount: 412,
+    },
+    services: [
+      { name: "Express exterior wash", description: "Hand wash, wheels and a spot-free dry.", icon: "droplet", durationMin: 30, price: 25 },
+      { name: "Inside and out", description: "Exterior wash plus vacuum, windows and dash wipe.", icon: "sparkle", durationMin: 60, price: 55 },
+      { name: "Full detail", description: "Deep interior clean, clay bar, polish and wax.", icon: "star", durationMin: 240, price: 249, priceFrom: true },
+      { name: "Ceramic coating", description: "Long-lasting gloss and protection, applied by hand.", icon: "shield", durationMin: 480, price: null },
+      { name: "Interior shampoo", description: "Seats and carpets shampooed and extracted.", icon: "home", durationMin: 120, price: 129, priceFrom: true },
+    ],
+    staff: [{ name: "Bay 1", title: "" }, { name: "Bay 2", title: "" }],
+    hours: weekdays("08:00", "18:00", [1, 2, 3, 4, 5, 6]),
+    owner: { name: "Gleam Owner", email: "owner@gleam.example", password: "demo-password" },
+  },
+  {
+    slug: "northline-auto",
+    name: "Northline Auto Repair",
+    niche: "autorepair",
+    theme: "homeservices",
+    country: "CA", currency: "CAD", timezone: "America/Toronto", language: "en",
+    phone: "+1 416 555 0193", email: "service@northline.example",
+    address: "88 Dupont St, Toronto, ON M5R 1V2", city: "Toronto",
+    reminderChannel: "sms",
+    content: {
+      tagline: "Independent mechanics",
+      headline: "Honest repairs, explained before we start",
+      subheadline: "Servicing, brakes, diagnostics and more. Book a slot online and we'll call you with a price first.",
+      ctaLabel: "Book a service",
+      aboutTitle: "The garage you don't have to second-guess",
+      about: "We find the fault, call you with the price, and only then start work. No surprise bills.\n\nKeep your old parts if you want them, and ask us anything about your car.",
+      highlights: ["Quote before any work", "Online booking", "Keep your old parts", "Wait or drop off"],
+      reviews: [], faqs: [{ q: "Can I wait while you work?", a: "For servicing and small jobs, yes. Pick 'I'll wait' when you book." }],
+      areasServed: ["The Annex", "Yorkville", "Midtown", "Seaton Village"],
+      palette: { primary: "#b91c1c", accent: "#f59e0b", dark: "#111827", light: "#f9fafb" },
+      headingFont: "Archivo", bodyFont: "Inter",
+      logoUrl: null, heroImage: null, gallery: [], instagram: null, facebook: null, rating: 4.9, reviewCount: 287,
+    },
+    services: [
+      { name: "Full service", description: "Oil, filters, fluids and a full safety check.", icon: "wrench", durationMin: 90, price: 189, priceFrom: true },
+      { name: "Brakes", description: "Pads, discs and brake fluid, checked and replaced.", icon: "shield", durationMin: 120, price: null },
+      { name: "Diagnostics", description: "Warning light on? We'll find out why.", icon: "bolt", durationMin: 60, price: 99 },
+      { name: "Tyres and alignment", description: "Fitting, balancing and four-wheel alignment.", icon: "check", durationMin: 60, price: null },
+      { name: "Air conditioning", description: "Re-gas and leak check so it blows cold again.", icon: "snowflake", durationMin: 60, price: 129 },
+    ],
+    staff: [{ name: "Marco", title: "Lead mechanic" }, { name: "Priya", title: "Mechanic" }],
+    hours: weekdays("07:30", "17:30"),
+    owner: { name: "Northline Owner", email: "owner@northline.example", password: "demo-password" },
+  },
+  {
+    slug: "clearskin-dermatology",
+    name: "ClearSkin Dermatology",
+    niche: "dermatology",
+    theme: "clinic",
+    country: "AU", currency: "AUD", timezone: "Australia/Melbourne", language: "en",
+    phone: "+61 3 5550 2210", email: "hello@clearskin.example",
+    address: "Level 2, 120 Collins St, Melbourne VIC 3000", city: "Melbourne",
+    reminderChannel: "sms",
+    content: {
+      tagline: "Medical and cosmetic dermatology",
+      headline: "Skin care that starts with listening",
+      subheadline: "Skin checks, acne and eczema care, and cosmetic treatments. Book online in a minute.",
+      ctaLabel: "Book an appointment",
+      aboutTitle: "Expert skin care, without the rush",
+      about: "Longer appointments mean time to understand your skin and explain every option.\n\nMedical and cosmetic care in one place, with clear prices before you commit.",
+      highlights: ["Online booking", "Medical and cosmetic", "Clear prices upfront"],
+      reviews: [], faqs: [{ q: "Do I need a referral?", a: "Not for cosmetic treatments. For medical visits a GP referral can help with rebates." }],
+      areasServed: [],
+      palette: { primary: "#7c5c4a", accent: "#d6a77a", dark: "#1f1a17", light: "#faf6f2" },
+      headingFont: "Fraunces", bodyFont: "Manrope",
+      logoUrl: null, heroImage: null, gallery: [], instagram: null, facebook: null, rating: 4.9, reviewCount: 175,
+    },
+    services: [
+      { name: "Full skin check", description: "Head-to-toe check of moles and spots.", icon: "eye", durationMin: 30, price: 150 },
+      { name: "Acne consultation", description: "A plan that fits your skin and your life.", icon: "sparkle", durationMin: 30, price: 180 },
+      { name: "Eczema and rashes", description: "Diagnosis and a treatment plan you understand.", icon: "leaf", durationMin: 30, price: 180 },
+      { name: "Cosmetic injectables", description: "Subtle, natural-looking results.", icon: "star", durationMin: 45, price: null },
+      { name: "Laser treatments", description: "For pigmentation, redness and texture.", icon: "bolt", durationMin: 60, price: null },
+    ],
+    staff: [{ name: "Dr. Chen", title: "Dermatologist" }, { name: "Dr. Walsh", title: "Dermatologist" }],
+    hours: weekdays("08:30", "17:00"),
+    owner: { name: "ClearSkin Owner", email: "owner@clearskin.example", password: "demo-password" },
+  },
 ];
 
 async function main() {
   for (const d of demos) {
+    const [exists] = await db.select({ id: t.businesses.id }).from(t.businesses).where(eq(t.businesses.slug, d.slug!));
+    if (exists) { console.log(`${d.name} already there, skipped`); continue; }
     const { business, owner } = await createBusiness(d);
     console.log(`${business.name}  /s/${business.slug}  login ${owner.email}${owner.password ? ` / ${owner.password}` : ""}`);
   }
