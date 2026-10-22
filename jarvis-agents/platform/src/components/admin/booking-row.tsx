@@ -27,7 +27,7 @@ export function BookingRow({ r }: { r: Row }) {
   const s = STATUS[r.status];
   return (
     <li className={`flex flex-wrap items-center gap-x-4 gap-y-2 py-3 ${r.status === "cancelled" ? "opacity-50" : ""}`}>
-      <div className="w-20 shrink-0 text-lg font-semibold tabular-nums">{r.when}</div>
+      <div className="w-24 shrink-0 whitespace-nowrap text-lg font-semibold tabular-nums">{r.when}</div>
       <div className="min-w-0 flex-1">
         <div className="font-semibold">{r.customer} <span className="font-normal text-stone-500">· {r.service}</span></div>
         <div className="text-sm text-stone-500">
