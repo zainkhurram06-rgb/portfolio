@@ -1,0 +1,225 @@
+{%- import "_shared/icons.j2" as ic -%}
+{%- import "_shared/base.j2" as base -%}
+<!doctype html>
+<html lang="en">
+<head>
+{{ base.head(c) }}
+<style>
+:root {
+{{ base.palette_vars(c) }}
+  --cream: var(--light);
+  --muted: color-mix(in srgb, var(--dark) 58%, var(--light));
+  --line: color-mix(in srgb, var(--dark) 14%, var(--light));
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--body); color: var(--dark); background: var(--cream); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+.wrap { width: min(1240px, 100% - 40px); margin-inline: auto; }
+h1, h2, h3 { font-family: var(--heading); font-weight: 400; line-height: 1.04; letter-spacing: -0.015em; }
+h1 { font-size: clamp(3rem, 8vw, 6.6rem); }
+h2 { font-size: clamp(2.2rem, 5vw, 4rem); }
+h3 { font-size: 1.5rem; }
+em { font-style: italic; color: var(--primary); }
+.kicker { font-size: .78rem; letter-spacing: .28em; text-transform: uppercase; font-weight: 600; color: var(--muted); }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 30px; border-radius: 999px; font-weight: 600; letter-spacing: .02em; font-size: .95rem; border: 0; cursor: pointer; font-family: var(--body); transition: background .25s, color .25s, transform .25s; }
+.btn-solid { background: var(--dark); color: var(--cream); }
+.btn-solid:hover { background: var(--primary); transform: translateY(-2px); }
+.btn-outline { border: 1px solid var(--dark); }
+.btn-outline:hover { background: var(--dark); color: var(--cream); }
+
+nav { position: absolute; top: 37px; left: 0; right: 0; z-index: 30; }
+nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 92px; }
+.brand { font-family: var(--heading); font-size: 1.7rem; letter-spacing: -0.01em; display: flex; align-items: center; gap: 12px; }
+.brand img { height: 48px; }
+.links { display: flex; gap: 34px; font-size: .9rem; letter-spacing: .06em; }
+.links a { position: relative; }
+.links a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -4px; height: 1px; background: currentColor; transition: right .3s; }
+.links a:hover::after { right: 0; }
+@media (max-width: 900px) { .links { display: none; } }
+
+.hero { padding: 150px 0 80px; position: relative; overflow: hidden; }
+.hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 60px; align-items: end; }
+.hero p.lead { font-size: 1.15rem; color: var(--muted); max-width: 36ch; margin: 30px 0 38px; }
+.hero .actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.collage { position: relative; height: 600px; }
+.collage .p { position: absolute; overflow: hidden; background: var(--primary); }
+.collage .p img { width: 100%; height: 100%; object-fit: cover; }
+.collage .p1 { inset: 0 18% 14% 0; border-radius: 300px 300px 8px 8px; background: linear-gradient(170deg, color-mix(in srgb, var(--primary) 75%, white), var(--primary)); }
+.collage .p2 { width: 46%; height: 42%; right: 0; bottom: 0; border-radius: 8px; border: 10px solid var(--cream); background: linear-gradient(160deg, var(--accent), color-mix(in srgb, var(--accent) 60%, var(--dark))); }
+.collage .art { position: absolute; inset: 0; display: grid; place-items: center; color: rgba(255,255,255,.85); }
+.collage .seal { position: absolute; left: -26px; bottom: 22%; width: 120px; height: 120px; border-radius: 50%; background: var(--cream); display: grid; place-items: center; text-align: center; font-family: var(--heading); font-size: 1.05rem; line-height: 1.1; box-shadow: 0 20px 40px -20px rgba(0,0,0,.3); }
+.collage .seal b { display: block; font-size: 2rem; font-weight: 400; }
+@media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } .collage { height: 440px; } .collage .seal { left: 0; } }
+
+.marquee { border-block: 1px solid var(--line); overflow: hidden; white-space: nowrap; padding: 22px 0; }
+.marquee div { display: inline-flex; gap: 48px; animation: slide 30s linear infinite; font-family: var(--heading); font-size: 1.6rem; font-style: italic; }
+.marquee span { display: inline-flex; gap: 48px; align-items: center; }
+.marquee span::after { content: "✦"; color: var(--primary); font-style: normal; font-size: 1rem; }
+@keyframes slide { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee div { animation: none; } }
+
+section { padding: 120px 0; }
+.intro { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; }
+.intro p { color: var(--muted); font-size: 1.08rem; margin-top: 20px; }
+@media (max-width: 900px) { .intro { grid-template-columns: 1fr; gap: 20px; } }
+
+.menu { background: var(--dark); color: var(--cream); }
+.menu .kicker { color: color-mix(in srgb, var(--cream) 60%, transparent); }
+.menu-list { margin-top: 56px; border-top: 1px solid rgba(255,255,255,.15); }
+.item { display: grid; grid-template-columns: 70px 1fr 1.2fr; gap: 30px; padding: 30px 0; border-bottom: 1px solid rgba(255,255,255,.15); align-items: start; transition: padding .3s; }
+.item:hover { padding-left: 14px; }
+.item .ico { color: var(--accent); }
+.item h3 { font-size: 1.9rem; }
+.item p { color: color-mix(in srgb, var(--cream) 70%, transparent); }
+@media (max-width: 800px) { .item { grid-template-columns: 50px 1fr; } .item p { grid-column: 2; } }
+
+.gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 50px; }
+.gallery div { aspect-ratio: 3 / 4; border-radius: 6px; overflow: hidden; background: color-mix(in srgb, var(--primary) 25%, var(--cream)); display: grid; place-items: center; color: var(--primary); }
+.gallery div:nth-child(even) { margin-top: 40px; background: color-mix(in srgb, var(--accent) 30%, var(--cream)); }
+.gallery img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 800px) { .gallery { grid-template-columns: 1fr 1fr; } }
+
+.words { text-align: center; }
+.words blockquote { font-family: var(--heading); font-size: clamp(1.6rem, 3.4vw, 2.6rem); line-height: 1.25; max-width: 26ch; margin: 30px auto 24px; }
+.words cite { font-style: normal; letter-spacing: .2em; text-transform: uppercase; font-size: .8rem; color: var(--muted); }
+.words .more { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; margin-top: 70px; text-align: left; }
+.words .more p { color: var(--muted); }
+.stars { display: inline-flex; gap: 2px; color: var(--primary); }
+
+.book { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: 10px; overflow: hidden; background: #fff; }
+.book .info { padding: 60px; background: var(--primary); color: #fff; }
+.book .info p { opacity: .85; margin-top: 16px; }
+.book .info .row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.2); gap: 20px; }
+.book form { padding: 60px; display: grid; gap: 14px; align-content: start; }
+input, select, textarea { width: 100%; padding: 15px 0; border: 0; border-bottom: 1px solid var(--line); font: inherit; background: transparent; color: var(--dark); }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--primary); }
+[data-note] { font-size: .9rem; color: var(--primary); min-height: 1.2em; }
+@media (max-width: 900px) { .book { grid-template-columns: 1fr; } .book .info, .book form { padding: 36px 26px; } }
+
+footer { padding: 70px 0 50px; text-align: center; }
+footer .brand { justify-content: center; font-size: 3rem; }
+footer p { color: var(--muted); margin-top: 12px; font-size: .92rem; }
+footer .social { display: flex; justify-content: center; gap: 22px; margin-top: 18px; font-size: .9rem; letter-spacing: .1em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+{{ base.demo_ribbon(c) }}
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">{% if c.logo_url %}<img src="{{ c.logo_url }}" alt="{{ c.business_name }} logo">{% endif %}{{ c.business_name }}</a>
+    <div class="links"><a href="#menu">Services</a><a href="#about">About</a>{% if c.reviews %}<a href="#words">Reviews</a>{% endif %}<a href="#book">Book</a></div>
+    <a class="btn btn-outline" href="#book">{{ c.cta_label }}</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="kicker">{{ c.tagline }}{% if c.city %} · {{ c.city }}{% endif %}</span>
+      <h1 style="margin-top:22px">{{ c.headline }}</h1>
+      <p class="lead">{{ c.subheadline }}</p>
+      <div class="actions">
+        <a class="btn btn-solid" href="#book">{{ c.cta_label }}</a>
+        {% if c.instagram %}<a class="btn btn-outline" href="{{ c.instagram }}">See our work</a>{% else %}<a class="btn btn-outline" href="#menu">View services</a>{% endif %}
+      </div>
+    </div>
+    <div class="collage">
+      <div class="p p1">{% if c.hero_image %}<img src="{{ c.hero_image }}" alt="{{ c.business_name }}">{% else %}<div class="art">{{ ic.icon(c.services[0].icon, 110) }}</div>{% endif %}</div>
+      <div class="p p2">{% if c.gallery %}<img src="{{ c.gallery[0] }}" alt="">{% else %}<div class="art">{{ ic.icon("sparkle", 64) }}</div>{% endif %}</div>
+      {% if c.rating %}<div class="seal"><div><b>{{ "%.1f" | format(c.rating) }}</b>stars</div></div>{% endif %}
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div>{% for _ in range(2) %}{% for s in c.services %}<span>{{ s.name }}</span>{% endfor %}{% endfor %}</div>
+</div>
+
+<section id="about">
+  <div class="wrap intro">
+    <div><span class="kicker">The studio</span><h2 style="margin-top:18px">{{ c.about_title }}</h2></div>
+    <div>{% for para in c.about.split("\n\n") %}<p>{{ para }}</p>{% endfor %}
+      <div style="display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:30px">
+        {% for h in c.highlights %}<span style="display:inline-flex;gap:8px;align-items:center;font-weight:600">{{ ic.icon("sparkle", 18) }}{{ h }}</span>{% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <span class="kicker">The menu</span>
+    <h2 style="margin-top:18px">Services, done <em>beautifully</em></h2>
+    <div class="menu-list">
+      {% for s in c.services %}
+      <div class="item"><span class="ico">{{ ic.icon(s.icon, 34) }}</span><h3>{{ s.name }}</h3><p>{{ s.description }}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section style="padding-bottom:60px">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap">
+      <div><span class="kicker">Recent work</span><h2 style="margin-top:18px">Fresh from the <em>chair</em></h2></div>
+      {% if c.instagram %}<a class="btn btn-outline" href="{{ c.instagram }}">Follow on Instagram</a>{% endif %}
+    </div>
+    <div class="gallery">
+      {% for i in range(4) %}
+      <div>{% if c.gallery | length > i + 1 %}<img src="{{ c.gallery[i + 1] }}" alt="">{% else %}{{ ic.icon(["scissors", "brush", "sparkle", "mirror"][i], 44) }}{% endif %}</div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% if c.reviews %}
+<section class="words" id="words">
+  <div class="wrap">
+    <span class="kicker">Kind words</span>
+    {% set top = c.reviews[0] %}
+    <blockquote>“{{ top.text }}”</blockquote>
+    <cite>{{ top.author }}</cite>
+    {% if c.reviews | length > 1 %}
+    <div class="more">
+      {% for r in c.reviews[1:4] %}<div>{{ ic.stars(r.rating) }}<p style="margin:12px 0">“{{ r.text }}”</p><strong>{{ r.author }}</strong></div>{% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+<section id="book" style="padding-top:{% if c.reviews %}0{% else %}60px{% endif %}">
+  <div class="wrap">
+    <div class="book">
+      <div class="info">
+        <span class="kicker" style="color:rgba(255,255,255,.7)">Visit</span>
+        <h2 style="margin-top:14px">Your chair is waiting</h2>
+        {% if c.address %}<p>{{ c.address }}</p>{% endif %}
+        {% if c.phone %}<p><a href="tel:{{ base.tel(c.phone) }}">{{ c.phone }}</a></p>{% endif %}
+        <div style="margin-top:26px">{% for h in c.hours %}<div class="row"><span>{{ h.days }}</span><span>{{ h.time }}</span></div>{% endfor %}</div>
+      </div>
+      <form data-demo>
+        <h3>{{ c.cta_label }}</h3>
+        <input placeholder="Name" required>
+        <input placeholder="Phone or email" required>
+        <select><option>Choose a service</option>{% for s in c.services %}<option>{{ s.name }}</option>{% endfor %}</select>
+        <input placeholder="Preferred day and time">
+        <button class="btn btn-solid" type="submit" style="justify-self:start;margin-top:10px">Request booking</button>
+        <div data-note></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand">{{ c.business_name }}</div>
+  <p>{{ c.tagline }}{% if c.city %} · {{ c.city }}{% if c.state %}, {{ c.state }}{% endif %}{% endif %}</p>
+  <div class="social">{% if c.instagram %}<a href="{{ c.instagram }}">Instagram</a>{% endif %}{% if c.facebook %}<a href="{{ c.facebook }}">Facebook</a>{% endif %}</div>
+  <p>© {{ year }} {{ c.business_name }}</p>
+</footer>
+{{ base.demo_form_script() }}
+</body>
+</html>

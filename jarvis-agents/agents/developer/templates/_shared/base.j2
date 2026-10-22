@@ -1,0 +1,41 @@
+{#- Things every template shares: the head, the demo ribbon, the demo form handler. -#}
+{%- macro head(c, extra_fonts="") -%}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{{ c.business_name }}{% if c.tagline %} | {{ c.tagline }}{% endif %}</title>
+<meta name="description" content="{{ c.subheadline }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family={{ c.heading_font | replace(' ', '+') }}:wght@400;500;600;700&family={{ c.body_font | replace(' ', '+') }}:wght@400;500;600;700{{ extra_fonts }}&display=swap" rel="stylesheet">
+{%- endmacro -%}
+
+{%- macro palette_vars(c) -%}
+  --primary: {{ c.palette.primary }};
+  --accent: {{ c.palette.accent }};
+  --dark: {{ c.palette.dark }};
+  --light: {{ c.palette.light }};
+  --heading: "{{ c.heading_font }}", Georgia, serif;
+  --body: "{{ c.body_font }}", system-ui, -apple-system, Segoe UI, sans-serif;
+{%- endmacro -%}
+
+{#- A thin bar so nobody mistakes a demo for the business's real site. -#}
+{%- macro demo_ribbon(c) -%}
+<div style="background:#111;color:#fff;font:500 13px/1.4 system-ui,sans-serif;text-align:center;padding:8px 16px;position:relative;z-index:100">
+  Demo preview built for {{ c.business_name }}. Not live yet.
+</div>
+{%- endmacro -%}
+
+{%- macro demo_form_script() -%}
+<script>
+document.querySelectorAll("form[data-demo]").forEach(function (f) {
+  f.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var note = f.querySelector("[data-note]");
+    if (note) note.textContent = "This is a demo, so nothing was sent. On the live site this goes straight to your inbox.";
+  });
+});
+</script>
+{%- endmacro -%}
+
+{%- macro tel(phone) -%}{{ (phone or "") | replace(" ", "") | replace("(", "") | replace(")", "") | replace("-", "") }}{%- endmacro -%}
