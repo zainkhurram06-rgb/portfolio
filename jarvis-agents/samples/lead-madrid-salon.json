@@ -1,0 +1,19 @@
+{
+  "name": "Estudio Alba",
+  "niche": "salon",
+  "country": "ES",
+  "city": "Madrid",
+  "language": "es",
+  "phone": "+34 910 55 01 23",
+  "address": "Calle de Fuencarral 88, 28004 Madrid",
+  "instagram": "https://instagram.com/estudioalba.example",
+  "rating": 4.8,
+  "review_count": 341,
+  "reviews": [
+    {"author": "Lucía M.", "rating": 5, "text": "Me cortaron el pelo exactamente como quería. Volveré seguro."}
+  ],
+  "services": "corte mujer 35€, color desde 60€, mechas balayage desde 120€, peinado 25€, tratamiento keratina",
+  "hours": "martes a sábado 10 a 20h, domingo y lunes cerrado",
+  "staff": ["Alba", "Nerea"],
+  "brand_colours": ["#7a3e48"]
+}

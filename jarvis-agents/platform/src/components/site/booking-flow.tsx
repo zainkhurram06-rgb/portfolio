@@ -4,6 +4,7 @@
 // Times are always shown in the business's own timezone, wherever the customer is.
 
 import { useEffect, useMemo, useState } from "react";
+import { fill, type Labels } from "@/lib/labels";
 
 type Service = { id: string; name: string; description: string; durationMin: number; price: string | null };
 type Person = { id: string; name: string; title: string };
@@ -19,6 +20,7 @@ type Props = {
   isClinic: boolean;
   services: Service[];
   staff: Person[];
+  L: Labels;
 };
 
 export function BookingFlow(p: Props) {
@@ -70,10 +72,9 @@ export function BookingFlow(p: Props) {
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ ...f, serviceId: service.id, staffId: person || undefined, start: slot.start }),
     }).catch(() => null);
-    const j = await res?.json().catch(() => ({}));
     if (res?.ok) { setStatus("done"); return; }
     setStatus("form");
-    setError(j?.error ?? "Something went wrong. Please call us.");
+    setError(res?.status === 409 ? p.L.bk_taken : p.L.bk_error);
     if (res?.status === 409) { setSlot(null); setSlots(null); setRefresh((n) => n + 1); }       // that time went, show what's left
   }
 
@@ -81,10 +82,10 @@ export function BookingFlow(p: Props) {
     return (
       <div className="bk-card bk-done">
         <div className="bk-tick">✓</div>
-        <h2>You&apos;re booked in</h2>
+        <h2>{p.L.bk_done_title}</h2>
         <p><strong>{service.name}</strong><br />{fmtLong.format(new Date(slot.start))}</p>
-        <p className="bk-muted">We&apos;ll send you a reminder before your appointment. Need to change it? Call {p.phone ?? "us"}.</p>
-        <a className="bk-btn" href={p.homeHref}>Back to {p.name}</a>
+        <p className="bk-muted">{p.L.bk_done_text}{p.phone ? ` ${p.phone}` : ""}</p>
+        <a className="bk-btn" href={p.homeHref}>{fill(p.L.bk_back_to, { name: p.name })}</a>
       </div>
     );
   }
@@ -93,11 +94,11 @@ export function BookingFlow(p: Props) {
     <div className="bk-grid">
       <div className="bk-steps">
         <section className="bk-card">
-          <h3><span>1</span>Choose a service</h3>
+          <h3><span>1</span>{p.L.bk_choose_service}</h3>
           <div className="bk-list">
             {p.services.map((s) => (
               <button key={s.id} type="button" className={`bk-option ${service?.id === s.id ? "on" : ""}`} onClick={() => chooseService(s)}>
-                <span><strong>{s.name}</strong><small>{s.durationMin} min{s.description ? ` · ${s.description}` : ""}</small></span>
+                <span><strong>{s.name}</strong><small>{s.durationMin} {p.L.min}{s.description ? ` · ${s.description}` : ""}</small></span>
                 {s.price && <em>{s.price}</em>}
               </button>
             ))}
@@ -106,9 +107,9 @@ export function BookingFlow(p: Props) {
 
         {service && p.staff.length > 1 && (
           <section className="bk-card">
-            <h3><span>2</span>With who?</h3>
+            <h3><span>2</span>{p.L.bk_with_who}</h3>
             <div className="bk-chips">
-              <button type="button" className={person === "" ? "on" : ""} onClick={() => choosePerson("")}>Anyone available</button>
+              <button type="button" className={person === "" ? "on" : ""} onClick={() => choosePerson("")}>{p.L.bk_anyone}</button>
               {p.staff.map((s) => (
                 <button type="button" key={s.id} className={person === s.id ? "on" : ""} onClick={() => choosePerson(s.id)}>
                   {s.name}{s.title ? <small> · {s.title}</small> : null}
@@ -120,9 +121,9 @@ export function BookingFlow(p: Props) {
 
         {service && (
           <section className="bk-card">
-            <h3><span>{p.staff.length > 1 ? 3 : 2}</span>Pick a time</h3>
-            {days === null ? <p className="bk-muted">Checking the diary...</p>
-              : days.length === 0 ? <p className="bk-muted">No online times in the next few weeks. Please call {p.phone ?? "us"}.</p>
+            <h3><span>{p.staff.length > 1 ? 3 : 2}</span>{p.L.bk_pick_time}</h3>
+            {days === null ? <p className="bk-muted">{p.L.bk_checking}</p>
+              : days.length === 0 ? <p className="bk-muted">{p.L.bk_no_days}{p.phone ? ` ${p.phone}` : ""}</p>
               : (
                 <>
                   <div className="bk-days">
@@ -133,8 +134,8 @@ export function BookingFlow(p: Props) {
                     ))}
                   </div>
                   <div className="bk-times">
-                    {slots === null ? <p className="bk-muted">Loading times...</p>
-                      : slots.length === 0 ? <p className="bk-muted">Nothing free that day. Try another.</p>
+                    {slots === null ? <p className="bk-muted">{p.L.bk_loading}</p>
+                      : slots.length === 0 ? <p className="bk-muted">{p.L.bk_nothing_day}</p>
                       : slots.map((s) => (
                         <button type="button" key={s.start} className={slot?.start === s.start ? "on" : ""} onClick={() => setSlot(s)}>
                           {fmtTime.format(new Date(s.start))}
@@ -148,25 +149,25 @@ export function BookingFlow(p: Props) {
       </div>
 
       <aside className="bk-card bk-summary">
-        <h3>Your booking</h3>
+        <h3>{p.L.bk_your_booking}</h3>
         {service ? (
           <dl>
-            <div><dt>Service</dt><dd>{service.name}</dd></div>
-            <div><dt>Length</dt><dd>{service.durationMin} min</dd></div>
-            {service.price && <div><dt>Price</dt><dd>{service.price}</dd></div>}
-            {p.staff.length > 1 && <div><dt>With</dt><dd>{p.staff.find((s) => s.id === person)?.name ?? "Anyone available"}</dd></div>}
-            {slot && <div><dt>When</dt><dd>{fmtLong.format(new Date(slot.start))}</dd></div>}
+            <div><dt>{p.L.bk_service}</dt><dd>{service.name}</dd></div>
+            <div><dt>{p.L.bk_length}</dt><dd>{service.durationMin} {p.L.min}</dd></div>
+            {service.price && <div><dt>{p.L.bk_price}</dt><dd>{service.price}</dd></div>}
+            {p.staff.length > 1 && <div><dt>{p.L.bk_with}</dt><dd>{p.staff.find((s) => s.id === person)?.name ?? p.L.bk_anyone}</dd></div>}
+            {slot && <div><dt>{p.L.bk_when}</dt><dd>{fmtLong.format(new Date(slot.start))}</dd></div>}
           </dl>
-        ) : <p className="bk-muted">Choose a service to start.</p>}
+        ) : <p className="bk-muted">{p.L.bk_start}</p>}
 
         {slot && (
           <form onSubmit={book}>
             <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: "absolute", left: -9999 }} />
-            <input name="name" placeholder="Full name" required maxLength={80} />
-            <input name="phone" placeholder="Mobile number" type="tel" required maxLength={40} />
-            <input name="email" placeholder="Email (optional)" type="email" maxLength={120} />
-            {!p.isClinic && <textarea name="note" placeholder="Anything we should know? (optional)" rows={2} maxLength={500} />}
-            <button className="bk-btn" disabled={status === "sending"}>{status === "sending" ? "Booking..." : "Confirm booking"}</button>
+            <input name="name" placeholder={p.L.bk_full_name} required maxLength={80} />
+            <input name="phone" placeholder={p.L.bk_mobile} type="tel" required maxLength={40} />
+            <input name="email" placeholder={p.L.form_email} type="email" maxLength={120} />
+            {!p.isClinic && <textarea name="note" placeholder={p.L.bk_note} rows={2} maxLength={500} />}
+            <button className="bk-btn" disabled={status === "sending"}>{status === "sending" ? p.L.bk_booking : p.L.bk_confirm}</button>
           </form>
         )}
         {error && <p className="bk-error">{error}</p>}

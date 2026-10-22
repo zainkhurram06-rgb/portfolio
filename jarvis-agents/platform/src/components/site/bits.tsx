@@ -25,11 +25,11 @@ export function Stars({ n }: { n: number }) {
 }
 
 // a thin bar so nobody mistakes a demo for the business's real site
-export function DemoRibbon({ name, show }: { name: string; show: boolean }) {
+export function DemoRibbon({ text, show }: { text: string; show: boolean }) {
   if (!show) return null;
   return (
     <div style={{ background: "#111", color: "#fff", font: "500 13px/1.4 system-ui,sans-serif", textAlign: "center", padding: "8px 16px", position: "relative", zIndex: 100 }}>
-      Demo preview built for {name}. Not live yet.
+      {text}
     </div>
   );
 }

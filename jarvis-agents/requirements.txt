@@ -1,0 +1,4 @@
+# Python side: MARK and (later) the other agents
+anthropic>=2.1
+pydantic>=2.7
+requests>=2.31

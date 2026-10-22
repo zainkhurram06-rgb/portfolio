@@ -47,6 +47,8 @@ export const siteContentSchema = z.object({
   facebook: url.nullable().default(null),
   rating: z.number().min(0).max(5).nullable().default(null),
   reviewCount: z.number().int().min(0).nullable().default(null),
+  // the site's fixed words in the business's language. see labels.ts
+  labels: z.record(z.string().max(60), z.string().max(300)).default({}),
 });
 
 export type SiteContent = z.infer<typeof siteContentSchema>;

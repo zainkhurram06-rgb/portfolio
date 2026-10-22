@@ -1,0 +1,112 @@
+"""
+What MARK reads (a Lead) and what he writes (a Plan).
+
+A Plan is the creative part only: words, colours, services, hours. Facts about
+the business (name, phone, address, real reviews, rating) never come from the
+model. They are copied from the lead in code, so a model can't invent them.
+"""
+
+from typing import List, Literal, Optional
+
+from pydantic import BaseModel, Field
+
+Niche = Literal["salon", "clinic", "homeservices"]
+
+ICONS = [
+    "tooth", "heart", "stethoscope", "baby", "eye", "bone", "brain", "pill",
+    "wrench", "snowflake", "flame", "droplet", "bolt", "home", "roof", "leaf",
+    "scissors", "sparkle", "brush", "nail", "spa", "mirror",
+    "shield", "clock", "star", "calendar", "phone", "check", "map", "award",
+]
+Icon = Literal[tuple(ICONS)]  # type: ignore[valid-type]
+HeadingFont = Literal["Fraunces", "Playfair Display", "DM Serif Display",
+                      "Outfit", "Sora", "Archivo", "Bricolage Grotesque"]
+BodyFont = Literal["Inter", "DM Sans", "Manrope", "Nunito Sans", "Work Sans"]
+
+
+# ---------------------------------------------------------------- the input
+
+class LeadReview(BaseModel):
+    author: str
+    rating: int = Field(ge=1, le=5)
+    text: str
+
+
+class Lead(BaseModel):
+    """Everything known about a business. Only name, niche and country are required."""
+    name: str
+    niche: Niche
+    country: str = Field(description="ISO 2-letter code, e.g. AE, GB, US")
+    city: Optional[str] = None
+    language: Optional[str] = Field(None, description="e.g. en, ar, es. guessed from country if empty")
+    phone: Optional[str] = None
+    email: Optional[str] = None
+    address: Optional[str] = None
+    instagram: Optional[str] = None
+    facebook: Optional[str] = None
+    google_maps_url: Optional[str] = None
+    rating: Optional[float] = None
+    review_count: Optional[int] = None
+    reviews: List[LeadReview] = Field(default_factory=list)
+    services: Optional[str] = Field(None, description="what they offer, free text, prices if known")
+    hours: Optional[str] = Field(None, description="opening hours, free text")
+    staff: List[str] = Field(default_factory=list, description="names of the team if known")
+    brand_colours: List[str] = Field(default_factory=list, description="hex colours from their logo or Instagram")
+    logo_url: Optional[str] = None
+    photos: List[str] = Field(default_factory=list, description="links to their real photos")
+    notes: Optional[str] = None
+
+
+# ---------------------------------------------------------------- the output
+
+class Palette(BaseModel):
+    primary: str = Field(description="hex like #1f6f8b")
+    accent: str = Field(description="hex")
+    dark: str = Field(description="near-black hex for text")
+    light: str = Field(description="very light background hex")
+
+
+class PlanService(BaseModel):
+    name: str
+    description: str = Field(description="one plain sentence, max 20 words")
+    icon: Icon
+    durationMin: int = Field(ge=5, le=600)
+    price: Optional[float] = Field(None, description="ONLY if the lead gives it. otherwise null")
+    priceFrom: bool = False
+
+
+class PlanHours(BaseModel):
+    weekday: int = Field(ge=1, le=7, description="1 = Monday, 7 = Sunday")
+    start: str = Field(description="HH:MM, 24 hour")
+    end: str = Field(description="HH:MM, 24 hour")
+
+
+class Faq(BaseModel):
+    q: str
+    a: str
+
+
+class PlanContent(BaseModel):
+    tagline: str = Field(description="3 to 6 words, what they are")
+    headline: str = Field(description="under 10 words, a benefit, not their name")
+    subheadline: str = Field(description="one sentence")
+    ctaLabel: str = Field(description="2 to 4 words, e.g. Book a visit")
+    aboutTitle: str
+    about: str = Field(description="two short paragraphs separated by a blank line")
+    highlights: List[str] = Field(min_length=3, max_length=4,
+                                  description="short and true: features of booking with them, never invented awards or years")
+    faqs: List[Faq] = Field(default_factory=list, max_length=4)
+    areasServed: List[str] = Field(default_factory=list, description="home services only: nearby towns")
+    palette: Palette
+    headingFont: HeadingFont
+    bodyFont: BodyFont
+
+
+class Plan(BaseModel):
+    language: str = Field(description="language code the site is written in")
+    currency: str = Field(description="ISO 4217 code for the country")
+    timezone: str = Field(description="IANA timezone for the city")
+    content: PlanContent
+    services: List[PlanService] = Field(min_length=3, max_length=10)
+    hours: List[PlanHours] = Field(min_length=1, max_length=14)
+    hours_are_guessed: bool = Field(description="true if the lead did not give opening hours")

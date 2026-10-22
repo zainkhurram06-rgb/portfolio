@@ -1,36 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# platform
 
-## Getting Started
+One Next.js app that serves every client business: their website, their
+booking page and their dashboard. See the README one folder up for setup.
 
-First, run the development server:
+- `npm run dev` start locally
+- `npm run db:migrate` apply database changes
+- `npm run db:generate` after editing `src/db/schema.ts`, create the migration
+- `npm run seed` add three example businesses
+- `npm test` booking engine and database tests
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Client sites are reached three ways, all handled in `src/proxy.ts`:
+`/s/<slug>`, `<slug>.<ROOT_DOMAIN>`, or their own domain once
+`businesses.custom_domain` is set.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+To add a theme: copy a folder in `src/themes/`, change it, register it in
+`src/themes/index.ts`. All fixed words come from `src/lib/labels.en.json`, so
+new text must be added there too, never typed into the theme.

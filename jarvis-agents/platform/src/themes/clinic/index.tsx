@@ -1,13 +1,14 @@
 import { DemoRibbon, Icon, Paragraphs, Stars, tel } from "@/components/site/bits";
 import { EnquiryForm } from "@/components/site/enquiry-form";
 import type { SiteData } from "@/lib/site";
+import { fill } from "@/lib/labels";
 
 export default function Clinic({ d }: { d: SiteData }) {
-  const { biz, c, services } = d;
+  const { biz, c, services, L } = d;
   const phone = biz.phone;
   return (
     <>
-      <DemoRibbon name={biz.name} show={d.isDemo} />
+      <DemoRibbon text={fill(L.demo_ribbon, { name: biz.name })} show={d.isDemo} />
 
       <nav>
         <div className="wrap">
@@ -16,9 +17,9 @@ export default function Clinic({ d }: { d: SiteData }) {
             {biz.name}
           </a>
           <div className="links">
-            <a href="#services">Services</a><a href="#about">About</a>
-            {c.reviews.length > 0 && <a href="#reviews">Reviews</a>}
-            <a href="#visit">Visit</a>
+            <a href="#services">{L.nav_services}</a><a href="#about">{L.nav_about}</a>
+            {c.reviews.length > 0 && <a href="#reviews">{L.nav_reviews}</a>}
+            <a href="#visit">{L.nav_visit}</a>
           </div>
           <div className="nav-cta">
             {phone && <a className="nav-phone" href={`tel:${tel(phone)}`}><Icon name="phone" size={18} />{phone}</a>}
@@ -35,7 +36,7 @@ export default function Clinic({ d }: { d: SiteData }) {
             <p className="lead">{c.subheadline}</p>
             <div className="actions">
               <a className="btn btn-primary" href={d.bookHref}><Icon name="calendar" size={18} />{c.ctaLabel}</a>
-              {phone && <a className="btn btn-ghost" href={`tel:${tel(phone)}`}><Icon name="phone" size={18} />Call {phone}</a>}
+              {phone && <a className="btn btn-ghost" href={`tel:${tel(phone)}`}><Icon name="phone" size={18} />{L.call} {phone}</a>}
             </div>
             <div className="trust">
               {c.highlights.slice(0, 3).map((h) => <span key={h}><Icon name="check" size={18} />{h}</span>)}
@@ -50,13 +51,13 @@ export default function Clinic({ d }: { d: SiteData }) {
               <div className="float b">
                 <div>
                   <strong>{c.rating.toFixed(1)} <Stars n={Math.round(c.rating)} /></strong>
-                  <small>{c.reviewCount ? `${c.reviewCount} Google reviews` : "Google rating"}</small>
+                  <small>{c.reviewCount ? fill(L.google_reviews, { n: c.reviewCount }) : L.google_rating}</small>
                 </div>
               </div>
             )}
             <div className="float a">
               <span className="dot"><Icon name="calendar" size={22} /></span>
-              <div><strong>Book online</strong><small>Pick a time that suits you</small></div>
+              <div><strong>{L.clinic_book_online}</strong><small>{L.clinic_book_online_sub}</small></div>
             </div>
           </div>
         </div>
@@ -65,9 +66,9 @@ export default function Clinic({ d }: { d: SiteData }) {
       <section id="services">
         <div className="wrap">
           <div className="head">
-            <span className="eyebrow">What we do</span>
-            <h2 style={{ marginTop: 14 }}>Care for every stage of life</h2>
-            <p>Everything you need under one roof{biz.city ? ` in ${biz.city}` : ""}, explained clearly and done properly.</p>
+            <span className="eyebrow">{L.clinic_what_we_do}</span>
+            <h2 style={{ marginTop: 14 }}>{L.clinic_services_title}</h2>
+            <p>{L.clinic_services_intro}</p>
           </div>
           <div className="services">
             {services.map((s) => (
@@ -88,11 +89,11 @@ export default function Clinic({ d }: { d: SiteData }) {
             {c.gallery[0] ? <img src={c.gallery[0]} alt="" />
               : c.rating != null ? (
                 <><div className="big">{c.rating.toFixed(1)}</div>
-                  <p>average rating from patients{c.reviewCount ? `, across ${c.reviewCount} reviews` : ""}</p></>
+                  <p>{L.clinic_rating_text}</p></>
               ) : (<><div className="big"><Icon name="heart" size={72} /></div><p>{c.tagline}</p></>)}
           </div>
           <div className="about-text">
-            <span className="eyebrow">About us</span>
+            <span className="eyebrow">{L.clinic_about_us}</span>
             <h2 style={{ marginTop: 14 }}>{c.aboutTitle}</h2>
             <Paragraphs text={c.about} />
             <div className="checks">
@@ -106,8 +107,8 @@ export default function Clinic({ d }: { d: SiteData }) {
         <section id="reviews">
           <div className="wrap">
             <div className="head center">
-              <span className="eyebrow">Patient stories</span>
-              <h2 style={{ marginTop: 14 }}>What our patients say</h2>
+              <span className="eyebrow">{L.clinic_stories}</span>
+              <h2 style={{ marginTop: 14 }}>{L.clinic_stories_title}</h2>
             </div>
             <div className="reviews">
               {c.reviews.slice(0, 3).map((r, i) => (
@@ -125,7 +126,7 @@ export default function Clinic({ d }: { d: SiteData }) {
       <section className="visit" id="visit">
         <div className="wrap" id="contact">
           <div className="panel dark">
-            <h3>Visit us</h3>
+            <h3>{L.clinic_visit_us}</h3>
             {biz.address && <div className="contact-line"><Icon name="map" size={20} /><div>{biz.address}</div></div>}
             {phone && <div className="contact-line"><Icon name="phone" size={20} /><a href={`tel:${tel(phone)}`}>{phone}</a></div>}
             {biz.email && <div className="contact-line"><Icon name="calendar" size={20} /><a href={`mailto:${biz.email}`}>{biz.email}</a></div>}
@@ -135,9 +136,9 @@ export default function Clinic({ d }: { d: SiteData }) {
             <a className="btn btn-primary" href={d.bookHref} style={{ marginTop: 28 }}><Icon name="calendar" size={18} />{c.ctaLabel}</a>
           </div>
           <div className="panel">
-            <h3>Send us a message</h3>
-            <EnquiryForm slug={biz.slug} services={services.map((s) => s.name)} button="Send message"
-              buttonClass="btn btn-primary" messagePlaceholder="Please don't include medical details here" />
+            <h3>{L.clinic_message_title}</h3>
+            <EnquiryForm slug={biz.slug} services={services.map((s) => s.name)} button={L.form_send}
+              buttonClass="btn btn-primary" messagePlaceholder={L.clinic_no_medical} L={L} />
           </div>
         </div>
       </section>
@@ -145,14 +146,14 @@ export default function Clinic({ d }: { d: SiteData }) {
       {c.faqs.length > 0 && (
         <section className="faq" style={{ paddingTop: 0 }}>
           <div className="wrap" style={{ maxWidth: 820 }}>
-            <div className="head center"><h2>Questions, answered</h2></div>
+            <div className="head center"><h2>{L.clinic_faq_title}</h2></div>
             {c.faqs.map((f) => <details key={f.q}><summary>{f.q}</summary><p>{f.a}</p></details>)}
           </div>
         </section>
       )}
 
       <div className="band">
-        <h2>{c.ctaLabel} today</h2>
+        <h2>{L.clinic_band_title}</h2>
         <p>{c.subheadline}</p>
         <a className="btn" href={d.bookHref}><Icon name="calendar" size={18} />{c.ctaLabel}</a>
       </div>

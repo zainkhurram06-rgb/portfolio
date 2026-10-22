@@ -3,6 +3,7 @@
 // The contact / quote form on every theme. Sends to the business's Messages inbox.
 
 import { useState } from "react";
+import type { Labels } from "@/lib/labels";
 
 type Props = {
   slug: string;
@@ -11,9 +12,10 @@ type Props = {
   buttonClass: string;
   messagePlaceholder?: string;
   compact?: boolean;
+  L: Pick<Labels, "form_name" | "form_phone" | "form_email" | "form_service" | "form_message" | "form_sending" | "form_sent" | "form_error">;
 };
 
-export function EnquiryForm({ slug, services, button, buttonClass, messagePlaceholder, compact }: Props) {
+export function EnquiryForm({ slug, services, button, buttonClass, messagePlaceholder, compact, L }: Props) {
   const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
@@ -33,20 +35,20 @@ export function EnquiryForm({ slug, services, button, buttonClass, messagePlaceh
     <form onSubmit={submit}>
       {/* bots fill every field, people never see this one */}
       <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: "absolute", left: "-9999px" }} />
-      <input name="name" placeholder="Your name" required maxLength={80} />
-      <input name="phone" placeholder="Phone" type="tel" required maxLength={40} />
-      {!compact && <input name="email" placeholder="Email (optional)" type="email" maxLength={120} />}
+      <input name="name" placeholder={L.form_name} required maxLength={80} />
+      <input name="phone" placeholder={L.form_phone} type="tel" required maxLength={40} />
+      {!compact && <input name="email" placeholder={L.form_email} type="email" maxLength={120} />}
       <select name="service" defaultValue="">
-        <option value="">What do you need?</option>
+        <option value="">{L.form_service}</option>
         {services.map((s) => <option key={s}>{s}</option>)}
       </select>
-      <textarea name="message" rows={compact ? 2 : 3} placeholder={messagePlaceholder ?? "Anything we should know?"} maxLength={1000} />
+      <textarea name="message" rows={compact ? 2 : 3} placeholder={messagePlaceholder ?? L.form_message} maxLength={1000} />
       <button className={buttonClass} type="submit" disabled={state === "sending"}>
-        {state === "sending" ? "Sending..." : button}
+        {state === "sending" ? L.form_sending : button}
       </button>
       <div data-note aria-live="polite">
-        {state === "sent" && "Thanks, we've got your message and will get back to you soon."}
-        {state === "error" && "That didn't send. Please call us instead."}
+        {state === "sent" && L.form_sent}
+        {state === "error" && L.form_error}
       </div>
     </form>
   );

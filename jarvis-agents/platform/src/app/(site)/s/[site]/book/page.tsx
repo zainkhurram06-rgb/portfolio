@@ -3,6 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { BookingFlow } from "@/components/site/booking-flow";
 import { DemoRibbon } from "@/components/site/bits";
 import { loadSite } from "@/lib/site";
+import { fill } from "@/lib/labels";
 import { css } from "./css";
 
 type Props = { params: Promise<{ site: string }> };
@@ -21,14 +22,14 @@ export default async function BookPage({ params }: Props) {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <DemoRibbon name={d.biz.name} show={d.isDemo} />
+      <DemoRibbon text={fill(d.L.demo_ribbon, { name: d.biz.name })} show={d.isDemo} />
       <header className="bk-top">
         <a href={`${d.base}/`}>← {d.biz.name}</a>
         {d.biz.phone && <a href={`tel:${d.biz.phone.replace(/[^\d+]/g, "")}`}>{d.biz.phone}</a>}
       </header>
       <main className="bk-wrap">
         <h1>{d.c.ctaLabel}</h1>
-        <p className="bk-muted">Times shown in {d.biz.city ?? "local"} time.</p>
+        <p className="bk-muted">{fill(d.L.bk_title_times, { place: d.biz.city ?? d.biz.timezone })}</p>
         <BookingFlow
           slug={d.biz.slug}
           name={d.biz.name}
@@ -39,6 +40,7 @@ export default async function BookPage({ params }: Props) {
           isClinic={d.biz.niche === "clinic"}
           services={d.services}
           staff={d.staff}
+          L={d.L}
         />
       </main>
     </>
