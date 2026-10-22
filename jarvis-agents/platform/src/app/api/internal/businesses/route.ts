@@ -4,14 +4,14 @@
 import { ZodError } from "zod";
 import { createBusiness } from "@/lib/business";
 import { internalAllowed } from "@/lib/internal-auth";
-import { THEMES } from "@/themes";
+import { fitsNiche, templatesFor } from "@/templates";
 
 export async function POST(req: Request) {
   if (!internalAllowed(req)) return Response.json({ error: "unauthorised" }, { status: 401 });
   const body = await req.json().catch(() => null);
   if (!body) return Response.json({ error: "send JSON" }, { status: 400 });
-  if (body.theme && !THEMES[body.theme]) {
-    return Response.json({ error: `unknown theme ${body.theme}`, themes: Object.keys(THEMES) }, { status: 400 });
+  if (body.theme && !fitsNiche(body.theme, body.niche)) {
+    return Response.json({ error: `template ${body.theme} doesn't exist for ${body.niche}`, templates: templatesFor(body.niche).map((x) => x.id) }, { status: 400 });
   }
   try {
     const { business, owner } = await createBusiness(body);

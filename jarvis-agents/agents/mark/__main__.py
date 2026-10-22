@@ -5,6 +5,8 @@ Run MARK from the command line.
     python -m agents.mark demo --name "Bright Smile Dental" --niche dental --country GB --city Leeds --phone "+44 113 555 0101"
     python -m agents.mark demo --lead lead.json --dry-run          (show what would be created)
     python -m agents.mark demo --lead lead.json --brains codex     (pick the brain)
+    python -m agents.mark demo --lead lead.json --template salon-noir  (pick the design yourself)
+    python -m agents.mark templates --niche salon                  (list the designs)
 
 Needs INTERNAL_API_TOKEN (same as the platform's) and PLATFORM_URL if the
 platform isn't on localhost:3000. Brains need their own keys, see brains.py.
@@ -17,6 +19,7 @@ from pathlib import Path
 
 from pydantic import ValidationError
 
+from . import templates
 from .brains import BrainError
 from .mark import make_demo
 from .plan import NICHES, Lead
@@ -33,11 +36,19 @@ def main():
     d.add_argument("--services", help="what they offer, free text")
     d.add_argument("--hours", help="opening hours, free text")
     d.add_argument("--language")
-    d.add_argument("--theme", help="force a theme instead of the niche default")
+    d.add_argument("--template", "--theme", dest="theme", help="force a template instead of letting MARK pick, e.g. salon-noir")
     d.add_argument("--brains", help="e.g. haiku,deepseek,codex  or  file:plan.json")
     d.add_argument("--label-brains", help="brains for translating the site's buttons, defaults to --brains")
     d.add_argument("--dry-run", action="store_true", help="print the business instead of creating it")
+    ls = sub.add_parser("templates", help="list the website templates")
+    ls.add_argument("--niche", choices=NICHES)
     a = p.parse_args()
+
+    if a.cmd == "templates":
+        for t in templates.LIBRARY:
+            if not a.niche or a.niche in t["niches"]:
+                print(f"{t['id']:20} {t['label']:22} {', '.join(t['niches'])}{'  (needs a photo)' if t.get('needsPhoto') else ''}")
+        return
 
     raw = json.loads(Path(a.lead).read_text(encoding="utf-8")) if a.lead else {}
     for k in ("name", "niche", "country", "city", "phone", "email", "address", "instagram", "services", "hours", "language"):

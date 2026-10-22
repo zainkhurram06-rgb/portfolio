@@ -2,7 +2,8 @@
 MARK, the developer. Turns a lead into a live demo: website, booking page and a
 dashboard login, on the platform.
 
-    lead  ->  brain writes a Plan  ->  code adds the hard facts  ->  platform creates it
+    lead  ->  code picks a template  ->  brain writes a Plan  ->  code adds the hard facts
+          ->  platform creates it
 """
 
 import json
@@ -15,6 +16,7 @@ from typing import Optional
 import requests
 from pydantic import create_model
 
+from . import templates
 from .brains import BrainError, think
 from .plan import ICONS, Lead, Plan
 
@@ -22,9 +24,6 @@ PLATFORM_URL = os.environ.get("PLATFORM_URL", "http://localhost:3000").rstrip("/
 PLATFORM_TOKEN = os.environ.get("INTERNAL_API_TOKEN", "")
 DEMO_EMAIL_DOMAIN = os.environ.get("DEMO_EMAIL_DOMAIN", "demo.local")
 
-# the design each trade starts with. keep in step with platform/src/lib/niches.ts
-THEME_FOR = {"salon": "salon", "dental": "clinic", "medical": "clinic", "dermatology": "clinic",
-             "carwash": "homeservices", "autorepair": "homeservices", "homeservices": "homeservices"}
 LOCAL_TRADES = {"homeservices", "carwash", "autorepair"}
 
 # the platform's fixed website words (buttons, headings, form fields), in English
@@ -55,9 +54,9 @@ Rules you never break:
 - Hours: use the lead's hours if given (convert to 24h HH:MM, weekday 1 = Monday).
   If not given, use typical hours for this trade in that country, and set
   hours_are_guessed to true.
-- Colours: if brand colours are given, build the palette from them. Otherwise
-  pick a palette that suits the trade and feels premium. dark must be readable
-  text, light a very pale background.
+- Colours: only if brand colours are given, build the palette from them (dark
+  must be readable text, light a very pale background). Otherwise palette is
+  null: the design brings its own colours.
 - Icons: pick each service's icon from this list only: {", ".join(ICONS)}.
 - Currency and timezone must be correct for the country and city.
 - dental, medical, dermatology: calm and reassuring. Never promise medical
@@ -71,7 +70,7 @@ Rules you never break:
 
 
 def _prompt(lead: Lead) -> str:
-    facts = lead.model_dump(exclude_none=True, exclude={"reviews", "photos", "logo_url"})
+    facts = lead.model_dump(exclude_none=True, exclude={"reviews", "photos", "logo_url", "before_after"})
     if lead.reviews:
         facts["what_customers_say"] = [r.text for r in lead.reviews[:5]]   # tone only, not to quote
     return "Write the demo website plan for this business:\n" + json.dumps(facts, indent=2, ensure_ascii=False)
@@ -108,13 +107,16 @@ def translate_labels(language: str, brains: Optional[str], log=print, niche: str
     return {k: v[:300] for k, v in out.items()}
 
 
-def build_payload(lead: Lead, plan: Plan, theme: Optional[str] = None, labels: Optional[dict] = None) -> dict:
+def build_payload(lead: Lead, plan: Plan, template: Optional[str] = None, labels: Optional[dict] = None) -> dict:
     """The model's creative work plus the lead's facts. Facts always win."""
     c = plan.content
-    palette = c.palette.model_dump()
-    for k, v in palette.items():
-        if not _valid_hex(v):
-            palette[k] = {"primary": "#1f2937", "accent": "#d97706", "dark": "#111827", "light": "#f9fafb"}[k]
+    t = templates.BY_ID[template] if template else templates.pick(lead).template
+    # the template's colours, unless the business has its own brand colours
+    palette = dict(t["palette"])
+    if lead.brand_colours and c.palette:
+        for k, v in c.palette.model_dump().items():
+            if _valid_hex(v):
+                palette[k] = v
 
     reviews = [r.model_dump() for r in lead.reviews[:6]]          # real ones only
     slug = _slug(lead.name)
@@ -124,7 +126,7 @@ def build_payload(lead: Lead, plan: Plan, theme: Optional[str] = None, labels: O
         "slug": None,                                              # platform picks a free one
         "name": lead.name,
         "niche": lead.niche,
-        "theme": theme or THEME_FOR[lead.niche],
+        "theme": t["id"],
         "country": lead.country.upper(),
         "language": plan.language or lead.language or "en",
         "currency": plan.currency.upper(),
@@ -146,8 +148,8 @@ def build_payload(lead: Lead, plan: Plan, theme: Optional[str] = None, labels: O
             "faqs": [f.model_dump() for f in c.faqs[:6]],
             "areasServed": c.areasServed[:12] if lead.niche in LOCAL_TRADES else [],
             "palette": palette,
-            "headingFont": c.headingFont,
-            "bodyFont": c.bodyFont,
+            "headingFont": t["fonts"][0],
+            "bodyFont": t["fonts"][1],
             "logoUrl": lead.logo_url,
             "heroImage": lead.photos[0] if lead.photos else None,
             "gallery": lead.photos[1:12],
@@ -156,6 +158,12 @@ def build_payload(lead: Lead, plan: Plan, theme: Optional[str] = None, labels: O
             "rating": lead.rating,
             "reviewCount": lead.review_count,
             "labels": labels or {},
+            # trade details, straight from the lead
+            "credentials": [x[:80] for x in lead.credentials[:6]],
+            "warranty": lead.warranty[:200] if lead.warranty else None,
+            "insurers": [x[:60] for x in lead.insurers[:20]],
+            "packages": [p.model_dump() for p in lead.packages[:4]] if lead.niche == "carwash" else [],
+            "beforeAfter": [b.model_dump() for b in lead.before_after[:6]],
         },
         "services": [s.model_dump() for s in plan.services],
         "staff": staff,
@@ -184,14 +192,42 @@ def create_on_platform(payload: dict) -> dict:
     return out
 
 
+def used_nearby(lead: Lead) -> dict:
+    """How many businesses in the same trade and city already use each template.
+    Empty if the platform can't be asked, which only costs a little variety."""
+    if not PLATFORM_TOKEN or not lead.city:
+        return {}
+    try:
+        r = requests.get(f"{PLATFORM_URL}/api/internal/themes", params={"niche": lead.niche, "city": lead.city},
+                         headers={"Authorization": f"Bearer {PLATFORM_TOKEN}"}, timeout=15)
+        r.raise_for_status()
+        return {t["id"]: t.get("usedNearby", 0) for t in r.json()}
+    except (requests.RequestException, ValueError, KeyError, TypeError):
+        return {}
+
+
+def choose_template(lead: Lead, forced: Optional[str] = None, dry_run: bool = False, log=print) -> str:
+    if forced:
+        if not templates.fits(forced, lead.niche):
+            raise RuntimeError(f"template {forced} doesn't exist for {lead.niche}. "
+                               f"Pick one of: {', '.join(t['id'] for t in templates.for_niche(lead.niche))}")
+        log(f"MARK: using the template you asked for, {forced}")
+        return forced
+    choice = templates.pick(lead, {} if dry_run else used_nearby(lead))
+    why = "; ".join(dict.fromkeys(choice.reasons)) or "a clean fit for the trade"
+    log(f"MARK: picked the {choice.template['label']} template ({choice.id}): {why}")
+    return choice.id
+
+
 def make_demo(lead: Lead, brains: Optional[str] = None, theme: Optional[str] = None,
               dry_run: bool = False, label_brains: Optional[str] = None, log=print) -> dict:
     log(f"MARK: writing a demo for {lead.name} ({lead.niche}, {lead.city or lead.country})")
+    template = choose_template(lead, theme, dry_run, log)
     plan = think(SYSTEM, _prompt(lead), Plan, order=brains, log=log)
     if plan.hours_are_guessed:
         log("MARK: no hours on the lead, used typical hours for the trade")
     labels = translate_labels(plan.language or lead.language or "en", label_brains or brains, log, niche=lead.niche)
-    payload = build_payload(lead, plan, theme, labels)
+    payload = build_payload(lead, plan, template, labels)
     if dry_run:
         return {"payload": payload}
     result = create_on_platform(payload)

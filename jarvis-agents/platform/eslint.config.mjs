@@ -7,8 +7,8 @@ export default defineConfig([
   ...nextTs,
   {
     // business photos and logos come from anywhere (their Instagram, Google,
-    // uploads), so themes use plain <img> rather than next/image's allow-list
-    files: ["src/themes/**"],
+    // uploads), so templates use plain <img> rather than next/image's allow-list
+    files: ["src/templates/**"],
     rules: { "@next/next/no-img-element": "off" },
   },
   globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),

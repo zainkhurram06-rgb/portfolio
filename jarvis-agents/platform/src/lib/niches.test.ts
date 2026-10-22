@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { cleanDetails, describeDetails, isHealth, NICHE_KEYS, NICHES } from "./niches";
 import { englishFor, LABEL_KEYS } from "./labels";
-import { THEMES } from "@/themes";
+import { templatesFor } from "@/templates";
 
 test("car wash needs a vehicle size, from the list only", () => {
   assert.deepEqual(cleanDetails("carwash", { vehicle_size: "suv", vehicle: " Tesla Model Y " }),
@@ -27,7 +27,7 @@ test("healthcare niches are flagged, others are not", () => {
 
 test("every niche has a design, and every question has words", () => {
   for (const n of NICHE_KEYS) {
-    assert.ok(Object.values(THEMES).some((t) => t.niches.includes(n)), `no theme for ${n}`);
+    assert.ok(templatesFor(n).length > 0, `no template for ${n}`);
     for (const f of NICHES[n].bookingFields) {
       assert.ok(LABEL_KEYS.includes(`bf_${f.key}` as never), `missing label bf_${f.key}`);
       if (f.kind === "select") for (const o of f.options) assert.ok(LABEL_KEYS.includes(`bfo_${o}` as never), `missing label bfo_${o}`);

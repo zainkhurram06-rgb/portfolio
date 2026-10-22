@@ -15,7 +15,8 @@ Zain's agent team, plus the platform they sell.
 
 ```
 platform/        the product. one web app serving every client business, like Shopify
-  src/themes/      website designs (skins). add more here
+  src/templates/   website templates: a section library plus recipes in
+                   library.json. see them all at /templates
   src/lib/niches.ts  the trades: salon, dental, medical, dermatology, carwash,
                    autorepair, homeservices. each has its own booking questions
   src/app/(site)/  every client's public website + booking page
@@ -37,16 +38,19 @@ samples/         an example lead, plan and Spanish labels for testing without AI
 
 ## Running it on your laptop (Windows, PowerShell)
 
-You need Node.js 22+, Python 3.11+, and PostgreSQL 16 (or a free Supabase or
-Neon database instead of installing Postgres).
+You need Node.js 22+ and Python 3.11+. No Postgres install needed: `npm run db`
+runs a real Postgres 16 inside the project (or use a free Supabase or Neon
+database).
 
 ```powershell
 # 1. the platform
 cd jarvis-agents\platform
 npm install
 copy .env.example .env.local      # then edit DATABASE_URL and INTERNAL_API_TOKEN
+                                  # local: postgres://postgres:postgres@localhost:5433/platform
+npm run db                        # leave this window open, use a second one for the rest
 npm run db:migrate
-npm run seed                      # three example businesses
+npm run seed                      # six example businesses
 npm run dev                       # http://localhost:3000/admin
 ```
 

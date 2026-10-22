@@ -1,6 +1,6 @@
 # HANDOFF: jarvis-agents
 
-Read this first in a new chat. Last updated 22 October 2026.
+Read this first in a new chat. Last updated 22 October 2026 (template library session).
 
 ## Where the code is
 
@@ -43,6 +43,8 @@ Order agreed: build the agents first, connect them to Jarvis later.
 - **FRIDAY:** ElevenLabs agent. Legal guardrails as features (landline/mobile check,
   do-not-call lists, calling hours, says it's an AI). Test calls go to Zain's phone first.
 - **Names are final:** JARVIS, EDITH, FRIDAY, MARK, HAPPY.
+- **Build order (Zain, 22 Oct):** template library as far as it goes, get MARK's skeleton right,
+  build, test, then the next agent, repeat. Making it beautiful comes last, from the 60 references.
 
 ## What's built
 
@@ -55,7 +57,13 @@ Order agreed: build the agents first, connect them to Jarvis later.
 - Seven trades in `src/lib/niches.ts`: salon, dental, medical, dermatology, carwash,
   autorepair, homeservices. Each has its own booking questions (car wash: vehicle size,
   mechanic: make/model, mileage, wait or drop off, clinics: new or returning patient, insurance).
-- Three placeholder skins in `src/themes/` (clinic, homeservices, salon), shared across the trades.
+- **Template library** in `src/templates/` (replaced the 3 old themes). 18 section types
+  with 1 to 6 versions each, and 24 templates in `library.json` (recipes: sections in order,
+  version, tone, style settings, fonts, palette). Every trade has 4 or 5. Sections whose facts
+  are missing hide themselves. Gallery of all of them at `/templates`. Skeleton quality on
+  purpose: restyle the sections from the references later and every template improves.
+- Trade details on the content (facts only, from the lead): credentials, warranty, insurers,
+  car wash packages priced by vehicle size, before/after photos. Editable in My website.
 - All fixed site text lives in `src/lib/labels.en.json` (+ `labels.niches.en.json` for each
   trade's wording). MARK translates it into the lead's language.
 - Double booking is impossible: database exclusion constraint plus an advisory lock per staff
@@ -63,22 +71,30 @@ Order agreed: build the agents first, connect them to Jarvis later.
 - Private API for agents: `POST /api/internal/businesses` (Bearer `INTERNAL_API_TOKEN`).
 
 `jarvis-agents/agents/mark/`: Python. `python -m agents.mark demo --lead lead.json`.
+- Picks the template in code (`templates.py`), not the AI: right trade, no photo-led design
+  without a photo, scored by how much of the page the lead's facts fill, then least used in
+  the same city (asks `/api/internal/themes?niche=&city=`), then a stable per-lead choice.
+  Fonts come from the template; colours from brand colours if the lead has them, else the
+  template's. `--template <id>` forces one, `python -m agents.mark templates` lists them.
 - Brains tried in order: haiku, deepseek, codex, claude (`MARK_BRAINS`). `file:x.json` for tests.
 - Facts (name, phone, address, real reviews, rating) come from the lead in code, never the AI.
 - Demo logins never use the business's real email. Demo sites carry a "demo preview" bar and
   noindex.
 
-Tests: `cd platform && npm test` (19 pass, includes an 8-people-at-once stress test).
-`python -m unittest agents.mark.test_mark` (14 pass). Lint, types and production build clean.
+Tests: `cd platform && npm test` (31 pass: booking engine with an 8-people-at-once stress test,
+plus every template rendered for every trade it claims, with and without photos, in English,
+German and Arabic). `python -m unittest agents.mark.test_mark` (25 pass, 11 on template picking).
+Lint, types and production build clean.
 
-Screenshots of every screen: `jarvis-agents/screenshots/`.
+Screenshots of every screen: `jarvis-agents/screenshots/`. Every template, desktop and phone:
+`screenshots/templates/` (`npm run shoot` retakes them).
 
 ## Not done yet
 
-1. **Real designs.** Zain gave 60 reference sites (10 each: car wash, auto repair, medical,
-   dental, dermatology, salons). They're in the chat that produced this file and listed below.
-   None could be opened because the cloud session's network policy blocks outside sites. Next
-   step: open network access, review all 60, pick the best 3 per niche, build skins from them.
+1. **Real designs, last.** The template library skeleton is done. When it's time to make it
+   beautiful: review the 60 reference sites below (a local session on Zain's laptop can open
+   them), pick the best 3 per niche, and restyle the section versions in `src/templates/`.
+   Home services has no references yet.
 2. Reminders don't send yet (WhatsApp / SMS / email). The setting exists, nothing sends.
 3. Google Calendar sync, deposits and payments, car wash memberships, photo uploads
    (owners paste image links for now).
@@ -88,10 +104,21 @@ Screenshots of every screen: `jarvis-agents/screenshots/`.
 
 ## What Zain needs to do
 
-1. Open internet access for the cloud environment (title bar, environment, Edit, Network
-   access, full access). Guide: https://code.claude.com/docs/en/cloud-environments#network-access
+1. Nothing for network access if work continues in a local session on the laptop (it has
+   internet). Only needed for cloud sessions.
 2. Create an empty private GitHub repo `jarvis-agents` and share the name.
 3. Put a Claude or DeepSeek API key on his laptop for one live MARK test.
+
+## Running it on Zain's laptop (local session)
+
+- Repo cloned at `C:\Users\zaink\portfolio`, branch `claude/exciting-ritchie-xwskss`.
+- No Postgres install: `cd platform; npm run db` starts an embedded Postgres 16 on port 5433
+  (data in `platform/.pgdata`, git-ignored). Leave it running, then `npm run db:migrate`,
+  `npm run seed`, `npm run dev`.
+- `platform/.env.local`: `DATABASE_URL=postgres://postgres:postgres@localhost:5433/platform`,
+  plus the same ROOT_DOMAIN and INTERNAL_API_TOKEN as below.
+- Python venv for MARK at `jarvis-agents/.venv` (git-ignored): `.venv\Scripts\python -m agents.mark ...`
+- `npm run shoot` uses the Chrome or Edge already installed.
 
 ## Running it locally (cloud session notes)
 

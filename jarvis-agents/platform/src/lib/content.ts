@@ -47,8 +47,22 @@ export const siteContentSchema = z.object({
   facebook: url.nullable().default(null),
   rating: z.number().min(0).max(5).nullable().default(null),
   reviewCount: z.number().int().min(0).nullable().default(null),
+
+  // trade details. facts, so they only ever come from the business, never the AI.
+  // sections that use them stay hidden while they're empty.
+  credentials: z.array(z.string().min(1).max(80)).max(6).default([]),   // licences, memberships
+  warranty: z.string().max(200).nullable().default(null),               // "12 months on parts and labour"
+  insurers: z.array(z.string().min(1).max(60)).max(20).default([]),      // clinics: plans they accept
+  packages: z.array(z.object({                                           // car wash: tiers priced by size
+    name: z.string().min(1).max(60),
+    includes: z.array(z.string().min(1).max(80)).max(8).default([]),
+    prices: z.object({ car: z.number().min(0).optional(), suv: z.number().min(0).optional(), van: z.number().min(0).optional() }).default({}),
+  })).max(4).default([]),
+  beforeAfter: z.array(z.object({ before: url, after: url, caption: z.string().max(80).default("") })).max(6).default([]),
+
   // the site's fixed words in the business's language. see labels.ts
   labels: z.record(z.string().max(60), z.string().max(300)).default({}),
 });
 
 export type SiteContent = z.infer<typeof siteContentSchema>;
+export const VEHICLE_SIZES = ["car", "suv", "van"] as const;

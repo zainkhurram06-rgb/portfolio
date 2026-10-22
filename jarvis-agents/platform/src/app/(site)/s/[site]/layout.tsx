@@ -12,7 +12,7 @@ export default async function SiteLayout({ children, params }: {
   const d = await loadSite((await params).site);
   if (!d) notFound();
   return (
-    <html lang={d.biz.language}>
+    <html lang={d.biz.language} dir={d.dir}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />

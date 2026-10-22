@@ -4,17 +4,18 @@ import { useActionState } from "react";
 import { saveWebsite, type WebsiteState } from "@/app/(admin)/admin/(app)/actions";
 import type { SiteContent } from "@/lib/content";
 import { BODY_FONTS, HEADING_FONTS } from "@/lib/content";
+import { isHealth } from "@/lib/niches";
 import { Card, Field, btn, input } from "./ui";
 
 type Props = {
   c: SiteContent;
-  theme: string;
-  themes: { name: string; label: string }[];
+  template: string;
+  templates: { id: string; label: string; preview: string }[];
   niche: string;
   siteUrl: string;
 };
 
-export function WebsiteForm({ c, theme, themes, niche, siteUrl }: Props) {
+export function WebsiteForm({ c, template, templates, niche, siteUrl }: Props) {
   const [state, action, pending] = useActionState<WebsiteState, FormData>(saveWebsite, {});
   const lines = (a: string[]) => a.join("\n");
 
@@ -22,11 +23,12 @@ export function WebsiteForm({ c, theme, themes, niche, siteUrl }: Props) {
     <form action={action} className="grid gap-5">
       <Card title="Look">
         <div className="grid gap-4">
-          <Field name="Design">
+          <Field name="Design" hint="Preview opens each design with example words and photos.">
             <div className="flex flex-wrap gap-2">
-              {themes.map((t) => (
-                <label key={t.name} className="flex cursor-pointer items-center gap-2 rounded-xl border border-stone-300 px-3.5 py-2.5 has-[:checked]:border-stone-900 has-[:checked]:bg-stone-900 has-[:checked]:text-white">
-                  <input type="radio" name="theme" value={t.name} defaultChecked={t.name === theme} className="sr-only" /> {t.label}
+              {templates.map((t) => (
+                <label key={t.id} className="flex cursor-pointer items-center gap-2 rounded-xl border border-stone-300 px-3.5 py-2.5 has-[:checked]:border-stone-900 has-[:checked]:bg-stone-900 has-[:checked]:text-white">
+                  <input type="radio" name="theme" value={t.id} defaultChecked={t.id === template} className="sr-only" /> {t.label}
+                  <a href={t.preview} target="_blank" className="text-xs underline underline-offset-2 opacity-70">preview</a>
                 </label>
               ))}
             </div>
@@ -74,6 +76,31 @@ export function WebsiteForm({ c, theme, themes, niche, siteUrl }: Props) {
           </Field>
           <Field name="Reviews" hint="Real reviews only. One per line: name | stars 1-5 | what they said">
             <textarea className={input} name="reviews" rows={4} defaultValue={c.reviews.map((r) => `${r.author} | ${r.rating} | ${r.text}`).join("\n")} />
+          </Field>
+        </div>
+      </Card>
+
+      <Card title="Details for your trade">
+        <div className="grid gap-4">
+          <p className="text-sm text-stone-500">Facts only. Each of these stays hidden on your website until you fill it in.</p>
+          {isHealth(niche) && (
+            <Field name="Insurance you accept" hint="One per line.">
+              <textarea className={input} name="insurers" rows={4} defaultValue={lines(c.insurers)} />
+            </Field>
+          )}
+          {niche === "carwash" && (
+            <Field name="Wash packages" hint="One per line: name | what's included, comma separated | car price | SUV price | van price">
+              <textarea className={input} name="packages" rows={4} defaultValue={c.packages.map((p) => [p.name, p.includes.join(", "), p.prices.car ?? "", p.prices.suv ?? "", p.prices.van ?? ""].join(" | ")).join("\n")} />
+            </Field>
+          )}
+          <Field name="Guarantee" hint="e.g. 12 months on parts and labour. Leave empty if you don't offer one.">
+            <input className={input} name="warranty" defaultValue={c.warranty ?? ""} maxLength={200} />
+          </Field>
+          <Field name="Licences and memberships" hint="One per line.">
+            <textarea className={input} name="credentials" rows={3} defaultValue={lines(c.credentials)} />
+          </Field>
+          <Field name="Before and after photos" hint="One per line: before image link | after image link | caption">
+            <textarea className={input} name="beforeAfter" rows={3} defaultValue={c.beforeAfter.map((p) => `${p.before} | ${p.after} | ${p.caption}`).join("\n")} />
           </Field>
         </div>
       </Card>

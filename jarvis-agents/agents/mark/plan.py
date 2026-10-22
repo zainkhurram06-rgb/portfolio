@@ -1,12 +1,14 @@
 """
 What MARK reads (a Lead) and what he writes (a Plan).
 
-A Plan is the creative part only: words, colours, services, hours. Facts about
-the business (name, phone, address, real reviews, rating) never come from the
-model. They are copied from the lead in code, so a model can't invent them.
+A Plan is the creative part only: words, services, hours, and colours when the
+lead has brand colours. Facts about the business (name, phone, address, real
+reviews, rating, guarantee, insurers, packages) never come from the model. They
+are copied from the lead in code, so a model can't invent them. The design
+(template, fonts) is picked in code too, see templates.py.
 """
 
-from typing import List, Literal, Optional
+from typing import Dict, List, Literal, Optional
 
 from pydantic import BaseModel, Field
 
@@ -21,9 +23,6 @@ ICONS = [
     "shield", "clock", "star", "calendar", "phone", "check", "map", "award",
 ]
 Icon = Literal[tuple(ICONS)]  # type: ignore[valid-type]
-HeadingFont = Literal["Fraunces", "Playfair Display", "DM Serif Display",
-                      "Outfit", "Sora", "Archivo", "Bricolage Grotesque"]
-BodyFont = Literal["Inter", "DM Sans", "Manrope", "Nunito Sans", "Work Sans"]
 
 
 # ---------------------------------------------------------------- the input
@@ -32,6 +31,18 @@ class LeadReview(BaseModel):
     author: str
     rating: int = Field(ge=1, le=5)
     text: str
+
+
+class LeadPackage(BaseModel):
+    name: str
+    includes: List[str] = Field(default_factory=list)
+    prices: Dict[Literal["car", "suv", "van"], float] = Field(default_factory=dict)
+
+
+class BeforeAfter(BaseModel):
+    before: str
+    after: str
+    caption: str = ""
 
 
 class Lead(BaseModel):
@@ -57,6 +68,13 @@ class Lead(BaseModel):
     logo_url: Optional[str] = None
     photos: List[str] = Field(default_factory=list, description="links to their real photos")
     notes: Optional[str] = None
+
+    # trade details. facts, copied onto the site as they are. empty = section hidden
+    credentials: List[str] = Field(default_factory=list, description="licences, memberships")
+    warranty: Optional[str] = Field(None, description="their guarantee, e.g. 12 months on parts and labour")
+    insurers: List[str] = Field(default_factory=list, description="clinics: insurance they accept")
+    packages: List[LeadPackage] = Field(default_factory=list, description="car wash: tiers priced by vehicle size")
+    before_after: List[BeforeAfter] = Field(default_factory=list)
 
 
 # ---------------------------------------------------------------- the output
@@ -99,9 +117,9 @@ class PlanContent(BaseModel):
                                   description="short and true: features of booking with them, never invented awards or years")
     faqs: List[Faq] = Field(default_factory=list, max_length=4)
     areasServed: List[str] = Field(default_factory=list, description="home services, car wash and auto repair only: nearby areas")
-    palette: Palette
-    headingFont: HeadingFont
-    bodyFont: BodyFont
+    # fonts and layout come from the template. colours only when the lead has
+    # brand colours to build them from, otherwise the template's own are used
+    palette: Optional[Palette] = Field(None, description="ONLY if brand colours are given, built from them. otherwise null")
 
 
 class Plan(BaseModel):

@@ -1,14 +1,16 @@
 import { currentBusiness } from "@/lib/auth";
 import { Page } from "@/components/admin/ui";
 import { WebsiteForm } from "@/components/admin/website-form";
-import { themesFor } from "@/themes";
+import { TRADE_DEFAULTS } from "@/lib/site-data";
+import { templateFor, templatesFor } from "@/templates";
 
 export default async function Website() {
   const { biz } = await currentBusiness();
-  const themes = themesFor(biz.niche).map((t) => ({ name: t.name, label: t.label }));
+  const templates = templatesFor(biz.niche).map((t) => ({ id: t.id, label: t.label, preview: `/templates/${t.id}?niche=${biz.niche}` }));
   return (
     <Page title="My website" sub="Change your words, colours and photos. Services, hours and contact details update from their own pages.">
-      <WebsiteForm c={biz.content} theme={biz.theme} themes={themes} niche={biz.niche} siteUrl={`/s/${biz.slug}`} />
+      <WebsiteForm c={{ ...TRADE_DEFAULTS, ...biz.content }} template={templateFor(biz.theme, biz.niche).id} templates={templates}
+        niche={biz.niche} siteUrl={`/s/${biz.slug}`} />
     </Page>
   );
 }

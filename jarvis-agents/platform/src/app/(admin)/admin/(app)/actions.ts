@@ -13,7 +13,7 @@ import { currentBusiness } from "@/lib/auth";
 import { createBooking } from "@/lib/booking";
 import { ICONS, siteContentSchema } from "@/lib/content";
 import { hhmmToMin } from "@/lib/fmt";
-import { THEMES } from "@/themes";
+import { fitsNiche } from "@/templates";
 import { isHealth } from "@/lib/niches";
 
 const str = (f: FormData, k: string) => String(f.get(k) ?? "").trim();
@@ -195,6 +195,20 @@ export async function saveWebsite(_: WebsiteState, form: FormData): Promise<Webs
     const [author, rating, ...text] = l.split("|");
     return { author: author?.trim(), rating: Number(rating), text: text.join("|").trim() };
   }).filter((r) => r.author && r.text);
+  // car wash packages, one per line: name | what's included, comma separated | car price | suv price | van price
+  const price = (v?: string) => (v && v.trim() !== "" && Number.isFinite(Number(v)) ? Number(v) : undefined);
+  const packages = lines("packages").map((l) => {
+    const [name, includes, car, suv, van] = l.split("|");
+    return {
+      name: name?.trim() ?? "",
+      includes: (includes ?? "").split(",").map((s) => s.trim()).filter(Boolean),
+      prices: { car: price(car), suv: price(suv), van: price(van) },
+    };
+  }).filter((p) => p.name);
+  const beforeAfter = lines("beforeAfter").map((l) => {
+    const [before, after, ...caption] = l.split("|");
+    return { before: before?.trim(), after: after?.trim(), caption: caption.join("|").trim() };
+  }).filter((p) => p.before && p.after);
 
   const parsed = siteContentSchema.safeParse({
     ...biz.content,
@@ -216,6 +230,11 @@ export async function saveWebsite(_: WebsiteState, form: FormData): Promise<Webs
     gallery: lines("gallery"),
     instagram: urlOrNull("instagram"),
     facebook: urlOrNull("facebook"),
+    credentials: lines("credentials"),
+    warranty: str(form, "warranty") || null,
+    insurers: lines("insurers"),
+    packages,
+    beforeAfter,
   });
   if (!parsed.success) {
     const first = parsed.error.issues[0];
@@ -224,7 +243,7 @@ export async function saveWebsite(_: WebsiteState, form: FormData): Promise<Webs
   const theme = str(form, "theme");
   await db.update(t.businesses).set({
     content: parsed.data,
-    theme: THEMES[theme] ? theme : biz.theme,
+    theme: fitsNiche(theme, biz.niche) ? theme : biz.theme,
     updatedAt: new Date(),
   }).where(eq(t.businesses.id, biz.id));
   done();
