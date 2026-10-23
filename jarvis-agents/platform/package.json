@@ -12,7 +12,8 @@
     "db:migrate": "tsx --env-file=.env.local scripts/migrate.ts",
     "seed": "tsx --env-file=.env.local scripts/seed.ts",
     "test": "tsx --env-file=.env.local --test src/**/*.test.ts",
-    "shoot": "tsx scripts/shoot-templates.ts"
+    "shoot": "tsx scripts/shoot-templates.ts",
+    "export": "tsx scripts/export-templates.ts"
   },
   "dependencies": {
     "@node-rs/argon2": "^2.2.2",

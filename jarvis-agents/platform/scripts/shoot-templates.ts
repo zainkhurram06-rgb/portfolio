@@ -7,42 +7,30 @@
 
 import { mkdirSync } from "node:fs";
 import { join } from "node:path";
-import { chromium, type Browser } from "playwright-core";
+import type { Browser } from "playwright-core";
 import LIBRARY from "../src/templates/library.json";
+import { SITE_URL, SIZES, fullShot, launch } from "./browser";
 
-const BASE = process.env.SITE_URL ?? "http://localhost:3000";
-const OUT = join(__dirname, "..", "..", "screenshots", "templates");
-const only = process.argv.slice(2);
+export const TEMPLATE_SHOTS = join(__dirname, "..", "..", "screenshots", "templates");
 
-async function launch(): Promise<Browser> {
-  for (const channel of ["chrome", "msedge"]) {
-    try { return await chromium.launch({ channel }); } catch { /* try the next one */ }
-  }
-  throw new Error("couldn't start Chrome or Edge. Install one, or set PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH");
-}
-
-async function main() {
-  mkdirSync(OUT, { recursive: true });
-  const browser = await launch();
-  const sizes = [{ name: "desktop", width: 1440, height: 900 }, { name: "phone", width: 390, height: 844 }];
+export async function shootTemplates(browser: Browser, only: string[] = []) {
+  mkdirSync(TEMPLATE_SHOTS, { recursive: true });
   for (const t of LIBRARY.templates.filter((x) => !only.length || only.includes(x.id))) {
-    for (const s of sizes) {
+    for (const s of SIZES) {
       const page = await browser.newPage({ viewport: { width: s.width, height: s.height }, deviceScaleFactor: 1 });
-      await page.goto(`${BASE}/templates/${t.id}?niche=${t.niches[0]}`, { waitUntil: "networkidle", timeout: 120_000 });
-      // load every lazy photo now, so the full-page shot isn't full of gaps
-      await page.evaluate(async () => {
-        const imgs = [...document.images];
-        imgs.forEach((i) => { i.loading = "eager"; });
-        await Promise.all(imgs.map((i) => (i.complete ? null : new Promise((r) => { i.onload = i.onerror = r; }))));
-        await document.fonts.ready;
-      });
-      await page.screenshot({ path: join(OUT, `${t.id}-${s.name}.jpg`), fullPage: true, type: "jpeg", quality: 62 });
+      await page.goto(`${SITE_URL}/templates/${t.id}?niche=${t.niches[0]}`, { waitUntil: "networkidle", timeout: 120_000 });
+      await fullShot(page, join(TEMPLATE_SHOTS, `${t.id}-${s.name}.jpg`));
       await page.close();
     }
-    console.log(`${t.id}`);
+    console.log(`template ${t.id}`);
   }
-  await browser.close();
-  console.log(`saved to ${OUT}`);
 }
 
-main().catch((e) => { console.error(e); process.exit(1); });
+if (require.main === module) {
+  (async () => {
+    const browser = await launch();
+    await shootTemplates(browser, process.argv.slice(2));
+    await browser.close();
+    console.log(`saved to ${TEMPLATE_SHOTS}`);
+  })().catch((e) => { console.error(e); process.exit(1); });
+}

@@ -62,6 +62,9 @@ Order agreed: build the agents first, connect them to Jarvis later.
   version, tone, style settings, fonts, palette). Every trade has 4 or 5. Sections whose facts
   are missing hide themselves. Gallery of all of them at `/templates`. Skeleton quality on
   purpose: restyle the sections from the references later and every template improves.
+- Every template also exists as a real HTML file: `jarvis-agents/templates/<trade>/<id>.html`,
+  index at `templates/index.html` (`npm run export` regenerates them). Zain wants finished work
+  shown as real HTML files he can open, not screenshots.
 - Trade details on the content (facts only, from the lead): credentials, warranty, insurers,
   car wash packages priced by vehicle size, before/after photos. Editable in My website.
 - All fixed site text lives in `src/lib/labels.en.json` (+ `labels.niches.en.json` for each

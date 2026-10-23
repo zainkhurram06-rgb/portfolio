@@ -9,6 +9,7 @@ booking page and their dashboard. See the README one folder up for setup.
 - `npm run db:generate` after editing `src/db/schema.ts`, create the migration
 - `npm run seed` add six example businesses
 - `npm test` booking engine, database and template tests
+- `npm run export` write every template as a real HTML file into `../templates/` (open `templates/index.html`, no server needed)
 - `npm run shoot` screenshot every template into `../screenshots/templates/` (needs `npm run dev`)
 
 Client sites are reached three ways, all handled in `src/proxy.ts`:

@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Premium craft | Home services &amp; trades template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap">
+<style>body{margin:0}:root{--primary:#3f6212;--accent:#d6a35c;--dark:#1f2618;--light:#f6f4ec;--heading:"Fraunces",Georgia,serif;--body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;}</style>
+</head>
+<body>
+<div class="site" dir="ltr" data-template="home-premium" data-radius="soft" data-buttons="pill" data-density="airy" data-mood="tinted" data-heads="light"><style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; color: inherit; }
+
+.site {
+  --r: 14px; --r-lg: 22px; --btn-r: 999px;
+  --pad: clamp(72px, 9vw, 112px);
+  --bg: #fff; --surface: var(--light); --card: #fff; --ink: var(--dark);
+  --muted: color-mix(in srgb, currentColor 66%, transparent);
+  --line: color-mix(in srgb, currentColor 13%, transparent);
+  --soft: color-mix(in srgb, var(--primary) 9%, transparent);
+  --hw: 600; --hcase: none; --hls: -0.015em;
+  position: relative; overflow-x: clip;
+  font-family: var(--body); line-height: 1.6; -webkit-font-smoothing: antialiased;
+  background: var(--bg); color: var(--ink); min-height: 100vh;
+}
+.site[data-radius=sharp] { --r: 2px; --r-lg: 4px; }
+.site[data-radius=soft] { --r: 10px; --r-lg: 16px; }
+.site[data-radius=round] { --r: 20px; --r-lg: 32px; }
+.site[data-buttons=square] { --btn-r: 3px; }
+.site[data-buttons=soft] { --btn-r: 10px; }
+.site[data-density=airy] { --pad: clamp(88px, 11vw, 150px); }
+.site[data-density=compact] { --pad: clamp(56px, 7vw, 84px); }
+.site[data-mood=tinted] { --bg: var(--light); --surface: #fff; }
+.site[data-mood=dark] { --bg: color-mix(in srgb, var(--dark) 92%, black); --surface: var(--dark); --card: color-mix(in srgb, var(--dark) 82%, white); --ink: var(--light); }
+.site[data-heads=upper] { --hcase: uppercase; --hls: 0.01em; --hw: 700; }
+.site[data-heads=light] { --hw: 400; }
+
+.wrap { width: min(1180px, 100% - 40px); margin-inline: auto; }
+.wrap.narrow { width: min(820px, 100% - 40px); }
+h1, h2, h3, h4 { font-family: var(--heading); line-height: 1.08; font-weight: var(--hw); letter-spacing: var(--hls); text-transform: var(--hcase); }
+h1 { font-size: clamp(2.4rem, 5.6vw, 4.4rem); overflow-wrap: break-word; hyphens: auto; }
+h2 { font-size: clamp(1.9rem, 3.8vw, 3rem); overflow-wrap: break-word; hyphens: auto; }
+h3 { font-size: 1.2rem; line-height: 1.25; }
+p { overflow-wrap: break-word; }
+
+.sec { padding-block: var(--pad); }
+.tone-alt { background: var(--surface); }
+.tone-inv, .tone-brand { --ink: var(--light); --card: color-mix(in srgb, currentColor 7%, transparent); color: var(--ink); background: var(--dark); }
+.tone-brand { --ink: #fff; background: var(--primary); }
+.site[data-mood=dark] .tone-inv { background: var(--light); --ink: var(--dark); --card: #fff; }
+
+.kicker { display: inline-flex; align-items: center; gap: 10px; font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--primary); }
+.kicker::before { content: ""; width: 22px; height: 2px; background: var(--accent); border-radius: 2px; }
+.tone-inv .kicker, .tone-brand .kicker, .site[data-mood=dark] .kicker { color: var(--accent); }
+.head { max-width: 680px; margin-block-end: 48px; display: grid; gap: 14px; }
+.head p { color: var(--muted); font-size: 1.06rem; }
+.head.center { text-align: center; margin-inline: auto; justify-items: center; }
+.head-row { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin-block-end: 40px; }
+.head-row .head { margin: 0; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 26px; border-radius: var(--btn-r); font-weight: 600; font-size: .98rem; border: 1.5px solid transparent; cursor: pointer; transition: transform .2s, box-shadow .2s, background .2s, border-color .2s; white-space: nowrap; }
+.btn:hover { transform: translateY(-2px); }
+.btn-sm { padding: 11px 18px; font-size: .92rem; }
+.btn-block { width: 100%; }
+.btn-main { background: var(--primary); color: #fff; box-shadow: 0 12px 26px -14px var(--primary); }
+.btn-alt { border-color: var(--line); color: inherit; background: transparent; }
+.btn-alt:hover { border-color: var(--primary); color: var(--primary); }
+.btn-light { background: #fff; color: var(--dark); }
+.btn-ghost-light { border-color: rgba(255,255,255,.45); color: #fff; }
+.tone-brand .btn-main { background: #fff; color: var(--primary); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); }
+.media { position: relative; border-radius: var(--r-lg); overflow: hidden; background: linear-gradient(150deg, var(--primary), color-mix(in srgb, var(--primary) 50%, var(--accent))); min-height: 220px; }
+.media img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+.media .art { position: absolute; inset: 0; display: grid; place-items: center; color: rgba(255,255,255,.88); }
+.media .art::before { content: ""; position: absolute; width: 62%; aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(255,255,255,.28); }
+.ticks { list-style: none; display: grid; gap: 12px; }
+.ticks li { display: flex; gap: 10px; align-items: center; font-weight: 500; }
+.ticks svg { color: var(--accent); flex: none; }
+.ticks.row { display: flex; flex-wrap: wrap; gap: 10px 24px; color: var(--muted); font-size: .94rem; }
+.ticks.row.center { justify-content: center; }
+.ticks.grid2 { grid-template-columns: 1fr 1fr; margin-block-start: 28px; }
+.stars { display: inline-flex; gap: 2px; color: #f5a623; }
+.rating-chip { display: inline-flex; align-items: center; gap: 12px; }
+.rating-chip strong { font-family: var(--heading); font-size: 2rem; line-height: 1; }
+.rating-chip small { display: block; color: var(--muted); font-size: .85rem; }
+.avatar { width: 84px; height: 84px; border-radius: 50%; display: grid; place-items: center; background: var(--soft); color: var(--primary); font-family: var(--heading); font-size: 1.6rem; font-weight: 600; }
+.avatar.sm { width: 34px; height: 34px; font-size: .8rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chips span { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: var(--btn-r); border: 1px solid var(--line); background: var(--card); font-weight: 500; }
+.chips svg { color: var(--primary); }
+
+.lines { display: grid; gap: 4px; margin-block-end: 18px; }
+.lines > div { display: flex; gap: 12px; align-items: flex-start; padding-block: 8px; }
+.lines svg { color: var(--accent); flex: none; margin-block-start: 3px; }
+.hours { display: grid; margin-block-end: 26px; }
+.hours div { display: flex; justify-content: space-between; gap: 16px; padding-block: 11px; border-block-end: 1px solid var(--line); }
+
+form { display: grid; gap: 12px; }
+input, select, textarea { width: 100%; padding: 14px 16px; border-radius: var(--r); border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+.card input, .card select, .card textarea { background: transparent; }
+select option { color: #111; }
+input:focus, select:focus, textarea:focus { outline: 2px solid color-mix(in srgb, var(--primary) 45%, transparent); border-color: var(--primary); }
+[data-note] { font-size: .9rem; color: var(--primary); min-height: 1.2em; }
+
+@media (max-width: 900px) { .ticks.grid2 { grid-template-columns: 1fr; } }
+
+.nav { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(12px); border-block-end: 1px solid var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 76px; gap: 24px; }
+.brand { display: flex; align-items: center; gap: 12px; font-family: var(--heading); font-weight: 600; font-size: 1.2rem; }
+.brand img { height: 42px; width: auto; }
+.mark { width: 40px; height: 40px; border-radius: var(--r); display: grid; place-items: center; color: #fff; background: linear-gradient(135deg, var(--primary), var(--accent)); font-size: 1.15rem; }
+.nav .links { display: flex; gap: 28px; font-size: .95rem; color: var(--muted); }
+.nav .links a:hover { color: var(--primary); }
+.nav-cta { display: flex; align-items: center; gap: 18px; }
+.nav-phone { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--primary); }
+.nav.v-centered .wrap { display: grid; grid-template-columns: 1fr auto 1fr; }
+.nav.v-centered .links.end { justify-content: flex-end; align-items: center; }
+.nav.v-centered .brand { flex-direction: column; gap: 4px; font-size: 1.35rem; }
+.nav.v-centered .mark { display: none; }
+.nav.v-overlay { position: absolute; top: auto; inset-inline: 0; background: transparent; backdrop-filter: none; border: 0; color: #fff; }
+.nav.v-overlay .links { color: rgba(255,255,255,.85); }
+.nav.v-overlay .links a:hover { color: #fff; }
+@media (max-width: 900px) {
+  .nav .links, .nav-phone { display: none; }
+  .nav.v-centered .wrap { grid-template-columns: 1fr auto; }
+  .nav.v-centered .links:first-child { display: none; }
+  .nav.v-centered .links.end { display: flex; }
+  .nav.v-centered .links.end a:not(.btn) { display: none; }
+  .nav.v-centered .brand { flex-direction: row; }
+}
+
+.hero { position: relative; padding-block: clamp(56px, 8vw, 104px); }
+.hero .copy { display: grid; gap: 22px; align-content: center; justify-items: start; }
+.hero .lead { font-size: 1.15rem; color: var(--muted); max-width: 40ch; }
+.hero .wrap { position: relative; }
+.hero.v-split { background: radial-gradient(900px 420px at 90% -10%, var(--soft), transparent 70%); }
+.hero.v-split .wrap, .hero.v-form .wrap, .hero.v-card .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(32px, 5vw, 64px); align-items: center; }
+.hero.v-split .visual { position: relative; }
+.hero.v-split .media { aspect-ratio: 4 / 4.5; }
+.hero .float { position: absolute; inset-inline-start: -24px; inset-block-end: 28px; background: var(--card); color: var(--ink); padding: 16px 20px; border-radius: var(--r-lg); box-shadow: 0 24px 50px -24px rgba(0,0,0,.4); }
+.hero.v-photo { min-height: min(86vh, 820px); display: grid; align-items: end; color: #fff; padding-block: 160px 72px; }
+.hero.v-photo .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero.v-photo .art-bg { background: radial-gradient(800px 500px at 80% 20%, color-mix(in srgb, var(--accent) 45%, transparent), transparent), linear-gradient(160deg, var(--primary), var(--dark)); }
+.hero.v-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,.72), rgba(0,0,0,.18) 70%); }
+.hero.v-photo .wrap { z-index: 1; }
+.hero.v-photo .copy { max-width: 760px; }
+.hero.v-photo .lead, .hero.v-photo .rating-chip small, .hero.v-photo .ticks.row { color: rgba(255,255,255,.82); }
+.hero.v-photo .kicker { color: #fff; }
+.hero .under { display: flex; flex-wrap: wrap; gap: 18px 32px; align-items: center; }
+.hero.v-centered { text-align: center; background: radial-gradient(900px 400px at 50% 0%, var(--soft), transparent 70%); }
+.hero.v-centered .copy { justify-items: center; max-width: 860px; margin-inline: auto; }
+.hero.v-centered .actions, .hero.v-centered .under { justify-content: center; }
+.hero.v-centered .under { margin-block-start: 30px; }
+.hero.v-centered .media.wide { margin-block-start: 56px; aspect-ratio: 21 / 9; }
+.hero.v-collage .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.hero.v-collage .frames { position: relative; aspect-ratio: 1 / 1.05; }
+.hero.v-collage .f1 { position: absolute; inset-block: 0 12%; inset-inline: 0 22%; }
+.hero.v-collage .f2 { position: absolute; inset-block: 46% 0; inset-inline: 48% 0; min-height: 0; border: 6px solid var(--bg); }
+.hero.v-collage .seal { position: absolute; inset-inline-end: 4%; inset-block-start: 6%; width: 116px; aspect-ratio: 1; border-radius: 50%; background: var(--accent); color: var(--dark); display: grid; place-content: center; text-align: center; font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; }
+.hero.v-collage .seal b { font-family: var(--heading); font-size: 2rem; letter-spacing: 0; display: block; }
+.hero.v-form { background: linear-gradient(160deg, var(--surface), var(--bg)); }
+.hero .quote { padding: 30px; display: grid; gap: 8px; box-shadow: 0 30px 70px -40px rgba(0,0,0,.45); }
+.hero .quote p { color: var(--muted); margin-block-end: 8px; }
+.hero.v-card { background: linear-gradient(180deg, var(--soft), transparent); }
+.hero .menu-card { padding: 28px; box-shadow: 0 30px 70px -40px rgba(0,0,0,.45); display: grid; gap: 18px; }
+.hero .menu-card ul { list-style: none; display: grid; }
+.hero .menu-card li { display: flex; gap: 14px; align-items: center; padding-block: 12px; border-block-end: 1px solid var(--line); }
+.hero .menu-card .ico { width: 38px; height: 38px; border-radius: var(--r); background: var(--soft); color: var(--primary); display: grid; place-items: center; flex: none; }
+.hero .menu-card .name { flex: 1; font-weight: 600; }
+.hero .menu-card small { display: block; color: var(--muted); font-weight: 400; }
+@media (max-width: 900px) {
+  .hero.v-split .wrap, .hero.v-form .wrap, .hero.v-card .wrap, .hero.v-collage .wrap { grid-template-columns: 1fr; }
+  .hero .float { inset-inline-start: 12px; }
+  .hero.v-split .media { aspect-ratio: 4 / 3.4; }
+}
+
+.services .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+.svc { padding: 28px; display: flex; flex-direction: column; gap: 10px; position: relative; transition: transform .25s, box-shadow .25s; }
+.svc:hover { transform: translateY(-4px); box-shadow: 0 30px 60px -36px color-mix(in srgb, var(--primary) 60%, black); }
+.svc .ico { width: 52px; height: 52px; border-radius: var(--r); display: grid; place-items: center; background: var(--soft); color: var(--primary); margin-block-end: 8px; }
+.svc p { color: var(--muted); font-size: .97rem; }
+.svc .foot { margin-block-start: auto; padding-block-start: 14px; display: flex; justify-content: space-between; gap: 10px; color: var(--muted); font-size: .9rem; }
+.svc .foot b { color: var(--primary); font-size: 1rem; }
+.services.v-numbered .num { position: absolute; inset-inline-end: 24px; inset-block-start: 20px; font-family: var(--heading); font-size: 2.4rem; line-height: 1; color: var(--line); font-weight: 700; }
+.menu-list { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 64px; }
+.menu-list .item { padding-block: 22px; border-block-end: 1px solid var(--line); }
+.menu-list .row { display: flex; align-items: baseline; gap: 12px; }
+.menu-list .dots { flex: 1; border-block-end: 1px dotted var(--muted); transform: translateY(-5px); }
+.menu-list b { color: var(--primary); white-space: nowrap; }
+.menu-list p { color: var(--muted); margin-block-start: 6px; font-size: .95rem; }
+.rows { display: grid; border-block-start: 1px solid var(--line); }
+.rows .row { display: grid; grid-template-columns: 70px 1fr auto; gap: 24px; align-items: center; padding-block: 28px; border-block-end: 1px solid var(--line); transition: background .2s, padding .2s; }
+.rows .row:hover { background: var(--soft); padding-inline: 16px; }
+.rows .num { font-family: var(--heading); font-size: 1.6rem; color: var(--primary); }
+.rows h3 { font-size: 1.45rem; }
+.rows p { color: var(--muted); margin-block-start: 4px; }
+.rows .meta { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; color: var(--primary); }
+.tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; align-items: start; }
+.tier { padding: 30px; display: grid; gap: 18px; position: relative; }
+.tier.featured { border: 2px solid var(--primary); box-shadow: 0 30px 70px -40px var(--primary); }
+.tier .pill { position: absolute; inset-block-start: -13px; inset-inline-start: 24px; background: var(--primary); color: #fff; font-size: .75rem; font-weight: 700; padding: 5px 12px; border-radius: 999px; text-transform: uppercase; letter-spacing: .08em; }
+.tier h3 { font-size: 1.5rem; }
+.tier dl { display: grid; gap: 8px; }
+.tier dl div { display: flex; justify-content: space-between; gap: 12px; padding-block-end: 8px; border-block-end: 1px dashed var(--line); }
+.tier dt { color: var(--muted); }
+.tier dd { font-weight: 700; font-size: 1.1rem; }
+.extras { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-block-start: 34px; }
+.extras span { display: inline-flex; gap: 8px; align-items: center; padding: 9px 15px; border: 1px solid var(--line); border-radius: var(--btn-r); font-size: .92rem; }
+.extras b { color: var(--primary); }
+@media (max-width: 800px) { .menu-list { grid-template-columns: 1fr; } .rows .row { grid-template-columns: 44px 1fr; } .rows .meta { grid-column: 2; } }
+
+.gallery .photos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.gallery .photos img { width: 100%; min-width: 0; aspect-ratio: 1; object-fit: cover; border-radius: var(--r); }
+.gallery.feature .photos img:first-child { grid-row: span 2; aspect-ratio: auto; height: 100%; }
+.gallery.v-strip .photos { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-block-end: 8px; }
+.gallery.v-strip .photos img { flex: 0 0 min(340px, 78%); width: auto; aspect-ratio: 4 / 5; scroll-snap-align: start; }
+.pairs { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 22px; }
+.pairs figure { display: grid; gap: 10px; }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; border-radius: var(--r-lg); overflow: hidden; }
+.pair div { position: relative; }
+.pair img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.pair span { position: absolute; inset-block-start: 10px; inset-inline-start: 10px; background: rgba(0,0,0,.6); color: #fff; font-size: .75rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: .08em; }
+.pairs figcaption { color: var(--muted); font-size: .94rem; }
+@media (max-width: 700px) { .gallery .photos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.about.v-split .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(32px, 6vw, 72px); align-items: center; }
+.about.v-split .media { aspect-ratio: 1; }
+.about h2 { margin-block: 14px 18px; }
+.about p { color: var(--muted); font-size: 1.05rem; margin-block-end: 14px; }
+.about.v-statement { text-align: center; }
+.about.v-statement h2 { font-size: clamp(2rem, 4.4vw, 3.4rem); }
+.about.v-statement p { font-size: 1.15rem; }
+.about.v-statement .ticks { margin-block-start: 26px; }
+.about.v-stats .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.stats div { padding: 26px; border-radius: var(--r-lg); background: var(--card); border: 1px solid var(--line); display: grid; gap: 6px; }
+.stats b { font-family: var(--heading); font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1; color: var(--primary); }
+.stats span { color: var(--muted); font-size: .92rem; }
+@media (max-width: 900px) { .about.v-split .wrap, .about.v-stats .wrap { grid-template-columns: 1fr; } }
+
+.steps ol { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.steps li { display: grid; gap: 10px; align-content: start; }
+.steps li p { color: var(--muted); }
+.steps .n { width: 44px; height: 44px; border-radius: 50%; background: var(--primary); color: #fff; display: grid; place-items: center; font-weight: 700; }
+.steps.v-row li { padding: 30px; }
+.steps.v-line ol { position: relative; text-align: center; }
+.steps.v-line ol::before { content: ""; position: absolute; inset-block-start: 22px; inset-inline: 16%; border-block-start: 2px dashed var(--line); }
+.steps.v-line li { justify-items: center; position: relative; }
+.steps.v-line .n { box-shadow: 0 0 0 8px var(--bg); }
+.tone-alt.steps.v-line .n { box-shadow: 0 0 0 8px var(--surface); }
+@media (max-width: 800px) { .steps ol { grid-template-columns: 1fr; } .steps.v-line ol::before { display: none; } }
+
+.reviews .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; }
+.review { padding: 28px; display: flex; flex-direction: column; gap: 14px; }
+.review blockquote { font-size: 1.02rem; }
+.review figcaption { margin-block-start: auto; display: flex; gap: 10px; align-items: center; font-weight: 600; }
+.reviews.v-spotlight { text-align: center; }
+.reviews.v-spotlight .big { font-family: var(--heading); font-size: clamp(1.6rem, 3.4vw, 2.6rem); line-height: 1.25; margin-block: 22px 18px; }
+.reviews.v-spotlight cite { font-style: normal; font-weight: 600; color: var(--muted); }
+.reviews.v-spotlight .grid { margin-block-start: 56px; text-align: start; }
+.reviews.v-rating .wrap { display: grid; grid-template-columns: 300px 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
+.reviews.v-rating .wrap:has(> :only-child) { grid-template-columns: 1fr; }
+.score { padding: 36px; border-radius: var(--r-lg); background: var(--primary); color: #fff; display: grid; gap: 10px; justify-items: start; position: sticky; top: 100px; }
+.score b { font-family: var(--heading); font-size: 5rem; line-height: 1; }
+.score .stars { color: #ffd166; }
+@media (max-width: 900px) { .reviews.v-rating .wrap { grid-template-columns: 1fr; } .score { position: static; } }
+
+.areas .wrap { display: grid; gap: 22px; justify-items: center; text-align: center; }
+.areas h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); }
+.areas .chips { justify-content: center; }
+
+.cta { padding-block: var(--pad); }
+.cta .band { border-radius: calc(var(--r-lg) + 10px); padding: clamp(48px, 7vw, 84px) 24px; text-align: center; color: #fff; display: grid; gap: 16px; justify-items: center; background: radial-gradient(600px 300px at 15% 0%, color-mix(in srgb, var(--accent) 55%, transparent), transparent), var(--primary); }
+.cta .band p { opacity: .86; max-width: 48ch; }
+.cta .band .actions { justify-content: center; margin-block-start: 10px; }
+.cta.v-phone { padding-block: clamp(56px, 8vw, 96px); text-align: center; }
+.cta.v-phone .wrap { display: grid; gap: 20px; justify-items: center; }
+.phone-big { display: inline-flex; align-items: center; gap: 16px; font-family: var(--heading); font-size: clamp(2rem, 6vw, 4rem); font-weight: 700; line-height: 1; }
+.cta.v-split .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 28px; padding-block: 40px; border-block: 1px solid var(--line); }
+.cta.v-split p { color: var(--muted); margin-block-start: 10px; max-width: 52ch; }
+
+.contact h2 { margin-block: 14px 24px; }
+.contact h3 { font-size: 1.35rem; margin-block-end: 18px; }
+.contact.v-panels .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.contact .panel { padding: clamp(28px, 4vw, 44px); border-radius: var(--r-lg); }
+.contact .panel.dark { background: var(--dark); color: var(--light); }
+.site[data-mood=dark] .contact .panel.dark { background: var(--primary); color: #fff; }
+.contact.v-map .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
+.map-link { display: flex; align-items: center; gap: 14px; padding: 22px; margin-block-end: 30px; font-weight: 700; color: var(--primary); background: var(--soft); border: 0; }
+.form-card { padding: clamp(26px, 4vw, 40px); }
+.contact.v-simple { text-align: center; }
+.contact.v-simple .lines > div { justify-content: center; }
+.contact.v-simple .hours { max-width: 460px; margin-inline: auto; margin-block-end: 30px; }
+.contact.v-simple .actions { justify-content: center; }
+@media (max-width: 900px) { .contact.v-panels .wrap, .contact.v-map .wrap { grid-template-columns: 1fr; } }
+
+.footer { padding-block: 40px 56px; font-size: .92rem; }
+.footer > .wrap { color: var(--muted); }
+.site[data-mood=dark] .footer.tone-inv { background: color-mix(in srgb, var(--dark) 70%, black); --ink: var(--light); }
+.footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.footer .social { display: inline-flex; gap: 18px; font-weight: 600; }
+.footer.v-columns { padding-block: 64px 40px; }
+.footer.v-columns .wrap:first-child { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 40px; }
+.footer.v-columns h4 { font-size: 1.1rem; margin-block-end: 14px; color: var(--ink); }
+.footer.v-columns p { margin-block-end: 14px; }
+.footer.v-columns .hours { margin: 0; }
+.footer .legal { margin-block-start: 40px; padding-block-start: 22px; border-block-start: 1px solid var(--line); }
+@media (max-width: 800px) { .footer.v-columns .wrap:first-child { grid-template-columns: 1fr; } }
+</style><div style="background:#111;color:#fff;font:500 13px/1.4 system-ui,sans-serif;text-align:center;padding:8px 16px;position:relative;z-index:100">Demo preview built for Coastline Plumbing &amp; Gas. Not live yet.</div><nav class="nav v-centered"><div class="wrap"><div class="links"><a href="#services">Services</a><a href="#about">About</a></div><a class="brand" href="#top"><span class="mark">C</span><span>Coastline Plumbing &amp; Gas</span></a><div class="links end"><a href="#reviews">Reviews</a><a href="#contact">Contact</a><a class="btn btn-main btn-sm" href="#contact">Book a plumber</a></div></div></nav><header class="hero v-centered" id="top"><div class="wrap"><div class="copy"><span class="kicker">Licensed plumbers and gasfitters · Sydney</span><h1>Leaks, blockages and hot water, sorted today</h1><p class="lead">Upfront prices, on-time arrivals and a tidy job. Book a visit or call us now.</p><div class="actions"><a class="btn btn-main" href="#contact"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Book a plumber</a><a class="btn btn-alt" href="tel:+61255501987"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>Call <span dir="ltr">+61 2 5550 1987</span></a></div></div><div class="under"><div class="rating-chip"><strong>4.9</strong><div><span class="stars" aria-label="5 out of 5"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"></path></svg></span><small>158 Google reviews</small></div></div><ul class="ticks row"><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Upfront pricing</li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Same-day visits</li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Licensed and insured</li></ul></div><div class="media wide"><img src="../_photos/photo-1.svg" alt="Coastline Plumbing &amp; Gas" loading="lazy"/></div></div></header><section class="sec services v-list" id="services"><div class="wrap"><div class="head"><span class="kicker">What we do</span><h2>What we fix, install and look after</h2><p>Straight answers, clear pricing before any work starts, and a job done right the first time.</p></div><div class="rows"><a class="row" href="#contact"><span class="num">01</span><div><h3>Blocked drains</h3><p>Cleared fast with jetters and cameras, no guesswork.</p></div><span class="meta">from $220<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span></a><a class="row" href="#contact"><span class="num">02</span><div><h3>Hot water systems</h3><p>Repairs and same-day replacements, gas or electric.</p></div><span class="meta">120 min<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span></a><a class="row" href="#contact"><span class="num">03</span><div><h3>Leak detection</h3><p>Find hidden leaks before they become big bills.</p></div><span class="meta">from $180<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span></a><a class="row" href="#contact"><span class="num">04</span><div><h3>Gas fitting</h3><p>Cooktops, heaters and safety checks, fully certified.</p></div><span class="meta">90 min<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span></a><a class="row" href="#contact"><span class="num">05</span><div><h3>Bathroom renovations</h3><p>Plumbing for new bathrooms, start to finish.</p></div><span class="meta">60 min<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span></a></div></div></section><section class="sec gallery v-grid feature tone-alt"><div class="wrap"><div class="head-row"><div class="head"><span class="kicker">Our work</span><h2>Recent jobs</h2></div><a class="btn btn-alt" href="https://instagram.com/example">Follow on Instagram</a></div><div class="photos"><img src="../_photos/photo-3.svg" alt="" loading="lazy"/><img src="../_photos/photo-4.svg" alt="" loading="lazy"/><img src="../_photos/photo-5.svg" alt="" loading="lazy"/><img src="../_photos/photo-6.svg" alt="" loading="lazy"/><img src="../_photos/photo-7.svg" alt="" loading="lazy"/></div></div></section><section class="sec about v-statement" id="about"><div class="wrap narrow"><span class="kicker">About us</span><h2>Local plumbers who turn up when we say</h2><p>We&#x27;re a small local team, so the person you speak to is the person who shows up. We tell you the price before we start and clean up before we leave.</p><p>Blocked drain at 7am or a new hot water system, we treat every job the same way.</p><ul class="ticks row center"><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Upfront pricing</li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Same-day visits</li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Licensed and insured</li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Tidy, no-mess work</li></ul></div></section><section class="sec steps v-line tone-alt"><div class="wrap"><div class="head center"><span class="kicker">How it works</span><h2>Three steps. No runaround.</h2></div><ol><li><span class="n">1</span><h3>Book online or call</h3><p>Pick a time that suits you, or call and we&#x27;ll fit you in.</p></li><li><span class="n">2</span><h3>We come to you</h3><p>We turn up when we say, look at the problem and explain your options and the price.</p></li><li><span class="n">3</span><h3>Fixed, and cleaned up</h3><p>Work done properly, your home left tidy, and we&#x27;re a phone call away if you need us.</p></li></ol></div></section><section class="sec reviews v-spotlight" id="reviews"><div class="wrap narrow"><span class="kicker">Reviews</span><blockquote class="big">“Turned up in an hour, fixed the leak and cleaned up after.”</blockquote><cite>Belinda C.</cite><div class="grid"><figure class="review card"><span class="stars" aria-label="5 out of 5"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"></path></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"></path></svg></span><blockquote>“Price was exactly what they quoted. Will use again.”</blockquote><figcaption><span class="avatar sm">MO</span>Matt O.</figcaption></figure></div></div></section><section class="sec areas v-chips" id="areas"><div class="wrap"><h2>Areas we cover</h2><div class="chips"><span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Manly</span><span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Dee Why</span><span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Mosman</span><span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Brookvale</span><span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Collaroy</span><span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Freshwater</span></div></div></section><section class="cta v-band"><div class="wrap"><div class="band"><h2>Need it sorted today?</h2><p>Upfront prices, on-time arrivals and a tidy job. Book a visit or call us now.</p><div class="actions"><a class="btn btn-light" href="#contact"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Book a plumber</a><a class="btn btn-ghost-light" href="tel:+61255501987"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>Call <span dir="ltr">+61 2 5550 1987</span></a></div></div></div></section><section class="sec contact v-map" id="contact"><div class="wrap"><div class="info"><span class="kicker">Visit us</span><h2>Come and see us</h2><div class="lines"><div><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Unit 4, 22 Pittwater Rd, Manly NSW 2095</span></div><div><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><a href="tel:+61255501987"><span dir="ltr">+61 2 5550 1987</span></a></div><div><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><a href="mailto:jobs@coastline.example">jobs@coastline.example</a></div></div><a class="map-link card" href="https://www.google.com/maps/search/?api=1&amp;query=Coastline%20Plumbing%20%26%20Gas%2C%20Unit%204%2C%2022%20Pittwater%20Rd%2C%20Manly%20NSW%202095"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Get directions</span></a><h3>Opening hours</h3><div class="hours"><div><span>Mon to Sat</span><span>7:00 am to 5:00 pm</span></div><div><span>Sun</span><span>Closed</span></div></div></div><div class="card form-card"><h3>Send us a message</h3><form><input tabindex="-1" autoComplete="off" aria-hidden="true" style="position:absolute;left:-9999px" name="website"/><input placeholder="Your name" required="" maxLength="80" name="name"/><input placeholder="Phone" type="tel" required="" maxLength="40" name="phone"/><input placeholder="Email (optional)" type="email" maxLength="120" name="email"/><select name="service"><option value="" selected="">What do you need?</option><option>Blocked drains</option><option>Hot water systems</option><option>Leak detection</option><option>Gas fitting</option><option>Bathroom renovations</option></select><textarea name="message" rows="3" placeholder="Anything we should know?" maxLength="1000"></textarea><button class="btn btn-main" type="submit">Send message</button><div data-note="true" aria-live="polite"></div></form></div></div></section><footer class="footer v-simple"><div class="wrap"><span>© 2026 Coastline Plumbing &amp; Gas, Sydney</span><span class="social"><a href="https://instagram.com/example">Instagram</a></span></div></footer></div>
+</body>
+</html>

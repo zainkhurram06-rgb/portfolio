@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Template library</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; color: #1c1917; background: #f4f3f0; }
+header { position: sticky; top: 0; z-index: 5; background: rgba(244,243,240,.94); backdrop-filter: blur(8px); border-bottom: 1px solid #e2dfda; }
+header div { width: min(1400px, 100% - 32px); margin: 0 auto; padding: 14px 0; display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; }
+header b { font-size: 1.1rem; margin-inline-end: 10px; }
+header a { color: inherit; text-decoration: none; font-size: .92rem; padding: 5px 11px; border-radius: 999px; background: #fff; border: 1px solid #e2dfda; }
+main { width: min(1400px, 100% - 32px); margin: 0 auto; padding: 24px 0 80px; }
+main > p { color: #57534e; max-width: 85ch; }
+section { margin-top: 40px; scroll-margin-top: 70px; }
+h2 { font-size: 1.5rem; margin-bottom: 14px; }
+h2 small { font-size: .9rem; color: #78716c; font-weight: 400; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px; }
+article { background: #fff; border: 1px solid #e2dfda; border-radius: 14px; overflow: hidden; }
+.frame { display: block; height: 290px; overflow: hidden; position: relative; background: #eee; }
+.frame iframe { width: 1360px; height: 1300px; border: 0; transform: scale(.25); transform-origin: 0 0; pointer-events: none; }
+.meta { padding: 12px 14px; display: grid; gap: 4px; }
+.meta a { color: #1d4ed8; text-decoration: none; }
+.meta code { font-size: .8rem; color: #78716c; }
+.meta span { font-size: .85rem; color: #57534e; }
+</style>
+</head>
+<body>
+<header><div><b>Template library</b><a href="#salon">Beauty &amp; hair salon</a><a href="#dental">Dental clinic</a><a href="#medical">Medical clinic</a><a href="#dermatology">Dermatology &amp; skin clinic</a><a href="#carwash">Car wash &amp; detailing</a><a href="#autorepair">Mechanic &amp; auto repair</a><a href="#homeservices">Home services &amp; trades</a></div></header>
+<main>
+  <p>Every website template as a real HTML file in this folder, filled with an example business and placeholder photos. Click one to open it full size. 24 templates, 33 files (templates that suit several trades have one file per trade). Skeleton designs, to be restyled from the reference sites later.</p>
+  
+    <section id="salon">
+      <h2>Beauty &amp; hair salon <small>5 templates</small></h2>
+      <div class="grid">
+      <article>
+        <a class="frame" href="salon/salon-editorial.html" target="_blank"><iframe src="salon/salon-editorial.html" loading="lazy" tabindex="-1" title="Editorial"></iframe></a>
+        <div class="meta">
+          <a href="salon/salon-editorial.html" target="_blank"><b>Editorial</b></a>
+          <code>salon/salon-editorial.html</code>
+          <span>light, soft corners, airy spacing · Playfair Display + DM Sans</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="salon/salon-noir.html" target="_blank"><iframe src="salon/salon-noir.html" loading="lazy" tabindex="-1" title="Noir"></iframe></a>
+        <div class="meta">
+          <a href="salon/salon-noir.html" target="_blank"><b>Noir</b></a>
+          <code>salon/salon-noir.html</code>
+          <span>dark, sharp corners, airy spacing · DM Serif Display + Manrope · needs a photo</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="salon/salon-studio.html" target="_blank"><iframe src="salon/salon-studio.html" loading="lazy" tabindex="-1" title="Studio"></iframe></a>
+        <div class="meta">
+          <a href="salon/salon-studio.html" target="_blank"><b>Studio</b></a>
+          <code>salon/salon-studio.html</code>
+          <span>tinted, round corners, regular spacing · Fraunces + Nunito Sans</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="salon/salon-boutique.html" target="_blank"><iframe src="salon/salon-boutique.html" loading="lazy" tabindex="-1" title="Boutique"></iframe></a>
+        <div class="meta">
+          <a href="salon/salon-boutique.html" target="_blank"><b>Boutique</b></a>
+          <code>salon/salon-boutique.html</code>
+          <span>light, soft corners, regular spacing · Bricolage Grotesque + DM Sans</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="salon/salon-glow.html" target="_blank"><iframe src="salon/salon-glow.html" loading="lazy" tabindex="-1" title="Glow"></iframe></a>
+        <div class="meta">
+          <a href="salon/salon-glow.html" target="_blank"><b>Glow</b></a>
+          <code>salon/salon-glow.html</code>
+          <span>tinted, round corners, regular spacing · Outfit + DM Sans</span>
+        </div>
+      </article>
+      </div>
+    </section>
+    <section id="dental">
+      <h2>Dental clinic <small>5 templates</small></h2>
+      <div class="grid">
+      <article>
+        <a class="frame" href="dental/clinic-calm.html" target="_blank"><iframe src="dental/clinic-calm.html" loading="lazy" tabindex="-1" title="Calm clinic"></iframe></a>
+        <div class="meta">
+          <a href="dental/clinic-calm.html" target="_blank"><b>Calm clinic</b></a>
+          <code>dental/clinic-calm.html</code>
+          <span>light, soft corners, regular spacing · Fraunces + Inter</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="dental/clinic-modern.html" target="_blank"><iframe src="dental/clinic-modern.html" loading="lazy" tabindex="-1" title="Modern practice"></iframe></a>
+        <div class="meta">
+          <a href="dental/clinic-modern.html" target="_blank"><b>Modern practice</b></a>
+          <code>dental/clinic-modern.html</code>
+          <span>light, soft corners, regular spacing · Sora + Inter</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="dental/clinic-bright.html" target="_blank"><iframe src="dental/clinic-bright.html" loading="lazy" tabindex="-1" title="Bright and friendly"></iframe></a>
+        <div class="meta">
+          <a href="dental/clinic-bright.html" target="_blank"><b>Bright and friendly</b></a>
+          <code>dental/clinic-bright.html</code>
+          <span>tinted, round corners, regular spacing · Outfit + Nunito Sans</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="dental/clinic-family.html" target="_blank"><iframe src="dental/clinic-family.html" loading="lazy" tabindex="-1" title="Family practice"></iframe></a>
+        <div class="meta">
+          <a href="dental/clinic-family.html" target="_blank"><b>Family practice</b></a>
+          <code>dental/clinic-family.html</code>
+          <span>light, soft corners, regular spacing · Bricolage Grotesque + Manrope · needs a photo</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="dental/dental-smile.html" target="_blank"><iframe src="dental/dental-smile.html" loading="lazy" tabindex="-1" title="Smile studio"></iframe></a>
+        <div class="meta">
+          <a href="dental/dental-smile.html" target="_blank"><b>Smile studio</b></a>
+          <code>dental/dental-smile.html</code>
+          <span>light, round corners, regular spacing · Bricolage Grotesque + Inter</span>
+        </div>
+      </article>
+      </div>
+    </section>
+    <section id="medical">
+      <h2>Medical clinic <small>5 templates</small></h2>
+      <div class="grid">
+      <article>
+        <a class="frame" href="medical/clinic-calm.html" target="_blank"><iframe src="medical/clinic-calm.html" loading="lazy" tabindex="-1" title="Calm clinic"></iframe></a>
+        <div class="meta">
+          <a href="medical/clinic-calm.html" target="_blank"><b>Calm clinic</b></a>
+          <code>medical/clinic-calm.html</code>
+          <span>light, soft corners, regular spacing · Fraunces + Inter</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="medical/clinic-modern.html" target="_blank"><iframe src="medical/clinic-modern.html" loading="lazy" tabindex="-1" title="Modern practice"></iframe></a>
+        <div class="meta">
+          <a href="medical/clinic-modern.html" target="_blank"><b>Modern practice</b></a>
+          <code>medical/clinic-modern.html</code>
+          <span>light, soft corners, regular spacing · Sora + Inter</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="medical/clinic-bright.html" target="_blank"><iframe src="medical/clinic-bright.html" loading="lazy" tabindex="-1" title="Bright and friendly"></iframe></a>
+        <div class="meta">
+          <a href="medical/clinic-bright.html" target="_blank"><b>Bright and friendly</b></a>
+          <code>medical/clinic-bright.html</code>
+          <span>tinted, round corners, regular spacing · Outfit + Nunito Sans</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="medical/clinic-family.html" target="_blank"><iframe src="medical/clinic-family.html" loading="lazy" tabindex="-1" title="Family practice"></iframe></a>
+        <div class="meta">
+          <a href="medical/clinic-family.html" target="_blank"><b>Family practice</b></a>
+          <code>medical/clinic-family.html</code>
+          <span>light, soft corners, regular spacing · Bricolage Grotesque + Manrope · needs a photo</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="medical/medical-practice.html" target="_blank"><iframe src="medical/medical-practice.html" loading="lazy" tabindex="-1" title="Medical centre"></iframe></a>
+        <div class="meta">
+          <a href="medical/medical-practice.html" target="_blank"><b>Medical centre</b></a>
+          <code>medical/medical-practice.html</code>
+          <span>light, soft corners, compact spacing · Archivo + Work Sans</span>
+        </div>
+      </article>
+      </div>
+    </section>
+    <section id="dermatology">
+      <h2>Dermatology &amp; skin clinic <small>5 templates</small></h2>
+      <div class="grid">
+      <article>
+        <a class="frame" href="dermatology/salon-glow.html" target="_blank"><iframe src="dermatology/salon-glow.html" loading="lazy" tabindex="-1" title="Glow"></iframe></a>
+        <div class="meta">
+          <a href="dermatology/salon-glow.html" target="_blank"><b>Glow</b></a>
+          <code>dermatology/salon-glow.html</code>
+          <span>tinted, round corners, regular spacing · Outfit + DM Sans</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="dermatology/clinic-calm.html" target="_blank"><iframe src="dermatology/clinic-calm.html" loading="lazy" tabindex="-1" title="Calm clinic"></iframe></a>
+        <div class="meta">
+          <a href="dermatology/clinic-calm.html" target="_blank"><b>Calm clinic</b></a>
+          <code>dermatology/clinic-calm.html</code>
+          <span>light, soft corners, regular spacing · Fraunces + Inter</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="dermatology/clinic-modern.html" target="_blank"><iframe src="dermatology/clinic-modern.html" loading="lazy" tabindex="-1" title="Modern practice"></iframe></a>
+        <div class="meta">
+          <a href="dermatology/clinic-modern.html" target="_blank"><b>Modern practice</b></a>
+          <code>dermatology/clinic-modern.html</code>
+          <span>light, soft corners, regular spacing · Sora + Inter</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="dermatology/derm-atelier.html" target="_blank"><iframe src="dermatology/derm-atelier.html" loading="lazy" tabindex="-1" title="Skin atelier"></iframe></a>
+        <div class="meta">
+          <a href="dermatology/derm-atelier.html" target="_blank"><b>Skin atelier</b></a>
+          <code>dermatology/derm-atelier.html</code>
+          <span>tinted, soft corners, airy spacing · DM Serif Display + Manrope</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="dermatology/derm-clear.html" target="_blank"><iframe src="dermatology/derm-clear.html" loading="lazy" tabindex="-1" title="Clear and clinical"></iframe></a>
+        <div class="meta">
+          <a href="dermatology/derm-clear.html" target="_blank"><b>Clear and clinical</b></a>
+          <code>dermatology/derm-clear.html</code>
+          <span>light, sharp corners, regular spacing · Sora + DM Sans</span>
+        </div>
+      </article>
+      </div>
+    </section>
+    <section id="carwash">
+      <h2>Car wash &amp; detailing <small>5 templates</small></h2>
+      <div class="grid">
+      <article>
+        <a class="frame" href="carwash/carwash-gloss.html" target="_blank"><iframe src="carwash/carwash-gloss.html" loading="lazy" tabindex="-1" title="Gloss"></iframe></a>
+        <div class="meta">
+          <a href="carwash/carwash-gloss.html" target="_blank"><b>Gloss</b></a>
+          <code>carwash/carwash-gloss.html</code>
+          <span>dark, soft corners, regular spacing · Sora + Inter · needs a photo</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="carwash/carwash-express.html" target="_blank"><iframe src="carwash/carwash-express.html" loading="lazy" tabindex="-1" title="Express"></iframe></a>
+        <div class="meta">
+          <a href="carwash/carwash-express.html" target="_blank"><b>Express</b></a>
+          <code>carwash/carwash-express.html</code>
+          <span>tinted, round corners, compact spacing · Outfit + Inter</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="carwash/carwash-detail.html" target="_blank"><iframe src="carwash/carwash-detail.html" loading="lazy" tabindex="-1" title="Detailing studio"></iframe></a>
+        <div class="meta">
+          <a href="carwash/carwash-detail.html" target="_blank"><b>Detailing studio</b></a>
+          <code>carwash/carwash-detail.html</code>
+          <span>light, sharp corners, airy spacing · Archivo + Manrope</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="carwash/carwash-local.html" target="_blank"><iframe src="carwash/carwash-local.html" loading="lazy" tabindex="-1" title="Neighbourhood wash"></iframe></a>
+        <div class="meta">
+          <a href="carwash/carwash-local.html" target="_blank"><b>Neighbourhood wash</b></a>
+          <code>carwash/carwash-local.html</code>
+          <span>light, soft corners, regular spacing · Bricolage Grotesque + Nunito Sans</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="carwash/trades-bold.html" target="_blank"><iframe src="carwash/trades-bold.html" loading="lazy" tabindex="-1" title="Bold and direct"></iframe></a>
+        <div class="meta">
+          <a href="carwash/trades-bold.html" target="_blank"><b>Bold and direct</b></a>
+          <code>carwash/trades-bold.html</code>
+          <span>light, soft corners, regular spacing · Archivo + Inter</span>
+        </div>
+      </article>
+      </div>
+    </section>
+    <section id="autorepair">
+      <h2>Mechanic &amp; auto repair <small>4 templates</small></h2>
+      <div class="grid">
+      <article>
+        <a class="frame" href="autorepair/trades-bold.html" target="_blank"><iframe src="autorepair/trades-bold.html" loading="lazy" tabindex="-1" title="Bold and direct"></iframe></a>
+        <div class="meta">
+          <a href="autorepair/trades-bold.html" target="_blank"><b>Bold and direct</b></a>
+          <code>autorepair/trades-bold.html</code>
+          <span>light, soft corners, regular spacing · Archivo + Inter</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="autorepair/auto-garage.html" target="_blank"><iframe src="autorepair/auto-garage.html" loading="lazy" tabindex="-1" title="Garage"></iframe></a>
+        <div class="meta">
+          <a href="autorepair/auto-garage.html" target="_blank"><b>Garage</b></a>
+          <code>autorepair/auto-garage.html</code>
+          <span>dark, sharp corners, regular spacing · Archivo + Work Sans · needs a photo</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="autorepair/auto-honest.html" target="_blank"><iframe src="autorepair/auto-honest.html" loading="lazy" tabindex="-1" title="Honest workshop"></iframe></a>
+        <div class="meta">
+          <a href="autorepair/auto-honest.html" target="_blank"><b>Honest workshop</b></a>
+          <code>autorepair/auto-honest.html</code>
+          <span>light, soft corners, regular spacing · Bricolage Grotesque + Inter</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="autorepair/auto-service-desk.html" target="_blank"><iframe src="autorepair/auto-service-desk.html" loading="lazy" tabindex="-1" title="Service desk"></iframe></a>
+        <div class="meta">
+          <a href="autorepair/auto-service-desk.html" target="_blank"><b>Service desk</b></a>
+          <code>autorepair/auto-service-desk.html</code>
+          <span>tinted, soft corners, compact spacing · Sora + Manrope</span>
+        </div>
+      </article>
+      </div>
+    </section>
+    <section id="homeservices">
+      <h2>Home services &amp; trades <small>4 templates</small></h2>
+      <div class="grid">
+      <article>
+        <a class="frame" href="homeservices/trades-bold.html" target="_blank"><iframe src="homeservices/trades-bold.html" loading="lazy" tabindex="-1" title="Bold and direct"></iframe></a>
+        <div class="meta">
+          <a href="homeservices/trades-bold.html" target="_blank"><b>Bold and direct</b></a>
+          <code>homeservices/trades-bold.html</code>
+          <span>light, soft corners, regular spacing · Archivo + Inter</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="homeservices/home-local.html" target="_blank"><iframe src="homeservices/home-local.html" loading="lazy" tabindex="-1" title="Local pro"></iframe></a>
+        <div class="meta">
+          <a href="homeservices/home-local.html" target="_blank"><b>Local pro</b></a>
+          <code>homeservices/home-local.html</code>
+          <span>light, soft corners, regular spacing · Outfit + Inter</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="homeservices/home-emergency.html" target="_blank"><iframe src="homeservices/home-emergency.html" loading="lazy" tabindex="-1" title="Emergency call-out"></iframe></a>
+        <div class="meta">
+          <a href="homeservices/home-emergency.html" target="_blank"><b>Emergency call-out</b></a>
+          <code>homeservices/home-emergency.html</code>
+          <span>light, sharp corners, compact spacing · Archivo + Inter · needs a photo</span>
+        </div>
+      </article>
+      <article>
+        <a class="frame" href="homeservices/home-premium.html" target="_blank"><iframe src="homeservices/home-premium.html" loading="lazy" tabindex="-1" title="Premium craft"></iframe></a>
+        <div class="meta">
+          <a href="homeservices/home-premium.html" target="_blank"><b>Premium craft</b></a>
+          <code>homeservices/home-premium.html</code>
+          <span>tinted, soft corners, airy spacing · Fraunces + Manrope</span>
+        </div>
+      </article>
+      </div>
+    </section>
+</main>
+</body>
+</html>
