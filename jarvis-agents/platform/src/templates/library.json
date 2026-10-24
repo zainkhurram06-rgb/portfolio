@@ -2,172 +2,923 @@
   "_readme": "Every website template. A template is a recipe: sections in order, written type:version or type:version:tone (tone = alt, inv or brand), plus style settings. MARK reads this same file to pick one. needsPhoto = looks empty without a real photo, so MARK skips it when the lead has none.",
   "templates": [
     {
-      "id": "salon-editorial", "label": "Editorial", "niches": ["salon"],
-      "fonts": ["Playfair Display", "DM Sans"],
-      "style": { "radius": "soft", "buttons": "pill", "density": "airy", "mood": "light", "heads": "normal" },
-      "palette": { "primary": "#9c4a3c", "accent": "#d9a46c", "dark": "#2a1f1c", "light": "#f6efe8" },
-      "sections": ["nav:centered", "hero:collage", "about:split:alt", "services:menu", "gallery:grid", "team:cards:alt", "reviews:spotlight", "faq:accordion", "contact:panels", "footer:simple"]
+      "id": "salon-editorial",
+      "label": "Atelier",
+      "niches": [
+        "salon"
+      ],
+      "fonts": [
+        "Bodoni Moda",
+        "Hanken Grotesk"
+      ],
+      "style": {
+        "radius": "soft",
+        "buttons": "pill",
+        "density": "airy",
+        "mood": "light",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#8a5a44",
+        "accent": "#c9a27e",
+        "dark": "#231c18",
+        "light": "#f3eee8"
+      },
+      "sections": [
+        "nav:classic",
+        "hero:split",
+        "about:statement",
+        "services:menu",
+        "gallery:grid",
+        "team:cards",
+        "reviews:spotlight",
+        "contact:map",
+        "footer:simple"
+      ],
+      "design": "atelier"
     },
     {
-      "id": "salon-noir", "label": "Noir", "niches": ["salon"], "needsPhoto": true,
-      "fonts": ["DM Serif Display", "Manrope"],
-      "style": { "radius": "sharp", "buttons": "square", "density": "airy", "mood": "dark", "heads": "upper" },
-      "palette": { "primary": "#c8a165", "accent": "#e7c9a0", "dark": "#141210", "light": "#f4efe9" },
-      "sections": ["nav:overlay", "hero:photo", "services:list", "gallery:strip", "about:statement:alt", "team:cards", "reviews:cards:alt", "cta:band", "contact:map", "footer:columns"]
+      "id": "salon-noir",
+      "label": "Noir",
+      "niches": [
+        "salon"
+      ],
+      "needsPhoto": true,
+      "fonts": [
+        "Forum",
+        "Figtree"
+      ],
+      "style": {
+        "radius": "sharp",
+        "buttons": "square",
+        "density": "airy",
+        "mood": "dark",
+        "heads": "upper"
+      },
+      "palette": {
+        "primary": "#6b2737",
+        "accent": "#c8a165",
+        "dark": "#0d0c0b",
+        "light": "#f4efe9"
+      },
+      "sections": [
+        "nav:overlay",
+        "hero:photo",
+        "about:statement",
+        "services:list",
+        "gallery:strip",
+        "team:cards",
+        "reviews:rating",
+        "cta:band",
+        "contact:map",
+        "footer:columns"
+      ],
+      "design": "noir"
     },
     {
-      "id": "salon-studio", "label": "Studio", "niches": ["salon"],
-      "fonts": ["Fraunces", "Nunito Sans"],
-      "style": { "radius": "round", "buttons": "pill", "density": "regular", "mood": "tinted", "heads": "normal" },
-      "palette": { "primary": "#6d4c7d", "accent": "#e8a5b6", "dark": "#2a2230", "light": "#f8f1f4" },
-      "sections": ["nav:classic", "hero:centered", "services:cards", "about:statement", "team:cards:alt", "gallery:grid", "reviews:rating", "faq:split", "contact:simple:alt", "footer:simple"]
+      "id": "salon-studio",
+      "label": "Strange",
+      "niches": [
+        "salon"
+      ],
+      "fonts": [
+        "Gloock",
+        "Familjen Grotesk"
+      ],
+      "style": {
+        "radius": "round",
+        "buttons": "pill",
+        "density": "regular",
+        "mood": "tinted",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#e5541e",
+        "accent": "#f2c14e",
+        "dark": "#2b1a12",
+        "light": "#fbe9d7"
+      },
+      "sections": [
+        "nav:classic",
+        "hero:photo",
+        "about:statement",
+        "services:cards",
+        "gallery:grid",
+        "team:cards",
+        "reviews:cards",
+        "faq:accordion",
+        "contact:simple",
+        "footer:simple"
+      ],
+      "design": "strange"
     },
     {
-      "id": "salon-boutique", "label": "Boutique", "niches": ["salon"],
-      "fonts": ["Bricolage Grotesque", "DM Sans"],
-      "style": { "radius": "soft", "buttons": "soft", "density": "regular", "mood": "light", "heads": "normal" },
-      "palette": { "primary": "#b4475f", "accent": "#f0b98d", "dark": "#26181c", "light": "#fbf3ef" },
-      "sections": ["nav:classic", "hero:split", "services:menu:alt", "about:stats", "gallery:beforeafter:alt", "reviews:cards", "steps:line", "cta:split", "contact:map:alt", "footer:simple"]
+      "id": "salon-boutique",
+      "label": "Pop",
+      "niches": [
+        "salon"
+      ],
+      "fonts": [
+        "Syne",
+        "Instrument Sans"
+      ],
+      "style": {
+        "radius": "soft",
+        "buttons": "soft",
+        "density": "regular",
+        "mood": "light",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#d9255c",
+        "accent": "#ffb36b",
+        "dark": "#0b0b0b",
+        "light": "#fff3f6"
+      },
+      "sections": [
+        "nav:classic",
+        "hero:photo",
+        "gallery:strip",
+        "about:split",
+        "services:cards",
+        "gallery:beforeafter",
+        "reviews:cards",
+        "team:cards",
+        "contact:map",
+        "footer:simple"
+      ],
+      "design": "pop",
+      "needsPhoto": true
     },
     {
-      "id": "salon-glow", "label": "Glow", "niches": ["salon", "dermatology"],
-      "fonts": ["Outfit", "DM Sans"],
-      "style": { "radius": "round", "buttons": "pill", "density": "regular", "mood": "tinted", "heads": "normal" },
-      "palette": { "primary": "#c0567a", "accent": "#f4c6a5", "dark": "#2b1d24", "light": "#fdf3f4" },
-      "sections": ["nav:classic", "hero:split", "trust:strip", "services:cards", "gallery:strip", "team:cards:alt", "reviews:rating", "faq:accordion", "cta:band", "contact:map", "footer:simple"]
+      "id": "salon-glow",
+      "label": "Glow",
+      "niches": [
+        "salon"
+      ],
+      "fonts": [
+        "Young Serif",
+        "Onest"
+      ],
+      "style": {
+        "radius": "round",
+        "buttons": "pill",
+        "density": "regular",
+        "mood": "tinted",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#c0567a",
+        "accent": "#f4c6a5",
+        "dark": "#2b1d24",
+        "light": "#fdf3f4"
+      },
+      "sections": [
+        "nav:classic",
+        "hero:centered",
+        "services:menu",
+        "gallery:grid",
+        "about:split",
+        "reviews:cards",
+        "team:cards",
+        "faq:accordion",
+        "contact:map",
+        "footer:simple"
+      ],
+      "design": "glow"
     },
     {
-      "id": "clinic-calm", "label": "Calm clinic", "niches": ["dental", "medical", "dermatology"],
-      "fonts": ["Fraunces", "Inter"],
-      "style": { "radius": "soft", "buttons": "pill", "density": "regular", "mood": "light", "heads": "normal" },
-      "palette": { "primary": "#1f6f8b", "accent": "#5cc2b5", "dark": "#13232b", "light": "#f1f7f8" },
-      "sections": ["nav:classic", "hero:split", "trust:strip", "services:cards", "about:split:alt", "team:cards", "reviews:cards:alt", "insurance:chips", "faq:accordion", "contact:panels", "cta:band", "footer:simple"]
+      "id": "clinic-calm",
+      "label": "Calm clinic",
+      "niches": [
+        "dental",
+        "medical",
+        "dermatology"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Inter"
+      ],
+      "style": {
+        "radius": "soft",
+        "buttons": "pill",
+        "density": "regular",
+        "mood": "light",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#1f6f8b",
+        "accent": "#5cc2b5",
+        "dark": "#13232b",
+        "light": "#f1f7f8"
+      },
+      "sections": [
+        "nav:classic",
+        "hero:split",
+        "trust:strip",
+        "services:cards",
+        "about:split:alt",
+        "team:cards",
+        "reviews:cards:alt",
+        "insurance:chips",
+        "faq:accordion",
+        "contact:panels",
+        "cta:band",
+        "footer:simple"
+      ]
     },
     {
-      "id": "clinic-modern", "label": "Modern practice", "niches": ["dental", "medical", "dermatology"],
-      "fonts": ["Sora", "Inter"],
-      "style": { "radius": "soft", "buttons": "soft", "density": "regular", "mood": "light", "heads": "normal" },
-      "palette": { "primary": "#2563eb", "accent": "#38bdf8", "dark": "#0f172a", "light": "#f5f8fc" },
-      "sections": ["topbar:contact", "nav:classic", "hero:card", "trust:cards", "services:list", "steps:row:alt", "about:stats", "reviews:rating:alt", "insurance:chips", "faq:split", "contact:map", "footer:columns"]
+      "id": "clinic-modern",
+      "label": "Modern practice",
+      "niches": [
+        "dental",
+        "medical",
+        "dermatology"
+      ],
+      "fonts": [
+        "Sora",
+        "Inter"
+      ],
+      "style": {
+        "radius": "soft",
+        "buttons": "soft",
+        "density": "regular",
+        "mood": "light",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#2563eb",
+        "accent": "#38bdf8",
+        "dark": "#0f172a",
+        "light": "#f5f8fc"
+      },
+      "sections": [
+        "topbar:contact",
+        "nav:classic",
+        "hero:card",
+        "trust:cards",
+        "services:list",
+        "steps:row:alt",
+        "about:stats",
+        "reviews:rating:alt",
+        "insurance:chips",
+        "faq:split",
+        "contact:map",
+        "footer:columns"
+      ]
     },
     {
-      "id": "clinic-bright", "label": "Bright and friendly", "niches": ["dental", "medical"],
-      "fonts": ["Outfit", "Nunito Sans"],
-      "style": { "radius": "round", "buttons": "pill", "density": "regular", "mood": "tinted", "heads": "normal" },
-      "palette": { "primary": "#0e9f8e", "accent": "#ffb547", "dark": "#123130", "light": "#f0faf8" },
-      "sections": ["nav:classic", "hero:centered", "services:cards", "steps:line", "team:cards:alt", "reviews:spotlight", "insurance:chips:alt", "faq:accordion", "cta:band", "contact:panels", "footer:simple"]
+      "id": "clinic-bright",
+      "label": "Bright and friendly",
+      "niches": [
+        "dental",
+        "medical"
+      ],
+      "fonts": [
+        "Outfit",
+        "Nunito Sans"
+      ],
+      "style": {
+        "radius": "round",
+        "buttons": "pill",
+        "density": "regular",
+        "mood": "tinted",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#0e9f8e",
+        "accent": "#ffb547",
+        "dark": "#123130",
+        "light": "#f0faf8"
+      },
+      "sections": [
+        "nav:classic",
+        "hero:centered",
+        "services:cards",
+        "steps:line",
+        "team:cards:alt",
+        "reviews:spotlight",
+        "insurance:chips:alt",
+        "faq:accordion",
+        "cta:band",
+        "contact:panels",
+        "footer:simple"
+      ]
     },
     {
-      "id": "clinic-family", "label": "Family practice", "niches": ["dental", "medical"], "needsPhoto": true,
-      "fonts": ["Bricolage Grotesque", "Manrope"],
-      "style": { "radius": "soft", "buttons": "pill", "density": "regular", "mood": "light", "heads": "normal" },
-      "palette": { "primary": "#3a6ea5", "accent": "#f2a65a", "dark": "#1b2735", "light": "#f4f7fb" },
-      "sections": ["nav:overlay", "hero:photo", "trust:strip", "services:numbered", "about:split:alt", "team:cards", "reviews:cards:alt", "insurance:chips", "faq:split", "contact:map", "footer:columns"]
+      "id": "clinic-family",
+      "label": "Family practice",
+      "niches": [
+        "dental",
+        "medical"
+      ],
+      "needsPhoto": true,
+      "fonts": [
+        "Bricolage Grotesque",
+        "Manrope"
+      ],
+      "style": {
+        "radius": "soft",
+        "buttons": "pill",
+        "density": "regular",
+        "mood": "light",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#3a6ea5",
+        "accent": "#f2a65a",
+        "dark": "#1b2735",
+        "light": "#f4f7fb"
+      },
+      "sections": [
+        "nav:overlay",
+        "hero:photo",
+        "trust:strip",
+        "services:numbered",
+        "about:split:alt",
+        "team:cards",
+        "reviews:cards:alt",
+        "insurance:chips",
+        "faq:split",
+        "contact:map",
+        "footer:columns"
+      ]
     },
     {
-      "id": "dental-smile", "label": "Smile studio", "niches": ["dental"],
-      "fonts": ["Bricolage Grotesque", "Inter"],
-      "style": { "radius": "round", "buttons": "pill", "density": "regular", "mood": "light", "heads": "normal" },
-      "palette": { "primary": "#0f766e", "accent": "#fbbf24", "dark": "#0b1f1d", "light": "#f0fbf9" },
-      "sections": ["nav:classic", "hero:split", "services:cards:alt", "gallery:beforeafter", "steps:row:alt", "reviews:cards", "insurance:chips:alt", "faq:accordion", "contact:panels", "footer:simple"]
+      "id": "dental-smile",
+      "label": "Smile studio",
+      "niches": [
+        "dental"
+      ],
+      "fonts": [
+        "Bricolage Grotesque",
+        "Inter"
+      ],
+      "style": {
+        "radius": "round",
+        "buttons": "pill",
+        "density": "regular",
+        "mood": "light",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#0f766e",
+        "accent": "#fbbf24",
+        "dark": "#0b1f1d",
+        "light": "#f0fbf9"
+      },
+      "sections": [
+        "nav:classic",
+        "hero:split",
+        "services:cards:alt",
+        "gallery:beforeafter",
+        "steps:row:alt",
+        "reviews:cards",
+        "insurance:chips:alt",
+        "faq:accordion",
+        "contact:panels",
+        "footer:simple"
+      ]
     },
     {
-      "id": "medical-practice", "label": "Medical centre", "niches": ["medical"],
-      "fonts": ["Archivo", "Work Sans"],
-      "style": { "radius": "soft", "buttons": "soft", "density": "compact", "mood": "light", "heads": "normal" },
-      "palette": { "primary": "#0b5394", "accent": "#e85d4a", "dark": "#0d1b2a", "light": "#f3f6fa" },
-      "sections": ["topbar:info", "nav:classic", "hero:card", "trust:cards", "services:numbered", "steps:line:alt", "team:cards", "insurance:chips:alt", "reviews:cards", "faq:accordion:alt", "contact:map", "footer:columns"]
+      "id": "medical-practice",
+      "label": "Medical centre",
+      "niches": [
+        "medical"
+      ],
+      "fonts": [
+        "Archivo",
+        "Work Sans"
+      ],
+      "style": {
+        "radius": "soft",
+        "buttons": "soft",
+        "density": "compact",
+        "mood": "light",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#0b5394",
+        "accent": "#e85d4a",
+        "dark": "#0d1b2a",
+        "light": "#f3f6fa"
+      },
+      "sections": [
+        "topbar:info",
+        "nav:classic",
+        "hero:card",
+        "trust:cards",
+        "services:numbered",
+        "steps:line:alt",
+        "team:cards",
+        "insurance:chips:alt",
+        "reviews:cards",
+        "faq:accordion:alt",
+        "contact:map",
+        "footer:columns"
+      ]
     },
     {
-      "id": "derm-atelier", "label": "Skin atelier", "niches": ["dermatology"],
-      "fonts": ["DM Serif Display", "Manrope"],
-      "style": { "radius": "soft", "buttons": "pill", "density": "airy", "mood": "tinted", "heads": "light" },
-      "palette": { "primary": "#8a5a44", "accent": "#d8b4a0", "dark": "#2b201b", "light": "#f8f2ee" },
-      "sections": ["nav:centered", "hero:collage", "services:menu", "about:statement:alt", "gallery:beforeafter", "team:cards", "reviews:spotlight:alt", "insurance:chips", "faq:split", "contact:panels", "footer:simple"]
+      "id": "derm-atelier",
+      "label": "Skin atelier",
+      "niches": [
+        "dermatology"
+      ],
+      "fonts": [
+        "DM Serif Display",
+        "Manrope"
+      ],
+      "style": {
+        "radius": "soft",
+        "buttons": "pill",
+        "density": "airy",
+        "mood": "tinted",
+        "heads": "light"
+      },
+      "palette": {
+        "primary": "#8a5a44",
+        "accent": "#d8b4a0",
+        "dark": "#2b201b",
+        "light": "#f8f2ee"
+      },
+      "sections": [
+        "nav:centered",
+        "hero:collage",
+        "services:menu",
+        "about:statement:alt",
+        "gallery:beforeafter",
+        "team:cards",
+        "reviews:spotlight:alt",
+        "insurance:chips",
+        "faq:split",
+        "contact:panels",
+        "footer:simple"
+      ]
     },
     {
-      "id": "derm-clear", "label": "Clear and clinical", "niches": ["dermatology"],
-      "fonts": ["Sora", "DM Sans"],
-      "style": { "radius": "sharp", "buttons": "square", "density": "regular", "mood": "light", "heads": "normal" },
-      "palette": { "primary": "#4f46e5", "accent": "#a5b4fc", "dark": "#111827", "light": "#f6f7fb" },
-      "sections": ["nav:classic", "hero:split", "services:list", "steps:row:alt", "about:stats", "reviews:cards:alt", "insurance:chips", "faq:split", "cta:split", "contact:map", "footer:columns"]
+      "id": "derm-clear",
+      "label": "Clear and clinical",
+      "niches": [
+        "dermatology"
+      ],
+      "fonts": [
+        "Sora",
+        "DM Sans"
+      ],
+      "style": {
+        "radius": "sharp",
+        "buttons": "square",
+        "density": "regular",
+        "mood": "light",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#4f46e5",
+        "accent": "#a5b4fc",
+        "dark": "#111827",
+        "light": "#f6f7fb"
+      },
+      "sections": [
+        "nav:classic",
+        "hero:split",
+        "services:list",
+        "steps:row:alt",
+        "about:stats",
+        "reviews:cards:alt",
+        "insurance:chips",
+        "faq:split",
+        "cta:split",
+        "contact:map",
+        "footer:columns"
+      ]
     },
     {
-      "id": "carwash-gloss", "label": "Gloss", "niches": ["carwash"], "needsPhoto": true,
-      "fonts": ["Sora", "Inter"],
-      "style": { "radius": "soft", "buttons": "pill", "density": "regular", "mood": "dark", "heads": "upper" },
-      "palette": { "primary": "#22d3ee", "accent": "#a3e635", "dark": "#0b1220", "light": "#eef6fb" },
-      "sections": ["nav:overlay", "hero:photo", "trust:strip", "services:packages", "steps:row:alt", "gallery:strip", "reviews:rating", "areas:chips:alt", "cta:phone", "contact:map", "footer:columns", "fab:call"]
+      "id": "carwash-gloss",
+      "label": "Gloss",
+      "niches": [
+        "carwash"
+      ],
+      "needsPhoto": true,
+      "fonts": [
+        "Sora",
+        "Inter"
+      ],
+      "style": {
+        "radius": "soft",
+        "buttons": "pill",
+        "density": "regular",
+        "mood": "dark",
+        "heads": "upper"
+      },
+      "palette": {
+        "primary": "#22d3ee",
+        "accent": "#a3e635",
+        "dark": "#0b1220",
+        "light": "#eef6fb"
+      },
+      "sections": [
+        "nav:overlay",
+        "hero:photo",
+        "trust:strip",
+        "services:packages",
+        "steps:row:alt",
+        "gallery:strip",
+        "reviews:rating",
+        "areas:chips:alt",
+        "cta:phone",
+        "contact:map",
+        "footer:columns",
+        "fab:call"
+      ]
     },
     {
-      "id": "carwash-express", "label": "Express", "niches": ["carwash"],
-      "fonts": ["Outfit", "Inter"],
-      "style": { "radius": "round", "buttons": "pill", "density": "compact", "mood": "tinted", "heads": "normal" },
-      "palette": { "primary": "#2563eb", "accent": "#facc15", "dark": "#0f172a", "light": "#eff6ff" },
-      "sections": ["topbar:info", "nav:phone", "hero:card", "services:packages", "about:split:alt", "steps:line", "reviews:cards:alt", "areas:chips", "faq:accordion", "contact:map:alt", "footer:simple", "fab:call"]
+      "id": "carwash-express",
+      "label": "Express",
+      "niches": [
+        "carwash"
+      ],
+      "fonts": [
+        "Outfit",
+        "Inter"
+      ],
+      "style": {
+        "radius": "round",
+        "buttons": "pill",
+        "density": "compact",
+        "mood": "tinted",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#2563eb",
+        "accent": "#facc15",
+        "dark": "#0f172a",
+        "light": "#eff6ff"
+      },
+      "sections": [
+        "topbar:info",
+        "nav:phone",
+        "hero:card",
+        "services:packages",
+        "about:split:alt",
+        "steps:line",
+        "reviews:cards:alt",
+        "areas:chips",
+        "faq:accordion",
+        "contact:map:alt",
+        "footer:simple",
+        "fab:call"
+      ]
     },
     {
-      "id": "carwash-detail", "label": "Detailing studio", "niches": ["carwash"],
-      "fonts": ["Archivo", "Manrope"],
-      "style": { "radius": "sharp", "buttons": "square", "density": "airy", "mood": "light", "heads": "upper" },
-      "palette": { "primary": "#111827", "accent": "#f97316", "dark": "#0a0a0a", "light": "#f5f5f4" },
-      "sections": ["nav:classic", "hero:split", "services:list", "gallery:beforeafter:alt", "about:statement:inv", "reviews:spotlight", "faq:split:alt", "cta:band", "contact:panels", "footer:simple", "fab:call"]
+      "id": "carwash-detail",
+      "label": "Detailing studio",
+      "niches": [
+        "carwash"
+      ],
+      "fonts": [
+        "Archivo",
+        "Manrope"
+      ],
+      "style": {
+        "radius": "sharp",
+        "buttons": "square",
+        "density": "airy",
+        "mood": "light",
+        "heads": "upper"
+      },
+      "palette": {
+        "primary": "#111827",
+        "accent": "#f97316",
+        "dark": "#0a0a0a",
+        "light": "#f5f5f4"
+      },
+      "sections": [
+        "nav:classic",
+        "hero:split",
+        "services:list",
+        "gallery:beforeafter:alt",
+        "about:statement:inv",
+        "reviews:spotlight",
+        "faq:split:alt",
+        "cta:band",
+        "contact:panels",
+        "footer:simple",
+        "fab:call"
+      ]
     },
     {
-      "id": "carwash-local", "label": "Neighbourhood wash", "niches": ["carwash"],
-      "fonts": ["Bricolage Grotesque", "Nunito Sans"],
-      "style": { "radius": "soft", "buttons": "pill", "density": "regular", "mood": "light", "heads": "normal" },
-      "palette": { "primary": "#0891b2", "accent": "#fb923c", "dark": "#0c2530", "light": "#f0f9fb" },
-      "sections": ["topbar:info", "nav:classic", "hero:split", "trust:strip", "services:packages:alt", "steps:row", "reviews:cards:alt", "areas:chips", "faq:accordion", "contact:panels", "footer:simple", "fab:call"]
+      "id": "carwash-local",
+      "label": "Neighbourhood wash",
+      "niches": [
+        "carwash"
+      ],
+      "fonts": [
+        "Bricolage Grotesque",
+        "Nunito Sans"
+      ],
+      "style": {
+        "radius": "soft",
+        "buttons": "pill",
+        "density": "regular",
+        "mood": "light",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#0891b2",
+        "accent": "#fb923c",
+        "dark": "#0c2530",
+        "light": "#f0f9fb"
+      },
+      "sections": [
+        "topbar:info",
+        "nav:classic",
+        "hero:split",
+        "trust:strip",
+        "services:packages:alt",
+        "steps:row",
+        "reviews:cards:alt",
+        "areas:chips",
+        "faq:accordion",
+        "contact:panels",
+        "footer:simple",
+        "fab:call"
+      ]
     },
     {
-      "id": "trades-bold", "label": "Bold and direct", "niches": ["carwash", "autorepair", "homeservices"],
-      "fonts": ["Archivo", "Inter"],
-      "style": { "radius": "soft", "buttons": "soft", "density": "regular", "mood": "light", "heads": "normal" },
-      "palette": { "primary": "#1d4ed8", "accent": "#facc15", "dark": "#0f172a", "light": "#f8fafc" },
-      "sections": ["topbar:info", "nav:phone", "hero:form", "trust:strip", "services:numbered", "about:split:alt", "steps:row", "reviews:cards:alt", "areas:chips", "cta:phone", "faq:accordion", "footer:columns", "fab:call"]
+      "id": "trades-bold",
+      "label": "Bold and direct",
+      "niches": [
+        "carwash",
+        "autorepair",
+        "homeservices"
+      ],
+      "fonts": [
+        "Archivo",
+        "Inter"
+      ],
+      "style": {
+        "radius": "soft",
+        "buttons": "soft",
+        "density": "regular",
+        "mood": "light",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#1d4ed8",
+        "accent": "#facc15",
+        "dark": "#0f172a",
+        "light": "#f8fafc"
+      },
+      "sections": [
+        "topbar:info",
+        "nav:phone",
+        "hero:form",
+        "trust:strip",
+        "services:numbered",
+        "about:split:alt",
+        "steps:row",
+        "reviews:cards:alt",
+        "areas:chips",
+        "cta:phone",
+        "faq:accordion",
+        "footer:columns",
+        "fab:call"
+      ]
     },
     {
-      "id": "auto-garage", "label": "Garage", "niches": ["autorepair"], "needsPhoto": true,
-      "fonts": ["Archivo", "Work Sans"],
-      "style": { "radius": "sharp", "buttons": "square", "density": "regular", "mood": "dark", "heads": "upper" },
-      "palette": { "primary": "#ef4444", "accent": "#fbbf24", "dark": "#111111", "light": "#f4f4f5" },
-      "sections": ["topbar:contact", "nav:overlay", "hero:photo", "trust:cards", "services:list", "guarantee:panel:alt", "steps:line", "reviews:rating:alt", "areas:chips", "cta:phone", "contact:map", "footer:columns", "fab:call"]
+      "id": "auto-garage",
+      "label": "Garage",
+      "niches": [
+        "autorepair"
+      ],
+      "needsPhoto": true,
+      "fonts": [
+        "Archivo",
+        "Work Sans"
+      ],
+      "style": {
+        "radius": "sharp",
+        "buttons": "square",
+        "density": "regular",
+        "mood": "dark",
+        "heads": "upper"
+      },
+      "palette": {
+        "primary": "#ef4444",
+        "accent": "#fbbf24",
+        "dark": "#111111",
+        "light": "#f4f4f5"
+      },
+      "sections": [
+        "topbar:contact",
+        "nav:overlay",
+        "hero:photo",
+        "trust:cards",
+        "services:list",
+        "guarantee:panel:alt",
+        "steps:line",
+        "reviews:rating:alt",
+        "areas:chips",
+        "cta:phone",
+        "contact:map",
+        "footer:columns",
+        "fab:call"
+      ]
     },
     {
-      "id": "auto-honest", "label": "Honest workshop", "niches": ["autorepair"],
-      "fonts": ["Bricolage Grotesque", "Inter"],
-      "style": { "radius": "soft", "buttons": "pill", "density": "regular", "mood": "light", "heads": "normal" },
-      "palette": { "primary": "#15803d", "accent": "#f59e0b", "dark": "#14231a", "light": "#f3f8f4" },
-      "sections": ["nav:classic", "hero:split", "trust:strip", "services:cards", "guarantee:panel", "steps:row:alt", "team:cards", "reviews:spotlight:alt", "faq:accordion", "contact:panels", "footer:simple", "fab:call"]
+      "id": "auto-honest",
+      "label": "Honest workshop",
+      "niches": [
+        "autorepair"
+      ],
+      "fonts": [
+        "Bricolage Grotesque",
+        "Inter"
+      ],
+      "style": {
+        "radius": "soft",
+        "buttons": "pill",
+        "density": "regular",
+        "mood": "light",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#15803d",
+        "accent": "#f59e0b",
+        "dark": "#14231a",
+        "light": "#f3f8f4"
+      },
+      "sections": [
+        "nav:classic",
+        "hero:split",
+        "trust:strip",
+        "services:cards",
+        "guarantee:panel",
+        "steps:row:alt",
+        "team:cards",
+        "reviews:spotlight:alt",
+        "faq:accordion",
+        "contact:panels",
+        "footer:simple",
+        "fab:call"
+      ]
     },
     {
-      "id": "auto-service-desk", "label": "Service desk", "niches": ["autorepair"],
-      "fonts": ["Sora", "Manrope"],
-      "style": { "radius": "soft", "buttons": "soft", "density": "compact", "mood": "tinted", "heads": "normal" },
-      "palette": { "primary": "#1e40af", "accent": "#f97316", "dark": "#111827", "light": "#f1f5f9" },
-      "sections": ["topbar:info", "nav:classic", "hero:card", "services:cards", "steps:line:alt", "guarantee:panel", "about:stats", "reviews:cards:alt", "areas:chips", "faq:split", "cta:split", "contact:map", "footer:columns", "fab:call"]
+      "id": "auto-service-desk",
+      "label": "Service desk",
+      "niches": [
+        "autorepair"
+      ],
+      "fonts": [
+        "Sora",
+        "Manrope"
+      ],
+      "style": {
+        "radius": "soft",
+        "buttons": "soft",
+        "density": "compact",
+        "mood": "tinted",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#1e40af",
+        "accent": "#f97316",
+        "dark": "#111827",
+        "light": "#f1f5f9"
+      },
+      "sections": [
+        "topbar:info",
+        "nav:classic",
+        "hero:card",
+        "services:cards",
+        "steps:line:alt",
+        "guarantee:panel",
+        "about:stats",
+        "reviews:cards:alt",
+        "areas:chips",
+        "faq:split",
+        "cta:split",
+        "contact:map",
+        "footer:columns",
+        "fab:call"
+      ]
     },
     {
-      "id": "home-local", "label": "Local pro", "niches": ["homeservices"],
-      "fonts": ["Outfit", "Inter"],
-      "style": { "radius": "soft", "buttons": "pill", "density": "regular", "mood": "light", "heads": "normal" },
-      "palette": { "primary": "#0369a1", "accent": "#f59e0b", "dark": "#0c1a26", "light": "#f2f7fb" },
-      "sections": ["topbar:info", "nav:classic", "hero:split", "trust:cards", "services:cards", "steps:row:alt", "about:split", "reviews:cards:alt", "areas:chips", "guarantee:panel", "faq:accordion", "contact:panels", "footer:simple", "fab:call"]
+      "id": "home-local",
+      "label": "Local pro",
+      "niches": [
+        "homeservices"
+      ],
+      "fonts": [
+        "Outfit",
+        "Inter"
+      ],
+      "style": {
+        "radius": "soft",
+        "buttons": "pill",
+        "density": "regular",
+        "mood": "light",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#0369a1",
+        "accent": "#f59e0b",
+        "dark": "#0c1a26",
+        "light": "#f2f7fb"
+      },
+      "sections": [
+        "topbar:info",
+        "nav:classic",
+        "hero:split",
+        "trust:cards",
+        "services:cards",
+        "steps:row:alt",
+        "about:split",
+        "reviews:cards:alt",
+        "areas:chips",
+        "guarantee:panel",
+        "faq:accordion",
+        "contact:panels",
+        "footer:simple",
+        "fab:call"
+      ]
     },
     {
-      "id": "home-emergency", "label": "Emergency call-out", "niches": ["homeservices"], "needsPhoto": true,
-      "fonts": ["Archivo", "Inter"],
-      "style": { "radius": "sharp", "buttons": "square", "density": "compact", "mood": "light", "heads": "upper" },
-      "palette": { "primary": "#dc2626", "accent": "#fde047", "dark": "#111827", "light": "#f9fafb" },
-      "sections": ["topbar:info", "nav:overlay", "hero:photo", "trust:strip", "services:numbered", "cta:phone", "reviews:rating:alt", "areas:chips", "guarantee:panel:alt", "faq:split", "contact:map", "footer:columns", "fab:call"]
+      "id": "home-emergency",
+      "label": "Emergency call-out",
+      "niches": [
+        "homeservices"
+      ],
+      "needsPhoto": true,
+      "fonts": [
+        "Archivo",
+        "Inter"
+      ],
+      "style": {
+        "radius": "sharp",
+        "buttons": "square",
+        "density": "compact",
+        "mood": "light",
+        "heads": "upper"
+      },
+      "palette": {
+        "primary": "#dc2626",
+        "accent": "#fde047",
+        "dark": "#111827",
+        "light": "#f9fafb"
+      },
+      "sections": [
+        "topbar:info",
+        "nav:overlay",
+        "hero:photo",
+        "trust:strip",
+        "services:numbered",
+        "cta:phone",
+        "reviews:rating:alt",
+        "areas:chips",
+        "guarantee:panel:alt",
+        "faq:split",
+        "contact:map",
+        "footer:columns",
+        "fab:call"
+      ]
     },
     {
-      "id": "home-premium", "label": "Premium craft", "niches": ["homeservices"],
-      "fonts": ["Fraunces", "Manrope"],
-      "style": { "radius": "soft", "buttons": "pill", "density": "airy", "mood": "tinted", "heads": "light" },
-      "palette": { "primary": "#3f6212", "accent": "#d6a35c", "dark": "#1f2618", "light": "#f6f4ec" },
-      "sections": ["nav:centered", "hero:centered", "services:list", "gallery:grid:alt", "about:statement", "steps:line:alt", "reviews:spotlight", "areas:chips", "cta:band", "contact:map", "footer:simple"]
+      "id": "home-premium",
+      "label": "Premium craft",
+      "niches": [
+        "homeservices"
+      ],
+      "fonts": [
+        "Fraunces",
+        "Manrope"
+      ],
+      "style": {
+        "radius": "soft",
+        "buttons": "pill",
+        "density": "airy",
+        "mood": "tinted",
+        "heads": "light"
+      },
+      "palette": {
+        "primary": "#3f6212",
+        "accent": "#d6a35c",
+        "dark": "#1f2618",
+        "light": "#f6f4ec"
+      },
+      "sections": [
+        "nav:centered",
+        "hero:centered",
+        "services:list",
+        "gallery:grid:alt",
+        "about:statement",
+        "steps:line:alt",
+        "reviews:spotlight",
+        "areas:chips",
+        "cta:band",
+        "contact:map",
+        "footer:simple"
+      ]
     }
   ]
 }

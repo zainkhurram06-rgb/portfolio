@@ -14,7 +14,9 @@ type Options = {
   // an app route import it directly
   render: (el: ReactElement) => string;
   title: string;
+  description?: string;
   book: string;                 // where the book buttons go
+  origin?: string;              // the platform, for files opened from disk: the contact form sends there
   rewrite?: (html: string) => string;
   noindex?: boolean;
 };
@@ -23,13 +25,14 @@ export function standaloneHtml(t: Template, d: SiteData, o: Options) {
   let body = o.render(createElement(TemplatePage, { t, d }))
     .replaceAll(`href="${d.bookHref}"`, `href="${esc(o.book)}"`)
     .replaceAll(`href="${d.base}/"`, 'href="#top"');
+  if (o.origin) body = body.replaceAll('data-enquiry="/api/', `data-enquiry="${o.origin}/api/`);
   if (o.rewrite) body = o.rewrite(body);
   return `<!doctype html>
 <html lang="${d.biz.language}" dir="${d.dir}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(o.title)}</title>${o.noindex ? '\n<meta name="robots" content="noindex, nofollow">' : ""}
+<title>${esc(o.title)}</title>${o.description ? `\n<meta name="description" content="${esc(o.description)}">` : ""}${o.noindex ? '\n<meta name="robots" content="noindex, nofollow">' : ""}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${fontsHref(d.c)}">

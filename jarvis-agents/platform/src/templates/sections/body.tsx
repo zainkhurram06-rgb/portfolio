@@ -244,7 +244,7 @@ export function Reviews({ d, v, tone }: SectionProps) {
     <figure className="review card" key={i}>
       <Stars n={r.rating} />
       <blockquote>“{r.text}”</blockquote>
-      <figcaption><span className="avatar sm">{initials(r.author)}</span>{r.author}</figcaption>
+      <figcaption data-review-author={r.author}><span className="avatar sm">{initials(r.author)}</span>{r.author}</figcaption>
     </figure>
   );
   if (v === "spotlight" && top) {
@@ -253,7 +253,7 @@ export function Reviews({ d, v, tone }: SectionProps) {
         <div className="wrap narrow">
           <span className="kicker">{L.sec_reviews_kicker}</span>
           <blockquote className="big">“{top.text}”</blockquote>
-          <cite>{top.author}</cite>
+          <cite data-review-author={top.author}>{top.author}</cite>
           {more.length > 0 && <div className="grid">{more.slice(0, 3).map(card)}</div>}
         </div>
       </section>

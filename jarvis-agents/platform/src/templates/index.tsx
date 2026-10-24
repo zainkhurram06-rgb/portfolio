@@ -10,6 +10,8 @@ import type { Niche } from "@/lib/niches";
 import type { SiteData } from "@/lib/site-data";
 import LIBRARY from "./library.json";
 import { BASE, SECTION_CSS } from "./css";
+import { DESIGNS, designCss } from "./designs";
+import { SHARED_JS } from "./designs/shared";
 import { SECTIONS, type SectionType } from "./sections";
 
 export type Style = {
@@ -27,6 +29,7 @@ export type Template = {
   label: string;
   niches: Niche[];
   needsPhoto: boolean;
+  design?: string;            // a hand-built design in designs/, instead of the section recipe
   fonts: [(typeof HEADING_FONTS)[number], (typeof BODY_FONTS)[number]];
   style: Style;
   palette: { primary: string; accent: string; dark: string; light: string };
@@ -42,6 +45,7 @@ export const TEMPLATE_LIST: Template[] = LIBRARY.templates.map((t) => ({
   ...t,
   niches: t.niches as Niche[],
   needsPhoto: "needsPhoto" in t ? !!t.needsPhoto : false,
+  design: "design" in t ? (t.design as string) : undefined,
   fonts: t.fonts as Template["fonts"],
   style: t.style as Style,
   sections: t.sections.map(parseStep),
@@ -71,10 +75,13 @@ export function visibleSteps(t: Template, d: SiteData) {
 }
 
 export function cssFor(t: Template) {
+  if (t.design && DESIGNS[t.design]) return designCss(t.design);
   return BASE + [...new Set(t.sections.map((s) => s.type))].map((type) => SECTION_CSS[type]).join("");
 }
 
 export function TemplatePage({ t, d }: { t: Template; d: SiteData }) {
+  const design = t.design ? DESIGNS[t.design] : undefined;
+  if (design) return <design.Component d={d} />;
   const steps = visibleSteps(t, d);
   const present = new Set<string>(steps.map((s) => s.type));
   return (
@@ -82,6 +89,7 @@ export function TemplatePage({ t, d }: { t: Template; d: SiteData }) {
       data-density={t.style.density} data-mood={t.style.mood} data-heads={t.style.heads}>
       <style dangerouslySetInnerHTML={{ __html: cssFor(t) }} />
       <DemoRibbon text={fill(d.L.demo_ribbon, { name: d.biz.name })} show={d.isDemo} />
+      <script dangerouslySetInnerHTML={{ __html: SHARED_JS }} />
       {steps.map((s, i) => {
         const { Component } = SECTIONS[s.type];
         return (

@@ -65,6 +65,11 @@ class Happy(unittest.TestCase):
         self.write(GOOD.replace("Derek M.", "Made Up Person"))
         self.assertIn("reviews_are_real", self.failed(self.check()))
 
+    def test_tagged_review_authors_are_checked_in_any_design(self):
+        self.write(GOOD.replace('<figure class="review card"><blockquote>Lovely</blockquote><figcaption><span>DM</span>Derek M.</figcaption></figure>',
+                                '<figure><blockquote>Lovely</blockquote><figcaption data-review-author="Invented Ivan">Invented Ivan</figcaption></figure>'))
+        self.assertIn("reviews_are_real", self.failed(self.check()))
+
     def test_an_em_dash_fails(self):
         self.write(GOOD.replace("look twice", "look twice — really"))
         self.assertIn("no_em_dashes", self.failed(self.check()))

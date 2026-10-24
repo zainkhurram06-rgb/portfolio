@@ -5,6 +5,8 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { BODY_FONTS, HEADING_FONTS, siteContentSchema } from "@/lib/content";
 import { NICHE_KEYS } from "@/lib/niches";
 import { BASE, SECTION_CSS } from "./css";
+import { DESIGNS } from "./designs";
+import { SHARED_CSS } from "./designs/shared";
 import LIBRARY from "./library.json";
 import { SECTIONS, TONES } from "./sections";
 import { TEMPLATE_LIST, TemplatePage, cssFor, templateFor, templatesFor, visibleSteps } from "./index";
@@ -104,7 +106,7 @@ test("healthcare contact forms ask people to keep medical details out", () => {
 });
 
 test("styles use start and end, never left and right, so right-to-left sites mirror", () => {
-  const all = BASE + Object.values(SECTION_CSS).join("");
+  const all = BASE + Object.values(SECTION_CSS).join("") + SHARED_CSS + Object.values(DESIGNS).map((x) => x.css).join("");
   for (const bad of [/margin-(left|right)\s*:/, /padding-(left|right)\s*:/, /(^|[\s;{])(left|right)\s*:/m, /text-align:\s*(left|right)/, /border-(left|right)/]) {
     assert.doesNotMatch(all, bad, `found ${bad} in template styles`);
   }
@@ -118,6 +120,21 @@ test("phone numbers stay left to right on right-to-left sites", () => {
   const wrapped = html.split(`<span dir="ltr">${d.biz.phone}</span>`).length - 1;
   assert.ok(shown > 0);
   assert.equal(wrapped, shown, "every phone number on the page should be wrapped");
+});
+
+test("hand-built designs have a phone menu, live hours, their script, and no long dashes", () => {
+  const built = TEMPLATE_LIST.filter((t) => t.design);
+  assert.ok(built.length >= 5);
+  for (const t of built) {
+    assert.ok(DESIGNS[t.design!], `${t.id}: no design called ${t.design}`);
+    const html = render({ t, d: sampleSite(t.niches[0], { palette: t.palette, fonts: t.fonts }) });
+    assert.match(html, /<details class="mm/, `${t.id}: no phone menu`);
+    assert.match(html, /data-open=/, `${t.id}: no live opening hours`);
+    assert.match(html, /<script>/, `${t.id}: no script`);
+    assert.doesNotMatch(html, /—/, `${t.id}: long dash on the page`);
+  }
+  const ids = TEMPLATE_LIST.filter((t) => t.design).map((t) => t.design);
+  assert.equal(new Set(ids).size, ids.length, "two templates share one design");
 });
 
 test("old theme names and wrong trades fall back to a template that fits", () => {

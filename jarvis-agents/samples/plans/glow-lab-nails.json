@@ -1,5 +1,8 @@
 {
-  "language": "en", "currency": "AED", "timezone": "Asia/Dubai", "hours_are_guessed": false,
+  "language": "en",
+  "currency": "AED",
+  "timezone": "Asia/Dubai",
+  "hours_are_guessed": false,
   "content": {
     "tagline": "Gel, BIAB and nail art in JLT",
     "headline": "Nails that make you look twice",
@@ -7,16 +10,113 @@
     "ctaLabel": "Book your nails",
     "aboutTitle": "A small studio that sweats the details",
     "about": "We keep things small so every set gets proper time, from cuticle care to the last coat of top gloss.\n\nBring a picture or tell us the mood, and we'll make it yours.",
-    "highlights": ["Online booking", "Open daily until 10pm", "Custom nail art", "BIAB specialists"],
-    "faqs": [{"q": "How long does BIAB last?", "a": "Usually three to four weeks, and it grows out naturally."}, {"q": "Can I bring a design?", "a": "Yes, send us a picture and we'll match it or make it even better."}],
+    "highlights": [
+      "Online booking",
+      "Open daily until 10pm",
+      "Custom nail art",
+      "BIAB specialists"
+    ],
+    "faqs": [
+      {
+        "q": "How long does BIAB last?",
+        "a": "Usually three to four weeks, and it grows out naturally."
+      },
+      {
+        "q": "Can I bring a design?",
+        "a": "Yes, send us a picture and we'll match it or make it even better."
+      }
+    ],
     "areasServed": []
   },
   "services": [
-    {"name": "Gel manicure", "description": "Shape, cuticle care and long-lasting gel colour.", "icon": "nail", "durationMin": 45, "price": 120, "priceFrom": false},
-    {"name": "BIAB", "description": "Builder gel that strengthens your natural nails.", "icon": "sparkle", "durationMin": 60, "price": 180, "priceFrom": false},
-    {"name": "Gel pedicure", "description": "Soak, scrub, shape and gel colour that lasts.", "icon": "spa", "durationMin": 60, "price": 140, "priceFrom": false},
-    {"name": "Mani and pedi combo", "description": "Gel on hands and feet in one visit.", "icon": "star", "durationMin": 105, "price": 240, "priceFrom": false},
-    {"name": "Nail art", "description": "Chrome, French, ombre or your own design.", "icon": "brush", "durationMin": 30, "price": null, "priceFrom": false}
+    {
+      "name": "Gel manicure",
+      "description": "Shape, cuticle care and long-lasting gel colour.",
+      "icon": "nail",
+      "durationMin": 45,
+      "price": 120,
+      "priceFrom": false
+    },
+    {
+      "name": "BIAB",
+      "description": "Builder gel that strengthens your natural nails.",
+      "icon": "sparkle",
+      "durationMin": 60,
+      "price": 180,
+      "priceFrom": false
+    },
+    {
+      "name": "Gel pedicure",
+      "description": "Soak, scrub, shape and gel colour that lasts.",
+      "icon": "spa",
+      "durationMin": 60,
+      "price": 140,
+      "priceFrom": false
+    },
+    {
+      "name": "Mani and pedi combo",
+      "description": "Gel on hands and feet in one visit.",
+      "icon": "star",
+      "durationMin": 105,
+      "price": 240,
+      "priceFrom": false
+    },
+    {
+      "name": "Nail art",
+      "description": "Chrome, French, ombre or your own design.",
+      "icon": "brush",
+      "durationMin": 30,
+      "price": null,
+      "priceFrom": false
+    }
   ],
-  "hours": [{"weekday": 1, "start": "10:00", "end": "22:00"}, {"weekday": 2, "start": "10:00", "end": "22:00"}, {"weekday": 3, "start": "10:00", "end": "22:00"}, {"weekday": 4, "start": "10:00", "end": "22:00"}, {"weekday": 5, "start": "10:00", "end": "22:00"}, {"weekday": 6, "start": "10:00", "end": "22:00"}, {"weekday": 7, "start": "10:00", "end": "22:00"}]
+  "hours": [
+    {
+      "weekday": 1,
+      "start": "10:00",
+      "end": "22:00"
+    },
+    {
+      "weekday": 2,
+      "start": "10:00",
+      "end": "22:00"
+    },
+    {
+      "weekday": 3,
+      "start": "10:00",
+      "end": "22:00"
+    },
+    {
+      "weekday": 4,
+      "start": "10:00",
+      "end": "22:00"
+    },
+    {
+      "weekday": 5,
+      "start": "10:00",
+      "end": "22:00"
+    },
+    {
+      "weekday": 6,
+      "start": "10:00",
+      "end": "22:00"
+    },
+    {
+      "weekday": 7,
+      "start": "10:00",
+      "end": "22:00"
+    }
+  ],
+  "titles": {
+    "services_kicker": "The set list",
+    "services_title": "Pick your set",
+    "services_intro": "Gel, BIAB, chrome French or your own wild idea. We'll make it happen.",
+    "about_kicker": "The lab",
+    "gallery_title": "Fresh sets this week",
+    "reviews_title": "Our girls say it best",
+    "team_title": "Your nail girls",
+    "cta_title": "Your next set is calling",
+    "contact_title": "Find us in JLT",
+    "pick_service": "What are we doing today?"
+  }
 }

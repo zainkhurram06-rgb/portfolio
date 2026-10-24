@@ -133,6 +133,15 @@ class Templates(unittest.TestCase):
             mark.choose_template(lead(niche="dental"), "salon-noir", log=lambda m: None)
         self.assertIn("clinic-calm", str(e.exception))
 
+    def test_headings_in_their_own_voice_reach_the_site(self):
+        plan = Plan.model_validate_json((HERE / "plans" / "glow-lab-nails.json").read_text(encoding="utf-8"))
+        labels = mark.build_payload(lead(), plan, "salon-glow", {"closed": "Closed"})["content"]["labels"]
+        self.assertEqual(labels["sec_services_title"], "Pick your set")
+        self.assertEqual(labels["pick_service"], "What are we doing today?")
+        self.assertEqual(labels["closed"], "Closed")
+        plan.titles.cta_title = "Book now " + chr(0x2014) + " today"
+        self.assertEqual(mark.voice_labels(plan)["sec_cta_title"], "Book now, today")
+
     def test_platform_and_mark_read_the_same_library(self):
         ts = (Path(__file__).resolve().parents[2] / "platform/src/templates/index.tsx").read_text(encoding="utf-8")
         self.assertIn('import LIBRARY from "./library.json"', ts)

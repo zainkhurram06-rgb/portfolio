@@ -126,6 +126,20 @@ class PlanContent(BaseModel):
     palette: Optional[Palette] = Field(None, description="ONLY if brand colours are given, built from them. otherwise null")
 
 
+class SectionTitles(BaseModel):
+    """The site's headings in the business's own voice. Short, warm, theirs."""
+    services_kicker: str = Field(description="2 or 3 words above the services, e.g. The menu")
+    services_title: str = Field(description="heading for their services, max 6 words")
+    services_intro: str = Field(description="one sentence under it")
+    about_kicker: str = Field(description="2 or 3 words, e.g. The studio")
+    gallery_title: str = Field(description="heading over their photos, max 5 words")
+    reviews_title: str = Field(description="heading over their reviews, max 6 words")
+    team_title: str = Field(description="heading over their team, max 5 words")
+    cta_title: str = Field(description="the closing invitation to book, max 6 words")
+    contact_title: str = Field(description="heading for where to find them, max 5 words")
+    pick_service: str = Field(description="a question inviting people to choose a service, max 6 words")
+
+
 class Plan(BaseModel):
     language: str = Field(description="language code the site is written in")
     currency: str = Field(description="ISO 4217 code for the country")
@@ -134,3 +148,4 @@ class Plan(BaseModel):
     services: List[PlanService] = Field(min_length=3, max_length=10)
     hours: List[PlanHours] = Field(min_length=1, max_length=14)
     hours_are_guessed: bool = Field(description="true if the lead did not give opening hours")
+    titles: Optional[SectionTitles] = Field(None, description="the section headings, in the business's own voice")

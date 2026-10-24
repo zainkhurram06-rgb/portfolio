@@ -1,8 +1,7 @@
-"use client";
+// The contact / quote form on the websites. Plain HTML: a small script (in
+// ENQUIRY_JS) sends it to the business's Messages inbox, so it works on the
+// platform and in saved website files alike.
 
-// The contact / quote form on every theme. Sends to the business's Messages inbox.
-
-import { useState } from "react";
 import type { Labels } from "@/lib/labels";
 
 type Props = {
@@ -16,23 +15,8 @@ type Props = {
 };
 
 export function EnquiryForm({ slug, services, button, buttonClass, messagePlaceholder, compact, L }: Props) {
-  const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
-
-  async function submit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = new FormData(e.currentTarget);
-    setState("sending");
-    const res = await fetch(`/api/sites/${slug}/enquiries`, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(Object.fromEntries(form)),
-    }).catch(() => null);
-    setState(res?.ok ? "sent" : "error");
-    if (res?.ok) (e.target as HTMLFormElement).reset();
-  }
-
   return (
-    <form onSubmit={submit}>
+    <form data-enquiry={`/api/sites/${slug}/enquiries`} data-sending={L.form_sending} data-sent={L.form_sent} data-error={L.form_error}>
       {/* bots fill every field, people never see this one */}
       <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: "absolute", left: "-9999px" }} />
       <input name="name" placeholder={L.form_name} required maxLength={80} />
@@ -43,13 +27,23 @@ export function EnquiryForm({ slug, services, button, buttonClass, messagePlaceh
         {services.map((s) => <option key={s}>{s}</option>)}
       </select>
       <textarea name="message" rows={compact ? 2 : 3} placeholder={messagePlaceholder ?? L.form_message} maxLength={1000} />
-      <button className={buttonClass} type="submit" disabled={state === "sending"}>
-        {state === "sending" ? L.form_sending : button}
-      </button>
-      <div data-note aria-live="polite">
-        {state === "sent" && L.form_sent}
-        {state === "error" && L.form_error}
-      </div>
+      <button className={buttonClass} type="submit">{button}</button>
+      <div data-note aria-live="polite" />
     </form>
   );
 }
+
+export const ENQUIRY_JS = `
+document.addEventListener("submit", function (e) {
+  var f = e.target;
+  if (!f.matches || !f.matches("form[data-enquiry]")) return;
+  e.preventDefault();
+  var note = f.querySelector("[data-note]"), btn = f.querySelector("button[type=submit]"), label = btn.textContent;
+  btn.disabled = true; btn.textContent = f.getAttribute("data-sending");
+  var data = {}; new FormData(f).forEach(function (v, k) { data[k] = v; });
+  fetch(f.getAttribute("data-enquiry"), { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(data) })
+    .then(function (r) { if (!r.ok) throw r; note.textContent = f.getAttribute("data-sent"); f.reset(); })
+    .catch(function () { note.textContent = f.getAttribute("data-error"); })
+    .then(function () { btn.disabled = false; btn.textContent = label; });
+});
+`;

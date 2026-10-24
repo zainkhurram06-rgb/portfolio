@@ -49,6 +49,9 @@ Rules you never break:
   no claims about the owner, no review quotes. Highlights must be things that are
   true of booking with them or of the site itself (e.g. "Online booking").
 - Prices: only use prices the lead states. Otherwise price is null.
+- titles: write every section heading the way THIS business talks on social
+  media (their words, their slang, their emojis turned into words). Never
+  generic lines like "Our services" or "What our customers say". Short.
 - social_text is their own Instagram or Facebook bio and captions. Use it for
   their services, prices, hours and the way they talk. Never quote it as a
   review and never copy captions word for word.
@@ -110,6 +113,21 @@ def translate_labels(language: str, brains: Optional[str], log=print, niche: str
     return {k: v[:300] for k, v in out.items()}
 
 
+# where each of the plan's section titles shows on the site (keys in labels.en.json)
+TITLE_LABELS = {
+    "services_kicker": "sec_services_kicker", "services_title": "sec_services_title", "services_intro": "sec_services_intro",
+    "about_kicker": "sec_about_kicker", "gallery_title": "sec_gallery_title", "reviews_title": "sec_reviews_title",
+    "team_title": "sec_team_title", "cta_title": "sec_cta_title", "contact_title": "sec_contact_title", "pick_service": "pick_service",
+}
+
+
+def voice_labels(plan: Plan) -> dict:
+    """The plan's own headings as label overrides. Em dashes become commas."""
+    if not plan.titles:
+        return {}
+    return {TITLE_LABELS[k]: re.sub(r"\s*\u2014\s*", ", ", v).strip()[:120] for k, v in plan.titles.model_dump().items() if v and v.strip()}
+
+
 def build_payload(lead: Lead, plan: Plan, template: Optional[str] = None, labels: Optional[dict] = None) -> dict:
     """The model's creative work plus the lead's facts. Facts always win."""
     c = plan.content
@@ -164,7 +182,8 @@ def build_payload(lead: Lead, plan: Plan, template: Optional[str] = None, labels
             "facebook": lead.facebook,
             "rating": lead.rating,
             "reviewCount": lead.review_count,
-            "labels": labels or {},
+            # translated fixed words, then the headings MARK wrote in their own voice
+            "labels": {**(labels or {}), **voice_labels(plan)},
             # trade details, straight from the lead
             "credentials": [x[:80] for x in lead.credentials[:6]],
             "warranty": lead.warranty[:200] if lead.warranty else None,

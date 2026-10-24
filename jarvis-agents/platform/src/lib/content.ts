@@ -13,11 +13,15 @@ export const ICONS = [
 ] as const;
 export type IconName = (typeof ICONS)[number];
 
+// characterful faces first: the designs use these so sites don't look generated
 export const HEADING_FONTS = [
-  "Fraunces", "Playfair Display", "DM Serif Display",
-  "Outfit", "Sora", "Archivo", "Bricolage Grotesque",
+  "Bodoni Moda", "Forum", "Gloock", "Syne", "Young Serif", "Italiana", "Unbounded", "Gilda Display", "Bagel Fat One",
+  "Fraunces", "Playfair Display", "DM Serif Display", "Outfit", "Sora", "Archivo", "Bricolage Grotesque",
 ] as const;
-export const BODY_FONTS = ["Inter", "DM Sans", "Manrope", "Nunito Sans", "Work Sans"] as const;
+export const BODY_FONTS = [
+  "Hanken Grotesk", "Figtree", "Familjen Grotesk", "Instrument Sans", "Onest", "Schibsted Grotesk", "Albert Sans",
+  "Inter", "DM Sans", "Manrope", "Nunito Sans", "Work Sans",
+] as const;
 
 const hex = z.string().regex(/^#[0-9a-fA-F]{6}$/, "use a colour like #1f6f8b");
 const url = z.string().url().max(2000);

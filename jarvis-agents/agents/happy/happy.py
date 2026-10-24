@@ -48,6 +48,7 @@ class Page(HTMLParser):
         self._skip = 0
         self._in = None
         self._review = False      # inside a review card
+        self.tagged: List[str] = []   # authors marked data-review-author by the templates
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -63,6 +64,8 @@ class Page(HTMLParser):
             self.meta[a["name"]] = a.get("content", "")
         if tag == "h1" and not self.headline:
             self._in = "h1"
+        if a.get("data-review-author"):
+            self.tagged.append(a["data-review-author"].strip())
         if tag == "figure" and "review" in (a.get("class") or ""):
             self._review = True
         if (tag == "figcaption" and self._review) or tag == "cite":
@@ -158,7 +161,7 @@ def check(b: Business, browser: Callable[[Path], dict] = _browser, url_ok: Calla
     real = {(x.get("author") or "").strip().lower() for x in lead.get("reviews", [])}
     real |= {(x.get("author") or "").strip().lower() for x in (research.get("google") or {}).get("reviews", [])}
     # review cards end with the author's initials in a circle, then their name
-    authors = [a for a in page.reviews if len(a) > 2 and not a.isupper()]
+    authors = page.tagged or [a for a in page.reviews if len(a) > 2 and not a.isupper()]
     fake = [a for a in authors if a.lower() not in real]
     add("reviews_are_real", not fake, f"not in their real reviews: {', '.join(fake)}" if fake else f"{len(authors)} reviews, all real")
 

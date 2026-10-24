@@ -24,6 +24,9 @@ export type SiteData = {
   packages: SitePackage[];
   staff: { id: string; name: string; title: string }[];
   hours: { days: string; time: string }[];
+  // each open day's earliest start and latest finish in minutes, for the live
+  // "open now" badge. weekday 1 = Monday, in the business's own timezone
+  opening: { weekday: number; start: number; end: number }[];
   base: string;          // "" on a real domain, "/s/<slug>" on the shared one
   bookHref: string;
   mapsHref: string | null;
@@ -121,6 +124,10 @@ export function buildSiteData({ biz, services, staff, hours, onOwnDomain }: Rows
     })),
     staff,
     hours: summariseHours(hours, biz, L),
+    opening: [1, 2, 3, 4, 5, 6, 7].flatMap((weekday) => {
+      const day = hours.filter((h) => h.weekday === weekday);
+      return day.length ? [{ weekday, start: Math.min(...day.map((h) => h.startMin)), end: Math.max(...day.map((h) => h.endMin)) }] : [];
+    }),
     base,
     bookHref,
     mapsHref: biz.address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${biz.name}, ${biz.address}`)}` : null,

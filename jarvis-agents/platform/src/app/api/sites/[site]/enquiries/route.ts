@@ -11,7 +11,20 @@ const body = z.object({
   website: z.string().optional(),   // honeypot: real people leave it empty
 });
 
+// saved website files (opened from disk) send the form here too, so it answers any origin
+const CORS = { "access-control-allow-origin": "*", "access-control-allow-methods": "POST, OPTIONS", "access-control-allow-headers": "content-type" };
+
+export function OPTIONS() {
+  return new Response(null, { status: 204, headers: CORS });
+}
+
 export async function POST(req: Request, ctx: { params: Promise<{ site: string }> }) {
+  const res = await handle(req, ctx);
+  for (const [k, v] of Object.entries(CORS)) res.headers.set(k, v);
+  return res;
+}
+
+async function handle(req: Request, ctx: { params: Promise<{ site: string }> }) {
   const biz = await businessFor((await ctx.params).site);
   if (!biz) return json({ error: "not found" }, 404);
   const parsed = body.safeParse(await req.json().catch(() => null));
