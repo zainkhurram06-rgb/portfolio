@@ -86,7 +86,7 @@ export function summariseHours(rows: { weekday: number; startMin: number; endMin
 }
 
 // businesses saved before the trade details existed get empty ones
-export const TRADE_DEFAULTS = { credentials: [], warranty: null, insurers: [], packages: [], beforeAfter: [] } satisfies Partial<SiteContent>;
+export const TRADE_DEFAULTS = { credentials: [], warranty: null, insurers: [], packages: [], beforeAfter: [], heroVideo: null } satisfies Partial<SiteContent>;
 
 type Rows = {
   biz: Biz;

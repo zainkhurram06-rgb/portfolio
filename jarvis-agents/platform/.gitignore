@@ -43,3 +43,6 @@ next-env.d.ts
 
 # local database from npm run db
 /.pgdata
+
+# client photos and videos uploaded by MARK (npm run dev)
+/.media

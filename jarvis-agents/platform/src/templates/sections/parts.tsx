@@ -17,12 +17,18 @@ export const Num = ({ children }: { children: React.ReactNode }) => <span dir="l
 export const cls =(...names: (string | false | null | undefined)[]) => names.filter(Boolean).join(" ");
 
 // a photo, or a soft panel with an icon when the business has no photos yet
-export function Media({ src, icon, alt = "", className }: { src?: string | null; icon: string; alt?: string; className?: string }) {
+export function Media({ src, video, icon, alt = "", className }: { src?: string | null; video?: string | null; icon: string; alt?: string; className?: string }) {
   return (
     <div className={cls("media", className)}>
-      {src ? <img src={src} alt={alt} loading="lazy" /> : <div className="art"><Icon name={icon} size={72} /></div>}
+      {video ? <Video src={video} poster={src} />
+        : src ? <img src={src} alt={alt} loading="lazy" /> : <div className="art"><Icon name={icon} size={72} /></div>}
     </div>
   );
+}
+
+// a short silent loop, like one of their reels. the photo shows until it plays
+export function Video({ src, poster, className }: { src: string; poster?: string | null; className?: string }) {
+  return <video className={className} src={src} poster={poster ?? undefined} autoPlay muted loop playsInline preload="metadata" />;
 }
 
 export function BookButton({ d, className = "btn btn-main" }: { d: SiteData; className?: string }) {

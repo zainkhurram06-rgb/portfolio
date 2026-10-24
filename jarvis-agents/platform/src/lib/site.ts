@@ -9,7 +9,8 @@ import { buildSiteData, type SiteData } from "./site-data";
 export type { SiteData, SiteService } from "./site-data";
 export { formatPrice, summariseHours } from "./site-data";
 
-export const loadSite = cache(async (site: string): Promise<SiteData | null> => {
+// a business and everything its website shows, by slug or by its own domain
+export async function siteRows(site: string) {
   const key = decodeURIComponent(site).toLowerCase();
   const [biz] = await db.select().from(t.businesses).where(
     key.includes(".") ? eq(t.businesses.customDomain, key) : eq(t.businesses.slug, key),
@@ -21,8 +22,13 @@ export const loadSite = cache(async (site: string): Promise<SiteData | null> => 
     db.select().from(t.staff).where(and(eq(t.staff.businessId, biz.id), eq(t.staff.active, true))).orderBy(asc(t.staff.sort)),
     db.select().from(t.hours).where(eq(t.hours.businessId, biz.id)),
   ]);
+  return { biz, services, staff, hours };
+}
 
+export const loadSite = cache(async (site: string): Promise<SiteData | null> => {
+  const rows = await siteRows(site);
+  if (!rows) return null;
   // the proxy tells us whether this request came in on the business's own host
   const h = await headers();
-  return buildSiteData({ biz, services, staff, hours, onOwnDomain: !!h.get("x-site-host") });
+  return buildSiteData({ ...rows, onOwnDomain: !!h.get("x-site-host") });
 });

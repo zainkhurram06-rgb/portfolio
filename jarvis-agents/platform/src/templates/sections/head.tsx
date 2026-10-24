@@ -4,7 +4,7 @@ import { Icon, tel } from "@/components/site/bits";
 import { EnquiryForm } from "@/components/site/enquiry-form";
 import { fill } from "@/lib/labels";
 import { isHealth } from "@/lib/niches";
-import { BookButton, CallButton, Media, Num, RatingChip, Ticks, cls, type SectionProps } from "./parts";
+import { BookButton, CallButton, Media, Num, RatingChip, Ticks, Video, cls, type SectionProps } from "./parts";
 
 export function Topbar({ d, v, tone }: SectionProps) {
   const { biz, c, L } = d;
@@ -94,7 +94,8 @@ export function Hero({ d, v, tone }: SectionProps) {
   if (v === "photo") {
     return (
       <header className={cls("hero", "v-photo", tone)} id="top">
-        {c.heroImage ? <img className="bg" src={c.heroImage} alt="" /> : <div className="bg art-bg" />}
+        {c.heroVideo ? <Video className="bg" src={c.heroVideo} poster={c.heroImage} />
+          : c.heroImage ? <img className="bg" src={c.heroImage} alt="" /> : <div className="bg art-bg" />}
         <div className="wrap">
           <div className="copy">{intro}<div className="under"><RatingChip d={d} /><Ticks items={c.highlights.slice(0, 3)} className="row" /></div></div>
         </div>
@@ -108,7 +109,7 @@ export function Hero({ d, v, tone }: SectionProps) {
         <div className="wrap">
           <div className="copy">{intro}</div>
           <div className="under"><RatingChip d={d} /><Ticks items={c.highlights.slice(0, 3)} className="row" /></div>
-          {c.heroImage && <Media src={c.heroImage} icon={icon} alt={biz.name} className="wide" />}
+          {(c.heroImage || c.heroVideo) && <Media src={c.heroImage} video={c.heroVideo} icon={icon} alt={biz.name} className="wide" />}
         </div>
       </header>
     );
@@ -174,7 +175,7 @@ export function Hero({ d, v, tone }: SectionProps) {
       <div className="wrap">
         <div className="copy">{intro}<Ticks items={c.highlights.slice(0, 3)} className="row" /></div>
         <div className="visual">
-          <Media src={c.heroImage} icon={icon} alt={biz.name} />
+          <Media src={c.heroImage} video={c.heroVideo} icon={icon} alt={biz.name} />
           {c.rating != null && <div className="float"><RatingChip d={d} /></div>}
         </div>
       </div>

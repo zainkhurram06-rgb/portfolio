@@ -1,0 +1,21 @@
+{
+  "language": "en", "currency": "AUD", "timezone": "Australia/Sydney", "hours_are_guessed": false,
+  "content": {
+    "tagline": "Licensed plumber, Western Sydney",
+    "headline": "Blocked drains and hot water, fixed today",
+    "subheadline": "Same day service across Western Sydney from a licensed local plumber. Call Fadi or book online.",
+    "ctaLabel": "Book a plumber",
+    "aboutTitle": "Call Fadi, and Fadi turns up",
+    "about": "It's a small local business, so the plumber you speak to is the plumber at your door.\n\nYou get the price before any work starts, and the job is cleaned up before he leaves.",
+    "highlights": ["Same day service", "Licensed plumber", "Price before work starts", "Local to Western Sydney"],
+    "faqs": [{"q": "Can you come today?", "a": "Usually yes. Call in the morning and we'll fit you in the same day."}],
+    "areasServed": ["Parramatta", "Westmead", "Harris Park", "Granville", "Merrylands", "Blacktown"]
+  },
+  "services": [
+    {"name": "Blocked drains", "description": "Cleared fast, with a camera check if it keeps coming back.", "icon": "droplet", "durationMin": 90, "price": null, "priceFrom": false},
+    {"name": "Hot water systems", "description": "Repairs and same day replacements, gas or electric.", "icon": "flame", "durationMin": 120, "price": null, "priceFrom": false},
+    {"name": "Leaking taps and pipes", "description": "Found and fixed before they cost you more.", "icon": "wrench", "durationMin": 60, "price": null, "priceFrom": false},
+    {"name": "Toilet repairs", "description": "Running, leaking or blocked toilets sorted.", "icon": "home", "durationMin": 60, "price": null, "priceFrom": false}
+  ],
+  "hours": [{"weekday": 1, "start": "07:00", "end": "18:00"}, {"weekday": 2, "start": "07:00", "end": "18:00"}, {"weekday": 3, "start": "07:00", "end": "18:00"}, {"weekday": 4, "start": "07:00", "end": "18:00"}, {"weekday": 5, "start": "07:00", "end": "18:00"}, {"weekday": 6, "start": "07:00", "end": "18:00"}]
+}

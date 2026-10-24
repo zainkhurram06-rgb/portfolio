@@ -55,6 +55,7 @@ def _steps(t: dict) -> List[tuple]:
 def _facts(lead) -> Dict[str, bool]:
     return {
         "photo": len(lead.photos) >= 1,
+        "video": bool(lead.hero_video),
         "gallery": len(lead.photos) >= 4,
         "reviews": len(lead.reviews) > 0,
         "rating": lead.rating is not None,
@@ -78,7 +79,9 @@ def score(t: dict, lead) -> Choice:
         why.append(reason)
 
     for kind, version in _steps(t):
-        if kind == "hero" and version in ("photo", "collage") and f["photo"]:
+        if kind == "hero" and version in ("photo", "split", "centered") and f["video"]:
+            add(2, "their reel plays behind the headline")
+        elif kind == "hero" and version in ("photo", "collage") and f["photo"]:
             add(2, "their photo leads the page")
         elif kind == "gallery" and version == "beforeafter" and f["before_after"]:
             add(2, "shows their before and after photos")

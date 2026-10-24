@@ -9,11 +9,10 @@
 
 import { copyFileSync, mkdirSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { brandVars, fontsHref } from "../src/lib/brand-css";
 import { NICHES, NICHE_KEYS, type Niche } from "../src/lib/niches";
-import { TEMPLATE_LIST, TemplatePage, type Template } from "../src/templates";
+import { TEMPLATE_LIST, type Template } from "../src/templates";
+import { standaloneHtml } from "../src/templates/standalone";
 import { sampleSite } from "../src/templates/samples";
 
 const OUT = join(__dirname, "..", "..", "templates");
@@ -23,27 +22,12 @@ const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 
 function page(t: Template, niche: Niche) {
   const d = sampleSite(niche, { palette: t.palette, fonts: t.fonts });
-  const body = renderToStaticMarkup(createElement(TemplatePage, { t, d }))
-    // links that only work on the platform point inside the page instead
-    .replaceAll(`href="${d.bookHref}"`, 'href="#contact"')
-    .replaceAll(`href="${d.base}/"`, 'href="#top"')
-    .replaceAll('"/samples/', '"../_photos/');
-  return `<!doctype html>
-<html lang="${d.biz.language}" dir="${d.dir}">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(t.label)} | ${esc(NICHES[niche].label)} template</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="${fontsHref(d.c)}">
-<style>body{margin:0}${brandVars(d.c)}</style>
-</head>
-<body>
-${body}
-</body>
-</html>
-`;
+  return standaloneHtml(t, d, {
+    render: renderToStaticMarkup,
+    title: `${t.label} | ${NICHES[niche].label} template`,
+    book: "#contact",
+    rewrite: (html) => html.replaceAll('"/samples/', '"../_photos/'),
+  });
 }
 
 function index(files: { niche: Niche; t: Template; path: string }[]) {

@@ -4,3 +4,6 @@ __pycache__/
 .env.*
 out/
 .venv/
+
+# the business pipeline: real leads and their downloaded media, never public
+pipeline/

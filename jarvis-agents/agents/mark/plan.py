@@ -57,6 +57,7 @@ class Lead(BaseModel):
     address: Optional[str] = None
     instagram: Optional[str] = None
     facebook: Optional[str] = None
+    tiktok: Optional[str] = None
     google_maps_url: Optional[str] = None
     rating: Optional[float] = None
     review_count: Optional[int] = None
@@ -68,6 +69,9 @@ class Lead(BaseModel):
     logo_url: Optional[str] = None
     photos: List[str] = Field(default_factory=list, description="links to their real photos")
     notes: Optional[str] = None
+    social_text: Optional[str] = Field(None, description="their own bio and recent captions, for services, prices, hours and tone")
+    hero_video: Optional[str] = Field(None, description="link to their best reel, plays behind the headline")
+    palette: Optional[Dict[str, str]] = Field(None, description="colours taken from their logo and photos, in code")
 
     # trade details. facts, copied onto the site as they are. empty = section hidden
     credentials: List[str] = Field(default_factory=list, description="licences, memberships")

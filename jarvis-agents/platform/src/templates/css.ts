@@ -75,7 +75,7 @@ p { overflow-wrap: break-word; }
 
 .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); }
 .media { position: relative; border-radius: var(--r-lg); overflow: hidden; background: linear-gradient(150deg, var(--primary), color-mix(in srgb, var(--primary) 50%, var(--accent))); min-height: 220px; }
-.media img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+.media img, .media video { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
 .media .art { position: absolute; inset: 0; display: grid; place-items: center; color: rgba(255,255,255,.88); }
 .media .art::before { content: ""; position: absolute; width: 62%; aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(255,255,255,.28); }
 .ticks { list-style: none; display: grid; gap: 12px; }

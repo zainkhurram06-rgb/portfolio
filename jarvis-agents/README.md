@@ -78,6 +78,34 @@ Test MARK with no AI and no cost:
 python -m agents.mark demo --lead samples\lead-madrid-salon.json --brains file:samples\plan-madrid-salon.json --label-brains file:samples\labels-es.json
 ```
 
+## The pipeline (folders arranged like a CRM)
+
+Every business is one folder in `pipeline/` (git-ignored: real leads stay off
+GitHub). The stage folder it sits in is its place in the funnel:
+
+```
+1-leads  2-researched  3-demo-built  4-checked  5-approved  6-pitched  7-qualified  8-won  9-lost
+```
+
+Inside each: `lead.json`, `research/` (their downloaded logo, photos, reels),
+`site/index.html` (their website as a real file), `build.json` (template, live
+demo link, demo login) and `history.md`. Open `pipeline/index.html` for the board.
+
+```powershell
+.venv\Scripts\python -m agents.pipeline add samples\leads\glow-lab-nails.json   # what EDITH will do
+.venv\Scripts\python -m agents.mark work                                           # research + build every new lead
+.venv\Scripts\python -m agents.pipeline move glow-lab-nails-dubai approved         # you, after checking it
+.venv\Scripts\python -m agents.pipeline list
+```
+
+MARK's research reads their social media, because our leads have no website.
+`MARK_RESEARCH=sample` (default) uses saved samples. `MARK_RESEARCH=chrome` runs
+Claude Code on Sonnet in your own logged-in Chrome through the Claude in Chrome
+extension, at a human pace, capped at 25 businesses a day (`RESEARCH_DAILY_CAP`).
+Needs `claude` logged in and the extension installed. Then MARK takes their logo,
+colours (from the logo and photos, in code), best photos and best reel, picks a
+template, writes the words, uploads the media and builds the demo.
+
 ## MARK's brains
 
 Tried in order until one works. Set the order with `MARK_BRAINS`.

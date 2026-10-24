@@ -49,6 +49,9 @@ Rules you never break:
   no claims about the owner, no review quotes. Highlights must be things that are
   true of booking with them or of the site itself (e.g. "Online booking").
 - Prices: only use prices the lead states. Otherwise price is null.
+- social_text is their own Instagram or Facebook bio and captions. Use it for
+  their services, prices, hours and the way they talk. Never quote it as a
+  review and never copy captions word for word.
 - Services: use the ones the lead lists. If none are listed, choose the 5 or 6
   services almost every business of this kind offers. Durations realistic for the trade.
 - Hours: use the lead's hours if given (convert to 24h HH:MM, weekday 1 = Monday).
@@ -70,7 +73,7 @@ Rules you never break:
 
 
 def _prompt(lead: Lead) -> str:
-    facts = lead.model_dump(exclude_none=True, exclude={"reviews", "photos", "logo_url", "before_after"})
+    facts = lead.model_dump(exclude_none=True, exclude={"reviews", "photos", "logo_url", "before_after", "palette", "hero_video"})
     if lead.reviews:
         facts["what_customers_say"] = [r.text for r in lead.reviews[:5]]   # tone only, not to quote
     return "Write the demo website plan for this business:\n" + json.dumps(facts, indent=2, ensure_ascii=False)
@@ -111,9 +114,12 @@ def build_payload(lead: Lead, plan: Plan, template: Optional[str] = None, labels
     """The model's creative work plus the lead's facts. Facts always win."""
     c = plan.content
     t = templates.BY_ID[template] if template else templates.pick(lead).template
-    # the template's colours, unless the business has its own brand colours
+    # colours: taken from their own logo and photos if research found them,
+    # else built by the AI from brand colours, else the template's own
     palette = dict(t["palette"])
-    if lead.brand_colours and c.palette:
+    if lead.palette and all(_valid_hex(lead.palette.get(k, "")) for k in palette):
+        palette = {k: lead.palette[k] for k in palette}
+    elif lead.brand_colours and c.palette:
         for k, v in c.palette.model_dump().items():
             if _valid_hex(v):
                 palette[k] = v
@@ -152,6 +158,7 @@ def build_payload(lead: Lead, plan: Plan, template: Optional[str] = None, labels
             "bodyFont": t["fonts"][1],
             "logoUrl": lead.logo_url,
             "heroImage": lead.photos[0] if lead.photos else None,
+            "heroVideo": lead.hero_video,
             "gallery": lead.photos[1:12],
             "instagram": lead.instagram,
             "facebook": lead.facebook,

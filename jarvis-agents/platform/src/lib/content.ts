@@ -42,6 +42,7 @@ export const siteContentSchema = z.object({
   bodyFont: z.enum(BODY_FONTS),
   logoUrl: url.nullable().default(null),
   heroImage: url.nullable().default(null),
+  heroVideo: url.nullable().default(null),      // a short muted loop, e.g. one of their reels
   gallery: z.array(url).max(12).default([]),
   instagram: url.nullable().default(null),
   facebook: url.nullable().default(null),

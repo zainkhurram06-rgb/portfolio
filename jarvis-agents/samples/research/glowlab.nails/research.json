@@ -1,0 +1,86 @@
+{
+  "source": "sample",
+  "profile": {
+    "platform": "instagram",
+    "handle": "glowlab.nails",
+    "name": "Glow Lab Nails | Dubai",
+    "bio": "Gel, BIAB & nail art in JLT ✨ Gel mani 120 AED · BIAB 180 AED · Pedi 140 AED · Open daily 10am to 10pm · Book via WhatsApp +971 50 555 0199",
+    "followers": 8400,
+    "category": "Nail salon",
+    "url": "https://instagram.com/glowlab.nails",
+    "profile_pic": "media/logo.jpg"
+  },
+  "posts": [
+    {
+      "kind": "photo",
+      "file": "media/post-1.jpg",
+      "caption": "Chrome French for a bride this weekend",
+      "likes": 40,
+      "url": "https://instagram.com/p/sample0"
+    },
+    {
+      "kind": "video",
+      "file": "media/reel-1.mp4",
+      "caption": "Watch this one come together",
+      "likes": 310,
+      "url": "https://instagram.com/reel/sample"
+    },
+    {
+      "kind": "photo",
+      "file": "media/post-2.jpg",
+      "caption": "BIAB refill, natural and strong",
+      "likes": 53,
+      "url": "https://instagram.com/p/sample1"
+    },
+    {
+      "kind": "photo",
+      "file": "media/post-3.jpg",
+      "caption": "Spring nail art drop",
+      "likes": 66,
+      "url": "https://instagram.com/p/sample2"
+    },
+    {
+      "kind": "photo",
+      "file": "media/post-4.jpg",
+      "caption": "Gel pedi + mani combo, 240 AED",
+      "likes": 79,
+      "url": "https://instagram.com/p/sample3"
+    },
+    {
+      "kind": "photo",
+      "file": "media/post-5.jpg",
+      "caption": "Our cosy studio in JLT",
+      "likes": 92,
+      "url": "https://instagram.com/p/sample4"
+    },
+    {
+      "kind": "photo",
+      "file": "media/post-6.jpg",
+      "caption": "Ombre pink for Sara",
+      "likes": 105,
+      "url": "https://instagram.com/p/sample5"
+    },
+    {
+      "kind": "photo",
+      "file": "media/post-7.jpg",
+      "caption": "Nail art Thursday",
+      "likes": 118,
+      "url": "https://instagram.com/p/sample6"
+    },
+    {
+      "kind": "photo",
+      "file": "media/post-8.jpg",
+      "caption": "Blurry test shot",
+      "likes": 131,
+      "url": "https://instagram.com/p/sample7"
+    },
+    {
+      "kind": "photo",
+      "file": "media/post-9.jpg",
+      "caption": "Late night set",
+      "likes": 144,
+      "url": "https://instagram.com/p/sample8"
+    }
+  ],
+  "google": null
+}

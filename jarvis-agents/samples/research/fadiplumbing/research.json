@@ -1,0 +1,43 @@
+{
+  "source": "sample",
+  "profile": {
+    "platform": "facebook",
+    "handle": "fadiplumbing",
+    "name": "Fadi Plumbing",
+    "bio": "Licensed plumber in Western Sydney. Blocked drains, hot water, leaks. Same day service. Call Fadi.",
+    "followers": 420,
+    "category": "Plumbing service",
+    "url": "https://facebook.com/fadiplumbing",
+    "profile_pic": "media/logo.jpg"
+  },
+  "posts": [
+    {
+      "kind": "photo",
+      "file": "media/post-1.jpg",
+      "caption": "New hot water system in Parramatta",
+      "likes": 40,
+      "url": "https://instagram.com/p/sample0"
+    }
+  ],
+  "google": {
+    "name": "Fadi Plumbing",
+    "rating": 4.8,
+    "review_count": 64,
+    "phone": "+61 2 5550 3344",
+    "address": "Parramatta NSW 2150",
+    "category": "Plumber",
+    "hours": "Monday to Saturday 7am to 6pm",
+    "reviews": [
+      {
+        "author": "Jenny K.",
+        "rating": 5,
+        "text": "Fadi fixed our hot water the same afternoon. Honest price."
+      },
+      {
+        "author": "Raj P.",
+        "rating": 5,
+        "text": "Cleared a blocked drain nobody else could. Highly recommend."
+      }
+    ]
+  }
+}

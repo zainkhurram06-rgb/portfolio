@@ -1,0 +1,21 @@
+{
+  "language": "en", "currency": "USD", "timezone": "America/Chicago", "hours_are_guessed": false,
+  "content": {
+    "tagline": "Mobile detailing across Houston",
+    "headline": "A showroom finish, right in your driveway",
+    "subheadline": "Interior resets, full details and ceramic coating. We come to your home or office.",
+    "ctaLabel": "Book a detail",
+    "aboutTitle": "We bring the detail shop to you",
+    "about": "No driving across town and no waiting room. We pull up with everything we need and get to work while you get on with your day.\n\nYou see the price before we start, and we walk round the car with you when it's done.",
+    "highlights": ["We come to you", "Online booking", "Price agreed up front", "Ceramic coating"],
+    "faqs": [{"q": "Do you need water or power?", "a": "No, we bring our own, so we can work in most driveways and car parks."}, {"q": "How long does a full detail take?", "a": "Around three to four hours, depending on the size and state of the car."}],
+    "areasServed": ["Montrose", "The Heights", "Midtown", "Bellaire", "Katy", "Sugar Land"]
+  },
+  "services": [
+    {"name": "Interior detail", "description": "Vacuum, shampoo, leather and every surface wiped down.", "icon": "home", "durationMin": 150, "price": 120, "priceFrom": false},
+    {"name": "Full detail", "description": "Inside and out, with clay bar, polish and wax.", "icon": "star", "durationMin": 240, "price": 220, "priceFrom": true},
+    {"name": "Ceramic coating", "description": "Long-lasting gloss and protection, quoted per car.", "icon": "shield", "durationMin": 480, "price": null, "priceFrom": false},
+    {"name": "Wheels and tyres", "description": "Deep clean of wheels, arches and a tyre dressing.", "icon": "droplet", "durationMin": 60, "price": null, "priceFrom": false}
+  ],
+  "hours": [{"weekday": 1, "start": "08:00", "end": "19:00"}, {"weekday": 2, "start": "08:00", "end": "19:00"}, {"weekday": 3, "start": "08:00", "end": "19:00"}, {"weekday": 4, "start": "08:00", "end": "19:00"}, {"weekday": 5, "start": "08:00", "end": "19:00"}, {"weekday": 6, "start": "08:00", "end": "19:00"}]
+}

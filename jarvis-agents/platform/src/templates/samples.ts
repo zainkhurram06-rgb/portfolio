@@ -7,7 +7,7 @@ import { buildSiteData, type SiteData } from "@/lib/site-data";
 
 type Sample = {
   name: string; city: string; country: string; currency: string; phone: string; email: string; address: string;
-  content: Omit<SiteContent, "palette" | "headingFont" | "bodyFont" | "logoUrl" | "heroImage" | "gallery" | "labels" | "instagram" | "facebook">;
+  content: Omit<SiteContent, "palette" | "headingFont" | "bodyFont" | "logoUrl" | "heroImage" | "heroVideo" | "gallery" | "labels" | "instagram" | "facebook">;
   services: [name: string, description: string, icon: string, minutes: number, price: number | null][];
   staff: [string, string][];
   hours: [days: number[], start: string, end: string][];
@@ -193,6 +193,7 @@ export function sampleSite(niche: Niche, opts: { photos?: boolean; lang?: string
     bodyFont: (opts.fonts?.[1] ?? "Inter") as SiteContent["bodyFont"],
     logoUrl: null,
     heroImage: photos ? "/samples/photo-1.svg" : null,
+    heroVideo: null,
     gallery: photos ? [2, 3, 4, 5, 6, 7, 8].map((n) => `/samples/photo-${n}.svg`) : [],
     beforeAfter: photos ? s.content.beforeAfter : [],
     instagram: "https://instagram.com/example",

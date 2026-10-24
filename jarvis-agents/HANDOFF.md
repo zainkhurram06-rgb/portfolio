@@ -43,6 +43,12 @@ Order agreed: build the agents first, connect them to Jarvis later.
 - **FRIDAY:** ElevenLabs agent. Legal guardrails as features (landline/mobile check,
   do-not-call lists, calling hours, says it's an AI). Test calls go to Zain's phone first.
 - **Names are final:** JARVIS, EDITH, FRIDAY, MARK, HAPPY.
+- **Pipeline (Zain, 23 Oct):** no CRM software. Folders arranged like a CRM: each business is
+  a folder that moves through `pipeline/1-leads` ... `9-lost`. "Qualified" means FRIDAY pitched
+  them and they're interested. HAPPY checks website quality against rules Zain will set, then Zain.
+- **Leads have no website.** Their brand comes from social media (Instagram, Facebook, TikTok,
+  Google listing). Research runs through Claude CLI (Sonnet) in Zain's own Chrome via the
+  Claude in Chrome extension, not Apify.
 - **Build order (Zain, 22 Oct):** template library as far as it goes, get MARK's skeleton right,
   build, test, then the next agent, repeat. Making it beautiful comes last, from the 60 references.
 
@@ -73,7 +79,21 @@ Order agreed: build the agents first, connect them to Jarvis later.
   member. That lock fixed real deadlocks found under load.
 - Private API for agents: `POST /api/internal/businesses` (Bearer `INTERNAL_API_TOKEN`).
 
-`jarvis-agents/agents/mark/`: Python. `python -m agents.mark demo --lead lead.json`.
+`jarvis-agents/agents/pipeline.py`: the pipeline folders, `add`, `move`, `list`, and the board
+page `pipeline/index.html`. `pipeline/` is git-ignored (real business data).
+
+`jarvis-agents/agents/mark/`: Python. Pipeline work: `python -m agents.mark work` (research +
+build every lead), or `research <key>` / `build <key>`. Old one-off: `demo --lead lead.json`.
+- `research.py`: sources `sample` (samples/research/, matched by social handle) and `chrome`
+  (claude -p --chrome --model sonnet, JSON schema output, downloads media, 25/day cap).
+- `branding.py`: logo = profile picture, palette from logo then photos (black logos lead with
+  black), photo picking (size, sharpness, brightness, duplicates), best reel = hero video.
+- `work.py`: builds into `3-demo-built/<key>/site/index.html` + `site/media/`, uploads media to
+  the platform (`POST /api/internal/media`, files in `platform/.media`), live demo still made,
+  `build.json` records template, demo link and login. Export via `platform/scripts/export-site.ts`
+  (Next.js can't render the contact form to a file inside a route).
+- Samples: 3 no-website businesses in `samples/leads`, `samples/research`, `samples/plans`
+  (`samples/make_research.py` regenerates the fake media).
 - Picks the template in code (`templates.py`), not the AI: right trade, no photo-led design
   without a photo, scored by how much of the page the lead's facts fill, then least used in
   the same city (asks `/api/internal/themes?niche=&city=`), then a stable per-lead choice.
@@ -84,9 +104,9 @@ Order agreed: build the agents first, connect them to Jarvis later.
 - Demo logins never use the business's real email. Demo sites carry a "demo preview" bar and
   noindex.
 
-Tests: `cd platform && npm test` (31 pass: booking engine with an 8-people-at-once stress test,
+Tests: `cd platform && npm test` (34 pass: booking engine with an 8-people-at-once stress test, media storage safety,
 plus every template rendered for every trade it claims, with and without photos, in English,
-German and Arabic). `python -m unittest agents.mark.test_mark` (25 pass, 11 on template picking).
+German and Arabic). `python -m unittest agents.test_pipeline agents.mark.test_work agents.mark.test_mark` (45 pass).
 Lint, types and production build clean.
 
 Screenshots of every screen: `jarvis-agents/screenshots/`. Every template, desktop and phone:
@@ -101,7 +121,9 @@ Screenshots of every screen: `jarvis-agents/screenshots/`. Every template, deskt
 2. Reminders don't send yet (WhatsApp / SMS / email). The setting exists, nothing sends.
 3. Google Calendar sync, deposits and payments, car wash memberships, photo uploads
    (owners paste image links for now).
-4. MARK has never made a live AI call. No API key in the sandbox. Tested with sample files only.
+4. Real research has never run: the Claude CLI on the laptop said "OAuth session expired" on
+   23 Oct. Zain needs to run `claude` and `/login`, and have the Claude in Chrome extension on.
+   MARK has never made a live AI call for the words either. No API key in the sandbox. Tested with sample files only.
 5. EDITH, FRIDAY and HAPPY: not started. Connecting agents to Jarvis: later.
 6. Hosting: runs locally only. Suggested Vercel + Supabase when Zain wants to click around.
 
