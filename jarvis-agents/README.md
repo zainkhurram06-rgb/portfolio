@@ -106,6 +106,30 @@ Needs `claude` logged in and the extension installed. Then MARK takes their logo
 colours (from the logo and photos, in code), best photos and best reel, picks a
 template, writes the words, uploads the media and builds the demo.
 
+## EDITH, the lead tracker
+
+Finds businesses with no website that are alive on social media, and drops the
+good ones into `pipeline/1-leads` for MARK. Uses Apify (Google Maps, Instagram,
+Facebook scrapers), with a hard spending cap on every run.
+
+Her rules live in `agents/edith/rules.json` (change numbers there, no code):
+no real website (an Instagram, Facebook, WhatsApp, Linktree, Fresha or Booksy
+link doesn't count), posted in the last 15 days, 50+ Google reviews, a phone
+number, a street address for shopfront trades, up to 300 leads a city, never
+lowering the bar to hit a number. Each run writes a report to
+`pipeline/edith-reports/` with every business checked and why it was kept or not.
+
+```powershell
+.venv\Scripts\python -m agents.edith plan add 2026-10-27 salon Dubai AE    # one city a day
+.venv\Scripts\python -m agents.edith today                                 # run today's city
+.venv\Scripts\python -m agents.edith find --niche salon --city Dubai --country AE
+.venv\Scripts\python -m agents.pipeline remove --samples                   # clear test data
+```
+
+Without `EDITH_APIFY=live` she uses saved samples (free). Live needs
+`APIFY_TOKEN`. About $8 a city on Apify's free-tier prices, capped by
+`max_usd_per_run` in rules.json (Apify itself stops the run at the cap).
+
 ## MARK's brains
 
 Tried in order until one works. Set the order with `MARK_BRAINS`.

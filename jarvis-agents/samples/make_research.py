@@ -136,7 +136,7 @@ def make(b):
     }
     (out / "research.json").write_text(json.dumps(research, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     LEADS.mkdir(exist_ok=True)
-    (LEADS / f"{slug(b['lead']['name'])}.json").write_text(json.dumps(b["lead"], indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    (LEADS / f"{slug(b['lead']['name'])}.json").write_text(json.dumps({**b["lead"], "sample": True}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"{b['key']}: {len(posts)} posts")
 
 

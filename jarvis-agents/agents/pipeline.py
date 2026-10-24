@@ -170,6 +170,18 @@ def move(key: str, to: str, by: str = "You", note: str = "") -> Business:
     return b
 
 
+def remove(key: str) -> Business:
+    """Deletes a business's folder for good. For test data and mistakes."""
+    b = find(key)
+    shutil.rmtree(b.path)
+    board()
+    return b
+
+
+def samples() -> List[Business]:
+    return [b for b in everyone() if b.lead().get("sample")]
+
+
 # ------------------------------------------------------------------ the board
 
 def _rel(p: Path) -> str:
@@ -191,15 +203,24 @@ def _card(b: Business) -> str:
     links.append(f'<a href="{_rel(b.file("history.md"))}">history</a>')
     last = b.history()[-1] if b.history() else ""
     socials = " ".join(f'<span>{k}</span>' for k in ("instagram", "facebook", "tiktok", "google_maps_url") if lead.get(k))
+    if lead.get("sample"):
+        socials += ' <span class="sample">sample</span>'
     return f"""
       <article>
         <div class="who">{f'<img src="{_rel(logo)}" alt="">' if logo else f'<i>{html.escape(lead["name"][:1])}</i>'}
           <div><b>{html.escape(lead["name"])}</b><small>{html.escape(lead.get("niche", ""))} · {html.escape(lead.get("city") or lead.get("country", ""))}</small></div></div>
         {f'<p class="tpl">template: {html.escape(build["template_label"])}</p>' if build.get("template_label") else ""}
+        {f'<p class="tpl" title="{html.escape("; ".join(lead["edith"].get("why", [])))}">EDITH score {lead["edith"]["score"]}: {html.escape("; ".join(lead["edith"].get("why", [])))}</p>' if (lead.get("edith") or {}).get("score") is not None else ""}
         <p class="socials">{socials.replace("google_maps_url", "google")}</p>
         <nav>{" ".join(links)}</nav>
         <p class="last">{html.escape(last)}</p>
       </article>"""
+
+
+def _reports() -> str:
+    folder = ROOT / "edith-reports"
+    files = sorted(folder.glob("*.html"), reverse=True)[:6] if folder.exists() else []
+    return ("<p>EDITH's reports: " + " · ".join(f'<a href="{_rel(f)}">{html.escape(f.stem)}</a>' for f in files) + "</p>") if files else ""
 
 
 def board() -> Path:
@@ -207,7 +228,8 @@ def board() -> Path:
     people = everyone()
     cols = []
     for folder, label, who in STAGES:
-        mine = [b for b in people if b.stage == folder]
+        # best EDITH score first, so the strongest leads are at the top
+        mine = sorted((b for b in people if b.stage == folder), key=lambda b: -((b.lead().get("edith") or {}).get("score") or 0))
         cols.append(f"""
     <section>
       <h2>{label} <span>{len(mine)}</span></h2>
@@ -237,12 +259,13 @@ article {{ background: #fff; border-radius: 12px; padding: 12px; margin-bottom: 
 .tpl {{ font-size: .82rem; color: #57534e; }}
 .socials {{ display: flex; gap: 5px; flex-wrap: wrap; }}
 .socials span {{ font-size: .72rem; background: #f1efeb; border-radius: 999px; padding: 2px 8px; }}
+.socials .sample {{ background: #fef3c7; }}
 nav {{ display: flex; flex-wrap: wrap; gap: 6px 10px; font-size: .84rem; }}
 nav a {{ color: #1d4ed8; text-decoration: none; }}
 nav a.main {{ font-weight: 700; }}
 .last {{ font-size: .76rem; color: #78716c; border-top: 1px solid #f1efeb; padding-top: 6px; }}
 </style></head><body>
-<header><h1>Pipeline</h1><p>{len(people)} businesses · updated {datetime.now():%d %b %Y, %H:%M} · each card is a folder in {html.escape(str(ROOT))}</p></header>
+<header><h1>Pipeline</h1><p>{len(people)} businesses · updated {datetime.now():%d %b %Y, %H:%M} · each card is a folder in {html.escape(str(ROOT))}</p>{_reports()}</header>
 <main class="board">{"".join(cols)}
 </main>
 </body></html>
@@ -266,6 +289,9 @@ def main(argv=None):
     m.add_argument("stage")
     m.add_argument("--note", default="")
     m.add_argument("--by", default="You")
+    r = sub.add_parser("remove", help="delete a business's folder, or every sample with --samples")
+    r.add_argument("key", nargs="?")
+    r.add_argument("--samples", action="store_true")
     sub.add_parser("list", help="every business and its stage")
     sub.add_parser("board", help="redraw pipeline/index.html")
     args = p.parse_args(argv)
@@ -279,6 +305,13 @@ def main(argv=None):
         elif args.cmd == "move":
             b = move(args.key, args.stage, by=args.by, note=args.note)
             print(f"{b.key} is now in {b.stage}")
+        elif args.cmd == "remove":
+            gone = samples() if args.samples else [find(args.key)] if args.key else []
+            for b in gone:
+                remove(b.key)
+                print(f"removed {b.key}")
+            if not gone:
+                print("nothing to remove")
         elif args.cmd == "list":
             for b in everyone():
                 print(f"{b.stage:14} {b.key}")

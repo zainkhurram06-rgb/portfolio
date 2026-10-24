@@ -19,7 +19,7 @@ Jarvis becomes the product manager. Agents are his employees:
 |---|---|---|
 | JARVIS | Product manager. Zain talks to him, he assigns and checks work | Exists as voice assistant, not yet connected to agents |
 | MARK | Developer. Lead in, demo website + booking + dashboard out | Built |
-| EDITH | Lead tracker. Finds and qualifies leads. Owns the lead sheet | Not started |
+| EDITH | Lead tracker. Finds leads with no website, active on social, drops them in pipeline/1-leads | Built (samples only, needs APIFY_TOKEN) |
 | FRIDAY | Sales caller. ElevenLabs voice agent + phone line, pitches the demo | Not started |
 | HAPPY | Quality check. Verifies everyone's work before it reaches Zain | Not started |
 
@@ -49,6 +49,11 @@ Order agreed: build the agents first, connect them to Jarvis later.
 - **Leads have no website.** Their brand comes from social media (Instagram, Facebook, TikTok,
   Google listing). Research runs through Claude CLI (Sonnet) in Zain's own Chrome via the
   Claude in Chrome extension, not Apify.
+- **EDITH's rules (Zain, 24 Oct):** 150 to 300 leads a city but never force it; no website;
+  posted on social in the last 10 to 15 days; 50+ Google reviews; phone; complete street address
+  for shopfront businesses (online/mobile ones skip that rule). First trade: beauty and hair salons
+  (incl. nails, barbers, lash/brow). Lead finding uses Apify (volume would get his Instagram
+  flagged through Chrome); MARK's research still uses his Chrome.
 - **Build order (Zain, 22 Oct):** template library as far as it goes, get MARK's skeleton right,
   build, test, then the next agent, repeat. Making it beautiful comes last, from the 60 references.
 
@@ -82,6 +87,13 @@ Order agreed: build the agents first, connect them to Jarvis later.
 `jarvis-agents/agents/pipeline.py`: the pipeline folders, `add`, `move`, `list`, and the board
 page `pipeline/index.html`. `pipeline/` is git-ignored (real business data).
 
+`jarvis-agents/agents/edith/`: EDITH. `edith.py` (search, rules, Instagram/Facebook recency,
+score, add to pipeline, HTML report), `apify.py` (live client with maxTotalChargeUsd cap, or
+samples from `samples/apify/` with `{days_ago:N}` dates), `rules.json` (Zain's rules, search terms,
+links that don't count as a website). Plan in `pipeline/edith-plan.json`. Known gap: a business
+whose Google listing has no social link at all is skipped; a later version can search Instagram
+for them by name.
+
 `jarvis-agents/agents/mark/`: Python. Pipeline work: `python -m agents.mark work` (research +
 build every lead), or `research <key>` / `build <key>`. Old one-off: `demo --lead lead.json`.
 - `research.py`: sources `sample` (samples/research/, matched by social handle) and `chrome`
@@ -106,7 +118,7 @@ build every lead), or `research <key>` / `build <key>`. Old one-off: `demo --lea
 
 Tests: `cd platform && npm test` (34 pass: booking engine with an 8-people-at-once stress test, media storage safety,
 plus every template rendered for every trade it claims, with and without photos, in English,
-German and Arabic). `python -m unittest agents.test_pipeline agents.mark.test_work agents.mark.test_mark` (45 pass).
+German and Arabic). `python -m unittest agents.test_pipeline agents.mark.test_work agents.mark.test_mark` (56 pass, 11 of them EDITH).
 Lint, types and production build clean.
 
 Screenshots of every screen: `jarvis-agents/screenshots/`. Every template, desktop and phone:
@@ -124,7 +136,8 @@ Screenshots of every screen: `jarvis-agents/screenshots/`. Every template, deskt
 4. Real research has never run: the Claude CLI on the laptop said "OAuth session expired" on
    23 Oct. Zain needs to run `claude` and `/login`, and have the Claude in Chrome extension on.
    MARK has never made a live AI call for the words either. No API key in the sandbox. Tested with sample files only.
-5. EDITH, FRIDAY and HAPPY: not started. Connecting agents to Jarvis: later.
+5. EDITH has only run on samples: needs `APIFY_TOKEN` and a paid Apify plan for full cities.
+   FRIDAY and HAPPY: not started. Connecting agents to Jarvis: later.
 6. Hosting: runs locally only. Suggested Vercel + Supabase when Zain wants to click around.
 
 ## What Zain needs to do
@@ -133,6 +146,8 @@ Screenshots of every screen: `jarvis-agents/screenshots/`. Every template, deskt
    internet). Only needed for cloud sessions.
 2. Create an empty private GitHub repo `jarvis-agents` and share the name.
 3. Put a Claude or DeepSeek API key on his laptop for one live MARK test.
+4. Apify: API token (and a paid plan for 150 to 300 leads a city, roughly $8 a city).
+5. Log the Claude CLI back in (`claude`, then `/login`) for MARK's Chrome research.
 
 ## Running it on Zain's laptop (local session)
 
