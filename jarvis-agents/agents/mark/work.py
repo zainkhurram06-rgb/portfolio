@@ -157,6 +157,15 @@ def build_stage(b: Business, brains: Optional[str] = None, label_brains: Optiona
     payload = mark.build_payload(lead, plan, chosen, labels)
     result = (create or mark.create_on_platform)(payload)
 
+    # what research found goes back on the lead, so HAPPY and FRIDAY see the same facts
+    raw = b.lead()
+    for k in ("phone", "address", "rating", "review_count", "hours"):
+        if not raw.get(k) and getattr(lead, k, None) is not None:
+            raw[k] = getattr(lead, k)
+    raw.setdefault("timezone", plan.timezone)
+    raw.setdefault("language", plan.language)
+    b.save_lead(raw)
+
     save_site(b, export(result["slug"]), f"{mark.PLATFORM_URL}/media/{b.key}/")
     t = templates.BY_ID[chosen]
     build = {
@@ -165,6 +174,9 @@ def build_stage(b: Business, brains: Optional[str] = None, label_brains: Optiona
         "site": result["site"], "subdomain": result.get("subdomain"), "dashboard": result.get("dashboard"),
         "login": result.get("login"),
         "palette": payload["content"]["palette"], "fonts": t["fonts"],
+        "headline": payload["content"]["headline"],
+        "services": len(payload["services"]), "priced": sum(1 for x in payload["services"] if x.get("price") is not None),
+        "phone": payload.get("phone"),
         "research_source": r.source,
         "media": {"logo": bool(urls["logo"]), "photos": len(urls["photos"]), "video": bool(urls["video"])},
         "left_out": br.skipped,

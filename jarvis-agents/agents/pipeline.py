@@ -200,6 +200,12 @@ def _card(b: Business) -> str:
         links.insert(0, f'<a class="main" href="{_rel(b.file("site", "index.html"))}">open website</a>')
     if build.get("site"):
         links.append(f'<a href="{html.escape(build["site"])}">live demo</a>')
+    if b.file("check.html").exists():
+        passed = json.loads(b.file("check.json").read_text(encoding="utf-8")).get("passed")
+        links.append(f'<a href="{_rel(b.file("check.html"))}">HAPPY {"passed" if passed else "failed"}</a>')
+    if b.file("calls", "index.html").exists():
+        n = len(json.loads(b.file("calls", "calls.json").read_text(encoding="utf-8")))
+        links.append(f'<a href="{_rel(b.file("calls", "index.html"))}">calls ({n})</a>')
     links.append(f'<a href="{_rel(b.file("history.md"))}">history</a>')
     last = b.history()[-1] if b.history() else ""
     socials = " ".join(f'<span>{k}</span>' for k in ("instagram", "facebook", "tiktok", "google_maps_url") if lead.get(k))

@@ -1,0 +1,11 @@
+{
+  "status": "done",
+  "summary": "Reached an employee. The owner, Marcus, is out on a job until the afternoon. Asked to call back tomorrow after 3pm.",
+  "seconds": 51,
+  "data": {"outcome": "call_back", "spoke_to_owner": false, "callback_time": "tomorrow after 3pm", "send_link_to": "", "objection": ""},
+  "transcript": [
+    {"who": "agent", "said": "Hi, this is FRIDAY, an AI assistant calling from your company. Am I speaking with the owner or manager of Shine Kings Detailing?"},
+    {"who": "user", "said": "No, Marcus is out on a detail. Try tomorrow after three."},
+    {"who": "agent", "said": "Will do, thank you. Have a good day."}
+  ]
+}

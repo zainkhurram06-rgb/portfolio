@@ -1,0 +1,17 @@
+{
+  "_readme": "FRIDAY's calling rules. She refuses any call that breaks one. Every country starts switched off: turn one on only after you've checked the rules for calling businesses there with an AI voice. Until FRIDAY_LIVE=yes is set, every call goes to your own FRIDAY_TEST_NUMBER instead of the business.",
+  "company_name": "",
+  "price_text": "",
+  "calling_days": [1, 2, 3, 4, 5],
+  "calling_hours": [["10:00", "12:00"], ["14:00", "17:00"]],
+  "max_attempts": 2,
+  "days_between_attempts": 2,
+  "calls_per_day": 40,
+  "countries": {
+    "AE": {"on": false, "call_mobiles": false},
+    "US": {"on": false, "call_mobiles": false},
+    "GB": {"on": false, "call_mobiles": false},
+    "AU": {"on": false, "call_mobiles": false},
+    "CA": {"on": false, "call_mobiles": false}
+  }
+}

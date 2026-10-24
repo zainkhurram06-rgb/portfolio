@@ -20,8 +20,8 @@ Jarvis becomes the product manager. Agents are his employees:
 | JARVIS | Product manager. Zain talks to him, he assigns and checks work | Exists as voice assistant, not yet connected to agents |
 | MARK | Developer. Lead in, demo website + booking + dashboard out | Built |
 | EDITH | Lead tracker. Finds leads with no website, active on social, drops them in pipeline/1-leads | Built (samples only, needs APIFY_TOKEN) |
-| FRIDAY | Sales caller. ElevenLabs voice agent + phone line, pitches the demo | Not started |
-| HAPPY | Quality check. Verifies everyone's work before it reaches Zain | Not started |
+| FRIDAY | Sales caller. ElevenLabs voice agent + phone line, pitches the demo | Built (sample calls only, needs ElevenLabs + Twilio) |
+| HAPPY | Quality check. Checks every website against Zain's rules before he sees it | Built |
 
 Order agreed: build the agents first, connect them to Jarvis later.
 
@@ -94,6 +94,17 @@ links that don't count as a website). Plan in `pipeline/edith-plan.json`. Known 
 whose Google listing has no social link at all is skipped; a later version can search Instagram
 for them by name.
 
+`jarvis-agents/agents/happy/`: HAPPY. `happy.py` (static checks on site/index.html plus
+`platform/scripts/check-site.ts` in real Chrome), `rules.json` (on/off, block/warn per rule).
+Writes check.json + check.html per business. Pass moves 3-demo-built to 4-checked.
+
+`jarvis-agents/agents/friday/`: FRIDAY. `guard.py` (all call rules), `voice.py` (ElevenLabs:
+agents/create, twilio/outbound-call, conversations/{id}; data collection field `outcome`;
+SampleVoice plays samples/calls/*.json), `friday.py` (call, collect, move by outcome, calls/index.html),
+`pitch.md` (her brief, ElevenLabs {{variables}}), `rules.json` (company_name, price_text, hours,
+countries all off). Test calls never move a business. The ElevenLabs request shapes for agent
+setup and data collection were written from the docs and haven't been tried live yet.
+
 `jarvis-agents/agents/mark/`: Python. Pipeline work: `python -m agents.mark work` (research +
 build every lead), or `research <key>` / `build <key>`. Old one-off: `demo --lead lead.json`.
 - `research.py`: sources `sample` (samples/research/, matched by social handle) and `chrome`
@@ -118,7 +129,7 @@ build every lead), or `research <key>` / `build <key>`. Old one-off: `demo --lea
 
 Tests: `cd platform && npm test` (34 pass: booking engine with an 8-people-at-once stress test, media storage safety,
 plus every template rendered for every trade it claims, with and without photos, in English,
-German and Arabic). `python -m unittest agents.test_pipeline agents.mark.test_work agents.mark.test_mark` (56 pass, 11 of them EDITH).
+German and Arabic). `python -m unittest agents.test_pipeline agents.mark.test_work agents.mark.test_mark` (82 pass: EDITH, MARK, HAPPY, FRIDAY, pipeline). Testing guide: START-HERE.html.
 Lint, types and production build clean.
 
 Screenshots of every screen: `jarvis-agents/screenshots/`. Every template, desktop and phone:
@@ -137,7 +148,10 @@ Screenshots of every screen: `jarvis-agents/screenshots/`. Every template, deskt
    23 Oct. Zain needs to run `claude` and `/login`, and have the Claude in Chrome extension on.
    MARK has never made a live AI call for the words either. No API key in the sandbox. Tested with sample files only.
 5. EDITH has only run on samples: needs `APIFY_TOKEN` and a paid Apify plan for full cities.
-   FRIDAY and HAPPY: not started. Connecting agents to Jarvis: later.
+   FRIDAY has only made sample calls: needs ELEVENLABS_API_KEY, a Twilio number imported into
+   ElevenLabs (FRIDAY_PHONE_NUMBER_ID), FRIDAY_TEST_NUMBER, company_name in rules.json.
+   No public holiday check yet. Sending the demo link by WhatsApp after an interested call is
+   not automated yet (the number is logged on the card). Connecting agents to Jarvis: later.
 6. Hosting: runs locally only. Suggested Vercel + Supabase when Zain wants to click around.
 
 ## What Zain needs to do

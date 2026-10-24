@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jarvis agents: start here</title>
+<style>
+:root { --ink: #1c1917; --muted: #6b6560; --line: #e7e3df; --bg: #f6f4f1; --card: #fff; --blue: #1d4ed8; --green: #15803d; --amber: #b45309; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font: 15px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); }
+main { width: min(980px, 100% - 32px); margin: 0 auto; padding: 32px 0 80px; }
+h1 { font-size: 2rem; line-height: 1.2; }
+h2 { font-size: 1.35rem; margin: 40px 0 10px; }
+h3 { font-size: 1.05rem; margin: 20px 0 8px; }
+p, li { color: #3f3a36; }
+.lead { color: var(--muted); margin: 8px 0 20px; }
+a { color: var(--blue); }
+.links { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-top: 18px; }
+.links a { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; text-decoration: none; color: inherit; }
+.links a b { display: block; color: var(--blue); }
+.links a span { color: var(--muted); font-size: .9rem; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; margin: 12px 0; }
+.agent { border-inline-start: 4px solid var(--blue); }
+.tag { display: inline-block; font-size: .78rem; font-weight: 700; padding: 2px 9px; border-radius: 999px; background: #dcfce7; color: var(--green); margin-inline-start: 8px; vertical-align: middle; }
+.tag.need { background: #fef3c7; color: var(--amber); }
+ol, ul { padding-inline-start: 22px; display: grid; gap: 6px; }
+li { min-width: 0; overflow-wrap: anywhere; }
+.cmd { display: flex; gap: 8px; align-items: stretch; margin: 6px 0; }
+.cmd code { flex: 1; min-width: 0; display: block; background: #1c1917; color: #f5f5f4; padding: 9px 12px; border-radius: 10px; font: 13px/1.5 ui-monospace, Consolas, monospace; overflow-x: auto; white-space: pre; }
+.cmd button { font: inherit; font-size: .82rem; border: 1px solid var(--line); background: #fff; border-radius: 10px; padding: 0 12px; cursor: pointer; }
+.cmd button.done { background: #dcfce7; }
+.file { font: 13px ui-monospace, Consolas, monospace; background: #efece8; padding: 1px 6px; border-radius: 6px; }
+table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+td, th { text-align: start; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { background: #faf9f7; font-size: .85rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+<h1>Jarvis agents: start here</h1>
+<p class="lead">Everything that's built, how to open it, and how to test each agent. All commands are PowerShell, run from <span class="file">C:\Users\zaink\portfolio\jarvis-agents</span> unless it says otherwise.</p>
+
+<div class="links">
+  <a href="pipeline/index.html"><b>The pipeline board</b><span>every business, in its stage</span></a>
+  <a href="templates/index.html"><b>Template library</b><span>every website template as a file</span></a>
+  <a href="http://localhost:3000/templates"><b>Live template gallery</b><span>needs the platform running</span></a>
+  <a href="http://localhost:3000/admin"><b>Owner dashboard</b><span>owner@luna.example / demo-password</span></a>
+</div>
+
+<h2>1. Start the platform (two windows, leave them open)</h2>
+<div class="card">
+  <p>Window 1, the database:</p>
+  <div class="cmd"><code>cd platform; npm run db</code><button>copy</button></div>
+  <p>Window 2, the websites and dashboard:</p>
+  <div class="cmd"><code>cd platform; npm run dev</code><button>copy</button></div>
+  <p>Use a third window for everything below.</p>
+</div>
+
+<h2>2. The flow</h2>
+<div class="card">
+  <p><b>EDITH</b> finds leads (1-leads) → <b>MARK</b> researches and builds their site (2-researched, 3-demo-built) → <b>HAPPY</b> checks it (4-checked) → <b>you</b> approve (5-approved) → <b>FRIDAY</b> calls (6-pitched, 7-qualified, 9-lost). Every business is a folder in <span class="file">pipeline\</span>, and its card on the board links to its website, research, check report, calls and history.</p>
+</div>
+
+<h2>3. Test each agent</h2>
+<p>Every agent has a free <b>sample mode</b> that works now with made-up businesses, and a <b>real mode</b> that needs a key.</p>
+
+<div class="card agent">
+  <h3>EDITH, the lead tracker <span class="tag">sample works now</span><span class="tag need">real needs Apify</span></h3>
+  <ol>
+    <li>Plan a city and run it (sample data):
+      <div class="cmd"><code>.venv\Scripts\python -m agents.edith plan add 2026-10-27 salon Dubai AE</code><button>copy</button></div>
+      <div class="cmd"><code>.venv\Scripts\python -m agents.edith find --niche salon --city Dubai --country AE</code><button>copy</button></div>
+    </li>
+    <li>Open the board: new cards in Leads, best score first. Her report (link at the top of the board) shows why every other business was left out.</li>
+    <li>Change her rules in <span class="file">agents\edith\rules.json</span> (reviews, days since last post, leads per city, spending cap).</li>
+    <li>Real run: set your Apify token, then switch her to live:
+      <div class="cmd"><code>$env:APIFY_TOKEN = "your-apify-token"; $env:EDITH_APIFY = "live"</code><button>copy</button></div>
+      Start with a small city. She prints the cost estimate and Apify stops at the cap.</li>
+  </ol>
+</div>
+
+<div class="card agent">
+  <h3>MARK, the developer <span class="tag">sample works now</span><span class="tag need">real needs Claude login + an AI key</span></h3>
+  <ol>
+    <li>Add the three sample businesses that have saved research (Glow Lab Nails, Shine Kings, Fadi Plumbing). If they're already on the board, clear the samples first (section 5):
+      <div class="cmd"><code>foreach ($f in Get-ChildItem samples\leads\*.json) { .venv\Scripts\python -m agents.pipeline add $f.FullName }</code><button>copy</button></div>
+    </li>
+    <li>Research and build them:
+      <div class="cmd"><code>$env:INTERNAL_API_TOKEN = "dev-token-not-secret-0123456789"</code><button>copy</button></div>
+      <div class="cmd"><code>.venv\Scripts\python -m agents.mark research --all</code><button>copy</button></div>
+      <div class="cmd"><code>.venv\Scripts\python -m agents.mark build glow-lab-nails-dubai --brains file:samples\plans\glow-lab-nails.json --label-brains file:x</code><button>copy</button></div>
+    </li>
+    <li>On the board, open the website: their logo, colours, photos and reel, filled into a template. Book buttons go to the live booking page.</li>
+    <li>Real research uses your own Chrome: run <span class="file">claude</span> then <span class="file">/login</span> once, keep Chrome open with the Claude in Chrome extension, then:
+      <div class="cmd"><code>$env:MARK_RESEARCH = "chrome"; .venv\Scripts\python -m agents.mark work</code><button>copy</button></div>
+      The words need an AI: set <span class="file">ANTHROPIC_API_KEY</span> or <span class="file">DEEPSEEK_API_KEY</span>, or have Codex logged in.</li>
+  </ol>
+</div>
+
+<div class="card agent">
+  <h3>HAPPY, quality check <span class="tag">works now</span></h3>
+  <ol>
+    <li>Check every website in Demo built:
+      <div class="cmd"><code>.venv\Scripts\python -m agents.happy check --all</code><button>copy</button></div>
+    </li>
+    <li>Passed sites move to Checked. Each card links to <b>HAPPY passed / failed</b>, his report with every rule.</li>
+    <li>Your rules: <span class="file">agents\happy\rules.json</span>. Turn each one on or off, and set it to <b>block</b> (fails the site) or <b>warn</b> (noted only).</li>
+    <li>Then you approve the ones you like:
+      <div class="cmd"><code>.venv\Scripts\python -m agents.pipeline move glow-lab-nails-dubai approved</code><button>copy</button></div>
+    </li>
+  </ol>
+</div>
+
+<div class="card agent">
+  <h3>FRIDAY, the sales caller <span class="tag">sample works now</span><span class="tag need">real needs ElevenLabs + Twilio</span></h3>
+  <ol>
+    <li>Sample calls (no phone line, made-up results):
+      <div class="cmd"><code>.venv\Scripts\python -m agents.friday call --all --any-time</code><button>copy</button></div>
+      Interested goes to Qualified, call back to Pitched, no to Lost. Each card links to <b>calls</b>: the summary and transcript.</li>
+    <li>Would she call someone right now, and if not, why:
+      <div class="cmd"><code>.venv\Scripts\python -m agents.friday check glow-lab-nails-dubai</code><button>copy</button></div>
+    </li>
+    <li>Edit what she says in <span class="file">agents\friday\pitch.md</span>. Set <span class="file">company_name</span> and <span class="file">price_text</span> in <span class="file">agents\friday\rules.json</span>.</li>
+    <li>Real test calls ring <b>your</b> phone, never the business:
+      <div class="cmd"><code>$env:ELEVENLABS_API_KEY = "..."; $env:FRIDAY_PHONE_NUMBER_ID = "..."; $env:FRIDAY_TEST_NUMBER = "+971..."; $env:FRIDAY_VOICE = "live"</code><button>copy</button></div>
+      <div class="cmd"><code>.venv\Scripts\python -m agents.friday setup</code><button>copy</button></div>
+      <div class="cmd"><code>.venv\Scripts\python -m agents.friday call glow-lab-nails-dubai</code><button>copy</button></div>
+      <div class="cmd"><code>.venv\Scripts\python -m agents.friday collect --all</code><button>copy</button></div>
+    </li>
+    <li>Calling real businesses needs <span class="file">FRIDAY_LIVE=yes</span> and the country switched on in rules.json. Check the rules for AI calls to businesses in that country first. Every country starts off.</li>
+  </ol>
+</div>
+
+<h2>4. What each one needs from you for real runs</h2>
+<table>
+  <tr><th>Agent</th><th>Needs</th><th>Where</th></tr>
+  <tr><td>EDITH</td><td>Apify API token, and a paid plan for full cities (about $8 a city)</td><td>apify.com, Settings, API &amp; Integrations</td></tr>
+  <tr><td>MARK</td><td>Claude CLI logged in plus the Claude in Chrome extension; an Anthropic or DeepSeek key, or Codex logged in</td><td>run <span class="file">claude</span> then <span class="file">/login</span></td></tr>
+  <tr><td>HAPPY</td><td>nothing</td><td>just your rules</td></tr>
+  <tr><td>FRIDAY</td><td>ElevenLabs key, a Twilio number imported into ElevenLabs, your phone for tests, your company name</td><td>elevenlabs.io, Agents, Phone numbers</td></tr>
+</table>
+
+<h2>5. Clean up test data</h2>
+<div class="card">
+  <p>Every made-up business is marked sample. When you start for real:</p>
+  <div class="cmd"><code>.venv\Scripts\python -m agents.pipeline remove --samples</code><button>copy</button></div>
+</div>
+
+<h2>6. Run every test</h2>
+<div class="card">
+  <div class="cmd"><code>.venv\Scripts\python -m unittest agents.edith.test_edith agents.mark.test_mark agents.mark.test_work agents.happy.test_happy agents.friday.test_friday agents.test_pipeline</code><button>copy</button></div>
+  <div class="cmd"><code>cd platform; npm test</code><button>copy</button></div>
+</div>
+</main>
+<script>
+document.querySelectorAll(".cmd button").forEach((b) => b.addEventListener("click", async () => {
+  try { await navigator.clipboard.writeText(b.previousElementSibling.textContent); b.textContent = "copied"; b.classList.add("done"); }
+  catch { b.textContent = "select it"; }
+  setTimeout(() => { b.textContent = "copy"; b.classList.remove("done"); }, 1500);
+}));
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "_readme": "HAPPY's rules for every website MARK builds. Each rule is on or off, and either block (the site fails and stays in Demo built) or warn (noted on the report, still passes). Change them here, no code needed.",
+  "file_exists":        {"on": true, "level": "block", "what": "the website file exists and is a full page"},
+  "no_broken_media":    {"on": true, "level": "block", "what": "every photo, logo and video on the page is really there"},
+  "business_name":      {"on": true, "level": "block", "what": "their business name is on the page"},
+  "phone_matches":      {"on": true, "level": "block", "what": "the phone number on the page is the one EDITH found"},
+  "no_placeholders":    {"on": true, "level": "block", "what": "no broken text like undefined, NaN, lorem ipsum or {{ }}"},
+  "no_em_dashes":       {"on": true, "level": "block", "what": "no em dashes anywhere"},
+  "reviews_are_real":   {"on": true, "level": "block", "what": "every review on the page is one of their real reviews"},
+  "demo_is_hidden":     {"on": true, "level": "block", "what": "the demo bar is showing and Google is told not to index it"},
+  "booking_link_works": {"on": true, "level": "block", "what": "the Book button goes to a live booking page that answers"},
+  "has_logo":           {"on": true, "level": "warn",  "what": "their logo is on the page"},
+  "min_photos":         {"on": true, "level": "warn",  "what": "at least this many of their own photos", "min": 3},
+  "min_services":       {"on": true, "level": "warn",  "what": "at least this many services listed", "min": 3},
+  "some_prices":        {"on": true, "level": "warn",  "what": "at least this many services show a price", "min": 1},
+  "short_headline":     {"on": true, "level": "warn",  "what": "the headline is at most this many words", "max": 10},
+  "browser_check":      {"on": true, "level": "block", "what": "opens in Chrome on a computer and a phone with no errors, nothing sticking out sideways on the phone"}
+}

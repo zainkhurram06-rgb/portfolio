@@ -130,6 +130,36 @@ Without `EDITH_APIFY=live` she uses saved samples (free). Live needs
 `APIFY_TOKEN`. About $8 a city on Apify's free-tier prices, capped by
 `max_usd_per_run` in rules.json (Apify itself stops the run at the cap).
 
+## HAPPY, quality check
+
+Checks every website in `3-demo-built` against `agents/happy/rules.json`: media
+all there, name and phone right, reviews real, no em dashes or broken text,
+demo bar and noindex, booking link live, and a real Chrome check on computer and
+phone. Each rule is on/off and block/warn. Passes move to `4-checked`; the card
+links to his report.
+
+```powershell
+.venv\Scripts\python -m agents.happy check --all
+```
+
+## FRIDAY, the sales caller
+
+Calls approved businesses (`5-approved`) through an ElevenLabs voice agent on a
+Twilio number, using `agents/friday/pitch.md`. Guardrails in code
+(`agents/friday/guard.py`, rules in `rules.json`): every country starts off,
+mobiles off, calling hours in the business's timezone, do-not-call list,
+attempts and daily caps, and test mode (all calls ring `FRIDAY_TEST_NUMBER`)
+until `FRIDAY_LIVE=yes`. Outcomes move the business: interested to Qualified,
+call back to Pitched, no or do-not-call to Lost. Test calls never move anything.
+
+```powershell
+.venv\Scripts\python -m agents.friday check glow-lab-nails-dubai
+.venv\Scripts\python -m agents.friday call --all
+.venv\Scripts\python -m agents.friday collect --all
+```
+
+Open `START-HERE.html` for the full testing guide.
+
 ## MARK's brains
 
 Tried in order until one works. Set the order with `MARK_BRAINS`.

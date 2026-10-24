@@ -1,0 +1,15 @@
+{
+  "status": "done",
+  "summary": "Spoke to the owner, Reem. She liked that the site uses her own nail photos and wants the link on WhatsApp to show her partner. Asked about price.",
+  "seconds": 142,
+  "data": {"outcome": "interested", "spoke_to_owner": true, "callback_time": "", "send_link_to": "+971 50 555 0199 (WhatsApp)", "objection": "wants to know the monthly price"},
+  "transcript": [
+    {"who": "agent", "said": "Hi, this is FRIDAY, an AI assistant calling from your company. Am I speaking with the owner or manager of Glow Lab Nails?"},
+    {"who": "user", "said": "Yes, this is Reem, I'm the owner."},
+    {"who": "agent", "said": "Thanks Reem. You have great reviews and you post a lot on Instagram, but no website, so we built you a free demo with your own photos and online booking. Can I send you the link?"},
+    {"who": "user", "said": "Oh nice. Send it on WhatsApp, same number. How much is it?"},
+    {"who": "agent", "said": "The team will send the details with the link. Is a website something you'd consider?"},
+    {"who": "user", "said": "Yes, if the price is fine. I'll show my partner."},
+    {"who": "agent", "said": "Perfect, I'll send it now. Thanks Reem, have a lovely day."}
+  ]
+}
