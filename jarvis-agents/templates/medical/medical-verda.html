@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verda | Medical clinic template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap">
+<style>body{margin:0}:root{--primary:#0b6b66;--accent:#28aa98;--dark:#073d3b;--light:#e3f2ef;--heading:"Red Hat Display",Georgia,serif;--body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;}</style>
+</head>
+<body>
+<link rel="preload" as="image" href="../_photos/photo-1.svg"/><div class="dsite verda" dir="ltr"><style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+img, video { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+.dsite { overflow-x: clip; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+.dsite :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.mm { position: relative; display: none; }
+.mm summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; }
+.mm summary::-webkit-details-marker { display: none; }
+.mm-bars { display: inline-grid; gap: 5px; width: 22px; }
+.mm-bars i { display: block; height: 1.5px; background: currentColor; transition: transform .25s, opacity .25s; }
+.mm[open] .mm-bars i:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.mm[open] .mm-bars i:nth-child(2) { opacity: 0; }
+.mm[open] .mm-bars i:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.mm-panel { position: fixed; inset: 0; top: var(--mm-top, 64px); z-index: 80; display: flex; flex-direction: column; gap: 28px; padding: 36px 24px; overflow-y: auto; }
+.mm-panel nav { display: grid; gap: 4px; }
+.mm-panel nav a { font-size: 1.9rem; padding-block: 8px; }
+.mm-book { display: inline-flex; justify-content: center; padding: 16px 24px; }
+@media (max-width: 860px) { .mm { display: block; } .desk { display: none !important; } }
+.open-badge { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.open-badge:empty { display: none; }
+.open-badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #9ca3af; flex: none; }
+.open-badge.is-open::before { background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,.18); }
+.lightbox { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,.88); display: grid; place-items: center; padding: 24px; cursor: zoom-out; animation: fadein .2s; }
+.lightbox img { max-height: 90vh; width: auto; border-radius: 6px; }
+@keyframes fadein { from { opacity: 0; } }
+[data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+[data-reveal].in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1; transform: none; transition: none; } * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+[data-drag] { cursor: grab; scrollbar-width: none; }
+[data-drag]::-webkit-scrollbar { display: none; }
+[data-drag].dragging { cursor: grabbing; scroll-snap-type: none !important; }
+[data-drag].dragging * { pointer-events: none; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+.verda {
+  --deep: color-mix(in srgb, var(--primary) 70%, var(--dark)); --mint: color-mix(in srgb, var(--accent) 80%, #fff);
+  --muted: color-mix(in srgb, var(--dark) 50%, #8d9a98); --line: color-mix(in srgb, var(--primary) 12%, #e9eeed);
+  --wash: color-mix(in srgb, var(--light) 60%, #fff);
+  background: color-mix(in srgb, var(--light) 25%, #fff); color: var(--dark); font: 15px/1.65 var(--body); -webkit-font-smoothing: antialiased;
+}
+.verda h1, .verda h2, .verda h3 { font-family: var(--heading); font-weight: 600; }
+.ve-width { width: min(1180px, calc(100% - 80px)); margin-inline: auto; }
+.ve-eyebrow { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; color: var(--primary); }
+.ve-btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px; padding: 12px 24px; border-radius: 999px; font-size: 14px; font-weight: 700; white-space: nowrap; transition: transform .2s, filter .2s; }
+.ve-btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
+.ve-btn.solid { background: var(--primary); color: #fff; }
+.ve-btn.white { background: #fff; color: var(--deep); }
+
+.ve-nav { display: flex; align-items: center; gap: 30px; padding-block: 18px; --mm-top: 90px; }
+.ve-brand { display: inline-flex; align-items: center; gap: 10px; margin-inline-end: auto; }
+.ve-brand img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+.ve-brand > span { font: 700 24px/1 var(--heading); letter-spacing: -.05em; color: var(--deep); }
+.ve-brand i { font-style: normal; color: var(--accent); }
+.ve-brand small { display: block; font: 700 10px var(--body); letter-spacing: .22em; text-transform: uppercase; margin-block-start: 4px; color: var(--muted); }
+.ve-nav nav { display: flex; gap: 30px; }
+.ve-nav nav a { font-size: 14px; font-weight: 600; transition: color .2s; }
+.ve-nav nav a:hover { color: var(--primary); }
+.verda .mm-panel { background: var(--deep); color: #fff; }
+.verda .mm-panel nav a { font: 600 2rem var(--heading); letter-spacing: -.04em; }
+.verda .mm-book { background: #fff; color: var(--deep); border-radius: 999px; font-weight: 700; }
+
+.ve-hero { position: relative; overflow: hidden; color: #fff; text-align: center; border-radius: 28px 28px 200px 28px; padding: 64px 24px 0; min-height: 600px; display: flex; flex-direction: column; align-items: center;
+  background: linear-gradient(135deg, var(--deep), var(--primary) 55%, color-mix(in srgb, var(--primary) 70%, var(--accent))); }
+[dir=rtl] .ve-hero { border-radius: 28px 28px 28px 200px; }
+.ve-hero::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(115deg, transparent 0 140px, #ffffff0d 140px 141px, transparent 141px 300px); pointer-events: none; }
+.ve-hero-copy { position: relative; z-index: 2; max-width: 760px; }
+.ve-hero .ve-eyebrow { color: var(--mint); }
+.ve-hero h1 { font-size: clamp(40px, 5.4vw, 74px); line-height: 1.02; letter-spacing: -.05em; margin: 18px auto 18px; max-width: 14ch; }
+.ve-hero-copy > p { max-width: 46ch; margin: 0 auto 26px; color: color-mix(in srgb, #fff 82%, var(--light)); }
+.ve-hero-photo { position: relative; z-index: 1; margin-block-start: 34px; width: min(560px, 90%); flex: 1; min-height: 240px; border-radius: 22px 22px 0 0; overflow: hidden; background: color-mix(in srgb, var(--light) 50%, var(--primary)); }
+.ve-hero-photo img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+.ve-bar { position: relative; z-index: 3; margin: -34px auto 0; width: calc(100% - 80px); background: #fff; border-radius: 20px; box-shadow: 0 22px 50px color-mix(in srgb, var(--dark) 12%, transparent); display: grid; grid-template-columns: repeat(3, 1fr) auto; align-items: center; padding: 14px; padding-inline-start: 30px; gap: 10px; }
+.ve-bar > div, .ve-bar > a:not(.ve-btn) { padding-block: 10px; padding-inline-end: 20px; border-inline-end: 1px solid var(--line); min-width: 0; }
+.ve-bar > a:nth-child(3) { border-inline-end: 0; }
+.ve-bar small { display: block; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.ve-bar strong { display: block; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ve-bar strong span { color: var(--primary); }
+
+.ve-section { padding-block-start: 110px; }
+.ve-section h2, .ve-feature h2 { font-size: clamp(32px, 4vw, 52px); line-height: 1.06; letter-spacing: -.05em; margin: 12px 0 0; max-width: 16ch; }
+.ve-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-block-end: 40px; }
+.ve-head > p { color: var(--muted); max-width: 38ch; margin: 0; }
+.ve-columns { display: grid; grid-template-columns: .9fr 1.1fr; gap: 28px; align-items: stretch; }
+.ve-image { position: relative; border-radius: 24px; overflow: hidden; min-height: 460px; }
+.ve-image img, .ve-art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ve-image-blank { position: absolute; inset: 0; background: linear-gradient(150deg, var(--wash), color-mix(in srgb, var(--primary) 40%, #fff)); }
+.ve-overlay { position: absolute; inset: auto 18px 18px; background: #ffffffe6; backdrop-filter: blur(10px); border-radius: 16px; padding: 18px 20px; }
+.ve-overlay strong { display: block; font: 600 20px var(--heading); letter-spacing: -.03em; }
+.ve-overlay small { color: var(--muted); }
+.ve-list { display: grid; align-content: start; }
+.ve-list a { display: grid; grid-template-columns: 44px 1fr auto 34px; align-items: center; gap: 16px; padding-block: 20px; border-block-end: 1px solid var(--line); transition: background .25s, padding .25s; border-radius: 12px; }
+.ve-list a:hover { background: #fff; padding-inline: 14px; }
+.ve-ico { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--wash); color: var(--primary); }
+.ve-list-main b { display: block; font: 600 18px var(--heading); letter-spacing: -.02em; }
+.ve-list-main small, .ve-list-meta small { display: block; font-size: 13px; color: var(--muted); line-height: 1.45; }
+.ve-list-meta { text-align: end; }
+.ve-list-meta b { color: var(--primary); }
+.ve-go { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; transition: background .2s, color .2s, transform .3s; }
+.ve-list a:hover .ve-go { background: var(--primary); color: #fff; transform: rotate(45deg); }
+
+.ve-stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-block-start: 90px; border-block: 1px solid var(--line); }
+.ve-stats div { padding: 34px 26px; border-inline-end: 1px solid var(--line); }
+.ve-stats div:last-child { border: 0; }
+.ve-stats strong { font: 600 clamp(36px, 4vw, 54px)/1 var(--heading); letter-spacing: -.05em; color: var(--deep); }
+.ve-stats p { margin: 8px 0 0; color: var(--muted); font-size: 13px; }
+
+.ve-feature { display: grid; grid-template-columns: .95fr 1.05fr; gap: 60px; align-items: center; padding-block-start: 110px; }
+.ve-art { position: relative; min-height: 540px; border-radius: 200px 200px 24px 24px; overflow: hidden; background: var(--wash); }
+.ve-badge { position: absolute; inset-block-end: 24px; inset-inline-start: 24px; background: #fff; border-radius: 16px; padding: 14px 18px; box-shadow: 0 14px 30px #0000001a; display: grid; }
+.ve-badge b { font: 700 22px var(--heading); color: var(--primary); }
+.ve-badge span { font-size: 12px; color: var(--muted); }
+.ve-feature p { color: var(--muted); }
+.ve-feature ul { list-style: none; display: grid; gap: 10px; margin: 22px 0; }
+.ve-feature li { display: flex; gap: 10px; align-items: center; font-weight: 600; }
+.ve-feature li svg { color: #fff; background: var(--primary); border-radius: 50%; padding: 3px; width: 22px; height: 22px; flex: none; }
+.ve-team { border-block-start: 1px solid var(--line); padding-block-start: 22px; }
+.ve-team > b { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
+.ve-team > div { display: flex; flex-wrap: wrap; gap: 10px; margin-block-start: 14px; }
+.ve-team span { display: grid; grid-template-columns: 38px auto; column-gap: 10px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 6px 18px 6px 6px; font-weight: 600; font-size: 14px; line-height: 1.2; }
+.ve-team i { grid-row: span 2; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-style: normal; background: var(--wash); color: var(--primary); font-weight: 700; }
+.ve-team small { color: var(--muted); font-weight: 400; font-size: 12px; }
+
+.ve-insure { margin-block-start: 80px; background: var(--wash); border-radius: 22px; padding: 28px 32px; display: grid; gap: 14px; }
+.ve-insure > div { display: flex; flex-wrap: wrap; gap: 8px; }
+.ve-insure span { background: #fff; border-radius: 999px; padding: 8px 15px; font-weight: 600; font-size: 13px; }
+.ve-insure small { color: var(--muted); }
+
+.ve-reviews { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+.ve-reviews figure { margin: 0; background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 14px; }
+.ve-reviews figure > span { color: #f2b544; letter-spacing: .12em; }
+.ve-reviews blockquote { margin: 0; flex: 1; font-size: 15px; }
+.ve-reviews figcaption { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 14px; }
+.ve-reviews figcaption i { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-style: normal; background: var(--primary); color: #fff; }
+
+.ve-faq { display: grid; grid-template-columns: 38% 1fr; gap: 50px; }
+.ve-faq h2 { margin: 0; }
+.ve-faq details { background: #fff; border: 1px solid var(--line); border-radius: 16px; margin-block-end: 10px; }
+.ve-faq summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 22px; font-weight: 600; cursor: pointer; }
+.ve-faq summary::-webkit-details-marker { display: none; }
+.ve-faq summary span { width: 30px; height: 30px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--primary); color: #fff; transition: transform .2s; }
+.ve-faq details[open] summary span { transform: rotate(45deg); }
+.ve-faq details p { color: var(--muted); padding: 0 22px 20px; margin: 0; font-size: 14px; }
+
+.ve-contact { text-align: center; color: #fff; border-radius: 28px 200px 28px 28px; padding: 80px 30px; background: linear-gradient(135deg, var(--deep), var(--primary)); display: flex; flex-direction: column; align-items: center; gap: 12px; }
+[dir=rtl] .ve-contact { border-radius: 200px 28px 28px 28px; }
+.ve-contact .ve-eyebrow { color: var(--mint); }
+.ve-contact h2 { margin: 0 auto; }
+.ve-contact p { max-width: 44ch; color: color-mix(in srgb, #fff 80%, var(--light)); margin-block-end: 10px; }
+.ve-visit { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-block-start: 16px; }
+.ve-visit > div { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 30px; display: grid; gap: 12px; align-content: start; }
+.ve-visit h3 { font-size: 20px; margin: 0; letter-spacing: -.03em; }
+.ve-visit p { margin: 0; color: var(--muted); }
+.ve-links { display: flex; flex-wrap: wrap; gap: 20px; }
+.ve-links a { display: inline-flex; gap: 8px; align-items: center; color: var(--primary); font-weight: 700; }
+.ve-visit dl div { display: flex; justify-content: space-between; gap: 16px; padding-block: 9px; border-block-end: 1px solid var(--line); font-size: 14px; }
+.ve-visit dl div:last-child { border: 0; }
+.ve-visit dd { margin: 0; font-weight: 600; }
+
+.ve-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding-block: 36px; margin-block-start: 60px; border-block-start: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+.ve-footer .ve-brand { margin: 0; }
+.ve-footer > div { display: flex; gap: 22px; }
+.ve-sticky { display: none; }
+
+@media (max-width: 960px) {
+  .ve-bar { grid-template-columns: 1fr 1fr; padding: 18px; }
+  .ve-bar > div, .ve-bar > a:not(.ve-btn) { border: 0; }
+  .ve-bar .ve-btn { grid-column: span 2; }
+  .ve-columns, .ve-feature { grid-template-columns: 1fr; }
+  .ve-stats { grid-template-columns: 1fr 1fr; }
+  .ve-stats div:nth-child(2) { border-inline-end: 0; }
+  .ve-stats div:nth-child(-n+2) { border-block-end: 1px solid var(--line); }
+  .ve-reviews { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .ve-width { width: calc(100% - 32px); }
+  .ve-nav { --mm-top: 82px; }
+  .ve-hero { border-radius: 24px 24px 90px 24px; padding: 44px 18px 0; min-height: 560px; }
+  [dir=rtl] .ve-hero { border-radius: 24px 24px 24px 90px; }
+  .ve-hero h1 { font-size: clamp(34px, 10vw, 46px); }
+  .ve-bar { width: calc(100% - 20px); grid-template-columns: 1fr; gap: 0; padding: 14px 18px; }
+  .ve-bar .ve-btn { grid-column: auto; margin-block-start: 8px; }
+  .ve-bar > div, .ve-bar > a:not(.ve-btn) { border-block-end: 1px solid var(--line); padding-inline-end: 0; }
+  .ve-section, .ve-feature { padding-block-start: 76px; }
+  .ve-head { display: block; }
+  .ve-head > p { margin-block-start: 14px; }
+  .ve-image { min-height: 300px; }
+  .ve-list a { grid-template-columns: 40px 1fr auto; gap: 12px; }
+  .ve-go { display: none; }
+  .ve-art { min-height: 380px; }
+  .ve-stats { margin-block-start: 60px; }
+  .ve-stats div { padding: 24px 14px; }
+  .ve-faq { grid-template-columns: 1fr; gap: 20px; }
+  .ve-contact { border-radius: 24px 90px 24px 24px; padding: 56px 22px; }
+  .ve-visit { grid-template-columns: 1fr; }
+  .ve-footer { flex-direction: column; text-align: center; padding-block-end: 100px; }
+  .ve-sticky { display: flex; position: fixed; inset-inline: 16px; inset-block-end: 16px; z-index: 70; justify-content: center; padding: 16px; border-radius: 999px; background: var(--primary); color: #fff; font-weight: 700; font-size: 14px; transform: translateY(150%); transition: transform .4s; box-shadow: 0 12px 30px #0000002a; }
+  .verda[data-scrolled] .ve-sticky { transform: none; }
+}
+</style><div style="background:#111;color:#fff;font:500 13px/1.4 system-ui,sans-serif;text-align:center;padding:8px 16px;position:relative;z-index:100">Demo preview built for Riverside Family Clinic. Not live yet.</div><header class="ve-nav ve-width"><a class="ve-brand" href="#top"><span>riverside<i>+</i><small>Family Clinic</small></span></a><nav class="desk"><a href="#services">Services</a><a href="#about">About</a><a href="#reviews">Reviews</a><a href="#visit">Contact</a></nav><a class="ve-btn solid desk" href="#contact">Book an appointment ↗</a><details class="mm "><summary aria-label="Menu"><span class="mm-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="mm-word">Menu</span></summary><div class="mm-panel"><nav><a href="#services">Services</a><a href="#about">About</a><a href="#reviews">Reviews</a><a href="#visit">Contact</a></nav><a class="mm-book" href="#contact">Book an appointment</a><a class="mm-call" href="tel:+14165550127"><span dir="ltr">+1 416 555 0127</span></a></div></details></header><main id="top"><section class="ve-width"><div class="ve-hero"><div class="ve-hero-copy"><span class="ve-eyebrow">Family doctors and walk-in care</span><h1>Unhurried care from doctors who listen</h1><p>Same-week appointments for the whole family. Book online in a minute.</p><a class="ve-btn white" href="#contact">Book an appointment <span>↗</span></a></div><div class="ve-hero-photo"><img src="../_photos/photo-1.svg" alt="Riverside Family Clinic"/></div></div><div class="ve-bar"><div><small>Opening hours</small><strong><span class="open-badge " data-open="[{&quot;weekday&quot;:1,&quot;start&quot;:480,&quot;end&quot;:1140},{&quot;weekday&quot;:2,&quot;start&quot;:480,&quot;end&quot;:1140},{&quot;weekday&quot;:3,&quot;start&quot;:480,&quot;end&quot;:1140},{&quot;weekday&quot;:4,&quot;start&quot;:480,&quot;end&quot;:1140},{&quot;weekday&quot;:5,&quot;start&quot;:480,&quot;end&quot;:960},{&quot;weekday&quot;:6,&quot;start&quot;:540,&quot;end&quot;:780}]" data-tz="UTC" data-lang="en-CA" data-words="{&quot;open&quot;:&quot;Open now&quot;,&quot;closes&quot;:&quot;closes {time}&quot;,&quot;opens&quot;:&quot;opens {day} {time}&quot;,&quot;closed&quot;:&quot;Closed now&quot;}"></span></strong></div><a href="#services"><small>What we do</small><strong>5 services to choose from <span>⌄</span></strong></a><a href="tel:+14165550127"><small>Call now</small><strong><span dir="ltr">+1 416 555 0127</span></strong></a><a class="ve-btn solid" href="#contact">Book online →</a></div></section><section class="ve-width ve-section" id="services"><div class="ve-head"><div><span class="ve-eyebrow">What we do</span><h2>Care for you and your family</h2></div><p>Appointments that start on time, doctors who listen, and clear next steps.</p></div><div class="ve-columns"><div class="ve-image"><img src="../_photos/photo-2.svg" alt="" loading="lazy"/><div class="ve-overlay"><strong>Online booking</strong><small>Same-week appointments</small></div></div><div class="ve-list"><a href="#contact"><span class="ve-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3v6a5 5 0 0 0 10 0V3"/><path d="M4 3h4M14 3h4"/><path d="M11 14v2a5 5 0 0 0 10 0v-2"/><circle cx="21" cy="12" r="2"/></svg></span><span class="ve-list-main"><b>General check-up</b><small>A full check and time for your questions.</small></span><span class="ve-list-meta"><small>20 min</small></span><span class="ve-go">↗</span></a><a href="#contact"><span class="ve-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="7"/><path d="M9.5 9h.01M14.5 9h.01"/><path d="M10 13c1.2 1 2.8 1 4 0"/><path d="M12 3c-1 1-1 2 0 3"/></svg></span><span class="ve-list-main"><b>Children&#x27;s health</b><small>Check-ups and vaccines for kids.</small></span><span class="ve-list-meta"><small>20 min</small></span><span class="ve-go">↗</span></a><a href="#contact"><span class="ve-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><span class="ve-list-main"><b>Travel clinic</b><small>Vaccines and advice before you go.</small></span><span class="ve-list-meta"><b>$60</b><small>30 min</small></span><span class="ve-go">↗</span></a><a href="#contact"><span class="ve-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span class="ve-list-main"><b>Physicals</b><small>Work, school and sports forms.</small></span><span class="ve-list-meta"><b>$80</b><small>30 min</small></span><span class="ve-go">↗</span></a><a href="#contact"><span class="ve-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-9.2-9.2C1.6 7.4 3.8 4 7.2 4c2 0 3.6 1.1 4.8 2.8C13.2 5.1 14.8 4 16.8 4c3.4 0 5.6 3.4 4.4 6.8C19.5 15.4 12 20 12 20z"/></svg></span><span class="ve-list-main"><b>Women&#x27;s health</b><small>Screening and contraception advice.</small></span><span class="ve-list-meta"><small>20 min</small></span><span class="ve-go">↗</span></a></div></div></section><section class="ve-width ve-stats" aria-label="Why us"><div data-reveal="true"><strong>4.7</strong><p>Google rating</p></div><div data-reveal="true"><strong>143</strong><p>reviews on Google</p></div><div data-reveal="true"><strong>5</strong><p>services to choose from</p></div><div data-reveal="true"><strong>3</strong><p>people on the team</p></div></section><section class="ve-width ve-feature" id="about"><div class="ve-art"><img src="../_photos/photo-3.svg" alt="" loading="lazy"/><div class="ve-badge"><b>★ 4.7</b><span>143 Google reviews</span></div></div><div data-reveal="true"><span class="ve-eyebrow">About us</span><h2>A clinic that runs on time</h2><p>We book fewer patients per hour so appointments start on time and nobody feels rushed.</p><p>From check-ups to travel vaccines, we look after you and your family.</p><ul><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Online booking</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Same-week appointments</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Evening clinics</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Children welcome</li></ul><div class="ve-team"><b>Your care team</b><div><span><i>N</i>Dr. Nguyen<small>Family physician</small></span><span><i>B</i>Dr. Brooks<small>Family physician</small></span><span><i>S</i>Sam<small>Nurse practitioner</small></span></div></div></div></section><section class="ve-width ve-insure"><b>Insurance we accept</b><div><span>OHIP</span><span>Sun Life</span><span>Manulife</span><span>Canada Life</span></div><small>Not on the list? Call us and we&#x27;ll check for you.</small></section><section class="ve-width ve-section" id="reviews"><div class="ve-head"><div><span class="ve-eyebrow">Patient stories</span><h2>What our patients say</h2></div></div><div class="ve-reviews"><figure data-reveal="true"><span>★★★★★</span><blockquote>“Seen on time, listened to properly. Rare these days.”</blockquote><figcaption data-review-author="Daniel W."><i>D</i>Daniel W.</figcaption></figure><figure data-reveal="true"><span>★★★★★</span><blockquote>“The online booking is so easy and the doctors are kind.”</blockquote><figcaption data-review-author="Aisha M."><i>A</i>Aisha M.</figcaption></figure></div></section><section class="ve-width ve-section ve-faq"><h2>Questions, answered</h2><div><details><summary>Are you accepting new patients?<span>+</span></summary><p>Yes, book a new patient visit online.</p></details></div></section><section class="ve-width ve-section" id="visit"><div class="ve-contact"><span class="ve-eyebrow">Visit us</span><h2>Book your appointment</h2><p>Same-week appointments for the whole family. Book online in a minute.</p><a class="ve-btn white" href="#contact">Book an appointment ↗</a></div><div class="ve-visit"><div><h3>Come and see us</h3><p>410 Queen St E, Toronto, ON M5A 1T3</p><p class="ve-links"><a href="tel:+14165550127"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><span dir="ltr">+1 416 555 0127</span></a><a href="https://www.google.com/maps/search/?api=1&amp;query=Riverside%20Family%20Clinic%2C%20410%20Queen%20St%20E%2C%20Toronto%2C%20ON%20M5A%201T3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Get directions</a></p></div><div><h3>Opening hours</h3><dl><div><dt>Mon to Thu</dt><dd>8:00 a.m. to 7:00 p.m.</dd></div><div><dt>Fri</dt><dd>8:00 a.m. to 4:00 p.m.</dd></div><div><dt>Sat</dt><dd>9:00 a.m. to 1:00 p.m.</dd></div><div><dt>Sun</dt><dd>Closed</dd></div></dl></div></div></section></main><footer class="ve-width ve-footer"><a class="ve-brand" href="#top"><span>riverside<i>+</i></span></a><span>© 2026 Riverside Family Clinic · Family doctors and walk-in care</span><div><a href="https://instagram.com/example">Instagram</a><a href="#top">↑</a></div></footer><a class="ve-sticky" href="#contact">Book an appointment ↗</a><script>
+document.addEventListener("submit", function (e) {
+  var f = e.target;
+  if (!f.matches || !f.matches("form[data-enquiry]")) return;
+  e.preventDefault();
+  var note = f.querySelector("[data-note]"), btn = f.querySelector("button[type=submit]"), label = btn.textContent;
+  btn.disabled = true; btn.textContent = f.getAttribute("data-sending");
+  var data = {}; new FormData(f).forEach(function (v, k) { data[k] = v; });
+  fetch(f.getAttribute("data-enquiry"), { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(data) })
+    .then(function (r) { if (!r.ok) throw r; note.textContent = f.getAttribute("data-sent"); f.reset(); })
+    .catch(function () { note.textContent = f.getAttribute("data-error"); })
+    .then(function () { btn.disabled = false; btn.textContent = label; });
+});
+
+(function () {
+  var two = function (n) { return (n < 10 ? "0" : "") + n; };
+  document.querySelectorAll("[data-open]").forEach(function (el) {
+    try {
+      var rows = JSON.parse(el.getAttribute("data-open")), w = JSON.parse(el.getAttribute("data-words"));
+      var tz = el.getAttribute("data-tz"), lang = el.getAttribute("data-lang");
+      var parts = {};
+      new Intl.DateTimeFormat("en-GB", { timeZone: tz, weekday: "short", hour: "2-digit", minute: "2-digit", hour12: false })
+        .formatToParts(new Date()).forEach(function (p) { parts[p.type] = p.value; });
+      var day = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].indexOf(parts.weekday) + 1;
+      var mins = (parseInt(parts.hour, 10) % 24) * 60 + parseInt(parts.minute, 10);
+      var time = function (m) { return new Intl.DateTimeFormat(lang, { hour: "numeric", minute: "2-digit", timeZone: "UTC" }).format(new Date(Date.UTC(2024, 0, 1, Math.floor(m / 60) % 24, m % 60))); };
+      var dayName = function (wd) { return new Intl.DateTimeFormat(lang, { weekday: "short", timeZone: "UTC" }).format(new Date(Date.UTC(2024, 0, wd))); };
+      var today = rows.filter(function (r) { return r.weekday === day; })[0];
+      if (today && mins >= today.start && mins < today.end) {
+        el.textContent = w.open + " \u00b7 " + w.closes.replace("{time}", time(today.end));
+        el.classList.add("is-open");
+      } else {
+        var next = null;
+        for (var i = 0; i < 8 && !next; i++) {
+          var wd = ((day - 1 + i) % 7) + 1;
+          var r = rows.filter(function (x) { return x.weekday === wd; })[0];
+          if (r && (i > 0 || mins < r.start)) next = { wd: wd, r: r, today: i === 0 };
+        }
+        el.textContent = w.closed + (next ? " \u00b7 " + w.opens.replace("{day}", next.today ? "" : dayName(next.wd)).replace("{time}", time(next.r.start)).replace("  ", " ") : "");
+        el.classList.add("is-closed");
+      }
+    } catch (e) { el.remove(); }
+  });
+
+  document.querySelectorAll(".mm a").forEach(function (a) {
+    a.addEventListener("click", function () { var m = a.closest("details"); if (m) m.removeAttribute("open"); });
+  });
+
+  var box = null;
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest ? e.target.closest("[data-lightbox]") : null;
+    if (!t) return;
+    e.preventDefault();
+    box = document.createElement("div");
+    box.className = "lightbox";
+    box.innerHTML = '<img alt="">';
+    box.firstChild.src = t.getAttribute("data-lightbox");
+    box.addEventListener("click", function () { box.remove(); });
+    document.body.appendChild(box);
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && box) box.remove(); });
+
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll("[data-reveal]").forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll("[data-reveal]").forEach(function (el) { el.classList.add("in"); });
+  }
+
+  var site = document.querySelector(".dsite");
+  if (site) {
+    var onScroll = function () { site.toggleAttribute("data-scrolled", window.scrollY > window.innerHeight * 0.7); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+
+  document.querySelectorAll("[data-drag]").forEach(function (el) {
+    var down = false, x0 = 0, s0 = 0;
+    el.addEventListener("pointerdown", function (e) { if (e.pointerType !== "mouse") return; down = true; x0 = e.clientX; s0 = el.scrollLeft; el.classList.add("dragging"); });
+    window.addEventListener("pointerup", function () { down = false; el.classList.remove("dragging"); });
+    el.addEventListener("pointermove", function (e) { if (down) el.scrollLeft = s0 - (e.clientX - x0); });
+  });
+})();
+</script></div>
+</body>
+</html>

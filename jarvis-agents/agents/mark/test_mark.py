@@ -131,7 +131,7 @@ class Templates(unittest.TestCase):
     def test_asking_for_a_wrong_template_says_which_exist(self):
         with self.assertRaises(RuntimeError) as e:
             mark.choose_template(lead(niche="dental"), "salon-noir", log=lambda m: None)
-        self.assertIn("clinic-calm", str(e.exception))
+        self.assertIn("dental-lumex", str(e.exception))
 
     def test_headings_in_their_own_voice_reach_the_site(self):
         plan = Plan.model_validate_json((HERE / "plans" / "glow-lab-nails.json").read_text(encoding="utf-8"))

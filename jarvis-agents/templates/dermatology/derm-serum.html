@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Serum | Dermatology &amp; skin clinic template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Onest:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap">
+<style>body{margin:0}:root{--primary:#3f5a3a;--accent:#91ad86;--dark:#22301f;--light:#eef0e6;--heading:"Newsreader",Georgia,serif;--body:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;}</style>
+</head>
+<body>
+<link rel="preload" as="image" href="../_photos/photo-1.svg"/><link rel="preload" as="image" href="../_photos/photo-2.svg"/><div class="dsite serum" dir="ltr"><style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+img, video { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+.dsite { overflow-x: clip; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+.dsite :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.mm { position: relative; display: none; }
+.mm summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; }
+.mm summary::-webkit-details-marker { display: none; }
+.mm-bars { display: inline-grid; gap: 5px; width: 22px; }
+.mm-bars i { display: block; height: 1.5px; background: currentColor; transition: transform .25s, opacity .25s; }
+.mm[open] .mm-bars i:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.mm[open] .mm-bars i:nth-child(2) { opacity: 0; }
+.mm[open] .mm-bars i:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.mm-panel { position: fixed; inset: 0; top: var(--mm-top, 64px); z-index: 80; display: flex; flex-direction: column; gap: 28px; padding: 36px 24px; overflow-y: auto; }
+.mm-panel nav { display: grid; gap: 4px; }
+.mm-panel nav a { font-size: 1.9rem; padding-block: 8px; }
+.mm-book { display: inline-flex; justify-content: center; padding: 16px 24px; }
+@media (max-width: 860px) { .mm { display: block; } .desk { display: none !important; } }
+.open-badge { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.open-badge:empty { display: none; }
+.open-badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #9ca3af; flex: none; }
+.open-badge.is-open::before { background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,.18); }
+.lightbox { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,.88); display: grid; place-items: center; padding: 24px; cursor: zoom-out; animation: fadein .2s; }
+.lightbox img { max-height: 90vh; width: auto; border-radius: 6px; }
+@keyframes fadein { from { opacity: 0; } }
+[data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+[data-reveal].in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1; transform: none; transition: none; } * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+[data-drag] { cursor: grab; scrollbar-width: none; }
+[data-drag]::-webkit-scrollbar { display: none; }
+[data-drag].dragging { cursor: grabbing; scroll-snap-type: none !important; }
+[data-drag].dragging * { pointer-events: none; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+.serum {
+  --sage: var(--accent); --moss: var(--primary); --ink: color-mix(in srgb, var(--dark) 90%, #1a1a1a);
+  --paper: color-mix(in srgb, var(--light) 45%, #f8f8f4); --muted: color-mix(in srgb, var(--dark) 45%, #8b8f86);
+  --line: color-mix(in srgb, var(--dark) 12%, transparent); --tint: color-mix(in srgb, var(--accent) 22%, #fff);
+  background: var(--paper); color: var(--ink); font: 15px/1.65 var(--body); -webkit-font-smoothing: antialiased;
+}
+.se-frame { border-block-start: 8px solid var(--sage); }
+.serum h1, .serum h2, .serum h3 { font-family: var(--heading); font-weight: 400; }
+.serum em { font-style: italic; }
+.se-eyebrow { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
+.se-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 12px 24px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 13px; font-weight: 600; white-space: nowrap; transition: transform .2s, background .2s; }
+.se-btn:hover { transform: translateY(-2px); background: var(--moss); }
+
+.se-nav { display: flex; align-items: center; gap: 30px; padding: 22px 32px; --mm-top: 82px; }
+.se-logo { display: inline-flex; align-items: center; gap: 8px; font: 400 28px var(--heading); letter-spacing: -.03em; margin-inline-end: auto; }
+.se-logo img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+.se-logo i { color: var(--sage); font-style: normal; }
+.se-nav nav { display: flex; gap: 28px; }
+.se-nav nav a { font-size: 13px; font-weight: 600; transition: opacity .2s; }
+.se-nav nav a:hover { opacity: .55; }
+.se-book { font-size: 14px; }
+.serum .mm-panel { background: var(--paper); color: var(--ink); }
+.serum .mm-panel nav a { font: italic 400 2.4rem var(--heading); }
+.serum .mm-book { background: var(--ink); color: #fff; border-radius: 999px; }
+
+.se-hero { display: grid; grid-template-columns: 1fr 1.2fr .5fr; gap: 6px; padding: 10px 32px 0; min-height: 640px; }
+.se-intro { display: flex; flex-direction: column; justify-content: space-between; padding-block: 24px; padding-inline-end: 28px; }
+.se-intro h1 { font-size: clamp(64px, 8.4vw, 136px); line-height: .88; letter-spacing: -.05em; margin: 0 0 24px; }
+.se-intro h1 span { display: block; color: var(--sage); }
+.se-intro h1 em { display: block; color: var(--moss); }
+.se-intro p { max-width: 34ch; color: var(--muted); font-size: 14px; margin-block-end: 22px; }
+.se-intro .open-badge { text-transform: none; letter-spacing: 0; font-weight: 500; }
+.se-photo, .se-side { position: relative; overflow: hidden; background: var(--tint); }
+.se-photo img, .se-side img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.se-blank { position: absolute; inset: 0; background: radial-gradient(circle at 70% 25%, #fff 0, var(--tint) 45%, color-mix(in srgb, var(--sage) 60%, #fff)); }
+.se-blank.alt { background: linear-gradient(180deg, var(--tint), color-mix(in srgb, var(--sage) 45%, #fff)); }
+.se-tag { position: absolute; inset-block-start: 18px; inset-inline-end: 18px; background: color-mix(in srgb, var(--paper) 92%, transparent); padding: 14px 16px; border-radius: 6px; display: grid; max-width: 170px; }
+.se-tag b { font: 400 26px/1.1 var(--heading); }
+.se-tag span { font-size: 12px; color: var(--muted); }
+.se-strip { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 18px 32px; border-block-end: 1px solid var(--line); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+.se-section { padding: 110px 32px 0; }
+.se-heading { font-size: clamp(40px, 5.2vw, 80px); line-height: .98; letter-spacing: -.045em; margin: 14px 0 0; max-width: 16ch; }
+.se-heading em { color: var(--moss); }
+.se-lede { color: var(--muted); max-width: 46ch; margin: 18px 0 40px; }
+.se-shelf { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.se-item { display: flex; flex-direction: column; }
+.se-item-photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; display: grid; place-items: center; background: var(--tint); }
+.se-item.t1 .se-item-photo { background: color-mix(in srgb, var(--sage) 30%, #f0eadf); }
+.se-item.t2 .se-item-photo { background: color-mix(in srgb, var(--moss) 18%, #fff); }
+.se-item.t3 .se-item-photo { background: #f0eadf; }
+.se-item-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .7s; }
+.se-item:hover .se-item-photo img { transform: scale(1.05); }
+.se-icon { color: var(--moss); opacity: .75; transition: transform .5s; }
+.se-item:hover .se-icon { transform: translateY(-8px) rotate(-6deg); }
+.se-item-photo small { position: absolute; inset-block-start: 12px; inset-inline-start: 12px; background: #ffffffd0; border-radius: 999px; padding: 4px 10px; font-size: 11px; }
+.se-item-info { display: flex; justify-content: space-between; gap: 12px; padding-block: 16px 12px; flex: 1; }
+.se-item-info h3 { font-size: 22px; line-height: 1.1; letter-spacing: -.02em; margin: 0 0 4px; }
+.se-item-info small { color: var(--muted); font-size: 13px; line-height: 1.45; display: block; }
+.se-item-info strong { font-weight: 600; white-space: nowrap; }
+.se-add { border-block-start: 1px solid var(--ink); padding-block-start: 12px; font-size: 13px; font-weight: 600; text-align: start; transition: color .2s; }
+.se-add:hover { color: var(--moss); }
+
+.se-philosophy { display: grid; grid-template-columns: 1fr 1fr; margin-block-start: 120px; background: color-mix(in srgb, var(--sage) 16%, var(--paper)); }
+.se-philosophy-img { position: relative; min-height: 640px; overflow: hidden; }
+.se-philosophy-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.se-philosophy-copy { padding: 90px clamp(28px, 6vw, 90px); display: flex; flex-direction: column; justify-content: center; gap: 18px; align-items: flex-start; }
+.se-philosophy-copy > p { color: var(--muted); max-width: 46ch; margin: 0; }
+.se-team { list-style: none; width: 100%; max-width: 440px; }
+.se-team li { display: flex; justify-content: space-between; gap: 14px; padding-block: 12px; border-block-end: 1px solid var(--line); }
+.se-team b { font: italic 400 21px var(--heading); }
+.se-team span { color: var(--muted); font-size: 13px; align-self: center; }
+
+.se-quotes { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(420px, 46%); gap: 40px; overflow-x: auto; margin-block-start: 24px; padding-block-end: 10px; }
+.se-quotes figure { margin: 0; border-block-start: 1px solid var(--ink); padding-block-start: 24px; }
+.se-quotes blockquote { margin: 0 0 18px; font: italic 400 clamp(24px, 2.6vw, 36px)/1.2 var(--heading); letter-spacing: -.02em; }
+.se-quotes figcaption { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+.se-faq { display: grid; grid-template-columns: 40% 1fr; gap: 60px; }
+.se-creds { list-style: none; margin-block-start: 26px; display: grid; gap: 8px; color: var(--moss); font-weight: 600; font-size: 14px; }
+.se-faq details { border-block-end: 1px solid var(--line); }
+.se-faq details:first-child { border-block-start: 1px solid var(--line); }
+.se-faq summary { list-style: none; display: flex; justify-content: space-between; gap: 16px; padding-block: 22px; font-size: 16px; font-weight: 500; cursor: pointer; }
+.se-faq summary::-webkit-details-marker { display: none; }
+.se-faq summary span { font-size: 22px; line-height: 1; transition: transform .2s; color: var(--moss); }
+.se-faq details[open] summary span { transform: rotate(45deg); }
+.se-faq details p { color: var(--muted); margin: 0 0 22px; }
+
+.se-visit { margin: 120px 32px 0; padding: 70px clamp(24px, 5vw, 70px); background: var(--ink); color: var(--paper); display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+.se-visit .se-heading em { color: var(--sage); }
+.se-visit > div:first-child { display: grid; gap: 14px; align-content: start; }
+.se-visit p { margin: 0; color: color-mix(in srgb, var(--paper) 75%, transparent); }
+.se-links { display: flex; flex-wrap: wrap; gap: 22px; }
+.se-links a { border-block-end: 1px solid var(--sage); color: var(--paper); }
+.se-visit dl { margin-block-start: 10px; }
+.se-visit dl div { display: flex; justify-content: space-between; gap: 16px; padding-block: 9px; border-block-end: 1px solid #ffffff22; font-size: 14px; }
+.se-form { background: var(--paper); color: var(--ink); padding: 34px; }
+.se-form h3 { font-size: 30px; margin: 0 0 18px; letter-spacing: -.03em; }
+.se-form form { display: grid; gap: 10px; }
+.se-form input, .se-form select, .se-form textarea { width: 100%; background: #fff; border: 1px solid var(--line); border-radius: 4px; padding: 13px 14px; color: var(--ink); }
+.se-form button { justify-self: start; margin-block-start: 6px; }
+.se-form [data-note] { font-size: 13px; color: var(--moss); }
+
+.se-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding: 34px 32px; font-size: 12px; color: var(--muted); }
+.se-footer .se-logo { margin: 0; font-size: 22px; color: var(--ink); }
+.se-footer > div { display: flex; gap: 22px; }
+.se-sticky { display: none; }
+
+@media (max-width: 1080px) {
+  .se-hero { grid-template-columns: 1fr 1fr; }
+  .se-side { display: none; }
+  .se-shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .se-nav { padding: 18px 18px; --mm-top: 76px; }
+  .se-nav .se-logo { font-size: 22px; line-height: 1.1; }
+  .se-hero { grid-template-columns: 1fr; padding: 0 18px; min-height: 0; }
+  .se-intro { padding: 20px 0 30px; gap: 30px; }
+  .se-intro h1 { font-size: clamp(54px, 17vw, 84px); }
+  .se-photo { height: 420px; }
+  .se-strip { padding: 16px 18px; justify-content: flex-start; gap: 10px 22px; }
+  .se-section { padding: 80px 18px 0; }
+  .se-shelf { gap: 18px 10px; }
+  .se-item-info { flex-direction: column; gap: 6px; }
+  .se-item-info h3 { font-size: 19px; }
+  .se-philosophy { grid-template-columns: 1fr; margin-block-start: 80px; }
+  .se-philosophy-img { min-height: 380px; }
+  .se-philosophy-copy { padding: 54px 18px; }
+  .se-quotes { grid-auto-columns: 86%; gap: 24px; }
+  .se-faq { grid-template-columns: 1fr; gap: 24px; }
+  .se-visit { margin: 80px 0 0; padding: 54px 18px; grid-template-columns: 1fr; gap: 36px; }
+  .se-form { padding: 24px 18px; }
+  .se-footer { flex-direction: column; text-align: center; padding: 30px 18px 100px; }
+  .se-sticky { display: flex; position: fixed; inset-inline: 16px; inset-block-end: 16px; z-index: 70; justify-content: center; padding: 16px; border-radius: 999px; background: var(--ink); color: #fff; font-weight: 600; font-size: 14px; transform: translateY(150%); transition: transform .4s; }
+  .serum[data-scrolled] .se-sticky { transform: none; }
+}
+</style><div style="background:#111;color:#fff;font:500 13px/1.4 system-ui,sans-serif;text-align:center;padding:8px 16px;position:relative;z-index:100">Demo preview built for ClearSkin Dermatology. Not live yet.</div><div class="se-frame"><header class="se-nav"><a class="se-logo" href="#top"><span>ClearSkin Dermatology<i>.</i></span></a><nav class="desk"><a href="#treatments">Services</a><a href="#philosophy">About</a><a href="#reviews">Reviews</a><a href="#visit">Contact</a></nav><a class="se-book desk" href="#contact">Book an appointment ↗</a><details class="mm "><summary aria-label="Menu"><span class="mm-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="mm-word">Menu</span></summary><div class="mm-panel"><nav><a href="#treatments">Services</a><a href="#philosophy">About</a><a href="#reviews">Reviews</a><a href="#visit">Contact</a></nav><a class="mm-book" href="#contact">Book an appointment</a><a class="mm-call" href="tel:+61355502210"><span dir="ltr">+61 3 5550 2210</span></a></div></details></header><main id="top"><section class="se-hero"><div class="se-intro"><span class="se-eyebrow">Medical and cosmetic dermatology / Melbourne</span><div><h1><span>Skin care that</span><em>starts with listening</em></h1><p>Skin checks, acne and eczema care, and cosmetic treatments. Book online in a minute.</p><a class="se-btn" href="#contact">Book an appointment ↗</a></div><span class="se-eyebrow">01 / <span class="open-badge " data-open="[{&quot;weekday&quot;:1,&quot;start&quot;:510,&quot;end&quot;:1020},{&quot;weekday&quot;:2,&quot;start&quot;:510,&quot;end&quot;:1020},{&quot;weekday&quot;:3,&quot;start&quot;:510,&quot;end&quot;:1020},{&quot;weekday&quot;:4,&quot;start&quot;:510,&quot;end&quot;:1020},{&quot;weekday&quot;:5,&quot;start&quot;:510,&quot;end&quot;:1020}]" data-tz="UTC" data-lang="en-AU" data-words="{&quot;open&quot;:&quot;Open now&quot;,&quot;closes&quot;:&quot;closes {time}&quot;,&quot;opens&quot;:&quot;opens {day} {time}&quot;,&quot;closed&quot;:&quot;Closed now&quot;}"></span></span></div><div class="se-photo"><img src="../_photos/photo-1.svg" alt="ClearSkin Dermatology"/><div class="se-tag"><b>★ 4.9</b><span>175 Google reviews</span></div></div><div class="se-side"><img src="../_photos/photo-2.svg" alt=""/></div></section><div class="se-strip"><span>✳ Online booking</span><span>◌ Medical and cosmetic</span><span>✦ Clear prices upfront</span></div><section class="se-section" id="treatments"><span class="se-eyebrow">What we do</span><h2 class="se-heading">Healthy skin, <em>expert care</em></h2><p class="se-lede">Medical and cosmetic dermatology under one roof, explained clearly and done properly.</p><div class="se-shelf"><article class="se-item t0" data-reveal="true"><a class="se-item-photo" href="#contact" aria-label="Full skin check"><img src="../_photos/photo-3.svg" alt="" loading="lazy"/><small>30 min</small></a><div class="se-item-info"><div><h3>Full skin check</h3><small>Head-to-toe check of moles and spots.</small></div><strong>from $150</strong></div><a class="se-add" href="#contact">Book this +</a></article><article class="se-item t1" data-reveal="true"><a class="se-item-photo" href="#contact" aria-label="Acne consultation"><img src="../_photos/photo-4.svg" alt="" loading="lazy"/><small>30 min</small></a><div class="se-item-info"><div><h3>Acne consultation</h3><small>A plan that fits your skin and your life.</small></div><strong>from $180</strong></div><a class="se-add" href="#contact">Book this +</a></article><article class="se-item t2" data-reveal="true"><a class="se-item-photo" href="#contact" aria-label="Eczema and rashes"><img src="../_photos/photo-5.svg" alt="" loading="lazy"/><small>30 min</small></a><div class="se-item-info"><div><h3>Eczema and rashes</h3><small>Diagnosis and a treatment plan you understand.</small></div><strong>from $180</strong></div><a class="se-add" href="#contact">Book this +</a></article><article class="se-item t3" data-reveal="true"><a class="se-item-photo" href="#contact" aria-label="Cosmetic injectables"><img src="../_photos/photo-6.svg" alt="" loading="lazy"/><small>45 min</small></a><div class="se-item-info"><div><h3>Cosmetic injectables</h3><small>Subtle, natural-looking results.</small></div></div><a class="se-add" href="#contact">Book this +</a></article><article class="se-item t0" data-reveal="true"><a class="se-item-photo" href="#contact" aria-label="Laser treatments"><img src="../_photos/photo-7.svg" alt="" loading="lazy"/><small>60 min</small></a><div class="se-item-info"><div><h3>Laser treatments</h3><small>For pigmentation, redness and texture.</small></div></div><a class="se-add" href="#contact">Book this +</a></article></div></section><section class="se-philosophy" id="philosophy"><div class="se-philosophy-img"><img src="../_photos/photo-3.svg" alt="" loading="lazy"/></div><div class="se-philosophy-copy" data-reveal="true"><span class="se-eyebrow">About us</span><h2 class="se-heading">Expert skin care, <em>without the rush</em></h2><p>Longer appointments mean time to understand your skin and explain every option.</p><p>Medical and cosmetic care in one place, with clear prices before you commit.</p><ul class="se-team"><li><b>Dr. Chen</b><span>Dermatologist</span></li><li><b>Dr. Walsh</b><span>Dermatologist</span></li></ul><a class="se-btn" href="#contact">Book an appointment ↗</a></div></section><section class="se-section se-reviews" id="reviews"><span class="se-eyebrow">Patient stories</span><div class="se-quotes" data-drag="true"><figure><blockquote>“Thorough skin check and no rush at all. Highly recommend.”</blockquote><figcaption data-review-author="Hannah P.">Hannah P. · ★★★★★</figcaption></figure><figure><blockquote>“Finally a plan for my acne that I understand.”</blockquote><figcaption data-review-author="Chris D.">Chris D. · ★★★★★</figcaption></figure></div></section><section class="se-section se-faq"><div><h2 class="se-heading"> <em>Questions, answered</em></h2></div><div><details><summary>Do I need a referral?<span>+</span></summary><p>Not for cosmetic treatments. For medical visits a GP referral can help with rebates.</p></details></div></section><section class="se-visit" id="visit"><div><span class="se-eyebrow">Visit us</span><h2 class="se-heading">Book <em>your consultation</em></h2><p>Level 2, 120 Collins St, Melbourne VIC 3000</p><p class="se-links"><a href="tel:+61355502210"><span dir="ltr">+61 3 5550 2210</span></a><a href="https://www.google.com/maps/search/?api=1&amp;query=ClearSkin%20Dermatology%2C%20Level%202%2C%20120%20Collins%20St%2C%20Melbourne%20VIC%203000">Directions ↗</a></p><dl><div><dt>Mon to Fri</dt><dd>8:30 am to 5:00 pm</dd></div><div><dt>Sat to Sun</dt><dd>Closed</dd></div></dl></div><div class="se-form"><h3>Send us a message</h3><form data-enquiry="/api/sites/sample-dermatology/enquiries" data-sending="Sending..." data-sent="Thanks, we&#x27;ve got your message and will get back to you soon." data-error="That didn&#x27;t send. Please call us instead."><input tabindex="-1" autoComplete="off" aria-hidden="true" style="position:absolute;left:-9999px" name="website"/><input placeholder="Your name" required="" maxLength="80" name="name"/><input placeholder="Phone" type="tel" required="" maxLength="40" name="phone"/><input placeholder="Email (optional)" type="email" maxLength="120" name="email"/><select name="service"><option value="" selected="">What do you need?</option><option>Full skin check</option><option>Acne consultation</option><option>Eczema and rashes</option><option>Cosmetic injectables</option><option>Laser treatments</option></select><textarea name="message" rows="3" placeholder="Please don&#x27;t include medical details here" maxLength="1000"></textarea><button class="se-btn" type="submit">Send message ↗</button><div data-note="true" aria-live="polite"></div></form></div></section></main><footer class="se-footer"><a class="se-logo" href="#top"><span>ClearSkin Dermatology<i>.</i></span></a><span>© 2026 · Medical and cosmetic dermatology</span><div><a href="https://instagram.com/example">Instagram</a><a href="#top">↑</a></div></footer></div><a class="se-sticky" href="#contact">Book an appointment ↗</a><script>
+document.addEventListener("submit", function (e) {
+  var f = e.target;
+  if (!f.matches || !f.matches("form[data-enquiry]")) return;
+  e.preventDefault();
+  var note = f.querySelector("[data-note]"), btn = f.querySelector("button[type=submit]"), label = btn.textContent;
+  btn.disabled = true; btn.textContent = f.getAttribute("data-sending");
+  var data = {}; new FormData(f).forEach(function (v, k) { data[k] = v; });
+  fetch(f.getAttribute("data-enquiry"), { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(data) })
+    .then(function (r) { if (!r.ok) throw r; note.textContent = f.getAttribute("data-sent"); f.reset(); })
+    .catch(function () { note.textContent = f.getAttribute("data-error"); })
+    .then(function () { btn.disabled = false; btn.textContent = label; });
+});
+
+(function () {
+  var two = function (n) { return (n < 10 ? "0" : "") + n; };
+  document.querySelectorAll("[data-open]").forEach(function (el) {
+    try {
+      var rows = JSON.parse(el.getAttribute("data-open")), w = JSON.parse(el.getAttribute("data-words"));
+      var tz = el.getAttribute("data-tz"), lang = el.getAttribute("data-lang");
+      var parts = {};
+      new Intl.DateTimeFormat("en-GB", { timeZone: tz, weekday: "short", hour: "2-digit", minute: "2-digit", hour12: false })
+        .formatToParts(new Date()).forEach(function (p) { parts[p.type] = p.value; });
+      var day = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].indexOf(parts.weekday) + 1;
+      var mins = (parseInt(parts.hour, 10) % 24) * 60 + parseInt(parts.minute, 10);
+      var time = function (m) { return new Intl.DateTimeFormat(lang, { hour: "numeric", minute: "2-digit", timeZone: "UTC" }).format(new Date(Date.UTC(2024, 0, 1, Math.floor(m / 60) % 24, m % 60))); };
+      var dayName = function (wd) { return new Intl.DateTimeFormat(lang, { weekday: "short", timeZone: "UTC" }).format(new Date(Date.UTC(2024, 0, wd))); };
+      var today = rows.filter(function (r) { return r.weekday === day; })[0];
+      if (today && mins >= today.start && mins < today.end) {
+        el.textContent = w.open + " \u00b7 " + w.closes.replace("{time}", time(today.end));
+        el.classList.add("is-open");
+      } else {
+        var next = null;
+        for (var i = 0; i < 8 && !next; i++) {
+          var wd = ((day - 1 + i) % 7) + 1;
+          var r = rows.filter(function (x) { return x.weekday === wd; })[0];
+          if (r && (i > 0 || mins < r.start)) next = { wd: wd, r: r, today: i === 0 };
+        }
+        el.textContent = w.closed + (next ? " \u00b7 " + w.opens.replace("{day}", next.today ? "" : dayName(next.wd)).replace("{time}", time(next.r.start)).replace("  ", " ") : "");
+        el.classList.add("is-closed");
+      }
+    } catch (e) { el.remove(); }
+  });
+
+  document.querySelectorAll(".mm a").forEach(function (a) {
+    a.addEventListener("click", function () { var m = a.closest("details"); if (m) m.removeAttribute("open"); });
+  });
+
+  var box = null;
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest ? e.target.closest("[data-lightbox]") : null;
+    if (!t) return;
+    e.preventDefault();
+    box = document.createElement("div");
+    box.className = "lightbox";
+    box.innerHTML = '<img alt="">';
+    box.firstChild.src = t.getAttribute("data-lightbox");
+    box.addEventListener("click", function () { box.remove(); });
+    document.body.appendChild(box);
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && box) box.remove(); });
+
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll("[data-reveal]").forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll("[data-reveal]").forEach(function (el) { el.classList.add("in"); });
+  }
+
+  var site = document.querySelector(".dsite");
+  if (site) {
+    var onScroll = function () { site.toggleAttribute("data-scrolled", window.scrollY > window.innerHeight * 0.7); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+
+  document.querySelectorAll("[data-drag]").forEach(function (el) {
+    var down = false, x0 = 0, s0 = 0;
+    el.addEventListener("pointerdown", function (e) { if (e.pointerType !== "mouse") return; down = true; x0 = e.clientX; s0 = el.scrollLeft; el.classList.add("dragging"); });
+    window.addEventListener("pointerup", function () { down = false; el.classList.remove("dragging"); });
+    el.addEventListener("pointermove", function (e) { if (down) el.scrollLeft = s0 - (e.clientX - x0); });
+  });
+})();
+</script></div>
+</body>
+</html>

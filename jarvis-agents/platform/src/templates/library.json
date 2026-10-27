@@ -191,13 +191,11 @@
       "id": "clinic-calm",
       "label": "Calm clinic",
       "niches": [
-        "dental",
-        "medical",
-        "dermatology"
+        "medical"
       ],
       "fonts": [
         "Fraunces",
-        "Inter"
+        "Hanken Grotesk"
       ],
       "style": {
         "radius": "soft",
@@ -231,13 +229,11 @@
       "id": "clinic-modern",
       "label": "Modern practice",
       "niches": [
-        "dental",
-        "medical",
-        "dermatology"
+        "medical"
       ],
       "fonts": [
         "Sora",
-        "Inter"
+        "Figtree"
       ],
       "style": {
         "radius": "soft",
@@ -268,157 +264,6 @@
       ]
     },
     {
-      "id": "clinic-bright",
-      "label": "Bright and friendly",
-      "niches": [
-        "dental",
-        "medical"
-      ],
-      "fonts": [
-        "Outfit",
-        "Nunito Sans"
-      ],
-      "style": {
-        "radius": "round",
-        "buttons": "pill",
-        "density": "regular",
-        "mood": "tinted",
-        "heads": "normal"
-      },
-      "palette": {
-        "primary": "#0e9f8e",
-        "accent": "#ffb547",
-        "dark": "#123130",
-        "light": "#f0faf8"
-      },
-      "sections": [
-        "nav:classic",
-        "hero:centered",
-        "services:cards",
-        "steps:line",
-        "team:cards:alt",
-        "reviews:spotlight",
-        "insurance:chips:alt",
-        "faq:accordion",
-        "cta:band",
-        "contact:panels",
-        "footer:simple"
-      ]
-    },
-    {
-      "id": "clinic-family",
-      "label": "Family practice",
-      "niches": [
-        "dental",
-        "medical"
-      ],
-      "needsPhoto": true,
-      "fonts": [
-        "Bricolage Grotesque",
-        "Manrope"
-      ],
-      "style": {
-        "radius": "soft",
-        "buttons": "pill",
-        "density": "regular",
-        "mood": "light",
-        "heads": "normal"
-      },
-      "palette": {
-        "primary": "#3a6ea5",
-        "accent": "#f2a65a",
-        "dark": "#1b2735",
-        "light": "#f4f7fb"
-      },
-      "sections": [
-        "nav:overlay",
-        "hero:photo",
-        "trust:strip",
-        "services:numbered",
-        "about:split:alt",
-        "team:cards",
-        "reviews:cards:alt",
-        "insurance:chips",
-        "faq:split",
-        "contact:map",
-        "footer:columns"
-      ]
-    },
-    {
-      "id": "dental-smile",
-      "label": "Smile studio",
-      "niches": [
-        "dental"
-      ],
-      "fonts": [
-        "Bricolage Grotesque",
-        "Inter"
-      ],
-      "style": {
-        "radius": "round",
-        "buttons": "pill",
-        "density": "regular",
-        "mood": "light",
-        "heads": "normal"
-      },
-      "palette": {
-        "primary": "#0f766e",
-        "accent": "#fbbf24",
-        "dark": "#0b1f1d",
-        "light": "#f0fbf9"
-      },
-      "sections": [
-        "nav:classic",
-        "hero:split",
-        "services:cards:alt",
-        "gallery:beforeafter",
-        "steps:row:alt",
-        "reviews:cards",
-        "insurance:chips:alt",
-        "faq:accordion",
-        "contact:panels",
-        "footer:simple"
-      ]
-    },
-    {
-      "id": "medical-practice",
-      "label": "Medical centre",
-      "niches": [
-        "medical"
-      ],
-      "fonts": [
-        "Archivo",
-        "Work Sans"
-      ],
-      "style": {
-        "radius": "soft",
-        "buttons": "soft",
-        "density": "compact",
-        "mood": "light",
-        "heads": "normal"
-      },
-      "palette": {
-        "primary": "#0b5394",
-        "accent": "#e85d4a",
-        "dark": "#0d1b2a",
-        "light": "#f3f6fa"
-      },
-      "sections": [
-        "topbar:info",
-        "nav:classic",
-        "hero:card",
-        "trust:cards",
-        "services:numbered",
-        "steps:line:alt",
-        "team:cards",
-        "insurance:chips:alt",
-        "reviews:cards",
-        "faq:accordion:alt",
-        "contact:map",
-        "footer:columns"
-      ]
-    },
-    {
       "id": "derm-atelier",
       "label": "Skin atelier",
       "niches": [
@@ -426,7 +271,7 @@
       ],
       "fonts": [
         "DM Serif Display",
-        "Manrope"
+        "Albert Sans"
       ],
       "style": {
         "radius": "soft",
@@ -456,43 +301,6 @@
       ]
     },
     {
-      "id": "derm-clear",
-      "label": "Clear and clinical",
-      "niches": [
-        "dermatology"
-      ],
-      "fonts": [
-        "Sora",
-        "DM Sans"
-      ],
-      "style": {
-        "radius": "sharp",
-        "buttons": "square",
-        "density": "regular",
-        "mood": "light",
-        "heads": "normal"
-      },
-      "palette": {
-        "primary": "#4f46e5",
-        "accent": "#a5b4fc",
-        "dark": "#111827",
-        "light": "#f6f7fb"
-      },
-      "sections": [
-        "nav:classic",
-        "hero:split",
-        "services:list",
-        "steps:row:alt",
-        "about:stats",
-        "reviews:cards:alt",
-        "insurance:chips",
-        "faq:split",
-        "cta:split",
-        "contact:map",
-        "footer:columns"
-      ]
-    },
-    {
       "id": "carwash-gloss",
       "label": "Gloss",
       "niches": [
@@ -501,7 +309,7 @@
       "needsPhoto": true,
       "fonts": [
         "Sora",
-        "Inter"
+        "Instrument Sans"
       ],
       "style": {
         "radius": "soft",
@@ -538,8 +346,8 @@
         "carwash"
       ],
       "fonts": [
-        "Outfit",
-        "Inter"
+        "Unbounded",
+        "Familjen Grotesk"
       ],
       "style": {
         "radius": "round",
@@ -577,7 +385,7 @@
       ],
       "fonts": [
         "Archivo",
-        "Manrope"
+        "Albert Sans"
       ],
       "style": {
         "radius": "sharp",
@@ -654,7 +462,7 @@
       ],
       "fonts": [
         "Archivo",
-        "Inter"
+        "Schibsted Grotesk"
       ],
       "style": {
         "radius": "soft",
@@ -733,7 +541,7 @@
       ],
       "fonts": [
         "Bricolage Grotesque",
-        "Inter"
+        "Onest"
       ],
       "style": {
         "radius": "soft",
@@ -771,7 +579,7 @@
       ],
       "fonts": [
         "Sora",
-        "Manrope"
+        "Albert Sans"
       ],
       "style": {
         "radius": "soft",
@@ -810,8 +618,8 @@
         "homeservices"
       ],
       "fonts": [
-        "Outfit",
-        "Inter"
+        "Epilogue",
+        "Albert Sans"
       ],
       "style": {
         "radius": "soft",
@@ -852,7 +660,7 @@
       "needsPhoto": true,
       "fonts": [
         "Archivo",
-        "Inter"
+        "Hanken Grotesk"
       ],
       "style": {
         "radius": "sharp",
@@ -891,7 +699,7 @@
       ],
       "fonts": [
         "Fraunces",
-        "Manrope"
+        "Albert Sans"
       ],
       "style": {
         "radius": "soft",
@@ -917,6 +725,277 @@
         "areas:chips",
         "cta:band",
         "contact:map",
+        "footer:simple"
+      ]
+    },
+    {
+      "id": "dental-lumex",
+      "label": "Lumex 3D",
+      "niches": [
+        "dental"
+      ],
+      "design": "lumex",
+      "fonts": [
+        "Instrument Serif",
+        "Schibsted Grotesk"
+      ],
+      "style": {
+        "radius": "sharp",
+        "buttons": "soft",
+        "density": "airy",
+        "mood": "tinted",
+        "heads": "light"
+      },
+      "palette": {
+        "primary": "#2f6d75",
+        "accent": "#f1c6b5",
+        "dark": "#10393d",
+        "light": "#e6f2f2"
+      },
+      "sections": [
+        "nav:overlay",
+        "hero:centered",
+        "about:split",
+        "services:cards",
+        "steps:row",
+        "team:cards",
+        "reviews:spotlight",
+        "faq:accordion",
+        "contact:map",
+        "footer:simple"
+      ]
+    },
+    {
+      "id": "dental-celesta",
+      "label": "Celesta 3D",
+      "niches": [
+        "dental"
+      ],
+      "design": "celesta",
+      "fonts": [
+        "Bricolage Grotesque",
+        "Onest"
+      ],
+      "style": {
+        "radius": "round",
+        "buttons": "pill",
+        "density": "regular",
+        "mood": "light",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#1856b3",
+        "accent": "#e5bd5e",
+        "dark": "#102c62",
+        "light": "#e8f2ff"
+      },
+      "sections": [
+        "nav:classic",
+        "hero:card",
+        "about:split",
+        "team:cards",
+        "steps:row",
+        "services:cards",
+        "insurance:chips",
+        "reviews:cards",
+        "faq:accordion",
+        "cta:band",
+        "contact:panels",
+        "footer:simple"
+      ]
+    },
+    {
+      "id": "dental-monolith",
+      "label": "Monolith",
+      "niches": [
+        "dental",
+        "medical",
+        "dermatology"
+      ],
+      "design": "monolith",
+      "fonts": [
+        "Funnel Display",
+        "Albert Sans"
+      ],
+      "style": {
+        "radius": "sharp",
+        "buttons": "pill",
+        "density": "airy",
+        "mood": "dark",
+        "heads": "upper"
+      },
+      "palette": {
+        "primary": "#161616",
+        "accent": "#c8b28a",
+        "dark": "#0a0a0a",
+        "light": "#f5f5f3"
+      },
+      "sections": [
+        "nav:classic",
+        "hero:card",
+        "about:statement",
+        "services:numbered",
+        "team:cards",
+        "reviews:spotlight",
+        "faq:accordion",
+        "cta:band",
+        "contact:panels",
+        "footer:simple"
+      ]
+    },
+    {
+      "id": "dental-aurelle",
+      "label": "Aurelle 3D",
+      "niches": [
+        "dental"
+      ],
+      "design": "aurelle",
+      "fonts": [
+        "Epilogue",
+        "Instrument Sans"
+      ],
+      "style": {
+        "radius": "round",
+        "buttons": "pill",
+        "density": "regular",
+        "mood": "light",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#4a5650",
+        "accent": "#c9f16f",
+        "dark": "#1f2924",
+        "light": "#e4e9e4"
+      },
+      "sections": [
+        "nav:classic",
+        "hero:split",
+        "services:cards",
+        "about:split",
+        "steps:row",
+        "team:cards",
+        "reviews:cards",
+        "faq:split",
+        "cta:band",
+        "contact:panels",
+        "footer:simple"
+      ]
+    },
+    {
+      "id": "medical-verda",
+      "label": "Verda",
+      "niches": [
+        "medical",
+        "dermatology"
+      ],
+      "design": "verda",
+      "fonts": [
+        "Red Hat Display",
+        "Hanken Grotesk"
+      ],
+      "style": {
+        "radius": "round",
+        "buttons": "pill",
+        "density": "regular",
+        "mood": "tinted",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#0b6b66",
+        "accent": "#28aa98",
+        "dark": "#073d3b",
+        "light": "#e3f2ef"
+      },
+      "sections": [
+        "nav:classic",
+        "hero:centered",
+        "topbar:info",
+        "services:list",
+        "about:stats",
+        "about:split",
+        "team:cards",
+        "insurance:chips",
+        "reviews:cards",
+        "faq:accordion",
+        "cta:band",
+        "contact:panels",
+        "footer:simple"
+      ]
+    },
+    {
+      "id": "derm-serum",
+      "label": "Serum",
+      "niches": [
+        "dermatology"
+      ],
+      "design": "serum",
+      "fonts": [
+        "Newsreader",
+        "Onest"
+      ],
+      "style": {
+        "radius": "sharp",
+        "buttons": "pill",
+        "density": "airy",
+        "mood": "tinted",
+        "heads": "light"
+      },
+      "palette": {
+        "primary": "#3f5a3a",
+        "accent": "#91ad86",
+        "dark": "#22301f",
+        "light": "#eef0e6"
+      },
+      "sections": [
+        "nav:classic",
+        "hero:collage",
+        "trust:strip",
+        "services:cards",
+        "about:split",
+        "team:cards",
+        "reviews:spotlight",
+        "faq:split",
+        "contact:panels",
+        "footer:simple"
+      ]
+    },
+    {
+      "id": "home-forma",
+      "label": "Forma",
+      "niches": [
+        "homeservices"
+      ],
+      "design": "forma",
+      "fonts": [
+        "Hedvig Letters Serif",
+        "Figtree"
+      ],
+      "style": {
+        "radius": "sharp",
+        "buttons": "pill",
+        "density": "airy",
+        "mood": "tinted",
+        "heads": "light"
+      },
+      "palette": {
+        "primary": "#45382e",
+        "accent": "#b29f8b",
+        "dark": "#2a221c",
+        "light": "#f4efe7"
+      },
+      "sections": [
+        "nav:classic",
+        "hero:photo",
+        "gallery:grid",
+        "about:split",
+        "guarantee:panel",
+        "services:numbered",
+        "steps:line",
+        "reviews:spotlight",
+        "areas:chips",
+        "faq:split",
+        "cta:split",
+        "contact:panels",
         "footer:simple"
       ]
     }

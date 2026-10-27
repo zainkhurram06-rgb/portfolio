@@ -15,7 +15,7 @@ export type IconName = (typeof ICONS)[number];
 
 // characterful faces first: the designs use these so sites don't look generated
 export const HEADING_FONTS = [
-  "Bodoni Moda", "Forum", "Gloock", "Syne", "Young Serif", "Italiana", "Unbounded", "Gilda Display", "Bagel Fat One",
+  "Instrument Serif", "Funnel Display", "Epilogue", "Red Hat Display", "Newsreader", "Hedvig Letters Serif", "Bodoni Moda", "Forum", "Gloock", "Syne", "Young Serif", "Italiana", "Unbounded", "Gilda Display", "Bagel Fat One",
   "Fraunces", "Playfair Display", "DM Serif Display", "Outfit", "Sora", "Archivo", "Bricolage Grotesque",
 ] as const;
 export const BODY_FONTS = [

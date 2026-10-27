@@ -69,7 +69,7 @@ test("each template renders for each of its trades, with and without photos, in 
 
 test("sections with missing facts stay hidden, and the menu skips them", () => {
   const t = TEMPLATE_LIST.find((x) => x.id === "clinic-calm")!;
-  const d = sampleSite("dental", { photos: false });
+  const d = sampleSite("medical", { photos: false });
   d.c.reviews = [];
   d.c.insurers = [];
   d.c.faqs = [];

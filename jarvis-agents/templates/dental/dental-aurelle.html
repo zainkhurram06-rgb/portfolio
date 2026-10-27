@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aurelle 3D | Dental clinic template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap">
+<style>body{margin:0}:root{--primary:#4a5650;--accent:#c9f16f;--dark:#1f2924;--light:#e4e9e4;--heading:"Epilogue",Georgia,serif;--body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;}</style>
+</head>
+<body>
+<link rel="preload" as="image" href="../_photos/photo-1.svg"/><link rel="preload" as="image" href="../_photos/photo-2.svg"/><div class="dsite aurelle" dir="ltr"><style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+img, video { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+.dsite { overflow-x: clip; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+.dsite :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.mm { position: relative; display: none; }
+.mm summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; }
+.mm summary::-webkit-details-marker { display: none; }
+.mm-bars { display: inline-grid; gap: 5px; width: 22px; }
+.mm-bars i { display: block; height: 1.5px; background: currentColor; transition: transform .25s, opacity .25s; }
+.mm[open] .mm-bars i:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.mm[open] .mm-bars i:nth-child(2) { opacity: 0; }
+.mm[open] .mm-bars i:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.mm-panel { position: fixed; inset: 0; top: var(--mm-top, 64px); z-index: 80; display: flex; flex-direction: column; gap: 28px; padding: 36px 24px; overflow-y: auto; }
+.mm-panel nav { display: grid; gap: 4px; }
+.mm-panel nav a { font-size: 1.9rem; padding-block: 8px; }
+.mm-book { display: inline-flex; justify-content: center; padding: 16px 24px; }
+@media (max-width: 860px) { .mm { display: block; } .desk { display: none !important; } }
+.open-badge { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.open-badge:empty { display: none; }
+.open-badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #9ca3af; flex: none; }
+.open-badge.is-open::before { background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,.18); }
+.lightbox { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,.88); display: grid; place-items: center; padding: 24px; cursor: zoom-out; animation: fadein .2s; }
+.lightbox img { max-height: 90vh; width: auto; border-radius: 6px; }
+@keyframes fadein { from { opacity: 0; } }
+[data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+[data-reveal].in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1; transform: none; transition: none; } * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+[data-drag] { cursor: grab; scrollbar-width: none; }
+[data-drag]::-webkit-scrollbar { display: none; }
+[data-drag].dragging { cursor: grabbing; scroll-snap-type: none !important; }
+[data-drag].dragging * { pointer-events: none; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+.aurelle {
+  --ink: color-mix(in srgb, var(--dark) 90%, #222); --muted: color-mix(in srgb, var(--primary) 55%, #8a918b);
+  --silver: color-mix(in srgb, var(--light) 75%, #e8eae7); --line: color-mix(in srgb, var(--light) 50%, #dfe3de);
+  --lime: var(--accent); --on-lime: color-mix(in srgb, var(--dark) 85%, var(--accent));
+  background: #fff; color: var(--ink); font: 15px/1.65 var(--body); -webkit-font-smoothing: antialiased;
+}
+.aurelle h1, .aurelle h2, .aurelle h3 { font-family: var(--heading); font-weight: 500; }
+.au-width { width: min(1180px, calc(100% - 80px)); margin-inline: auto; }
+.au-eyebrow { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; }
+.au-btn { display: inline-flex; align-items: center; gap: 12px; min-height: 50px; padding: 13px 24px; border-radius: 999px; font-size: 14px; font-weight: 700; white-space: nowrap; transition: transform .2s, filter .2s; }
+.au-btn:hover { transform: translateY(-2px); filter: brightness(.96); }
+.au-btn.lime { background: var(--lime); color: var(--on-lime); }
+
+.au-nav { display: flex; align-items: center; gap: 30px; padding-block: 19px; --mm-top: 88px; }
+.au-logo { display: inline-flex; align-items: center; gap: 8px; font: 700 23px var(--heading); letter-spacing: -.05em; margin-inline-end: auto; text-transform: uppercase; }
+.au-logo img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+.au-logo span { color: color-mix(in srgb, var(--lime) 70%, #4f7a1c); }
+.au-nav nav { display: flex; gap: 26px; }
+.au-nav nav a { font-size: 13px; color: var(--muted); transition: color .2s; }
+.au-nav nav a:hover { color: var(--ink); }
+.au-outline { border: 1px solid #c6cbc7; border-radius: 30px; padding: 12px 18px; font-weight: 700; font-size: 13px; transition: background .2s; }
+.au-outline:hover { background: var(--silver); }
+.aurelle .mm-panel { background: var(--silver); color: var(--ink); }
+.aurelle .mm-panel nav a { font: 500 2.2rem var(--heading); letter-spacing: -.05em; }
+.aurelle .mm-book { background: var(--lime); color: var(--on-lime); border-radius: 999px; font-weight: 700; }
+
+.au-shell { margin-block-start: 8px; min-height: 560px; position: relative; overflow: hidden; border-radius: 24px; display: grid; grid-template-columns: 1fr 46%;
+  background: linear-gradient(125deg, color-mix(in srgb, var(--silver) 85%, #fff), color-mix(in srgb, var(--silver) 80%, var(--primary)) 58%, var(--silver)); }
+.au-copy { padding-block: 80px 60px; padding-inline: 64px 20px; position: relative; z-index: 2; }
+.au-chip { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: #ffffff80; border: 1px solid #ffffffb0; border-radius: 99px; padding: 9px 14px; }
+.au-copy h1 { font-size: clamp(44px, 5.6vw, 80px); line-height: 1; letter-spacing: -.06em; margin: 26px 0 22px; max-width: 13ch; }
+.au-copy h1 em { font-style: normal; color: color-mix(in srgb, var(--primary) 45%, #8f9a95); }
+.au-copy > p { max-width: 40ch; color: color-mix(in srgb, var(--ink) 70%, #fff); margin-block-end: 26px; }
+.au-stats { display: flex; gap: 40px; padding-block-start: 46px; }
+.au-stats b { display: block; font: 600 30px var(--heading); letter-spacing: -.06em; }
+.au-stats small { font-size: 12px; color: var(--muted); }
+.au-photo { position: relative; }
+.au-photo img, .au-photo-blank { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.au-photo-blank { background: radial-gradient(circle at 60% 30%, #fff, var(--silver) 60%); }
+.au-photo::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, color-mix(in srgb, var(--silver) 70%, transparent), transparent 22%); }
+[dir=rtl] .au-photo::before { background: linear-gradient(270deg, color-mix(in srgb, var(--silver) 70%, transparent), transparent 22%); }
+.au-bubble { position: absolute; z-index: 2; inset-block-start: 40px; inset-inline-end: 24px; max-width: 200px; border-radius: 15px; background: #ffffffe6; backdrop-filter: blur(8px); padding: 14px 18px; font-size: 12px; line-height: 1.45; box-shadow: 0 10px 30px #0000001a; display: grid; gap: 6px; }
+.au-bubble strong { font: 600 20px/1.15 var(--heading); letter-spacing: -.03em; }
+
+.au-head { text-align: center; padding-block: 96px 38px; }
+.au-head h2 { font-size: clamp(32px, 4.2vw, 56px); line-height: 1.08; letter-spacing: -.05em; max-width: 16ch; margin: 12px auto; }
+.au-head p { color: var(--muted); max-width: 46ch; margin-inline: auto; }
+.au-head.left { text-align: start; padding-block: 0 20px; }
+.au-head.left h2 { margin-inline: 0; }
+.au-services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.au-tilt { min-height: 320px; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; position: relative; overflow: hidden; color: #fff; transition: transform .3s; }
+.au-tilt:last-child:nth-child(3n+2) { grid-column: span 2; }
+.au-tilt:hover { transform: translateY(-7px) rotate(-.6deg); }
+.au-tilt.v0 { background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 40%, #805044), color-mix(in srgb, var(--dark) 70%, #3f302c)); }
+.au-tilt.v1 { background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 85%, #fff), color-mix(in srgb, var(--dark) 90%, var(--primary))); }
+.au-tilt.v2 { background: linear-gradient(135deg, color-mix(in srgb, var(--lime) 55%, #fff), var(--lime)); color: var(--on-lime); }
+.au-tilt-top { font-size: 12px; font-weight: 700; letter-spacing: .04em; position: relative; }
+.au-ghost { position: absolute; font: 800 180px/1 var(--heading); inset-inline-end: -20px; inset-block-start: 30px; opacity: .13; letter-spacing: -.08em; pointer-events: none; }
+.au-tilt h3 { font-size: 27px; line-height: 1.08; letter-spacing: -.04em; margin: 0 0 8px; max-width: 12ch; position: relative; }
+.au-tilt p { font-size: 13px; line-height: 1.55; margin: 0; opacity: .85; max-width: 30ch; position: relative; }
+.au-arrow { position: absolute; inset-block-start: 22px; inset-inline-end: 22px; border: 1px solid currentColor; width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; font-size: 18px; transition: transform .3s, background .3s; }
+.au-tilt:hover .au-arrow { transform: rotate(45deg); background: #ffffff30; }
+
+.au-precision { margin-block: 96px 0; background: color-mix(in srgb, var(--silver) 50%, #fff); border-radius: 28px; min-height: 520px; display: grid; grid-template-columns: 1fr 1.1fr; align-items: center; overflow: hidden; }
+.au-precision-copy { padding: 64px; }
+.au-precision h2 { font-size: clamp(30px, 3.8vw, 50px); line-height: 1.07; letter-spacing: -.05em; max-width: 14ch; margin: 16px 0; }
+.au-precision-copy > p { color: var(--muted); max-width: 44ch; font-size: 14px; }
+.au-views { display: flex; flex-wrap: wrap; gap: 8px; margin-block-start: 28px; }
+.au-views button { border: 1px solid #c6cbc7; border-radius: 999px; padding: 10px 16px; font-size: 12px; font-weight: 700; }
+.au-views button[aria-pressed=true] { background: var(--ink); color: #fff; border-color: var(--ink); }
+.au-views .au-rot { border: 0; }
+.au-scene { height: 520px; position: relative; background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--lime) 75%, transparent) 0, transparent 58%); }
+.au-scene canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: grab; touch-action: pan-y; filter: drop-shadow(20px 25px 16px color-mix(in srgb, var(--dark) 22%, transparent)); }
+.au-scene canvas:active { cursor: grabbing; }
+.au-drag { position: absolute; inset-block-end: 22px; inset-inline-start: 50%; transform: translateX(-50%); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; background: #ffffffb0; padding: 8px 14px; border-radius: 999px; pointer-events: none; }
+.au-fallback { display: none; }
+.no-3d canvas { display: none; }
+.no-3d .au-fallback { display: block; position: absolute; inset: 12%; border-radius: 50%; overflow: hidden; }
+.no-3d .au-fallback img { width: 100%; height: 100%; object-fit: cover; }
+
+.au-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.au-steps article { border-radius: 18px; border: 1px solid var(--line); padding: 28px; }
+.au-step-n { font: 500 46px var(--heading); color: color-mix(in srgb, var(--primary) 25%, #c5cfc5); letter-spacing: -.06em; }
+.au-steps h3 { font-size: 19px; margin: 22px 0 8px; letter-spacing: -.02em; }
+.au-steps p { font-size: 13.5px; color: var(--muted); margin: 0; }
+
+.au-team { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; padding-block-start: 96px; align-items: start; }
+.au-team ul { list-style: none; }
+.au-team li { display: flex; justify-content: space-between; gap: 16px; padding-block: 18px; border-block-end: 1px solid var(--line); }
+.au-team li:first-child { border-block-start: 1px solid var(--line); }
+.au-team b { font: 500 22px var(--heading); letter-spacing: -.03em; }
+.au-team span { color: var(--muted); font-size: 13px; align-self: center; }
+
+.au-reviews { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(300px, 1fr); gap: 16px; overflow-x: auto; padding-block-end: 8px; }
+.au-reviews figure { margin: 0; border-radius: 18px; background: var(--silver); padding: 28px; display: flex; flex-direction: column; gap: 14px; }
+.au-reviews figure:first-child { background: var(--lime); color: var(--on-lime); }
+.au-reviews figure > span { letter-spacing: .15em; font-size: 13px; }
+.au-reviews blockquote { margin: 0; font: 400 19px/1.4 var(--heading); letter-spacing: -.02em; flex: 1; }
+.au-reviews figcaption { font-weight: 700; font-size: 13px; }
+
+.au-faq { display: grid; grid-template-columns: 38% 1fr; gap: 50px; padding-block-start: 96px; }
+.au-insure { margin-block-start: 24px; padding: 20px; border-radius: 16px; background: var(--silver); font-size: 14px; }
+.au-insure p { margin: 6px 0 0; color: var(--muted); }
+.au-faq details { border-block-end: 1px solid var(--line); }
+.au-faq summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 20px; font-weight: 600; cursor: pointer; }
+.au-faq summary::-webkit-details-marker { display: none; }
+.au-faq summary span { width: 30px; height: 30px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--lime); color: var(--on-lime); transition: transform .2s; }
+.au-faq details[open] summary span { transform: rotate(45deg); }
+.au-faq details p { color: var(--muted); margin: 0 0 20px; font-size: 14px; }
+
+#visit { padding-block-start: 96px; }
+.au-cta { background: color-mix(in srgb, var(--dark) 90%, #1f2924); color: #fff; border-radius: 26px; padding: 50px 58px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.au-cta h2 { font-size: clamp(30px, 3.4vw, 44px); letter-spacing: -.05em; margin: 8px 0 0; }
+.au-cta .au-eyebrow { color: var(--lime); }
+.au-visit { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-block-start: 16px; }
+.au-visit > div { border: 1px solid var(--line); border-radius: 22px; padding: 30px; display: grid; gap: 12px; align-content: start; }
+.au-visit h3 { font-size: 20px; letter-spacing: -.03em; margin: 0; }
+.au-visit p { margin: 0; color: var(--muted); }
+.au-links { display: flex; flex-wrap: wrap; gap: 20px; }
+.au-links a { color: var(--ink); font-weight: 700; border-block-end: 2px solid var(--lime); }
+.au-visit dl div { display: flex; justify-content: space-between; gap: 16px; padding-block: 9px; border-block-end: 1px solid var(--line); font-size: 14px; }
+.au-visit dl div:last-child { border: 0; }
+.au-visit dd { margin: 0; font-weight: 600; }
+
+.au-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding-block: 36px; margin-block-start: 50px; font-size: 13px; color: var(--muted); }
+.au-footer .au-logo { margin: 0; font-size: 18px; color: var(--ink); }
+.au-footer > div { display: flex; gap: 22px; }
+.au-sticky { display: none; }
+
+@media (max-width: 980px) {
+  .au-copy { padding-inline: 40px 10px; }
+  .au-services, .au-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .au-tilt:last-child:nth-child(3n+2) { grid-column: auto; }
+  .au-tilt:last-child:nth-child(odd) { grid-column: span 2; }
+}
+@media (max-width: 760px) {
+  .au-width { width: calc(100% - 32px); }
+  .au-nav { --mm-top: 80px; }
+  .au-shell { grid-template-columns: 1fr; min-height: auto; }
+  .au-copy { padding: 38px 24px 18px; }
+  .au-copy h1 { font-size: clamp(38px, 11vw, 52px); }
+  .au-stats { padding-block-start: 30px; gap: 30px; }
+  .au-photo { height: 340px; }
+  .au-photo::before { background: linear-gradient(180deg, color-mix(in srgb, var(--silver) 80%, transparent), transparent 30%); }
+  .au-head { padding-block: 70px 28px; }
+  .au-services, .au-steps { grid-template-columns: 1fr; }
+  .au-tilt:last-child:nth-child(odd) { grid-column: auto; }
+  .au-tilt { min-height: 250px; }
+  .au-precision { grid-template-columns: 1fr; margin-block-start: 70px; }
+  .au-precision-copy { padding: 36px 24px 0; }
+  .au-scene { height: 360px; }
+  .au-team, .au-faq { grid-template-columns: 1fr; gap: 20px; padding-block-start: 70px; }
+  .au-reviews { grid-auto-columns: 84%; }
+  #visit { padding-block-start: 70px; }
+  .au-cta { padding: 33px 26px; flex-direction: column; align-items: flex-start; }
+  .au-visit { grid-template-columns: 1fr; }
+  .au-footer { flex-direction: column; text-align: center; padding-block-end: 100px; }
+  .au-footer > div { flex-wrap: wrap; justify-content: center; }
+  .au-sticky { display: flex; position: fixed; inset-inline: 16px; inset-block-end: 16px; z-index: 70; justify-content: center; padding: 16px; border-radius: 999px; background: var(--lime); color: var(--on-lime); font-weight: 700; font-size: 14px; transform: translateY(150%); transition: transform .4s; box-shadow: 0 12px 30px #0000002a; }
+  .aurelle[data-scrolled] .au-sticky { transform: none; }
+}
+</style><div style="background:#111;color:#fff;font:500 13px/1.4 system-ui,sans-serif;text-align:center;padding:8px 16px;position:relative;z-index:100">Demo preview built for Harbour Dental. Not live yet.</div><header class="au-nav au-width"><a class="au-logo" href="#top">Harbour Dental<span>✳</span></a><nav class="desk"><a href="#care">Services</a><a href="#precision">Live 3D</a><a href="#journey">How it works</a><a href="#reviews">Reviews</a><a href="#visit">Contact</a></nav><a class="au-outline desk" href="#contact">Book a visit ↗</a><details class="mm "><summary aria-label="Menu"><span class="mm-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="mm-word">Menu</span></summary><div class="mm-panel"><nav><a href="#care">Services</a><a href="#precision">Live 3D</a><a href="#journey">How it works</a><a href="#reviews">Reviews</a><a href="#visit">Contact</a></nav><a class="mm-book" href="#contact">Book a visit</a><a class="mm-call" href="tel:+442079460321"><span dir="ltr">+44 20 7946 0321</span></a></div></details></header><main id="top"><section class="au-width"><div class="au-shell"><div class="au-copy"><span class="au-chip">✦ Family and cosmetic dentistry</span><h1>Calm, careful dentistry for<em> the whole family</em></h1><p>Check-ups, hygiene and whitening by a gentle team. Choose a time online that suits you.</p><a class="au-btn lime" href="#contact">Book a visit <span>↗</span></a><div class="au-stats"><div><b>4.8</b><small>Google rating</small></div><div><b>96</b><small>reviews on Google</small></div></div></div><div class="au-photo"><img src="../_photos/photo-1.svg" alt="Harbour Dental"/><div class="au-bubble"><strong>Online booking</strong><span class="open-badge " data-open="[{&quot;weekday&quot;:1,&quot;start&quot;:510,&quot;end&quot;:1050},{&quot;weekday&quot;:2,&quot;start&quot;:510,&quot;end&quot;:1050},{&quot;weekday&quot;:3,&quot;start&quot;:510,&quot;end&quot;:1050},{&quot;weekday&quot;:4,&quot;start&quot;:510,&quot;end&quot;:1200},{&quot;weekday&quot;:5,&quot;start&quot;:510,&quot;end&quot;:1050}]" data-tz="UTC" data-lang="en-GB" data-words="{&quot;open&quot;:&quot;Open now&quot;,&quot;closes&quot;:&quot;closes {time}&quot;,&quot;opens&quot;:&quot;opens {day} {time}&quot;,&quot;closed&quot;:&quot;Closed now&quot;}"></span></div></div></div></section><section class="au-width" id="care"><div class="au-head" data-reveal="true"><span class="au-eyebrow">What we do</span><h2>Care for every smile</h2><p>Everything you need under one roof, explained clearly and done gently.</p></div><div class="au-services"><a class="au-tilt v0" href="#contact" data-reveal="true"><span class="au-tilt-top">01 / 45 min · £75</span><div class="au-ghost" aria-hidden="true">01</div><div><h3>New patient check-up</h3><p>A full check, X-rays if needed, and a clear plan.</p></div><span class="au-arrow">↗</span></a><a class="au-tilt v1" href="#contact" data-reveal="true"><span class="au-tilt-top">02 / 30 min · £65</span><div class="au-ghost" aria-hidden="true">02</div><div><h3>Hygiene appointment</h3><p>Scale and polish to keep gums healthy.</p></div><span class="au-arrow">↗</span></a><a class="au-tilt v2" href="#contact" data-reveal="true"><span class="au-tilt-top">03 / 60 min · from £299</span><div class="au-ghost" aria-hidden="true">03</div><div><h3>Teeth whitening</h3><p>Professional whitening with custom trays.</p></div><span class="au-arrow">↗</span></a><a class="au-tilt v0" href="#contact" data-reveal="true"><span class="au-tilt-top">04 / 20 min · Free</span><div class="au-ghost" aria-hidden="true">04</div><div><h3>Children&#x27;s check-up</h3><p>Friendly first visits for little ones.</p></div><span class="au-arrow">↗</span></a><a class="au-tilt v1" href="#contact" data-reveal="true"><span class="au-tilt-top">05 / 30 min · £95</span><div class="au-ghost" aria-hidden="true">05</div><div><h3>Emergency appointment</h3><p>Same-day help for pain or a broken tooth.</p></div><span class="au-arrow">↗</span></a></div></section><section class="au-width au-precision" id="precision"><div class="au-precision-copy" data-reveal="true"><span class="au-eyebrow">The art of precision</span><h2>Dentistry without the dread</h2><p>We know a lot of people put off the dentist. So we explain everything before we start, go at your pace, and keep the waiting room actually calm.</p><p>From first check-ups for children to whitening before a big day, we look after the whole family.</p><div class="au-views" data-tooth-controls="#au-tooth"><button type="button" data-mat="pearl" aria-pressed="true">Porcelain</button><button type="button" data-mat="chrome" aria-pressed="false">Chrome</button><button type="button" class="au-rot" data-rotate="true">Rotate 90° ↻</button></div></div><div class="au-scene" data-3d-host="true"><canvas id="au-tooth" data-tooth-3d="true" data-scale=".74" data-material="pearl" tabindex="0" aria-label="Drag to rotate the 3D model"></canvas><div class="au-fallback"><img src="../_photos/photo-2.svg" alt=""/></div><span class="au-drag">↔ Drag to rotate the 3D model</span></div></section><section class="au-width au-journey" id="journey"><div class="au-head" data-reveal="true"><span class="au-eyebrow">How it works</span><h2>Your first visit</h2></div><div class="au-steps"><article data-reveal="true"><div class="au-step-n">01</div><h3>Book online</h3><p>Choose a time that suits you. New patients are welcome.</p></article><article data-reveal="true"><div class="au-step-n">02</div><h3>Check-up and plan</h3><p>We look, explain what we see, and give you clear options and prices.</p></article><article data-reveal="true"><div class="au-step-n">03</div><h3>Treatment at your pace</h3><p>Nothing happens without your say so, and you can stop at any time.</p></article></div></section><section class="au-width au-team"><div class="au-head left"><span class="au-eyebrow">The team</span><h2>Your dental team</h2></div><ul><li><b>Dr. Patel</b><span>Dentist</span></li><li><b>Dr. Okafor</b><span>Dentist</span></li><li><b>Emma</b><span>Hygienist</span></li></ul></section><section class="au-width" id="reviews"><div class="au-head" data-reveal="true"><span class="au-eyebrow">Patient stories</span><h2>What our patients say</h2><p>Rated 4.8 from 96 reviews</p></div><div class="au-reviews" data-drag="true"><figure><span>★★★★★</span><blockquote>I&#x27;ve avoided dentists for years. They were patient and explained everything.</blockquote><figcaption data-review-author="Tom R.">Tom R.</figcaption></figure><figure><span>★★★★★</span><blockquote>Booked my whole family in one evening. Kids actually enjoyed it.</blockquote><figcaption data-review-author="Priya S.">Priya S.</figcaption></figure><figure><span>★★★★★</span><blockquote>Whitening results were great and the price was exactly what they said.</blockquote><figcaption data-review-author="Mark L.">Mark L.</figcaption></figure></div></section><section class="au-width au-faq"><div class="au-head left"><h2>Questions, answered</h2><div class="au-insure"><b>Insurance we accept</b><p>Bupa · Denplan · Simplyhealth · AXA Health · Vitality</p></div></div><div><details><summary>Are you taking new patients?<span>+</span></summary><p>Yes. Book a new patient check-up online and we&#x27;ll take it from there.</p></details><details><summary>What if I&#x27;m nervous?<span>+</span></summary><p>Tell us when you arrive. We&#x27;ll go slowly and you can stop at any time.</p></details></div></section><section class="au-width" id="visit"><div class="au-cta"><div><span class="au-eyebrow">Visit us</span><h2>We&#x27;d love to see you</h2></div><a class="au-btn lime" href="#contact">Book a visit <span>↗</span></a></div><div class="au-visit"><div><h3>Come and see us</h3><p>8 Wharf Street, London SE8 3QR</p><span class="open-badge " data-open="[{&quot;weekday&quot;:1,&quot;start&quot;:510,&quot;end&quot;:1050},{&quot;weekday&quot;:2,&quot;start&quot;:510,&quot;end&quot;:1050},{&quot;weekday&quot;:3,&quot;start&quot;:510,&quot;end&quot;:1050},{&quot;weekday&quot;:4,&quot;start&quot;:510,&quot;end&quot;:1200},{&quot;weekday&quot;:5,&quot;start&quot;:510,&quot;end&quot;:1050}]" data-tz="UTC" data-lang="en-GB" data-words="{&quot;open&quot;:&quot;Open now&quot;,&quot;closes&quot;:&quot;closes {time}&quot;,&quot;opens&quot;:&quot;opens {day} {time}&quot;,&quot;closed&quot;:&quot;Closed now&quot;}"></span><p class="au-links"><a href="tel:+442079460321"><span dir="ltr">+44 20 7946 0321</span></a><a href="https://www.google.com/maps/search/?api=1&amp;query=Harbour%20Dental%2C%208%20Wharf%20Street%2C%20London%20SE8%203QR">Directions ↗</a></p></div><div><h3>Opening hours</h3><dl><div><dt>Mon to Wed</dt><dd>8:30 to 17:30</dd></div><div><dt>Thu</dt><dd>8:30 to 20:00</dd></div><div><dt>Fri</dt><dd>8:30 to 17:30</dd></div><div><dt>Sat to Sun</dt><dd>Closed</dd></div></dl></div></div></section></main><footer class="au-width au-footer"><a class="au-logo" href="#top">Harbour Dental<span>✳</span></a><div><a href="#care">Services</a><a href="#precision">Live 3D</a><a href="#journey">How it works</a><a href="https://instagram.com/example">Instagram</a></div><span>© 2026 Harbour Dental</span></footer><a class="au-sticky" href="#contact">Book a visit ↗</a><script>
+document.addEventListener("submit", function (e) {
+  var f = e.target;
+  if (!f.matches || !f.matches("form[data-enquiry]")) return;
+  e.preventDefault();
+  var note = f.querySelector("[data-note]"), btn = f.querySelector("button[type=submit]"), label = btn.textContent;
+  btn.disabled = true; btn.textContent = f.getAttribute("data-sending");
+  var data = {}; new FormData(f).forEach(function (v, k) { data[k] = v; });
+  fetch(f.getAttribute("data-enquiry"), { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(data) })
+    .then(function (r) { if (!r.ok) throw r; note.textContent = f.getAttribute("data-sent"); f.reset(); })
+    .catch(function () { note.textContent = f.getAttribute("data-error"); })
+    .then(function () { btn.disabled = false; btn.textContent = label; });
+});
+
+(function () {
+  var two = function (n) { return (n < 10 ? "0" : "") + n; };
+  document.querySelectorAll("[data-open]").forEach(function (el) {
+    try {
+      var rows = JSON.parse(el.getAttribute("data-open")), w = JSON.parse(el.getAttribute("data-words"));
+      var tz = el.getAttribute("data-tz"), lang = el.getAttribute("data-lang");
+      var parts = {};
+      new Intl.DateTimeFormat("en-GB", { timeZone: tz, weekday: "short", hour: "2-digit", minute: "2-digit", hour12: false })
+        .formatToParts(new Date()).forEach(function (p) { parts[p.type] = p.value; });
+      var day = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].indexOf(parts.weekday) + 1;
+      var mins = (parseInt(parts.hour, 10) % 24) * 60 + parseInt(parts.minute, 10);
+      var time = function (m) { return new Intl.DateTimeFormat(lang, { hour: "numeric", minute: "2-digit", timeZone: "UTC" }).format(new Date(Date.UTC(2024, 0, 1, Math.floor(m / 60) % 24, m % 60))); };
+      var dayName = function (wd) { return new Intl.DateTimeFormat(lang, { weekday: "short", timeZone: "UTC" }).format(new Date(Date.UTC(2024, 0, wd))); };
+      var today = rows.filter(function (r) { return r.weekday === day; })[0];
+      if (today && mins >= today.start && mins < today.end) {
+        el.textContent = w.open + " \u00b7 " + w.closes.replace("{time}", time(today.end));
+        el.classList.add("is-open");
+      } else {
+        var next = null;
+        for (var i = 0; i < 8 && !next; i++) {
+          var wd = ((day - 1 + i) % 7) + 1;
+          var r = rows.filter(function (x) { return x.weekday === wd; })[0];
+          if (r && (i > 0 || mins < r.start)) next = { wd: wd, r: r, today: i === 0 };
+        }
+        el.textContent = w.closed + (next ? " \u00b7 " + w.opens.replace("{day}", next.today ? "" : dayName(next.wd)).replace("{time}", time(next.r.start)).replace("  ", " ") : "");
+        el.classList.add("is-closed");
+      }
+    } catch (e) { el.remove(); }
+  });
+
+  document.querySelectorAll(".mm a").forEach(function (a) {
+    a.addEventListener("click", function () { var m = a.closest("details"); if (m) m.removeAttribute("open"); });
+  });
+
+  var box = null;
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest ? e.target.closest("[data-lightbox]") : null;
+    if (!t) return;
+    e.preventDefault();
+    box = document.createElement("div");
+    box.className = "lightbox";
+    box.innerHTML = '<img alt="">';
+    box.firstChild.src = t.getAttribute("data-lightbox");
+    box.addEventListener("click", function () { box.remove(); });
+    document.body.appendChild(box);
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && box) box.remove(); });
+
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll("[data-reveal]").forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll("[data-reveal]").forEach(function (el) { el.classList.add("in"); });
+  }
+
+  var site = document.querySelector(".dsite");
+  if (site) {
+    var onScroll = function () { site.toggleAttribute("data-scrolled", window.scrollY > window.innerHeight * 0.7); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+
+  document.querySelectorAll("[data-drag]").forEach(function (el) {
+    var down = false, x0 = 0, s0 = 0;
+    el.addEventListener("pointerdown", function (e) { if (e.pointerType !== "mouse") return; down = true; x0 = e.clientX; s0 = el.scrollLeft; el.classList.add("dragging"); });
+    window.addEventListener("pointerup", function () { down = false; el.classList.remove("dragging"); });
+    el.addEventListener("pointermove", function (e) { if (down) el.scrollLeft = s0 - (e.clientX - x0); });
+  });
+})();
+
+(function () {
+  var VERT = "#version 300 es\nprecision highp float;out vec2 vUv;void main(){vec2 p=vec2((gl_VertexID<<1)&2,gl_VertexID&2);vUv=p;gl_Position=vec4(p*2.0-1.0,0.,1.);}";
+  var FRAG = [
+    "#version 300 es",
+    "precision highp float;",
+    "in vec2 vUv;out vec4 fragColor;",
+    "uniform vec2 uSize;uniform float uTime;uniform float uYaw;uniform float uPitch;uniform float uScale;uniform float uMaterial;",
+    "uniform vec3 uBrand;uniform vec3 uWarm;uniform vec3 uPale;",
+    "float ellipsoid(vec3 p,vec3 r){float k0=length(p/r),k1=length(p/(r*r));return k0*(k0-1.)/k1;}",
+    "float smin(float a,float b,float k){float h=clamp(.5+.5*(b-a)/k,0.,1.);return mix(b,a,h)-k*h*(1.-h);}",
+    "mat2 rot(float a){float c=cos(a),s=sin(a);return mat2(c,-s,s,c);}",
+    "float sdf(vec3 p){",
+    " float d=ellipsoid(p-vec3(0.,.24,0.),vec3(.73,.56,.59));",
+    " for(int i=0;i<4;i++){float x=(i%2==0?-.37:.37),z=(i<2?-.29:.29);d=smin(d,ellipsoid(p-vec3(x,.64,z),vec3(.36,.34,.35)),.19);}",
+    " d+=.022*cos(p.x*8.3+sin(p.y*3.5))*smoothstep(.15,.8,p.y);",
+    " d=smin(d,ellipsoid(p-vec3(0.,-.31,0.),vec3(.55,.37,.44)),.30);",
+    " for(int i=0;i<2;i++){float s=(i==0?-1.:1.);vec3 q=p-vec3(s*.275,-.76,-.005);q.x+=s*.26*(q.y+.62);",
+    "  float taper=mix(.16,.27,clamp((q.y+.95)/.9,0.,1.));d=smin(d,ellipsoid(q,vec3(taper,.70,.255)),.15);}",
+    " return d;}",
+    "vec3 norm(vec3 p){vec2 e=vec2(.002,0.);return normalize(vec3(sdf(p+e.xyy)-sdf(p-e.xyy),sdf(p+e.yxy)-sdf(p-e.yxy),sdf(p+e.yyx)-sdf(p-e.yyx)));}",
+    "vec3 env(vec3 r){",
+    " vec3 deep=mix(uBrand,vec3(.08),.38),sky=mix(mix(uBrand,uPale,.78),vec3(1.),.18);",
+    " vec3 col=mix(deep,sky,smoothstep(-.75,.88,r.y));",
+    " col+=vec3(.95,1.,.98)*.85*pow(max(dot(r,normalize(vec3(-.67,.52,.5))),0.),11.);",
+    " col+=mix(uWarm,vec3(1.),.25)*.8*pow(max(dot(r,normalize(vec3(.88,.05,.62))),0.),18.);",
+    " float ribbon=exp(-pow((r.x+.25)/.18,2.))*smoothstep(-.8,-.2,r.z);col+=vec3(.95,.97,1.)*ribbon*.75;",
+    " col*=mix(.62,1.2,smoothstep(-.48,.67,r.y));return col;}",
+    "void main(){",
+    " vec2 uv=(gl_FragCoord.xy-.5*uSize.xy)/min(uSize.x,uSize.y);",
+    " vec3 ro=vec3(0.,0.,4.6),rd=normalize(vec3(uv.x*2.0/uScale,uv.y*2.0/uScale,-3.9));",
+    " ro.xz=rot(-uYaw)*ro.xz;rd.xz=rot(-uYaw)*rd.xz;ro.yz=rot(-uPitch)*ro.yz;rd.yz=rot(-uPitch)*rd.yz;",
+    " float t=0.;bool hit=false;",
+    " for(int i=0;i<105;i++){float d=sdf(ro+rd*t);if(d<.0012){hit=true;break;}t+=max(d*.77,.012);if(t>9.)break;}",
+    " if(!hit){fragColor=vec4(0.);return;}",
+    " vec3 p=ro+rd*t,n=norm(p),v=normalize(-rd);vec3 R=reflect(-v,n);R.yz=rot(uPitch)*R.yz;R.xz=rot(uYaw)*R.xz;",
+    " float fres=pow(1.-max(dot(n,v),0.),3.0);vec3 light=normalize(vec3(-.4,.8,1.));float diffuse=max(dot(n,light),0.);",
+    " float spec1=pow(max(dot(reflect(-light,n),v),0.),55.);float spec2=pow(max(dot(reflect(-normalize(vec3(.9,.2,.4)),n),v),0.),75.);",
+    " vec3 reflection=env(R);vec3 color;",
+    " if(uMaterial<.5){color=reflection*.93+mix(uBrand,vec3(1.),.35)*.19;color*=.73+.3*diffuse;",
+    "  color+=vec3(.95,1.,1.)*spec1*1.1+mix(uWarm,vec3(1.),.3)*spec2*.8;color=mix(color,mix(uBrand,vec3(1.),.82),fres*.52);}",
+    " else{vec3 pearl=mix(uPale,vec3(1.),.4);color=pearl*(1.25+.5*diffuse)+reflection*.2;color+=vec3(1.)*spec1*.85+mix(uBrand,vec3(1.),.6)*fres*.6;}",
+    " float ridge=clamp((sdf(p+n*.075)-.06)*5.,0.,1.);color*=.9+.1*ridge;",
+    " color=1.-exp(-color*1.12);color=pow(color,vec3(.85));",
+    " float edge=smoothstep(0.,.22,max(dot(n,v),0.));fragColor=vec4(color,edge*.87+.13);}"
+  ].join("\n");
+
+  function rgb(hex, fallback) {
+    var m = /^#?([0-9a-f]{6})$/i.exec((hex || "").trim());
+    if (!m) return fallback;
+    var n = parseInt(m[1], 16);
+    return [(n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255];
+  }
+
+  function init(canvas) {
+    var gl = null;
+    try { gl = canvas.getContext("webgl2", { alpha: true, antialias: true, premultipliedAlpha: false }); } catch (e) {}
+    var host = canvas.closest("[data-3d-host]") || canvas.parentElement;
+    if (!gl) { host.classList.add("no-3d"); return null; }
+    function sh(type, src) { var o = gl.createShader(type); gl.shaderSource(o, src); gl.compileShader(o); return gl.getShaderParameter(o, gl.COMPILE_STATUS) ? o : null; }
+    var p = gl.createProgram(), v = sh(gl.VERTEX_SHADER, VERT), f = sh(gl.FRAGMENT_SHADER, FRAG);
+    if (!v || !f) { host.classList.add("no-3d"); return null; }
+    gl.attachShader(p, v); gl.attachShader(p, f); gl.linkProgram(p);
+    if (!gl.getProgramParameter(p, gl.LINK_STATUS)) { host.classList.add("no-3d"); return null; }
+    gl.useProgram(p);
+    var U = {};
+    ["uSize", "uTime", "uYaw", "uPitch", "uScale", "uMaterial", "uBrand", "uWarm", "uPale"].forEach(function (s) { U[s] = gl.getUniformLocation(p, s); });
+    gl.bindVertexArray(gl.createVertexArray());
+    var css = getComputedStyle(canvas);
+    var brand = rgb(css.getPropertyValue("--primary"), [.2, .45, .5]), warm = rgb(css.getPropertyValue("--accent"), [1, .78, .67]), pale = rgb(css.getPropertyValue("--light"), [.9, .95, .95]);
+    var st = { yaw: .21, pitch: -.07, material: canvas.getAttribute("data-material") === "pearl" ? 1 : 0, drag: false }, ty = st.yaw, tp = st.pitch, last = 0, active = false, frame = 0;
+    var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches, scale = Number(canvas.getAttribute("data-scale") || "1");
+    new IntersectionObserver(function (es) { active = es.some(function (e) { return e.isIntersecting; }); if (active) run(); }, { threshold: .01 }).observe(canvas);
+    function render(ms) {
+      if (!active) { frame = 0; return; }
+      var dpr = Math.min(devicePixelRatio || 1, 1.4), r = canvas.getBoundingClientRect(), w = Math.max(1, Math.round(r.width * dpr)), h = Math.max(1, Math.round(r.height * dpr));
+      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h); }
+      st.yaw += (ty - st.yaw) * .07; st.pitch += (tp - st.pitch) * .07;
+      var tt = ms * .001;
+      if (!st.drag && !reduce) { ty += .0014; tp = -.05 + Math.sin(tt * .25) * .11; }
+      gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.uniform2f(U.uSize, w, h); gl.uniform1f(U.uTime, tt); gl.uniform1f(U.uYaw, st.yaw); gl.uniform1f(U.uPitch, st.pitch);
+      gl.uniform1f(U.uScale, scale); gl.uniform1f(U.uMaterial, st.material);
+      gl.uniform3fv(U.uBrand, brand); gl.uniform3fv(U.uWarm, warm); gl.uniform3fv(U.uPale, pale);
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
+      frame = requestAnimationFrame(render);
+    }
+    function run() { if (!frame && active) frame = requestAnimationFrame(render); }
+    canvas.addEventListener("pointerdown", function (e) { st.drag = true; last = e.clientX; canvas.setPointerCapture(e.pointerId); });
+    canvas.addEventListener("pointermove", function (e) { if (!st.drag) return; var dx = e.clientX - last; last = e.clientX; ty += dx * .008; tp = Math.max(-.75, Math.min(.75, tp + (e.movementY || 0) * .004)); });
+    function end() { st.drag = false; }
+    canvas.addEventListener("pointerup", end); canvas.addEventListener("pointercancel", end);
+    canvas.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft" || e.key === "ArrowRight") { ty += e.key === "ArrowLeft" ? -.3 : .3; e.preventDefault(); }
+      else if (e.key === "ArrowUp" || e.key === "ArrowDown") { tp += e.key === "ArrowDown" ? -.2 : .2; e.preventDefault(); }
+    });
+    canvas.addEventListener("tooth-material", function (e) { st.material = e.detail === "pearl" ? 1 : 0; });
+    canvas.addEventListener("tooth-rotate", function () { ty += Math.PI / 2; });
+    run();
+    return true;
+  }
+
+  document.querySelectorAll("canvas[data-tooth-3d]").forEach(init);
+  document.querySelectorAll("[data-tooth-controls]").forEach(function (box) {
+    var target = document.querySelector(box.getAttribute("data-tooth-controls"));
+    if (!target) return;
+    box.querySelectorAll("[data-mat]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        box.querySelectorAll("[data-mat]").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+        target.dispatchEvent(new CustomEvent("tooth-material", { detail: b.getAttribute("data-mat") }));
+      });
+    });
+    var r = box.querySelector("[data-rotate]");
+    if (r) r.addEventListener("click", function () { target.dispatchEvent(new Event("tooth-rotate")); });
+  });
+})();
+</script></div>
+</body>
+</html>

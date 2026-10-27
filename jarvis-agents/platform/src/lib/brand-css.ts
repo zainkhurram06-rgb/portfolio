@@ -7,7 +7,9 @@ export function brandVars(c: SiteContent) {
 }
 
 export function fontsHref(c: SiteContent) {
-  const fam = (f: string) => `family=${f.replace(/ /g, "+")}:wght@400;500;600;700`;
+  // real italics too (several designs set words in italic). Google skips the
+  // styles a font doesn't have, so asking is always safe
+  const fam = (f: string) => `family=${f.replace(/ /g, "+")}:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500`;
   const fonts = [...new Set([c.headingFont, c.bodyFont])];
   return `https://fonts.googleapis.com/css2?${fonts.map(fam).join("&")}&display=swap`;
 }

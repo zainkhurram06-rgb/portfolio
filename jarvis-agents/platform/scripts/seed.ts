@@ -52,7 +52,7 @@ const demos: NewBusiness[] = [
     slug: "harbour-dental",
     name: "Harbour Dental",
     niche: "dental",
-    theme: "clinic-calm",
+    theme: "dental-lumex",
     country: "GB", currency: "GBP", timezone: "Europe/London", language: "en",
     phone: "+44 20 7946 0321", email: "reception@harbourdental.example",
     address: "8 Wharf Street, London SE8 3QR", city: "London",
