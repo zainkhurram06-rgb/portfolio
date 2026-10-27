@@ -157,5 +157,13 @@
   "bfo_wait": "Espero",
   "bfo_drop_off": "Lo dejo",
   "bf_job_address": "Dirección del trabajo",
-  "bk_details": "Unos datos"
+  "bk_details": "Unos datos",
+  "wash_foam": "Espuma",
+  "wash_foam_text": "Una espuma densa levanta la suciedad antes de tocar la pintura.",
+  "wash_rinse": "Aclarado",
+  "wash_rinse_text": "Un aclarado suave y limpio se lleva la suciedad.",
+  "wash_shine": "Brillo",
+  "wash_shine_text": "Secado a mano y acabado con un brillo profundo.",
+  "tap_room": "Toca una habitación para ver qué arreglamos ahí",
+  "take_apart": "Sigue bajando, lo desmontamos"
 }

@@ -53,7 +53,7 @@ export function Verda({ d }: DesignProps) {
             <a href="#services"><small>{L.sec_services_kicker}</small><strong>{services.length} {L.stat_services} <span>⌄</span></strong></a>
             {biz.phone
               ? <a href={`tel:${tel(biz.phone)}`}><small>{L.call_now}</small><strong><Num>{biz.phone}</Num></strong></a>
-              : <a href="#visit"><small>{L.nav_contact}</small><strong>{biz.city}</strong></a>}
+              : <a href="#visit"><small>{L.nav_contact}</small><strong>{biz.city ?? biz.name}</strong></a>}
             <a className="ve-btn solid" href={d.bookHref}>{L.book_online} →</a>
           </div>
         </section>

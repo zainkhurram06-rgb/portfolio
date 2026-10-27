@@ -58,8 +58,8 @@ export function Forma({ d }: DesignProps) {
           <div className="fo-main-photo">
             {c.heroImage ? <img src={c.heroImage} alt={biz.name} /> : <div className="fo-blank" />}
             <div className="fo-badge">
-              <b>{c.rating != null ? `★ ${c.rating.toFixed(1)}` : c.highlights[0] ?? biz.city}</b>
-              {c.rating != null && c.reviewCount ? fill(L.google_reviews, { n: c.reviewCount }) : c.areasServed.length ? fill(L.serving, { areas: c.areasServed.slice(0, 2).join(", ") }) : biz.city}
+              <b>{c.rating != null ? `★ ${c.rating.toFixed(1)}` : c.highlights[0] ?? biz.name}</b>
+              {c.rating != null && c.reviewCount ? fill(L.google_reviews, { n: c.reviewCount }) : c.areasServed.length ? fill(L.serving, { areas: c.areasServed.slice(0, 2).join(", ") }) : c.tagline}
             </div>
           </div>
           <div className="fo-index"><span>{services.slice(0, 3).map((s) => s.name).join(" / ")}</span><a href="#work">{L.scroll_explore} ↓</a></div>

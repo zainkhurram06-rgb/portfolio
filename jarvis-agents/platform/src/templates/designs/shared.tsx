@@ -167,3 +167,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 [data-drag].dragging * { pointer-events: none; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 `;
+
+// before/after slider: <div data-ba><img/><img class="after"/><input type="range"/></div>
+// the range moves --pos, the design clips the "after" photo to it
+export const BA_JS = `
+document.querySelectorAll("[data-ba]").forEach(function (el) {
+  var r = el.querySelector("input");
+  if (!r) return;
+  var set = function () { el.style.setProperty("--pos", r.value + "%"); };
+  r.addEventListener("input", set); set();
+});
+`;

@@ -45,7 +45,7 @@ export function Monolith({ d }: DesignProps) {
           <div className="mo-hero-grid">
             <div className="mo-hero-img">{c.heroImage ? <img src={c.heroImage} alt={biz.name} /> : <div className="mo-blank" />}</div>
             <div className="mo-hero-text">
-              <span className="mo-small">{biz.city} / 001</span>
+              <span className="mo-small">{biz.city ? `${biz.city} / ` : ""}001</span>
               <p>{c.headline}</p>
               <small>{c.subheadline}</small>
               <a className="mo-btn white" href={d.bookHref}>{c.ctaLabel} ↗</a>

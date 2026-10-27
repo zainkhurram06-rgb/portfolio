@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>House 3D | Home services &amp; trades template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Corben:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Onest:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap">
+<style>body{margin:0}:root{--primary:#2f6b4f;--accent:#f2a65a;--dark:#1d2b24;--light:#eef2ea;--heading:"Corben",Georgia,serif;--body:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;}</style>
+</head>
+<body>
+<link rel="preload" as="image" href="../_photos/photo-1.svg"/><div class="dsite house" dir="ltr"><style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+img, video { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+.dsite { overflow-x: clip; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+.dsite :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.mm { position: relative; display: none; }
+.mm summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; }
+.mm summary::-webkit-details-marker { display: none; }
+.mm-bars { display: inline-grid; gap: 5px; width: 22px; }
+.mm-bars i { display: block; height: 1.5px; background: currentColor; transition: transform .25s, opacity .25s; }
+.mm[open] .mm-bars i:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.mm[open] .mm-bars i:nth-child(2) { opacity: 0; }
+.mm[open] .mm-bars i:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.mm-panel { position: fixed; inset: 0; top: var(--mm-top, 64px); z-index: 80; display: flex; flex-direction: column; gap: 28px; padding: 36px 24px; overflow-y: auto; }
+.mm-panel nav { display: grid; gap: 4px; }
+.mm-panel nav a { font-size: 1.9rem; padding-block: 8px; }
+.mm-book { display: inline-flex; justify-content: center; padding: 16px 24px; }
+@media (max-width: 860px) { .mm { display: block; } .desk { display: none !important; } }
+.open-badge { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.open-badge:empty { display: none; }
+.open-badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #9ca3af; flex: none; }
+.open-badge.is-open::before { background: #22c55e; box-shadow: 0 0 0 4px rgba(34,197,94,.18); }
+.lightbox { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,.88); display: grid; place-items: center; padding: 24px; cursor: zoom-out; animation: fadein .2s; }
+.lightbox img { max-height: 90vh; width: auto; border-radius: 6px; }
+@keyframes fadein { from { opacity: 0; } }
+[data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+[data-reveal].in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1; transform: none; transition: none; } * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+[data-drag] { cursor: grab; scrollbar-width: none; }
+[data-drag]::-webkit-scrollbar { display: none; }
+[data-drag].dragging { cursor: grabbing; scroll-snap-type: none !important; }
+[data-drag].dragging * { pointer-events: none; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+.house {
+  --paper: color-mix(in srgb, var(--light) 70%, #fbfaf6); --ink: color-mix(in srgb, var(--dark) 92%, #111);
+  --muted: color-mix(in srgb, var(--dark) 50%, #8f968f); --line: color-mix(in srgb, var(--dark) 12%, transparent);
+  --leaf: var(--primary); --sun: var(--accent); --card: #fff;
+  background: var(--paper); color: var(--ink); font: 16px/1.6 var(--body); -webkit-font-smoothing: antialiased;
+}
+.house h1, .house h2 { font-family: var(--heading); font-weight: 400; letter-spacing: -.02em; }
+.hs-width { width: min(1240px, calc(100% - 80px)); margin-inline: auto; }
+.hs-kicker { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; color: var(--leaf); }
+.hs-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 12px 24px; border-radius: 14px; background: var(--leaf); color: #fff; font-weight: 700; font-size: 15px; white-space: nowrap; transition: transform .2s, filter .2s; }
+.hs-btn:hover { transform: translateY(-2px); filter: brightness(1.08); }
+.hs-btn.big { min-height: 58px; padding-inline: 30px; font-size: 17px; background: var(--sun); color: var(--ink); }
+.hs-btn.line { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+
+.hs-nav { display: flex; align-items: center; gap: 28px; padding-block: 20px; --mm-top: 88px; }
+.hs-logo { display: inline-flex; align-items: center; gap: 10px; font: 400 22px var(--heading); margin-inline-end: auto; }
+.hs-logo img { width: 38px; height: 38px; border-radius: 10px; object-fit: cover; }
+.hs-mark { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; background: var(--leaf); color: #fff; }
+.hs-nav nav { display: flex; gap: 26px; }
+.hs-nav nav a { font-size: 14px; font-weight: 600; color: var(--muted); }
+.hs-nav nav a:hover { color: var(--ink); }
+.house .mm-panel { background: var(--paper); color: var(--ink); }
+.house .mm-panel nav a { font: 400 2.2rem var(--heading); }
+.house .mm-book { background: var(--leaf); color: #fff; border-radius: 14px; }
+
+.hs-hero { display: grid; grid-template-columns: .85fr 1.15fr; gap: 30px; align-items: center; padding-block: 30px 40px; }
+.hs-live { display: inline-flex; padding: 8px 14px; border-radius: 999px; background: var(--card); box-shadow: 0 4px 14px #0000000f; font-size: 14px; font-weight: 600; }
+.hs-hero h1 { font-size: clamp(44px, 5.4vw, 84px); line-height: 1; margin: 22px 0 18px; }
+.hs-hero-copy > p { color: var(--muted); font-size: 18px; max-width: 40ch; }
+.hs-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-block-start: 26px; }
+.hs-ticks { list-style: none; display: grid; gap: 8px; margin-block-start: 28px; }
+.hs-ticks li { display: flex; gap: 10px; align-items: center; font-weight: 600; font-size: 15px; }
+.hs-ticks svg { color: #fff; background: var(--leaf); border-radius: 50%; padding: 3px; width: 22px; height: 22px; flex: none; }
+.hs-stage { position: relative; }
+.hs-pic { position: relative; aspect-ratio: 3 / 2; border-radius: 28px; background: radial-gradient(ellipse at 50% 60%, color-mix(in srgb, var(--sun) 25%, var(--card)), color-mix(in srgb, var(--light) 60%, var(--card)) 70%); box-shadow: inset 0 0 0 1px var(--line); }
+.hs-pic canvas { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 28px; }
+.hs-fallback { display: none; }
+.no-3d canvas { display: none; }
+.no-3d .hs-fallback { display: block; position: absolute; inset: 0; border-radius: 28px; overflow: hidden; }
+.no-3d .hs-fallback img { width: 100%; height: 100%; object-fit: cover; }
+.hs-spot { position: absolute; inset-inline-start: var(--x); inset-block-start: var(--y); z-index: 3; }
+.hs-spot button { position: relative; width: 44px; height: 44px; margin: -22px; border-radius: 50%; background: var(--card); color: var(--leaf); font-weight: 800; box-shadow: 0 6px 18px #00000026; display: grid; place-items: center; }
+.hs-spot button::before { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid var(--sun); animation: hs-ping 2.2s ease-out infinite; }
+.hs-spot.on button { background: var(--leaf); color: #fff; }
+.hs-card { position: absolute; inset-inline-start: 34px; inset-block-start: -30px; width: 250px; background: var(--card); border-radius: 16px; padding: 16px 18px; box-shadow: 0 20px 40px #0000002a; display: grid; gap: 6px; opacity: 0; transform: translateY(8px); pointer-events: none; transition: opacity .25s, transform .25s; }
+[dir=ltr] > .hs-spot[data-room="1"] .hs-card { inset-inline-start: auto; inset-inline-end: 34px; }
+.hs-spot.on .hs-card { opacity: 1; transform: none; pointer-events: auto; }
+.hs-card b { font: 400 20px/1.15 var(--heading); }
+.hs-card small { color: var(--muted); font-size: 13px; line-height: 1.45; }
+.hs-card span { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-block-start: 6px; }
+.hs-card i { font-style: normal; font-weight: 800; }
+.hs-card a { color: var(--leaf); font-weight: 700; font-size: 14px; }
+.hs-hint { margin: 12px 0 0; font-size: 13px; color: var(--muted); text-align: center; }
+
+.hs-proof { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 26px; padding: 20px 26px; border-radius: 18px; background: var(--card); box-shadow: 0 10px 30px #0000000d; }
+.hs-proof b { font: 400 30px var(--heading); color: var(--leaf); }
+.hs-proof span { color: var(--muted); font-size: 14px; }
+.hs-serving { display: inline-flex; gap: 8px; align-items: center; margin-inline-start: auto; }
+
+.hs-section { padding-block-start: 110px; }
+.hs-head { max-width: 640px; margin-block-end: 36px; }
+.hs-section h2 { font-size: clamp(36px, 4.4vw, 64px); line-height: 1.02; margin: 12px 0 14px; }
+.hs-head p { color: var(--muted); margin: 0; }
+.hs-services { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.hs-services a { background: var(--card); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 8px; min-height: 240px; box-shadow: 0 1px 0 var(--line); transition: transform .25s, box-shadow .25s; }
+.hs-services a:hover { transform: translateY(-5px); box-shadow: 0 22px 40px #00000014; }
+.hs-ico { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; background: color-mix(in srgb, var(--leaf) 12%, var(--card)); color: var(--leaf); margin-block-end: 8px; }
+.hs-services b { font: 400 22px/1.15 var(--heading); }
+.hs-services small { color: var(--muted); font-size: 14px; flex: 1; }
+.hs-price { display: flex; justify-content: space-between; align-items: center; font-weight: 800; padding-block-start: 12px; border-block-start: 1px solid var(--line); }
+.hs-price i { font-style: normal; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--sun); color: var(--ink); transition: transform .25s; }
+.hs-services a:hover .hs-price i { transform: translateX(4px); }
+
+.hs-about { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.hs-about p { color: var(--muted); }
+.hs-trust { display: grid; gap: 14px; }
+.hs-guarantee { background: var(--leaf); color: #fff; border-radius: 22px; padding: 28px; display: grid; gap: 6px; }
+.hs-guarantee b { font: 400 26px var(--heading); }
+.hs-guarantee p { margin: 0; color: color-mix(in srgb, #fff 80%, transparent); }
+.hs-trust ul { list-style: none; display: grid; gap: 8px; }
+.hs-trust li { display: flex; gap: 10px; align-items: center; background: var(--card); padding: 14px 18px; border-radius: 14px; font-weight: 600; }
+.hs-trust li svg { color: var(--leaf); }
+.hs-areas { background: var(--card); border-radius: 22px; padding: 22px; }
+.hs-areas div { display: flex; flex-wrap: wrap; gap: 8px; margin-block-start: 12px; }
+.hs-areas span { padding: 7px 14px; border-radius: 999px; background: var(--paper); font-size: 14px; }
+
+.hs-steps { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.hs-steps li { background: var(--card); border-radius: 22px; padding: 28px; display: grid; gap: 8px; align-content: start; }
+.hs-steps span { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--sun); font-weight: 800; margin-block-end: 8px; }
+.hs-steps b { font: 400 22px var(--heading); }
+.hs-steps p { margin: 0; color: var(--muted); font-size: 15px; }
+
+.hs-reviews { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.hs-reviews figure { margin: 0; background: var(--card); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px; }
+.hs-reviews figure > span { color: var(--sun); letter-spacing: .14em; }
+.hs-reviews blockquote { margin: 0; flex: 1; font: 400 19px/1.4 var(--heading); }
+.hs-reviews figcaption { font-weight: 700; font-size: 14px; }
+
+.hs-faq { display: grid; grid-template-columns: 40% 1fr; gap: 50px; }
+.hs-faq h2 { margin: 0; }
+.hs-faq details { background: var(--card); border-radius: 16px; margin-block-end: 10px; }
+.hs-faq summary { list-style: none; display: flex; justify-content: space-between; gap: 16px; padding: 20px 22px; font-weight: 700; cursor: pointer; }
+.hs-faq summary::-webkit-details-marker { display: none; }
+.hs-faq summary span { width: 30px; height: 30px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--sun); transition: transform .2s; }
+.hs-faq details[open] summary span { transform: rotate(45deg); }
+.hs-faq details p { color: var(--muted); padding: 0 22px 20px; margin: 0; }
+
+.hs-quote { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; padding: clamp(28px, 5vw, 60px); border-radius: 30px; background: var(--ink); color: var(--paper); }
+.hs-quote .hs-kicker { color: var(--sun); }
+.hs-quote h2 { margin-block-start: 12px; }
+.hs-quote p { color: color-mix(in srgb, var(--paper) 72%, transparent); }
+.hs-call { display: inline-flex; gap: 12px; align-items: center; font: 400 clamp(28px, 3vw, 40px) var(--heading); color: var(--sun); margin-block: 6px 14px; }
+.hs-addr { display: flex; gap: 8px; align-items: center; font-size: 14px; }
+.hs-quote dl div { display: flex; justify-content: space-between; gap: 16px; padding-block: 8px; border-block-end: 1px solid #ffffff22; font-size: 14px; }
+.hs-form form { display: grid; gap: 10px; }
+.hs-form input, .hs-form select, .hs-form textarea { width: 100%; padding: 14px 16px; border-radius: 12px; border: 0; background: color-mix(in srgb, var(--paper) 96%, transparent); color: var(--ink); }
+.hs-form button { justify-self: start; margin-block-start: 6px; background: var(--sun); color: var(--ink); }
+.hs-form [data-note] { font-size: 14px; }
+
+.hs-footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding-block: 40px; font-size: 13px; color: var(--muted); }
+.hs-footer .hs-logo { margin: 0; font-size: 18px; color: var(--ink); }
+.hs-footer > div { display: flex; gap: 20px; }
+.hs-sticky { display: none; }
+@keyframes hs-ping { from { transform: scale(.9); opacity: 1; } to { transform: scale(1.5); opacity: 0; } }
+
+@media (max-width: 960px) {
+  .hs-hero, .hs-about, .hs-faq, .hs-quote { grid-template-columns: 1fr; gap: 30px; }
+  .hs-steps { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .hs-width { width: calc(100% - 32px); }
+  .hs-nav { --mm-top: 80px; }
+  .hs-hero { padding-block-start: 10px; }
+  .hs-hero h1 { font-size: clamp(38px, 10.5vw, 54px); }
+  .hs-pic { margin-inline: -16px; border-radius: 0; }
+  .hs-pic canvas { border-radius: 0; }
+  .hs-spot button { width: 38px; height: 38px; margin: -19px; }
+  .hs-card { position: fixed; inset-inline: 16px !important; inset-block: auto 86px; width: auto; z-index: 75; }
+  .hs-proof { padding: 18px; }
+  .hs-serving { margin-inline-start: 0; }
+  .hs-section { padding-block-start: 80px; }
+  .hs-footer { flex-direction: column; text-align: center; padding-block-end: 110px; }
+  .hs-sticky { display: flex; gap: 8px; position: fixed; inset-inline: 16px; inset-block-end: 16px; z-index: 70; }
+  .hs-sticky a { flex: 1; display: flex; gap: 8px; justify-content: center; align-items: center; padding: 15px; border-radius: 14px; background: var(--leaf); color: #fff; font-weight: 700; font-size: 15px; box-shadow: 0 12px 30px #0000002a; }
+  .hs-sticky a:first-child:not(:last-child) { background: var(--sun); color: var(--ink); }
+}
+</style><div style="background:#111;color:#fff;font:500 13px/1.4 system-ui,sans-serif;text-align:center;padding:8px 16px;position:relative;z-index:100">Demo preview built for Coastline Plumbing &amp; Gas. Not live yet.</div><header class="hs-nav hs-width"><a class="hs-logo" href="#top"><span class="hs-mark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><span>Coastline Plumbing &amp; Gas</span></a><nav class="desk"><a href="#services">Services</a><a href="#about">Why us</a><a href="#reviews">Reviews</a><a href="#quote">Free quote</a></nav><a class="hs-btn desk" href="tel:+61255501987"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><span dir="ltr">+61 2 5550 1987</span></a><details class="mm "><summary aria-label="Menu"><span class="mm-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="mm-word">Menu</span></summary><div class="mm-panel"><nav><a href="#services">Services</a><a href="#about">Why us</a><a href="#reviews">Reviews</a><a href="#quote">Free quote</a></nav><a class="mm-book" href="#contact">Book a plumber</a><a class="mm-call" href="tel:+61255501987"><span dir="ltr">+61 2 5550 1987</span></a></div></details></header><section class="hs-hero hs-width" id="top"><div class="hs-hero-copy"><span class="hs-live"><span class="open-badge " data-open="[{&quot;weekday&quot;:1,&quot;start&quot;:420,&quot;end&quot;:1020},{&quot;weekday&quot;:2,&quot;start&quot;:420,&quot;end&quot;:1020},{&quot;weekday&quot;:3,&quot;start&quot;:420,&quot;end&quot;:1020},{&quot;weekday&quot;:4,&quot;start&quot;:420,&quot;end&quot;:1020},{&quot;weekday&quot;:5,&quot;start&quot;:420,&quot;end&quot;:1020},{&quot;weekday&quot;:6,&quot;start&quot;:420,&quot;end&quot;:1020}]" data-tz="UTC" data-lang="en-AU" data-words="{&quot;open&quot;:&quot;Open now&quot;,&quot;closes&quot;:&quot;closes {time}&quot;,&quot;opens&quot;:&quot;opens {day} {time}&quot;,&quot;closed&quot;:&quot;Closed now&quot;}"></span></span><h1>Leaks, blockages and hot water, sorted today</h1><p>Upfront prices, on-time arrivals and a tidy job. Book a visit or call us now.</p><div class="hs-buttons"><a class="hs-btn big" href="tel:+61255501987"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>Call now</a><a class="hs-btn line" href="#quote">Free quote →</a></div><ul class="hs-ticks"><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Upfront pricing</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Same-day visits</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Licensed and insured</li></ul></div><div class="hs-stage" data-rooms="true" data-3d-host="true"><div class="hs-pic" dir="ltr"><canvas id="hs-house" data-stage="house" data-scroll="leave" data-yaw="-.7" data-pitch="-.5" data-spin="0" data-scale=".86" data-drag="off" tabindex="-1" aria-hidden="true"></canvas><div class="hs-fallback"><img src="../_photos/photo-1.svg" alt="Coastline Plumbing &amp; Gas"/></div><div class="hs-spot" data-room="0" style="--x:27%;--y:40%"><button type="button" aria-label="Blocked drains"><span>1</span></button><div class="hs-card" dir="ltr"><b>Blocked drains</b><small>Cleared fast with jetters and cameras, no guesswork.</small><span><i>from $220</i><a href="#quote">Free quote →</a></span></div></div><div class="hs-spot" data-room="1" style="--x:71%;--y:40%"><button type="button" aria-label="Hot water systems"><span>2</span></button><div class="hs-card" dir="ltr"><b>Hot water systems</b><small>Repairs and same-day replacements, gas or electric.</small><span><i>Free quote</i><a href="#quote">Free quote →</a></span></div></div><div class="hs-spot" data-room="2" style="--x:54%;--y:64%"><button type="button" aria-label="Leak detection"><span>3</span></button><div class="hs-card" dir="ltr"><b>Leak detection</b><small>Find hidden leaks before they become big bills.</small><span><i>from $180</i><a href="#quote">Free quote →</a></span></div></div></div><p class="hs-hint">↖ Tap a room to see what we fix there</p></div></section><div class="hs-proof hs-width"><b>★ 4.9</b><span>158 Google reviews</span><span class="hs-serving"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Serving Manly, Dee Why, Mosman, Brookvale</span></div><section class="hs-width hs-section" id="services"><div class="hs-head"><span class="hs-kicker">What we do</span><h2>What we fix, install and look after</h2><p>Straight answers, clear pricing before any work starts, and a job done right the first time.</p></div><div class="hs-services"><a href="#quote" data-reveal="true"><span class="hs-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5s-6.5 7.2-6.5 12A6.5 6.5 0 0 0 12 21a6.5 6.5 0 0 0 6.5-6.5C18.5 9.7 12 2.5 12 2.5z"/></svg></span><b>Blocked drains</b><small>Cleared fast with jetters and cameras, no guesswork.</small><span class="hs-price">from $220<i>→</i></span></a><a href="#quote" data-reveal="true"><span class="hs-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c4 0 7-2.7 7-6.8 0-4-3-6.2-4-9.2-1 2-2 3-3 3 0-2-1-5-3-7 0 4-5 6.5-5 13 0 4.1 3.5 7 8 7z"/></svg></span><b>Hot water systems</b><small>Repairs and same-day replacements, gas or electric.</small><span class="hs-price">Free quote<i>→</i></span></a><a href="#quote" data-reveal="true"><span class="hs-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 8-8-1.3-1.3a4 4 0 0 1-5-5L14 2l-2.5 2.5"/><path d="M3 21l6-6"/></svg></span><b>Leak detection</b><small>Find hidden leaks before they become big bills.</small><span class="hs-price">from $180<i>→</i></span></a><a href="#quote" data-reveal="true"><span class="hs-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><b>Gas fitting</b><small>Cooktops, heaters and safety checks, fully certified.</small><span class="hs-price">Free quote<i>→</i></span></a><a href="#quote" data-reveal="true"><span class="hs-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><b>Bathroom renovations</b><small>Plumbing for new bathrooms, start to finish.</small><span class="hs-price">Free quote<i>→</i></span></a></div></section><section class="hs-width hs-section hs-about" id="about"><div data-reveal="true"><span class="hs-kicker">About us</span><h2>Local plumbers who turn up when we say</h2><p>We&#x27;re a small local team, so the person you speak to is the person who shows up. We tell you the price before we start and clean up before we leave.</p><p>Blocked drain at 7am or a new hot water system, we treat every job the same way.</p></div><div class="hs-trust"><div class="hs-guarantee" data-reveal="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-3.5 8-10V5l-8-3-8 3v7c0 6.5 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg><b>Our guarantee</b><p>Every job guaranteed for 2 years.</p></div><ul><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg>Licensed plumber and gasfitter</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg>Fully insured</li></ul><div class="hs-areas"><b>Areas we cover</b><div><span>Manly</span><span>Dee Why</span><span>Mosman</span><span>Brookvale</span><span>Collaroy</span><span>Freshwater</span></div></div></div></section><section class="hs-width hs-section"><div class="hs-head"><span class="hs-kicker">How it works</span><h2>Three steps. No runaround.</h2></div><ol class="hs-steps"><li data-reveal="true"><span>1</span><b>Book online or call</b><p>Pick a time that suits you, or call and we&#x27;ll fit you in.</p></li><li data-reveal="true"><span>2</span><b>We come to you</b><p>We turn up when we say, look at the problem and explain your options and the price.</p></li><li data-reveal="true"><span>3</span><b>Fixed, and cleaned up</b><p>Work done properly, your home left tidy, and we&#x27;re a phone call away if you need us.</p></li></ol></section><section class="hs-width hs-section" id="reviews"><div class="hs-head"><span class="hs-kicker">Reviews</span><h2>Neighbours who called us</h2></div><div class="hs-reviews"><figure data-reveal="true"><span>★★★★★</span><blockquote>“Turned up in an hour, fixed the leak and cleaned up after.”</blockquote><figcaption data-review-author="Belinda C.">Belinda C.</figcaption></figure><figure data-reveal="true"><span>★★★★★</span><blockquote>“Price was exactly what they quoted. Will use again.”</blockquote><figcaption data-review-author="Matt O.">Matt O.</figcaption></figure></div></section><section class="hs-width hs-section hs-faq"><h2>Questions, answered</h2><div><details><summary>Do you charge a call-out fee?<span>+</span></summary><p>We quote the full price before any work starts, so there are no surprises.</p></details></div></section><section class="hs-width hs-section" id="quote"><div class="hs-quote"><div><span class="hs-kicker">Visit us</span><h2>Get a free quote</h2><p>Tell us what you need and we&#x27;ll get back to you fast.</p><a class="hs-call" href="tel:+61255501987"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><span dir="ltr">+61 2 5550 1987</span></a><p class="hs-addr"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Unit 4, 22 Pittwater Rd, Manly NSW 2095</p><dl><div><dt>Mon to Sat</dt><dd>7:00 am to 5:00 pm</dd></div><div><dt>Sun</dt><dd>Closed</dd></div></dl></div><div class="hs-form"><form data-enquiry="/api/sites/sample-homeservices/enquiries" data-sending="Sending..." data-sent="Thanks, we&#x27;ve got your message and will get back to you soon." data-error="That didn&#x27;t send. Please call us instead."><input tabindex="-1" autoComplete="off" aria-hidden="true" style="position:absolute;left:-9999px" name="website"/><input placeholder="Your name" required="" maxLength="80" name="name"/><input placeholder="Phone" type="tel" required="" maxLength="40" name="phone"/><input placeholder="Email (optional)" type="email" maxLength="120" name="email"/><select name="service"><option value="" selected="">What do you need?</option><option>Blocked drains</option><option>Hot water systems</option><option>Leak detection</option><option>Gas fitting</option><option>Bathroom renovations</option></select><textarea name="message" rows="3" placeholder="Address or short description" maxLength="1000"></textarea><button class="hs-btn" type="submit">Request a quote →</button><div data-note="true" aria-live="polite"></div></form></div></div></section><footer class="hs-width hs-footer"><span class="hs-logo">Coastline Plumbing &amp; Gas</span><span>© 2026 · Licensed plumbers and gasfitters</span><div><a href="https://instagram.com/example">Instagram</a><a href="#top">↑</a></div></footer><div class="hs-sticky"><a href="tel:+61255501987"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>Call</a><a href="#quote">Free quote →</a></div><script>
+document.addEventListener("submit", function (e) {
+  var f = e.target;
+  if (!f.matches || !f.matches("form[data-enquiry]")) return;
+  e.preventDefault();
+  var note = f.querySelector("[data-note]"), btn = f.querySelector("button[type=submit]"), label = btn.textContent;
+  btn.disabled = true; btn.textContent = f.getAttribute("data-sending");
+  var data = {}; new FormData(f).forEach(function (v, k) { data[k] = v; });
+  fetch(f.getAttribute("data-enquiry"), { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(data) })
+    .then(function (r) { if (!r.ok) throw r; note.textContent = f.getAttribute("data-sent"); f.reset(); })
+    .catch(function () { note.textContent = f.getAttribute("data-error"); })
+    .then(function () { btn.disabled = false; btn.textContent = label; });
+});
+
+(function () {
+  var two = function (n) { return (n < 10 ? "0" : "") + n; };
+  document.querySelectorAll("[data-open]").forEach(function (el) {
+    try {
+      var rows = JSON.parse(el.getAttribute("data-open")), w = JSON.parse(el.getAttribute("data-words"));
+      var tz = el.getAttribute("data-tz"), lang = el.getAttribute("data-lang");
+      var parts = {};
+      new Intl.DateTimeFormat("en-GB", { timeZone: tz, weekday: "short", hour: "2-digit", minute: "2-digit", hour12: false })
+        .formatToParts(new Date()).forEach(function (p) { parts[p.type] = p.value; });
+      var day = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].indexOf(parts.weekday) + 1;
+      var mins = (parseInt(parts.hour, 10) % 24) * 60 + parseInt(parts.minute, 10);
+      var time = function (m) { return new Intl.DateTimeFormat(lang, { hour: "numeric", minute: "2-digit", timeZone: "UTC" }).format(new Date(Date.UTC(2024, 0, 1, Math.floor(m / 60) % 24, m % 60))); };
+      var dayName = function (wd) { return new Intl.DateTimeFormat(lang, { weekday: "short", timeZone: "UTC" }).format(new Date(Date.UTC(2024, 0, wd))); };
+      var today = rows.filter(function (r) { return r.weekday === day; })[0];
+      if (today && mins >= today.start && mins < today.end) {
+        el.textContent = w.open + " \u00b7 " + w.closes.replace("{time}", time(today.end));
+        el.classList.add("is-open");
+      } else {
+        var next = null;
+        for (var i = 0; i < 8 && !next; i++) {
+          var wd = ((day - 1 + i) % 7) + 1;
+          var r = rows.filter(function (x) { return x.weekday === wd; })[0];
+          if (r && (i > 0 || mins < r.start)) next = { wd: wd, r: r, today: i === 0 };
+        }
+        el.textContent = w.closed + (next ? " \u00b7 " + w.opens.replace("{day}", next.today ? "" : dayName(next.wd)).replace("{time}", time(next.r.start)).replace("  ", " ") : "");
+        el.classList.add("is-closed");
+      }
+    } catch (e) { el.remove(); }
+  });
+
+  document.querySelectorAll(".mm a").forEach(function (a) {
+    a.addEventListener("click", function () { var m = a.closest("details"); if (m) m.removeAttribute("open"); });
+  });
+
+  var box = null;
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest ? e.target.closest("[data-lightbox]") : null;
+    if (!t) return;
+    e.preventDefault();
+    box = document.createElement("div");
+    box.className = "lightbox";
+    box.innerHTML = '<img alt="">';
+    box.firstChild.src = t.getAttribute("data-lightbox");
+    box.addEventListener("click", function () { box.remove(); });
+    document.body.appendChild(box);
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && box) box.remove(); });
+
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll("[data-reveal]").forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll("[data-reveal]").forEach(function (el) { el.classList.add("in"); });
+  }
+
+  var site = document.querySelector(".dsite");
+  if (site) {
+    var onScroll = function () { site.toggleAttribute("data-scrolled", window.scrollY > window.innerHeight * 0.7); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+
+  document.querySelectorAll("[data-drag]").forEach(function (el) {
+    var down = false, x0 = 0, s0 = 0;
+    el.addEventListener("pointerdown", function (e) { if (e.pointerType !== "mouse") return; down = true; x0 = e.clientX; s0 = el.scrollLeft; el.classList.add("dragging"); });
+    window.addEventListener("pointerup", function () { down = false; el.classList.remove("dragging"); });
+    el.addEventListener("pointermove", function (e) { if (down) el.scrollLeft = s0 - (e.clientX - x0); });
+  });
+})();
+
+document.querySelectorAll("[data-rooms]").forEach(function (box) {
+  var canvas = box.querySelector("canvas"), spots = box.querySelectorAll("[data-room]");
+  var pick = function (i) {
+    spots.forEach(function (s) { s.classList.toggle("on", s.getAttribute("data-room") === String(i)); });
+    if (canvas) canvas.dispatchEvent(new CustomEvent("stage-focus", { detail: i }));
+  };
+  spots.forEach(function (s) {
+    var i = Number(s.getAttribute("data-room"));
+    s.addEventListener("mouseenter", function () { pick(i); });
+    s.addEventListener("click", function () { pick(s.classList.contains("on") && matchMedia("(hover: hover)").matches ? -1 : i); });
+  });
+  box.addEventListener("mouseleave", function () { pick(-1); });
+});
+(window.STAGES = window.STAGES || {})["house"] = "\n#define CAM_D 7.\n#define CAM_Y .55\n#define MAX_T 16.\nfloat roofOpen() { return .6 + .4 * smoothstep(.05, .5, uScroll); }\nint roomOf(vec3 p) { return p.x < -.4 ? 0 : (p.z < 0. ? 1 : 2); }\nvec2 map(vec3 p) {\n  p.xz *= rot(uMouse.x * .12);\n  vec2 res = vec2(sdBox(p - vec3(0., -.06, 0.), vec3(1.65, .06, 1.15)), 1.);\n  float wall = min(sdBox(p - vec3(0., .45, -1.12), vec3(1.65, .45, .04)), sdBox(p - vec3(-1.62, .45, 0.), vec3(.04, .45, 1.15)));\n  wall = min(wall, sdBox(p - vec3(-.4, .28, -.3), vec3(.035, .28, .85)));\n  wall = min(wall, sdBox(p - vec3(.62, .28, 0.), vec3(1., .28, .035)));\n  if (wall < res.x) res = vec2(wall, 0.);\n  // kitchen: counter, hob, fridge\n  float k = sdRoundBox(p - vec3(-1.05, .2, -.88), vec3(.5, .2, .2), .02);\n  k = min(k, sdRoundBox(p - vec3(-1.4, .42, .55), vec3(.17, .42, .2), .03));\n  k = min(k, sdRoundBox(p - vec3(-.95, .2, .35), vec3(.3, .2, .25), .03));\n  if (k < res.x) res = vec2(k, 3.);\n  // bathroom: bath, basin, pipes\n  vec3 b = p - vec3(.85, .17, -.72);\n  float bath = max(sdRoundBox(b, vec3(.5, .17, .26), .1), -sdRoundBox(b - vec3(0., .12, 0.), vec3(.42, .17, .18), .08));\n  bath = min(bath, sdRoundBox(p - vec3(.05, .38, -.95), vec3(.17, .05, .12), .04));\n  if (bath < res.x) res = vec2(bath, 2.);\n  float pipe = sdCapsule(p, vec3(-.3, .62, -1.05), vec3(1.5, .62, -1.05), .035);\n  pipe = min(pipe, sdCapsule(p, vec3(.05, .62, -1.05), vec3(.05, .38, -1.02), .03));\n  pipe = min(pipe, sdCapsule(p, vec3(1.3, .62, -1.05), vec3(1.3, .34, -.95), .03));\n  if (pipe < res.x) res = vec2(pipe, 4.);\n  // living room: fuse box, sofa, lamp\n  float fuse = sdRoundBox(p - vec3(-.35, .3, .3), vec3(.03, .17, .14), .015);\n  if (fuse < res.x) res = vec2(fuse, 5.);\n  float sofa = sdRoundBox(p - vec3(.95, .14, .78), vec3(.48, .14, .2), .07);\n  sofa = min(sofa, sdRoundBox(p - vec3(.95, .3, .93), vec3(.48, .16, .06), .05));\n  if (sofa < res.x) res = vec2(sofa, 3.);\n  float lamp = min(sdCapsule(p, vec3(1.45, 0., .25), vec3(1.45, .6, .25), .02), length(p - vec3(1.45, .66, .25)) - .09);\n  if (lamp < res.x) res = vec2(lamp, 6.);\n  // roof, floating up\n  float o = roofOpen();\n  vec3 r = p - vec3(0., .95 + o * .7, -1.15 - o * .55);\n  r.yz *= rot(o * .75);\n  r.z -= -1.15;\n  float roof = max(abs(r.z) - 1.28, max(abs(r.x) * .47 + r.y * .88 - .8, -r.y));\n  roof = max(roof, -max(abs(r.z) - 1.2, max(abs(r.x) * .47 + r.y * .88 - .72, -r.y + .06)));\n  if (roof < res.x) res = vec2(roof, 7.);\n  return res;\n}\nvec3 shade(vec3 p, vec3 n, vec3 v, vec3 R, float m) {\n  vec3 pp = p; pp.xz *= rot(uMouse.x * .12);\n  vec3 c;\n  if (m < .5) c = lit(mix(uPale, vec3(.98, .96, .93), .6), n, v, R, .1, 0.);\n  else if (m < 1.5) {\n    float plank = .9 + .1 * step(.5, fract(pp.x * 6.));\n    c = lit(mix(vec3(.78, .6, .42), uWarm, .25) * plank, n, v, R, .3, 0.);\n  }\n  else if (m < 2.5) c = lit(vec3(.97), n, v, R, .85, 0.);\n  else if (m < 3.5) c = lit(mix(uWarm, vec3(.9), .35), n, v, R, .4, 0.);\n  else if (m < 4.5) c = lit(mix(uBrand, vec3(.8, .5, .3), .3), n, v, R, .8, .8);\n  else if (m < 5.5) c = lit(vec3(.2, .21, .23), n, v, R, .5, .3) + uWarm * .15;\n  else if (m < 6.5) c = lit(vec3(.9, .8, .5), n, v, R, .4, .2) + vec3(.6, .45, .2) * step(.6, pp.y);\n  else c = lit(mix(uBrand, uDark, .35), n, v, R, .3, .1);\n  if (m < 6.5 && uFocus > -.5) {\n    float on = float(roomOf(pp) == int(uFocus + .5));\n    c = mix(c * .55, c + uBrand * .35 * uHover, on);\n    if (m > .5 && m < 1.5) c += on * uBrand * .25 * uHover * (.6 + .4 * sin(uTime * 3.));\n  }\n  return c;\n}\n";
+
+(function () {
+  var HEAD = "#version 300 es\nprecision highp float;\nout vec4 fragColor;\nuniform vec2 uSize; uniform float uTime; uniform float uYaw; uniform float uPitch; uniform float uScale;\nuniform float uScroll; uniform float uFocus; uniform float uMode; uniform float uHover; uniform vec2 uMouse;\nuniform vec3 uBrand; uniform vec3 uWarm; uniform vec3 uPale; uniform vec3 uDark;\nfloat smin(float a, float b, float k) { float h = clamp(.5 + .5 * (b - a) / k, 0., 1.); return mix(b, a, h) - k * h * (1. - h); }\nmat2 rot(float a) { float c = cos(a), s = sin(a); return mat2(c, -s, s, c); }\nfloat sdBox(vec3 p, vec3 b) { vec3 q = abs(p) - b; return length(max(q, 0.)) + min(max(q.x, max(q.y, q.z)), 0.); }\nfloat sdRoundBox(vec3 p, vec3 b, float r) { return sdBox(p, b - r) - r; }\nfloat sdCyl(vec3 p, float r, float h) { vec2 d = abs(vec2(length(p.xz), p.y)) - vec2(r, h); return min(max(d.x, d.y), 0.) + length(max(d, 0.)); }\nfloat sdTorus(vec3 p, vec2 t) { vec2 q = vec2(length(p.xz) - t.x, p.y); return length(q) - t.y; }\nfloat sdCapsule(vec3 p, vec3 a, vec3 b, float r) { vec3 pa = p - a, ba = b - a; float h = clamp(dot(pa, ba) / dot(ba, ba), 0., 1.); return length(pa - ba * h) - r; }\nfloat hash3(vec3 p) { p = fract(p * .3183099 + .1); p *= 17.; return fract(p.x * p.y * p.z * (p.x + p.y + p.z)); }\nfloat noise(vec3 x) { vec3 i = floor(x), f = fract(x); f = f * f * (3. - 2. * f);\n  return mix(mix(mix(hash3(i), hash3(i + vec3(1,0,0)), f.x), mix(hash3(i + vec3(0,1,0)), hash3(i + vec3(1,1,0)), f.x), f.y),\n             mix(mix(hash3(i + vec3(0,0,1)), hash3(i + vec3(1,0,1)), f.x), mix(hash3(i + vec3(0,1,1)), hash3(i + vec3(1,1,1)), f.x), f.y), f.z); }\n// a soft photo studio lit in the business's colours\nvec3 env(vec3 r) {\n  vec3 deep = mix(uBrand, vec3(.08), .38), sky = mix(mix(uBrand, uPale, .78), vec3(1.), .18);\n  vec3 col = mix(deep, sky, smoothstep(-.75, .88, r.y));\n  col += vec3(.95, 1., .98) * .85 * pow(max(dot(r, normalize(vec3(-.67, .52, .5))), 0.), 11.);\n  col += mix(uWarm, vec3(1.), .25) * .8 * pow(max(dot(r, normalize(vec3(.88, .05, .62))), 0.), 18.);\n  float ribbon = exp(-pow((r.x + .25) / .18, 2.)) * smoothstep(-.8, -.2, r.z); col += vec3(.95, .97, 1.) * ribbon * .75;\n  return col * mix(.62, 1.2, smoothstep(-.48, .67, r.y));\n}\n// paint, plastic or metal: base colour, how glossy (0..1), how metallic (0..1)\nvec3 lit(vec3 base, vec3 n, vec3 v, vec3 R, float gloss, float metal) {\n  vec3 L1 = normalize(vec3(-.4, .8, 1.)), L2 = normalize(vec3(.9, .2, .4));\n  float dif = max(dot(n, L1), 0.) * .8 + max(dot(n, L2), 0.) * .25 + .22;\n  float fres = pow(1. - max(dot(n, v), 0.), 4.);\n  float sp = pow(max(dot(reflect(-L1, n), v), 0.), mix(8., 90., gloss)) * gloss;\n  vec3 refl = env(R);\n  vec3 c = mix(base * dif, base * refl, metal);\n  c += refl * mix(.04, .6, gloss) * (fres * (1. - metal) + .15 * gloss);\n  c += vec3(1.) * sp * 1.2;\n  return c;\n}\n", FOOT = "\n#ifndef CAM_D\n#define CAM_D 4.6\n#endif\n#ifndef CAM_Y\n#define CAM_Y 0.\n#endif\n#ifndef FOCAL\n#define FOCAL 3.9\n#endif\n#ifndef MAX_T\n#define MAX_T 12.\n#endif\nvec3 calcN(vec3 p) { vec2 e = vec2(.0015, 0.); return normalize(vec3(map(p + e.xyy).x - map(p - e.xyy).x, map(p + e.yxy).x - map(p - e.yxy).x, map(p + e.yyx).x - map(p - e.yyx).x)); }\nvoid main() {\n  vec2 uv = (gl_FragCoord.xy - .5 * uSize) / min(uSize.x, uSize.y);\n  vec3 ro = vec3(0., CAM_Y, CAM_D), rd = normalize(vec3(uv * 2. / uScale, -FOCAL));\n  rd.yz = rot(-uPitch) * rd.yz; ro.yz = rot(-uPitch) * ro.yz;\n  ro.xz = rot(-uYaw) * ro.xz; rd.xz = rot(-uYaw) * rd.xz;\n  float t = 0.; vec2 h = vec2(1., 0.); bool hit = false;\n  for (int i = 0; i < STEPS; i++) { h = map(ro + rd * t); if (h.x < .0015 * (1. + t)) { hit = true; break; } t += h.x * .85; if (t > MAX_T) break; }\n  if (!hit) { fragColor = vec4(0.); return; }\n  vec3 p = ro + rd * t, n = calcN(p), v = -rd, R = reflect(rd, n);\n  vec3 c = shade(p, n, v, R, h.y);\n  c = 1. - exp(-c * 1.15); c = pow(c, vec3(.88));\n  fragColor = vec4(c, 1.);\n}\n";
+  var VERT = "#version 300 es\nprecision highp float;void main(){vec2 p=vec2((gl_VertexID<<1)&2,gl_VertexID&2);gl_Position=vec4(p*2.0-1.0,0.,1.);}";
+  var phone = matchMedia("(pointer: coarse)").matches || innerWidth < 760;
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function rgb(hex, fb) { var m = /^#?([0-9a-f]{6})$/i.exec((hex || "").trim()); if (!m) return fb; var n = parseInt(m[1], 16); return [(n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255]; }
+  function init(canvas) {
+    var scene = (window.STAGES || {})[canvas.getAttribute("data-stage")];
+    var host = canvas.closest("[data-3d-host]") || canvas.parentElement;
+    var gl = null;
+    try { gl = canvas.getContext("webgl2", { alpha: true, antialias: !phone, premultipliedAlpha: false }); } catch (e) {}
+    if (!gl || !scene) { host.classList.add("no-3d"); return; }
+    function sh(type, src) { var o = gl.createShader(type); gl.shaderSource(o, src); gl.compileShader(o); if (!gl.getShaderParameter(o, gl.COMPILE_STATUS)) { console.warn(gl.getShaderInfoLog(o)); return null; } return o; }
+    var prog = gl.createProgram(), v = sh(gl.VERTEX_SHADER, VERT), f = sh(gl.FRAGMENT_SHADER, HEAD.replace("out vec4", "#define STEPS " + (phone ? 72 : 120) + "\nout vec4") + scene + FOOT);
+    if (!v || !f) { host.classList.add("no-3d"); return; }
+    gl.attachShader(prog, v); gl.attachShader(prog, f); gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { host.classList.add("no-3d"); return; }
+    gl.useProgram(prog); gl.bindVertexArray(gl.createVertexArray());
+    var U = {};
+    "uSize uTime uYaw uPitch uScale uScroll uFocus uMode uHover uMouse uBrand uWarm uPale uDark".split(" ").forEach(function (s) { U[s] = gl.getUniformLocation(prog, s); });
+    var css = getComputedStyle(canvas);
+    var colours = [rgb(css.getPropertyValue("--primary"), [.2, .45, .5]), rgb(css.getPropertyValue("--accent"), [1, .78, .67]), rgb(css.getPropertyValue("--light"), [.9, .95, .95]), rgb(css.getPropertyValue("--dark"), [.1, .1, .1])];
+    var num = function (a, d) { var x = parseFloat(canvas.getAttribute(a)); return x === x ? x : d; };
+    var yaw = num("data-yaw", .3), pitch = num("data-pitch", -.08), ty = yaw, tp = pitch, spin = reduce ? 0 : num("data-spin", .0016);
+    var scale = num("data-scale", 1), mode0 = canvas.getAttribute("data-scroll") || "", fixed = num("data-progress", -1), canDrag = canvas.getAttribute("data-drag") !== "off";
+    var zoom = 1, readZoom = function () { var z = parseFloat(getComputedStyle(canvas).getPropertyValue("--stage-zoom")); zoom = z === z ? z : 1; };
+    readZoom(); addEventListener("resize", readZoom);
+    var scroll = fixed >= 0 ? fixed : 0, mouse = [0, 0], tm = [0, 0], focus = -1, mode = 0, tmode = 0, hover = 0, drag = false, lastX = 0, lastY = 0, active = false, frame = 0;
+    new IntersectionObserver(function (es) { active = es.some(function (e) { return e.isIntersecting; }); if (active && !frame) frame = requestAnimationFrame(render); }, { threshold: 0 }).observe(canvas);
+    function progress() {
+      if (fixed >= 0) return fixed;
+      var r = host.getBoundingClientRect(), vh = innerHeight;
+      var p = mode0 === "sticky" ? -r.top / Math.max(1, r.height - vh) : mode0 === "leave" ? -r.top / Math.max(1, r.height) : (vh - r.top) / (r.height + vh);
+      return Math.max(0, Math.min(1, p));
+    }
+    addEventListener("pointermove", function (e) {
+      var r = canvas.getBoundingClientRect();
+      tm = [Math.max(-1.5, Math.min(1.5, ((e.clientX - r.left) / r.width) * 2 - 1)), Math.max(-1.5, Math.min(1.5, 1 - ((e.clientY - r.top) / r.height) * 2))];
+    }, { passive: true });
+    if (canDrag) {
+      canvas.addEventListener("pointerdown", function (e) { drag = true; lastX = e.clientX; lastY = e.clientY; canvas.setPointerCapture(e.pointerId); });
+      canvas.addEventListener("pointermove", function (e) { if (!drag) return; ty += (e.clientX - lastX) * .008; tp = Math.max(-.7, Math.min(.5, tp + (e.clientY - lastY) * .004)); lastX = e.clientX; lastY = e.clientY; });
+      var end = function () { drag = false; };
+      canvas.addEventListener("pointerup", end); canvas.addEventListener("pointercancel", end);
+      canvas.addEventListener("keydown", function (e) { if (e.key === "ArrowLeft" || e.key === "ArrowRight") { ty += e.key === "ArrowLeft" ? -.3 : .3; e.preventDefault(); } });
+    }
+    canvas.addEventListener("stage-focus", function (e) { focus = Number(e.detail); hover = 0; });
+    canvas.addEventListener("stage-mode", function (e) { tmode = Number(e.detail); });
+    function render(ms) {
+      if (!active) { frame = 0; return; }
+      var dpr = Math.min(devicePixelRatio || 1, phone ? 1 : 1.25), r = canvas.getBoundingClientRect();
+      var w = Math.max(1, Math.round(r.width * dpr)), h = Math.max(1, Math.round(r.height * dpr));
+      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h); }
+      if (!drag) ty += spin;
+      yaw += (ty - yaw) * .07; pitch += (tp - pitch) * .07;
+      scroll += (progress() - scroll) * .1;
+      mouse[0] += (tm[0] - mouse[0]) * .06; mouse[1] += (tm[1] - mouse[1]) * .06;
+      mode += (tmode - mode) * .08; hover += (1 - hover) * .08;
+      gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.uniform2f(U.uSize, w, h); gl.uniform1f(U.uTime, reduce ? 0 : ms * .001);
+      gl.uniform1f(U.uYaw, yaw); gl.uniform1f(U.uPitch, pitch); gl.uniform1f(U.uScale, scale * zoom);
+      gl.uniform1f(U.uScroll, scroll); gl.uniform1f(U.uFocus, focus); gl.uniform1f(U.uMode, mode); gl.uniform1f(U.uHover, hover);
+      gl.uniform2f(U.uMouse, mouse[0], mouse[1]);
+      gl.uniform3fv(U.uBrand, colours[0]); gl.uniform3fv(U.uWarm, colours[1]); gl.uniform3fv(U.uPale, colours[2]); gl.uniform3fv(U.uDark, colours[3]);
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
+      frame = requestAnimationFrame(render);
+    }
+  }
+  document.querySelectorAll("canvas[data-stage]").forEach(init);
+  // buttons that point the stage at something: <button data-stage-focus="2" data-target="#id">
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest ? e.target.closest("[data-stage-focus],[data-stage-mode]") : null;
+    if (!b) return;
+    var c = document.querySelector(b.getAttribute("data-target"));
+    if (!c) return;
+    if (b.hasAttribute("data-stage-focus")) c.dispatchEvent(new CustomEvent("stage-focus", { detail: b.getAttribute("data-stage-focus") }));
+    if (b.hasAttribute("data-stage-mode")) c.dispatchEvent(new CustomEvent("stage-mode", { detail: b.getAttribute("data-stage-mode") }));
+  });
+})();
+</script></div>
+</body>
+</html>

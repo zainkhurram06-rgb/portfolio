@@ -9,8 +9,12 @@ import { Forma, css as formaCss } from "./forma";
 import { Monolith, css as monolithCss } from "./monolith";
 import { Noir, css as noirCss } from "./noir";
 import { Serum, css as serumCss } from "./serum";
+import { Showroom, css as showroomCss } from "./showroom";
 import { Verda, css as verdaCss } from "./verda";
+import { Workshop, css as workshopCss } from "./workshop";
 import { Glow, css as glowCss } from "./glow";
+import { House, css as houseCss } from "./house";
+import { Liquid, css as liquidCss } from "./liquid";
 import { Lumex, css as lumexCss } from "./lumex";
 import { Pop, css as popCss } from "./pop";
 import { Strange, css as strangeCss } from "./strange";
@@ -32,6 +36,10 @@ export const DESIGNS: Record<string, Design> = {
   verda: { Component: Verda, css: verdaCss },
   serum: { Component: Serum, css: serumCss },
   forma: { Component: Forma, css: formaCss },
+  liquid: { Component: Liquid, css: liquidCss },
+  showroom: { Component: Showroom, css: showroomCss },
+  workshop: { Component: Workshop, css: workshopCss },
+  house: { Component: House, css: houseCss },
 };
 
 export const designCss = (name: string) => SHARED_CSS + (DESIGNS[name]?.css ?? "");

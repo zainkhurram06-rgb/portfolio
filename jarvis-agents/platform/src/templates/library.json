@@ -998,6 +998,162 @@
         "contact:panels",
         "footer:simple"
       ]
+    },
+    {
+      "id": "salon-liquid",
+      "label": "Liquid 3D",
+      "niches": [
+        "salon"
+      ],
+      "design": "liquid",
+      "fonts": [
+        "Italiana",
+        "Albert Sans"
+      ],
+      "style": {
+        "radius": "round",
+        "buttons": "pill",
+        "density": "airy",
+        "mood": "light",
+        "heads": "upper"
+      },
+      "palette": {
+        "primary": "#8a5a7a",
+        "accent": "#f2b8a2",
+        "dark": "#1d1418",
+        "light": "#f6efed"
+      },
+      "sections": [
+        "nav:overlay",
+        "hero:centered",
+        "about:split",
+        "services:menu",
+        "gallery:beforeafter",
+        "gallery:strip",
+        "team:cards",
+        "reviews:spotlight",
+        "faq:split",
+        "contact:panels",
+        "footer:simple"
+      ]
+    },
+    {
+      "id": "carwash-showroom",
+      "label": "Showroom 3D",
+      "niches": [
+        "carwash"
+      ],
+      "design": "showroom",
+      "fonts": [
+        "Big Shoulders Display",
+        "Familjen Grotesk"
+      ],
+      "style": {
+        "radius": "soft",
+        "buttons": "square",
+        "density": "regular",
+        "mood": "dark",
+        "heads": "upper"
+      },
+      "palette": {
+        "primary": "#1f6feb",
+        "accent": "#ffd23f",
+        "dark": "#0b0f17",
+        "light": "#e9f1ff"
+      },
+      "sections": [
+        "nav:overlay",
+        "hero:split",
+        "steps:line",
+        "services:packages",
+        "services:list",
+        "gallery:beforeafter",
+        "reviews:cards",
+        "faq:split",
+        "areas:chips",
+        "contact:panels",
+        "footer:simple"
+      ]
+    },
+    {
+      "id": "auto-workshop",
+      "label": "Workshop 3D",
+      "niches": [
+        "autorepair"
+      ],
+      "design": "workshop",
+      "fonts": [
+        "Chakra Petch",
+        "Hanken Grotesk"
+      ],
+      "style": {
+        "radius": "sharp",
+        "buttons": "square",
+        "density": "regular",
+        "mood": "dark",
+        "heads": "upper"
+      },
+      "palette": {
+        "primary": "#ff5a1f",
+        "accent": "#ffc72c",
+        "dark": "#111315",
+        "light": "#e9e6df"
+      },
+      "sections": [
+        "nav:phone",
+        "hero:split",
+        "services:numbered",
+        "about:split",
+        "guarantee:panel",
+        "services:cards",
+        "team:cards",
+        "reviews:cards",
+        "faq:split",
+        "contact:panels",
+        "footer:simple",
+        "fab:call"
+      ]
+    },
+    {
+      "id": "home-house",
+      "label": "House 3D",
+      "niches": [
+        "homeservices"
+      ],
+      "design": "house",
+      "fonts": [
+        "Corben",
+        "Onest"
+      ],
+      "style": {
+        "radius": "round",
+        "buttons": "soft",
+        "density": "regular",
+        "mood": "light",
+        "heads": "normal"
+      },
+      "palette": {
+        "primary": "#2f6b4f",
+        "accent": "#f2a65a",
+        "dark": "#1d2b24",
+        "light": "#eef2ea"
+      },
+      "sections": [
+        "nav:phone",
+        "hero:split",
+        "trust:strip",
+        "services:cards",
+        "about:split",
+        "guarantee:panel",
+        "areas:chips",
+        "steps:row",
+        "reviews:cards",
+        "faq:split",
+        "hero:form",
+        "contact:panels",
+        "footer:simple",
+        "fab:call"
+      ]
     }
   ]
 }

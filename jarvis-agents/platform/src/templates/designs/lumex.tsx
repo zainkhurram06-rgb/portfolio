@@ -50,7 +50,7 @@ export function Lumex({ d }: DesignProps) {
       <section className="lx-hero" id="top" data-3d-host>
         <div className="lx-glow" /><div className="lx-grain" />
         <i className="lx-sphere s1" /><i className="lx-sphere s2" /><i className="lx-sphere s3" /><i className="lx-sphere s4" />
-        <p className="lx-kicker"><span>✳</span> {c.tagline} <span className="lx-line" /> {biz.city}</p>
+        <p className="lx-kicker"><span>✳</span> {c.tagline}{biz.city && <> <span className="lx-line" /> {biz.city}</>}</p>
         <div className="lx-art">
           <canvas data-tooth-3d data-scale=".65" tabIndex={0} aria-label={L.drag_rotate} />
           <div className="lx-fallback">{c.heroImage ? <img src={c.heroImage} alt={biz.name} /> : null}</div>

@@ -44,7 +44,7 @@ export function Serum({ d }: DesignProps) {
         <main id="top">
           <section className="se-hero">
             <div className="se-intro">
-              <span className="se-eyebrow">{c.tagline} / {biz.city}</span>
+              <span className="se-eyebrow">{c.tagline}{biz.city && <> / {biz.city}</>}</span>
               <div>
                 <h1>{h1a && <span>{h1a}</span>}<em>{h1b}</em></h1>
                 <p>{c.subheadline}</p>

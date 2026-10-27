@@ -157,5 +157,13 @@
   "bfo_wait": "I'll wait",
   "bfo_drop_off": "I'll drop it off",
   "bf_job_address": "Address for the job",
-  "bk_details": "A few details"
+  "bk_details": "A few details",
+  "wash_foam": "Foam",
+  "wash_foam_text": "Thick foam lifts the grit off before anything touches the paint.",
+  "wash_rinse": "Rinse",
+  "wash_rinse_text": "A clean, gentle rinse carries the dirt away.",
+  "wash_shine": "Shine",
+  "wash_shine_text": "Dried by hand and finished to a deep, clean shine.",
+  "tap_room": "Tap a room to see what we fix there",
+  "take_apart": "Keep scrolling, we'll take it apart"
 }

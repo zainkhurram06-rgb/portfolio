@@ -41,7 +41,7 @@ export function Celesta({ d }: DesignProps) {
         <section className="cl-width">
           <div className="cl-hero">
             <div className="cl-hero-copy">
-              <span className="cl-eyebrow">{c.tagline} / {biz.city}</span>
+              <span className="cl-eyebrow">{c.tagline}{biz.city && <> / {biz.city}</>}</span>
               <h1>{c.headline}</h1>
               <p>{c.subheadline}</p>
               <div className="cl-hero-btns">
