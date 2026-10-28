@@ -24,6 +24,9 @@ They have {{review_count}} Google reviews at {{rating}} stars and post regularly
 photos and branding, with online booking and a simple dashboard. It's already
 live for them to look at: {{demo_link}}
 
+What owners in their trade often struggle with (use one only if it fits what they
+tell you, never as a script): {{trade_pains}}
+
 ## How the call goes
 
 Follow your playbook below: permission, the reason, the small ask (send the link), one

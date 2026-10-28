@@ -15,6 +15,7 @@ Every call is kept in the business folder: calls/calls.json and calls/index.html
 
 import html
 import json
+import re
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import List, Optional
@@ -33,31 +34,59 @@ TRADE_WORDS = {"salon": "beauty salon", "carwash": "car wash", "autorepair": "ga
 
 PERSONA_PARTS = ("Who you are", "How you sound", "The shape of every call", "Reaching the owner",
                  "Handling what owners say", "Buying signals to listen for", "You never")
-PLAYBOOK_LIMIT = 9000                          # characters of Cowork research that fit in her prompt
+PLAYBOOK_LIMIT = 16000                         # characters of training that fit in her prompt
+
+# most important first, each with its own share, so a long section never pushes out a short one
+PLAYBOOK_SECTIONS = (
+    # (training file, heading, how many items at most, how one item reads)
+    ("do-not", "Tactics you never use", 25, lambda d: f"- {d.get('tactic')}: {d.get('why_not')}" if d.get("tactic") else None),
+    ("objections", "More answers to what owners say (trade in brackets when it only fits one trade)", 40,
+     lambda o: (f"- \"{o.get('objection')}\"{'' if o.get('trade') in (None, 'any') else ' [' + o['trade'] + ']'}: {o.get('response')}"
+                if o.get("objection") and o.get("response") else None)),
+    ("techniques", "Techniques that work", 26,
+     lambda t: (f"- {t.get('name')}: {t.get('how_friday_uses_it') or t.get('what')} For example: \"{t.get('example_line')}\""
+                if t.get("name") else None)),
+    ("openers", "Openers you can use (always say you're an AI assistant)", 6,
+     lambda o: f"- \"{o.get('line')}\" ({o.get('when')})" if o.get("line") else None),
+)
+# trade pains aren't in the playbook: each call gets only its own trade's, as {{trade_pains}}
+
+
+def trade_pains(niche: Optional[str], most: int = 3) -> str:
+    found = [p for p in training("friday", "trade-pains") or [] if isinstance(p, dict) and p.get("trade") == niche and p.get("pain")]
+    return " ".join(f"{p['pain']} {p.get('how_a_website_helps') or ''}".strip() for p in found[:most]) or "nothing noted for this trade yet"
+
+
+def _same(a: str, b: str) -> bool:
+    """Two items saying the same thing, e.g. 'Not interested' from two sources."""
+    norm = lambda s: re.sub(r"[^a-z ]", "", s.lower()).strip()  # noqa: E731
+    return norm(a) == norm(b)
 
 
 def playbook() -> str:
-    """What Cowork learned from real cold calls (training/friday/), in a form she can use."""
-    parts = []
-    tech = training("friday", "techniques") or []
-    if tech:
-        parts.append("Techniques that work:\n" + "\n".join(
-            f"- {t.get('name')}: {t.get('how_friday_uses_it') or t.get('what')} For example: \"{t.get('example_line')}\""
-            for t in tech if t.get("name")))
-    objections = training("friday", "objections") or []
-    if objections:
-        parts.append("More answers to what owners say (trade in brackets when it only fits one trade):\n" + "\n".join(
-            f"- \"{o.get('objection')}\"{'' if o.get('trade') in (None, 'any') else ' [' + o['trade'] + ']'}: {o.get('response')}"
-            for o in objections if o.get("objection") and o.get("response")))
-    pains = training("friday", "trade-pains") or []
-    if pains:
-        parts.append("What owners in each trade struggle with:\n" + "\n".join(
-            f"- [{p.get('trade')}] {p.get('pain')} {p.get('how_a_website_helps')}" for p in pains if p.get("pain")))
-    avoid = training("friday", "do-not") or []
-    if avoid:
-        parts.append("Tactics you never use:\n" + "\n".join(f"- {d.get('tactic')}: {d.get('why_not')}" for d in avoid if d.get("tactic")))
-    text = "\n\n".join(parts)
-    return text[:PLAYBOOK_LIMIT].rsplit("\n", 1)[0] if len(text) > PLAYBOOK_LIMIT else text
+    """What FRIDAY learned from real cold calls (training/friday/: transcripts Zain shared and
+    Cowork's research), most important first, without repeats, within PLAYBOOK_LIMIT."""
+    parts, used = [], 0
+    for name, heading, most, line in PLAYBOOK_SECTIONS:
+        lines: List[str] = []
+        seen: List[str] = []
+        for item in training("friday", name) or []:
+            key = str(item.get("objection") or item.get("name") or item.get("tactic") or item.get("line") or item.get("pain") or "")
+            text = line(item) if isinstance(item, dict) else None
+            if not text or any(_same(key, s) for s in seen):
+                continue
+            seen.append(key)
+            lines.append(text)
+            if len(lines) >= most:
+                break
+        block = f"{heading}:\n" + "\n".join(lines) if lines else ""
+        while block and used + len(block) > PLAYBOOK_LIMIT:          # trim this section, keep the rest
+            lines.pop()
+            block = f"{heading}:\n" + "\n".join(lines) if lines else ""
+        if block:
+            parts.append(block)
+            used += len(block) + 2
+    return "\n\n".join(parts)
 
 
 def prompt() -> str:
@@ -107,6 +136,7 @@ def variables(b: Business, r: dict) -> dict:
         "rating": str(lead.get("rating") or ""), "social": social,
         "demo_link": build.get("subdomain") or build.get("site") or "",
         "day": follow_up_day(datetime.now(timezone.utc)),
+        "trade_pains": trade_pains(lead.get("niche")),
     }
 
 

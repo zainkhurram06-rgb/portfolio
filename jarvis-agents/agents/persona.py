@@ -33,12 +33,23 @@ def brief(agent: str) -> str:
     return section(persona(agent), "Brief")
 
 
-def training(agent: str, name: str) -> Optional[Any]:
-    """training/<agent>/<name>.json, or None if Cowork hasn't made it yet (or it's broken)."""
-    f = TRAINING / agent / f"{name}.json"
-    if not f.exists():
-        return None
+def _load(f: Path) -> Optional[Any]:
     try:
         return json.loads(f.read_text(encoding="utf-8-sig"))
-    except json.JSONDecodeError:
+    except (OSError, json.JSONDecodeError):
         return None
+
+
+def training(agent: str, name: str) -> Optional[Any]:
+    """training/<agent>/<name>.json plus any <name>-<source>.json beside it (one file per
+    source, e.g. techniques-saad.json from a transcript, techniques.json from Cowork), so
+    sources never overwrite each other. Lists are joined, named sources first. None if
+    there's nothing yet; broken files are skipped."""
+    folder = TRAINING / agent
+    files = sorted(folder.glob(f"{name}-*.json")) + [folder / f"{name}.json"]
+    found = [x for x in (_load(f) for f in files if f.exists()) if x is not None]
+    if not found:
+        return None
+    if all(isinstance(x, list) for x in found):
+        return [item for x in found for item in x]
+    return next((x for x in reversed(found) if isinstance(x, dict)), found[-1])

@@ -65,6 +65,18 @@ class Training(unittest.TestCase):
         self.assertIn("Ask permission: Ask for 30 seconds.", p)
         self.assertIn("Fake deadlines", p)
 
+    def test_several_sources_sit_side_by_side_without_repeats(self):
+        self.put("friday", "objections-saad", [{"objection": "Not interested!", "trade": "any", "response": "From Saad."}])
+        self.put("friday", "objections", [{"objection": "not interested", "trade": "any", "response": "From Cowork."},
+                                          {"objection": "Too busy", "trade": "any", "response": "Quick one then."}])
+        self.put("friday", "do-not", [{"tactic": "Fake deadlines", "why_not": "It's a lie."}])
+        self.assertEqual(len(persona.training("friday", "objections")), 3)
+        p = friday.playbook()
+        self.assertIn("From Saad.", p)                          # named sources come first
+        self.assertNotIn("From Cowork.", p)                     # the same objection isn't repeated
+        self.assertIn("Quick one then.", p)
+        self.assertLess(p.index("Tactics you never use"), p.index("More answers"))   # the never list can't be cut off
+
     def test_the_playbook_never_overflows_her_prompt(self):
         self.put("friday", "objections", [{"objection": f"objection {i}", "trade": "any", "response": "x" * 200} for i in range(200)])
         self.assertLessEqual(len(friday.playbook()), friday.PLAYBOOK_LIMIT)
