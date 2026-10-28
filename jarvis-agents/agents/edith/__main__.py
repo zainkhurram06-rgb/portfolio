@@ -2,13 +2,16 @@
 Run EDITH from the command line.
 
     python -m agents.edith find --niche salon --city Dubai --country AE
-    python -m agents.edith plan add 2026-10-27 salon Dubai AE      (one city a day)
+    python -m agents.edith plan add 2026-10-29 salon Dubai AE      (one city a day)
     python -m agents.edith plan list
-    python -m agents.edith today                                   (run today's city from the plan)
-    python -m agents.edith rules                                   (show the rules she uses)
+    python -m agents.edith today          (carry on any unfinished city, then today's city from the plan)
+    python -m agents.edith usage          (Google searches and social checks used)
+    python -m agents.edith rules          (show the rules she uses)
 
-Without EDITH_APIFY=live she uses saved sample results: free, for testing.
-Live needs APIFY_TOKEN. Rules and search terms are in agents/edith/rules.json.
+Without EDITH_PLACES=live and EDITH_SOCIAL=live she uses saved samples: free, for
+testing. Live Google needs GOOGLE_PLACES_KEY (in jarvis-agents/.env). Live social
+checks need the Codex CLI and the Claude CLI with the Claude in Chrome extension.
+Rules, caps and search terms are in agents/edith/rules.json.
 """
 
 import argparse
@@ -17,7 +20,7 @@ import sys
 from datetime import date
 
 from .. import pipeline
-from . import apify, edith
+from . import edith, places, social
 
 PLAN = pipeline.ROOT / "edith-plan.json"
 
@@ -34,7 +37,7 @@ def save_plan(plan: list):
 def main(argv=None):
     p = argparse.ArgumentParser(prog="edith", description="EDITH finds leads with no website")
     sub = p.add_subparsers(dest="cmd", required=True)
-    f = sub.add_parser("find", help="find leads in one city now")
+    f = sub.add_parser("find", help="find leads in one city now (carries on if it was started before)")
     f.add_argument("--niche", required=True)
     f.add_argument("--city", required=True)
     f.add_argument("--country", required=True, help="2-letter code, e.g. AE")
@@ -46,7 +49,8 @@ def main(argv=None):
     pa.add_argument("city")
     pa.add_argument("country")
     pls.add_parser("list")
-    sub.add_parser("today", help="run today's city from the plan")
+    sub.add_parser("today", help="carry on unfinished cities, then today's city from the plan")
+    sub.add_parser("usage", help="Google searches and social checks used")
     sub.add_parser("rules", help="show the rules")
     a = p.parse_args(argv)
     say = lambda m: print(m, file=sys.stderr)       # noqa: E731
@@ -64,17 +68,23 @@ def main(argv=None):
             for x in load_plan():
                 print(f"{x['date']}  {x['niche']:12} {x['city']}, {x['country']}{'   done' if x.get('done') else ''}")
         elif a.cmd == "today":
+            for x in edith.open_runs():
+                say(f"EDITH: carrying on with {x['niche']} in {x['city']}")
+                edith.find(x["niche"], x["city"], x["country"], log=say)
             plan = load_plan()
-            todo = [x for x in plan if x["date"] == date.today().isoformat() and not x.get("done")]
-            if not todo:
-                sys.exit("nothing planned for today. Add one: python -m agents.edith plan add YYYY-MM-DD salon Dubai AE")
-            for x in todo:
+            for x in [x for x in plan if x["date"] == date.today().isoformat() and not x.get("done")]:
                 out = edith.find(x["niche"], x["city"], x["country"], log=say)
-                x.update(done=True, kept=len(out["kept"]), spent=round(out["spent"], 2), report=out["report"])
+                x.update(done=True, kept=len(out["kept"]), report=out["report"])
             save_plan(plan)
+        elif a.cmd == "usage":
+            month = date.today().strftime("%Y-%m")
+            print(f"Google searches this month: {places.this_month('search')} of {places.FREE['search']} free")
+            print(f"Google cost this month: ${places.month_cost(month):.2f}")
+            print(f"Name searches today (Codex): {social.used_today('name_searches')} of {edith.rules()['max_name_searches_per_day']}")
+            print(f"Profiles read today (Chrome): {social.used_today('profile_checks')} of {edith.rules()['max_profile_checks_per_day']}")
         elif a.cmd == "rules":
             print(json.dumps({k: v for k, v in edith.rules().items() if k != "not_a_website"}, indent=2))
-    except (apify.ApifyError, ValueError) as e:
+    except (places.PlacesError, social.SocialError, ValueError) as e:
         sys.exit(str(e))
 
 

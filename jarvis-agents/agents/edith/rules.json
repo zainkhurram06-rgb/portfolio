@@ -1,24 +1,85 @@
 {
-  "_readme": "EDITH's rules for a good lead. Change the numbers here, no code needed.",
+  "_readme": "EDITH's rules for a good lead, and her limits. Change the numbers here, no code needed.",
   "max_days_since_post": 15,
   "min_reviews": 50,
   "need_phone": true,
-  "need_street_address_for": ["salon", "dental", "medical", "dermatology", "autorepair"],
+  "need_street_address_for": [
+    "salon",
+    "dental",
+    "medical",
+    "dermatology",
+    "autorepair"
+  ],
   "leads_per_city": 300,
-  "max_usd_per_run": 15,
+  "stay_in_free_allowance": true,
+  "max_usd_per_run": 5,
+  "max_map_splits": 2,
+  "search_language": "en",
+  "max_name_searches_per_day": 200,
+  "max_profile_checks_per_day": 120,
   "search_terms": {
-    "salon": ["hair salon", "nail salon", "beauty salon", "barber shop", "lash and brow studio"],
-    "carwash": ["car wash", "car detailing"],
-    "autorepair": ["auto repair", "car mechanic"],
-    "homeservices": ["plumber", "electrician", "handyman"],
-    "dental": ["dentist"],
-    "medical": ["medical clinic"],
-    "dermatology": ["dermatologist", "skin clinic"]
+    "salon": [
+      "hair salon",
+      "nail salon",
+      "beauty salon",
+      "barber shop",
+      "lash and brow studio"
+    ],
+    "carwash": [
+      "car wash",
+      "car detailing"
+    ],
+    "autorepair": [
+      "auto repair",
+      "car mechanic"
+    ],
+    "homeservices": [
+      "plumber",
+      "electrician",
+      "handyman"
+    ],
+    "dental": [
+      "dentist"
+    ],
+    "medical": [
+      "medical clinic"
+    ],
+    "dermatology": [
+      "dermatologist",
+      "skin clinic"
+    ]
   },
   "not_a_website": [
-    "instagram.com", "facebook.com", "fb.com", "fb.me", "m.facebook.com", "tiktok.com", "wa.me", "api.whatsapp.com",
-    "whatsapp.com", "linktr.ee", "linkin.bio", "beacons.ai", "bio.link", "taplink.cc", "fresha.com", "booksy.com",
-    "setmore.com", "square.site", "vagaro.com", "treatwell.com", "treatwell.co.uk", "planity.com", "glossgenius.com",
-    "youtube.com", "x.com", "twitter.com", "snapchat.com", "maps.google.com", "goo.gl", "g.page", "business.site"
+    "instagram.com",
+    "facebook.com",
+    "fb.com",
+    "fb.me",
+    "m.facebook.com",
+    "tiktok.com",
+    "wa.me",
+    "api.whatsapp.com",
+    "whatsapp.com",
+    "linktr.ee",
+    "linkin.bio",
+    "beacons.ai",
+    "bio.link",
+    "taplink.cc",
+    "fresha.com",
+    "booksy.com",
+    "setmore.com",
+    "square.site",
+    "vagaro.com",
+    "treatwell.com",
+    "treatwell.co.uk",
+    "planity.com",
+    "glossgenius.com",
+    "youtube.com",
+    "x.com",
+    "twitter.com",
+    "snapchat.com",
+    "maps.google.com",
+    "goo.gl",
+    "g.page",
+    "business.site"
   ]
 }

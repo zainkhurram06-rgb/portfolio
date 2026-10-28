@@ -1,0 +1,16 @@
+{
+  "_readme": "JARVIS's targets. Change the numbers here, no code needed. The rates are guesses until there's real data: once 20 or more businesses have passed a step, JARVIS uses what really happened instead.",
+  "price_per_site": 500,
+  "currency": "USD",
+  "sales_per_week": 1,
+  "sales_per_day_from": "2026-11-28",
+  "sales_per_day": 1,
+  "rates": {
+    "lead_to_demo": 0.9,
+    "demo_to_passed": 0.85,
+    "passed_to_approved": 0.9,
+    "approved_to_reached": 0.5,
+    "reached_to_interested": 0.12,
+    "interested_to_won": 0.3
+  }
+}

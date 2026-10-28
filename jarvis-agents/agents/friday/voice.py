@@ -29,6 +29,9 @@ DATA_COLLECTION = {
     "callback_time": {"type": "string", "description": "When to call back, if they gave a time. Empty otherwise."},
     "send_link_to": {"type": "string", "description": "The WhatsApp number or email they asked us to send the demo link to. Empty if none."},
     "objection": {"type": "string", "description": "Their main reason for hesitating, in a few words. Empty if none."},
+    "owner_name": {"type": "string", "description": "The owner or manager's first name if they said it. Empty otherwise."},
+    "how_customers_find_them": {"type": "string", "description": "What they said about how new customers find them now. Empty if not asked."},
+    "buying_signal": {"type": "string", "description": "One of: hot (asked about price, timing or changes), warm (happy to look), cold (polite but unconvinced), none."},
 }
 
 

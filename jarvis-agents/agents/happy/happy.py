@@ -22,6 +22,7 @@ from typing import Callable, List, Optional
 import requests
 
 from .. import pipeline
+from ..persona import training
 from ..pipeline import Business
 
 RULES_FILE = Path(__file__).resolve().parent / "rules.json"
@@ -231,8 +232,18 @@ a {{ color: #1d4ed8; }}
 <p>{html.escape(out['checked'].replace('T', ' '))} · <a href="site/index.html">open the website</a> · rules in agents/happy/rules.json</p>
 <p class="v {'pass' if out['passed'] else 'fail'}">{verdict}{f", {out['warnings']} warning{'s' if out['warnings'] != 1 else ''}" if out['warnings'] else ""}</p>
 <table>{"".join(row(x) for x in sorted(out['results'], key=lambda x: (x['ok'], x['level'] != 'block')))}</table>
+{by_hand()}
 </body></html>
 """
+
+
+def by_hand() -> str:
+    """Cowork's checklist (training/happy/checklist.json): things to look at yourself until they become rules."""
+    items = [x for x in (training("happy", "checklist") or []) if isinstance(x, dict) and x.get("rule")]
+    if not items:
+        return ""
+    lis = "".join(f"<li><b>{html.escape(x['rule'])}</b>: {html.escape(x.get('how_to_check') or x.get('why') or '')}</li>" for x in items)
+    return f"<h2 style=\"font-size:1.1rem;margin-top:28px\">Also worth a look by hand</h2><ul>{lis}</ul>"
 
 
 def check_stage(b: Business, log=print, **kw) -> Business:

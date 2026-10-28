@@ -17,9 +17,9 @@ Jarvis becomes the product manager. Agents are his employees:
 
 | Agent | Job | Status |
 |---|---|---|
-| JARVIS | Product manager. Zain talks to him, he assigns and checks work | Exists as voice assistant, not yet connected to agents |
+| JARVIS | Manager. Runs the team in order, morning report against the sales target | Built (`python -m agents.jarvis run`); voice hookup later |
 | MARK | Developer. Lead in, demo website + booking + dashboard out | Built |
-| EDITH | Lead tracker. Finds leads with no website, active on social, drops them in pipeline/1-leads | Built (samples only, needs APIFY_TOKEN) |
+| EDITH | Lead tracker. Finds leads with no website, active on social, drops them in pipeline/1-leads | Built v2 (Places API + Codex + Claude in Chrome; samples until GOOGLE_PLACES_KEY) |
 | FRIDAY | Sales caller. ElevenLabs voice agent + phone line, pitches the demo | Built (sample calls only, needs ElevenLabs + Twilio) |
 | HAPPY | Quality check. Checks every website against Zain's rules before he sees it | Built |
 
@@ -52,8 +52,10 @@ Order agreed: build the agents first, connect them to Jarvis later.
 - **EDITH's rules (Zain, 24 Oct):** 150 to 300 leads a city but never force it; no website;
   posted on social in the last 10 to 15 days; 50+ Google reviews; phone; complete street address
   for shopfront businesses (online/mobile ones skip that rule). First trade: beauty and hair salons
-  (incl. nails, barbers, lash/brow). Lead finding uses Apify (volume would get his Instagram
-  flagged through Chrome); MARK's research still uses his Chrome.
+  (incl. nails, barbers, lash/brow). Lead finding: Google Places API (Zain chose it, 28 Oct), Codex web
+  search for profiles, Claude in Chrome reads profiles under a daily cap. No Apify (Zain said no).
+- **Sales target (Zain, 28 Oct):** not a toy. About $500 a week at first (1 to 2 sites), then one site
+  sold every day after a month. JARVIS tracks the funnel against it (agents/jarvis/targets.json).
 - **Build order (Zain, 22 Oct):** template library as far as it goes, get MARK's skeleton right,
   build, test, then the next agent, repeat. Making it beautiful comes last, from the 60 references.
 
@@ -87,12 +89,20 @@ Order agreed: build the agents first, connect them to Jarvis later.
 `jarvis-agents/agents/pipeline.py`: the pipeline folders, `add`, `move`, `list`, and the board
 page `pipeline/index.html`. `pipeline/` is git-ignored (real business data).
 
-`jarvis-agents/agents/edith/`: EDITH. `edith.py` (search, rules, Instagram/Facebook recency,
-score, add to pipeline, HTML report), `apify.py` (live client with maxTotalChargeUsd cap, or
-samples from `samples/apify/` with `{days_ago:N}` dates), `rules.json` (Zain's rules, search terms,
-links that don't count as a website). Plan in `pipeline/edith-plan.json`. Known gap: a business
-whose Google listing has no social link at all is skipped; a later version can search Instagram
-for them by name.
+`jarvis-agents/agents/edith/`: EDITH v2. `places.py` (Places API (New) Text Search, Enterprise fields,
+city split into map tiles when a query hits 60, monthly usage in `pipeline/edith-usage.json`, stays in the
+free 1,000/month unless allowed), `social.py` (Codex `--search` finds profiles by name, Claude `--chrome`
+reads last post/followers/bio link; daily caps), `edith.py` (rules, resumable runs in `pipeline/edith-runs/`,
+score, add to pipeline, report). Samples: `samples/make_edith.py` -> `samples/edith/`. Plan in
+`pipeline/edith-plan.json`; `today` carries on unfinished cities first.
+
+Personalities: `agents/<agent>/persona.md` (the `## Brief` goes into every prompt that agent sends;
+FRIDAY's ElevenLabs prompt = pitch.md + persona sections + Cowork playbook). Training: `training/<agent>/*.json`
+from Cowork (COWORK-PROMPTS.md), loaded by `agents/persona.py` when present. Keys: `jarvis-agents/.env`,
+loaded by `agents/__init__.py`.
+
+`jarvis-agents/agents/jarvis/`: JARVIS. `run` (EDITH today, MARK work, HAPPY check, FRIDAY collect + call),
+`status`, `report` (`pipeline/jarvis.html`: funnel vs target, worked backwards, the bottleneck).
 
 `jarvis-agents/agents/happy/`: HAPPY. `happy.py` (static checks on site/index.html plus
 `platform/scripts/check-site.ts` in real Chrome), `rules.json` (on/off, block/warn per rule).
@@ -147,7 +157,7 @@ Screenshots of every screen: `jarvis-agents/screenshots/`. Every template, deskt
 4. Real research has never run: the Claude CLI on the laptop said "OAuth session expired" on
    23 Oct. Zain needs to run `claude` and `/login`, and have the Claude in Chrome extension on.
    MARK has never made a live AI call for the words either. No API key in the sandbox. Tested with sample files only.
-5. EDITH has only run on samples: needs `APIFY_TOKEN` and a paid Apify plan for full cities.
+5. EDITH has only run on samples: needs `GOOGLE_PLACES_KEY` (COWORK-PROMPTS.md job 2), the Claude CLI logged in.
    FRIDAY has only made sample calls: needs ELEVENLABS_API_KEY, a Twilio number imported into
    ElevenLabs (FRIDAY_PHONE_NUMBER_ID), FRIDAY_TEST_NUMBER, company_name in rules.json.
    No public holiday check yet. Sending the demo link by WhatsApp after an interested call is
@@ -160,7 +170,7 @@ Screenshots of every screen: `jarvis-agents/screenshots/`. Every template, deskt
    internet). Only needed for cloud sessions.
 2. Create an empty private GitHub repo `jarvis-agents` and share the name.
 3. Put a Claude or DeepSeek API key on his laptop for one live MARK test.
-4. Apify: API token (and a paid plan for 150 to 300 leads a city, roughly $8 a city).
+4. Google Places key for EDITH (Cowork can set it up, Zain adds the billing card himself).
 5. Log the Claude CLI back in (`claude`, then `/login`) for MARK's Chrome research.
 
 ## Running it on Zain's laptop (local session)

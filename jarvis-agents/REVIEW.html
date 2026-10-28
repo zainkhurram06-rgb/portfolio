@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Review: the agents</title>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #16181c; --muted: #646a73; --line: #e3e5e8; --paper: #fbfaf7; --brand: #2747d6; --go: #1f7a4d; --warn: #b4690e; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--paper); color: var(--ink); font: 16px/1.6 "Hanken Grotesk", system-ui, sans-serif; padding: 44px 20px 80px; }
+main { max-width: 940px; margin: 0 auto; display: grid; gap: 22px; }
+h1 { font: 400 clamp(40px, 6vw, 62px)/1 "Instrument Serif", serif; }
+h1 em { color: var(--brand); }
+h2 { font: 400 30px/1.1 "Instrument Serif", serif; margin-block-end: 10px; }
+h3 { font-size: 17px; margin-block: 14px 4px; }
+.lede { font-size: 18px; color: var(--muted); max-width: 64ch; }
+section { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
+ul, ol { padding-inline-start: 20px; display: grid; gap: 5px; }
+a { color: var(--brand); font-weight: 600; }
+.tag { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; background: #e3f4ea; color: var(--go); vertical-align: middle; }
+.tag.warn { background: #fdf0dc; color: var(--warn); }
+code { background: #f0f1f3; padding: 1px 6px; border-radius: 5px; font-size: 14px; }
+pre { background: #16181c; color: #e8eaee; padding: 14px 16px; border-radius: 10px; font-size: 13.5px; overflow-x: auto; white-space: pre-wrap; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.card { border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+.card b { display: block; font-size: 17px; margin-block-end: 4px; }
+.small { font-size: 14px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Ready for <em>review</em></h1>
+    <p class="lede">EDITH is rebuilt on Google Places, Codex and Claude in Chrome. Every agent now has a personality and a playbook. JARVIS runs the team and measures it against your target: about $500 a week now, one website a day after the first month. Everything below is tested (67 agent tests, all passing) but has only run on sample data. The live runs need the Google key and the Claude login.</p>
+  </header>
+
+  <section>
+    <h2>1. Open these first</h2>
+    <div class="grid">
+      <div class="card"><b><a href="pipeline/edith-reports/dubai-salon-sample.html">EDITH's city report</a></b><span class="small">A sample run of Dubai salons: 42 found on Google Maps, 20 kept, and why each of the other 21 was left out. Two of the 20 had no social link on Google: the new name search found them.</span></div>
+      <div class="card"><b><a href="pipeline/jarvis.html">JARVIS's morning report</a></b><span class="small">Your funnel against the target, worked backwards into daily numbers, with the bottleneck. Empty for now: sample data never counts, so it fills up with the first real run.</span></div>
+      <div class="card"><b><a href="pipeline/index.html">The pipeline board</a></b><span class="small">The 20 sample leads are in Leads (marked as samples, removable in one command).</span></div>
+      <div class="card"><b><a href="pipeline/friday-prompt.md">FRIDAY's full prompt</a></b><span class="small">Exactly what she'll be told on ElevenLabs: her brief, her personality and her whole sales playbook.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. The personalities</h2>
+    <p class="small">Each one is a plain document you can edit. The "Brief" at the top goes into every AI prompt that agent sends.</p>
+    <div class="grid" style="margin-top:12px">
+      <div class="card"><b><a href="agents/friday/persona.md">FRIDAY</a> <span class="tag">deepest</span></b><span class="small">Warm, quick, honest AI caller. One goal per call: they agree to look at the demo and say where to send it. Six-step call shape, how to reach the owner, answers to 14 common objections, buying signals, and a hard "you never" list.</span></div>
+      <div class="card"><b><a href="agents/edith/persona.md">EDITH</a></b><span class="small">Precise, patient researcher. Never lowers the bar, never guesses a profile, read-only in your browser.</span></div>
+      <div class="card"><b><a href="agents/mark/persona.md">MARK</a></b><span class="small">A craftsman: the owner should open the demo and think "that's my business, only better". Never invents facts.</span></div>
+      <div class="card"><b><a href="agents/happy/persona.md">HAPPY</a></b><span class="small">The owner's eyes before the owner sees it. Blocks what's wrong, warns about what's weak, explains every fail in one line.</span></div>
+      <div class="card"><b><a href="agents/jarvis/persona.md">JARVIS</a></b><span class="small">Numbers first, points at the bottleneck, only asks you for what only you can do. Targets in <a href="agents/jarvis/targets.json">targets.json</a>.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>3. Hand these to Cowork</h2>
+    <p>Both prompts are in <a href="COWORK-PROMPTS.md">COWORK-PROMPTS.md</a>, ready to paste.</p>
+    <h3>Job 1: training research <span class="tag">start this first, it takes hours</span></h3>
+    <p class="small">Cowork watches Saad Sells and other real cold calls to small businesses and turns them into FRIDAY's techniques, objection answers, openers and trade pain points. It also studies the best real websites per trade for MARK, lead signals per country for EDITH, and a quality checklist for HAPPY. Everything is in its own words with a source for each item, and pressure tactics go on a "never do" list. Files land in <code>training/</code>, and the agents pick them up automatically: FRIDAY's prompt, MARK's writing and HAPPY's report all include them.</p>
+    <h3>Job 2: the Google key for EDITH <span class="tag warn">you add the card</span></h3>
+    <p class="small">Cowork creates the project, switches on Places API (New), makes a key locked to that one API, sets a $10 budget alert, and saves the key in <code>.env</code>. It stops at the billing step for you, and never sees or types payment details.</p>
+  </section>
+
+  <section>
+    <h2>4. Then the first real run</h2>
+    <ol>
+      <li>Log the Claude CLI in (it reads Instagram profiles in your Chrome). Run <code>claude</code>, then type <code>/login</code>, and make sure the Claude in Chrome extension is on.</li>
+      <li>Clear the sample leads:
+<pre>.venv\Scripts\python -m agents.pipeline remove --samples</pre></li>
+      <li>EDITH on a real city, live (PowerShell, in <code>C:\Users\zaink\portfolio\jarvis-agents</code>):
+<pre>$env:EDITH_PLACES = "live"; $env:EDITH_SOCIAL = "live"; .venv\Scripts\python -m agents.edith find --niche salon --city Dubai --country AE</pre>
+        She stays inside Google's free 1,000 searches a month, reads at most 120 profiles a day, and carries on where she stopped the next time you run it.</li>
+      <li>See what she used:
+<pre>.venv\Scripts\python -m agents.edith usage</pre></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>5. What only you can decide</h2>
+    <ul>
+      <li><b>Your price.</b> FRIDAY can't quote one until <code>price_text</code> is set in <a href="agents/friday/rules.json">agents/friday/rules.json</a>, and JARVIS assumes $500 a site in targets.json. Also needed there: <code>company_name</code>, the name she says on calls.</li>
+      <li><b>The daily ceiling.</b> One sale a day means about 81 leads, 73 demos and 56 calls a day, at the starting guesses in targets.json (12% of owners reached are interested, 30% of those buy). Today MARK's research is capped at 25 a day and FRIDAY at 40 calls a day to protect your accounts. JARVIS flags this as the bottleneck once the numbers start moving. Raising those caps safely is the next big job.</li>
+      <li><b>ElevenLabs and Twilio</b> for FRIDAY's first real test call to your phone.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>What changed in the code</h2>
+    <ul class="small">
+      <li>EDITH: <code>places.py</code> (Google Places with map tiles, usage and cost tracking), <code>social.py</code> (Codex finds profiles, Claude in Chrome reads them, daily caps), <code>edith.py</code> (cities can run over several days), new samples in <code>samples/edith/</code>. Apify is removed.</li>
+      <li><code>agents/persona.py</code> loads personalities and Cowork's training. Keys are read from <code>.env</code>.</li>
+      <li>FRIDAY's prompt is built from <code>pitch.md</code>, her personality and the playbook. After a call she now also records the owner's name, how customers find them, and how keen they were.</li>
+      <li>MARK's prompt now includes his personality and the per-trade research. HAPPY's report lists the extra checks to do by hand.</li>
+      <li>JARVIS: <code>python -m agents.jarvis run | status | report</code>.</li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>

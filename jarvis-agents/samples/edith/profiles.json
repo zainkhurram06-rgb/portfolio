@@ -1,0 +1,152 @@
+{
+ "instagram:velvet.nail.lounge": {
+  "exists": true,
+  "last_post": "{days_ago:6}",
+  "followers": 22129,
+  "bio_url": null
+ },
+ "instagram:amber.hair.studio": {
+  "exists": true,
+  "last_post": "{days_ago:8}",
+  "followers": 3884,
+  "bio_url": null
+ },
+ "instagram:fade.kings.barbers": {
+  "exists": true,
+  "last_post": "{days_ago:8}",
+  "followers": 7835,
+  "bio_url": null
+ },
+ "instagram:lush.lash.bar": {
+  "exists": true,
+  "last_post": "{days_ago:6}",
+  "followers": 3089,
+  "bio_url": null
+ },
+ "instagram:rose.and.gold.beauty": {
+  "exists": true,
+  "last_post": "{days_ago:6}",
+  "followers": 2736,
+  "bio_url": null
+ },
+ "instagram:nailed.it.jlt": {
+  "exists": true,
+  "last_post": "{days_ago:3}",
+  "followers": 21464,
+  "bio_url": null
+ },
+ "instagram:studio.mira.hair": {
+  "exists": true,
+  "last_post": "{days_ago:0}",
+  "followers": 19710,
+  "bio_url": null
+ },
+ "instagram:the.gents.chair": {
+  "exists": true,
+  "last_post": "{days_ago:3}",
+  "followers": 2326,
+  "bio_url": null
+ },
+ "instagram:brow.theory": {
+  "exists": true,
+  "last_post": "{days_ago:4}",
+  "followers": 14534,
+  "bio_url": null
+ },
+ "instagram:glow.up.beauty.lounge": {
+  "exists": true,
+  "last_post": "{days_ago:9}",
+  "followers": 10908,
+  "bio_url": null
+ },
+ "instagram:polished.nail.bar": {
+  "exists": true,
+  "last_post": "{days_ago:2}",
+  "followers": 4176,
+  "bio_url": null
+ },
+ "instagram:curl.club.dubai": {
+  "exists": true,
+  "last_post": "{days_ago:3}",
+  "followers": 13002,
+  "bio_url": null
+ },
+ "instagram:sharp.line.barbers": {
+  "exists": true,
+  "last_post": "{days_ago:1}",
+  "followers": 19293,
+  "bio_url": null
+ },
+ "instagram:silk.beauty.spa": {
+  "exists": true,
+  "last_post": "{days_ago:7}",
+  "followers": 23095,
+  "bio_url": null
+ },
+ "facebook:alnoorladiessalon": {
+  "exists": true,
+  "last_post": "{days_ago:7}",
+  "followers": null,
+  "bio_url": null
+ },
+ "facebook:classiccutskarama": {
+  "exists": true,
+  "last_post": "{days_ago:8}",
+  "followers": null,
+  "bio_url": null
+ },
+ "facebook:pearlhairandbeauty": {
+  "exists": true,
+  "last_post": "{days_ago:8}",
+  "followers": null,
+  "bio_url": null
+ },
+ "instagram:ladiestouch.dxb": {
+  "exists": true,
+  "last_post": "{days_ago:4}",
+  "followers": 3100,
+  "bio_url": null
+ },
+ "instagram:hairbyhana": {
+  "exists": true,
+  "last_post": "{days_ago:2}",
+  "followers": 9800,
+  "bio_url": null
+ },
+ "instagram:sleepy.salon": {
+  "exists": true,
+  "last_post": "{days_ago:40}",
+  "followers": 2500,
+  "bio_url": null
+ },
+ "instagram:faded.nails": {
+  "exists": true,
+  "last_post": "{days_ago:25}",
+  "followers": 2500,
+  "bio_url": null
+ },
+ "instagram:quiet.cuts": {
+  "exists": true,
+  "last_post": "{days_ago:90}",
+  "followers": 2500,
+  "bio_url": null
+ },
+ "instagram:hiddensite.beauty": {
+  "exists": true,
+  "last_post": "{days_ago:2}",
+  "followers": 2500,
+  "bio_url": "https://hiddensitebeauty.com"
+ },
+ "instagram:gone.nails": {
+  "exists": false,
+  "last_post": null,
+  "followers": null,
+  "bio_url": null
+ },
+ "instagram:twin.search": {
+  "exists": true,
+  "last_post": "{days_ago:3}",
+  "followers": 5400,
+  "bio_url": null
+ }
+}

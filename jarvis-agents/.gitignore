@@ -7,3 +7,6 @@ out/
 
 # the business pipeline: real leads and their downloaded media, never public
 pipeline/
+
+# Cowork's research for the agents: kept on this laptop, not in the public repo
+training/

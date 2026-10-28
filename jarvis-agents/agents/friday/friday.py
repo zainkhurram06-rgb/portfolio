@@ -15,11 +15,12 @@ Every call is kept in the business folder: calls/calls.json and calls/index.html
 
 import html
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import List, Optional
 
 from .. import pipeline
+from ..persona import persona, section, training
 from ..pipeline import Business
 from . import guard, voice as voices
 
@@ -30,11 +31,59 @@ TRADE_WORDS = {"salon": "beauty salon", "carwash": "car wash", "autorepair": "ga
                "dental": "dental clinic", "medical": "medical clinic", "dermatology": "skin clinic"}
 
 
+PERSONA_PARTS = ("Who you are", "How you sound", "The shape of every call", "Reaching the owner",
+                 "Handling what owners say", "Buying signals to listen for", "You never")
+PLAYBOOK_LIMIT = 9000                          # characters of Cowork research that fit in her prompt
+
+
+def playbook() -> str:
+    """What Cowork learned from real cold calls (training/friday/), in a form she can use."""
+    parts = []
+    tech = training("friday", "techniques") or []
+    if tech:
+        parts.append("Techniques that work:\n" + "\n".join(
+            f"- {t.get('name')}: {t.get('how_friday_uses_it') or t.get('what')} For example: \"{t.get('example_line')}\""
+            for t in tech if t.get("name")))
+    objections = training("friday", "objections") or []
+    if objections:
+        parts.append("More answers to what owners say (trade in brackets when it only fits one trade):\n" + "\n".join(
+            f"- \"{o.get('objection')}\"{'' if o.get('trade') in (None, 'any') else ' [' + o['trade'] + ']'}: {o.get('response')}"
+            for o in objections if o.get("objection") and o.get("response")))
+    pains = training("friday", "trade-pains") or []
+    if pains:
+        parts.append("What owners in each trade struggle with:\n" + "\n".join(
+            f"- [{p.get('trade')}] {p.get('pain')} {p.get('how_a_website_helps')}" for p in pains if p.get("pain")))
+    avoid = training("friday", "do-not") or []
+    if avoid:
+        parts.append("Tactics you never use:\n" + "\n".join(f"- {d.get('tactic')}: {d.get('why_not')}" for d in avoid if d.get("tactic")))
+    text = "\n\n".join(parts)
+    return text[:PLAYBOOK_LIMIT].rsplit("\n", 1)[0] if len(text) > PLAYBOOK_LIMIT else text
+
+
 def prompt() -> str:
-    """pitch.md without its title and editing note."""
+    """Her whole ElevenLabs prompt: the call brief (pitch.md), her personality and
+    playbook (persona.md), and Cowork's research if there is any."""
     text = PITCH.read_text(encoding="utf-8")
     start = text.find("You are FRIDAY")
-    return text[start:] if start >= 0 else text
+    out = [text[start:] if start >= 0 else text]
+    me = persona("friday")
+    for title in PERSONA_PARTS:
+        body = section(me, title)
+        if body:
+            out.append(f"## {title}\n\n{body}")
+    extra = playbook()
+    if extra:
+        out.append(f"## Your playbook from real calls\n\n{extra}")
+    return "\n\n".join(out).strip() + "\n"
+
+
+def follow_up_day(now: datetime, working_days: int = 2) -> str:
+    d = now
+    while working_days:
+        d = d + timedelta(days=1)
+        if d.weekday() < 5:
+            working_days -= 1
+    return d.strftime("%A")
 
 
 def calls(b: Business) -> List[dict]:
@@ -57,6 +106,7 @@ def variables(b: Business, r: dict) -> dict:
         "language": lead.get("language") or "English", "review_count": str(lead.get("review_count") or "lots of"),
         "rating": str(lead.get("rating") or ""), "social": social,
         "demo_link": build.get("subdomain") or build.get("site") or "",
+        "day": follow_up_day(datetime.now(timezone.utc)),
     }
 
 

@@ -109,8 +109,9 @@ template, writes the words, uploads the media and builds the demo.
 ## EDITH, the lead tracker
 
 Finds businesses with no website that are alive on social media, and drops the
-good ones into `pipeline/1-leads` for MARK. Uses Apify (Google Maps, Instagram,
-Facebook scrapers), with a hard spending cap on every run.
+good ones into `pipeline/1-leads` for MARK. Google Maps through Google's Places API
+(free monthly allowance, hard cap), Codex finds profiles by name, Claude in Chrome
+reads them under a daily cap. A city can take a few days; she carries on where she stopped.
 
 Her rules live in `agents/edith/rules.json` (change numbers there, no code):
 no real website (an Instagram, Facebook, WhatsApp, Linktree, Fresha or Booksy
@@ -126,9 +127,10 @@ lowering the bar to hit a number. Each run writes a report to
 .venv\Scripts\python -m agents.pipeline remove --samples                   # clear test data
 ```
 
-Without `EDITH_APIFY=live` she uses saved samples (free). Live needs
-`APIFY_TOKEN`. About $8 a city on Apify's free-tier prices, capped by
-`max_usd_per_run` in rules.json (Apify itself stops the run at the cap).
+Without `EDITH_PLACES=live` and `EDITH_SOCIAL=live` she uses saved samples (free).
+Live Google needs `GOOGLE_PLACES_KEY` in `jarvis-agents/.env` (see COWORK-PROMPTS.md).
+She stays inside Google's free 1,000 searches a month unless `stay_in_free_allowance`
+is false; then `max_usd_per_run` caps each run. `python -m agents.edith usage` shows what's used.
 
 ## HAPPY, quality check
 

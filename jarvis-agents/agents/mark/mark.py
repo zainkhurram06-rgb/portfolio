@@ -16,6 +16,7 @@ from typing import Optional
 import requests
 from pydantic import create_model
 
+from ..persona import brief, training
 from . import templates
 from .brains import BrainError, think
 from .plan import ICONS, Lead, Plan
@@ -73,6 +74,21 @@ Rules you never break:
 - autorepair: honest and plain spoken. Stress quotes before work, no surprises.
 - homeservices: fast, honest, local.
 - For homeservices, carwash and autorepair, list 4 to 8 nearby areas in areasServed."""
+
+
+TRAINING_FIELDS = (("what_customers_look_for", "What makes customers in this trade book"),
+                   ("headline_patterns", "Shapes of strong headlines in this trade"),
+                   ("words_that_work", "Words and phrases that work"), ("mistakes", "Mistakes weak sites make, avoid them"))
+
+
+def system_for(niche: str) -> str:
+    """MARK's personality, his rules, and Cowork's research on the best real sites in this trade."""
+    parts = [brief("mark"), SYSTEM]
+    found = training("mark", niche) or {}
+    learned = [f"{title}:\n" + "\n".join(f"- {x}" for x in found.get(k, [])[:10]) for k, title in TRAINING_FIELDS if found.get(k)]
+    if learned:
+        parts.append("What the best real websites in this trade do (use the patterns, never copy their words):\n\n" + "\n\n".join(learned))
+    return "\n\n".join(p for p in parts if p)
 
 
 def _prompt(lead: Lead) -> str:
@@ -249,7 +265,7 @@ def make_demo(lead: Lead, brains: Optional[str] = None, theme: Optional[str] = N
               dry_run: bool = False, label_brains: Optional[str] = None, log=print) -> dict:
     log(f"MARK: writing a demo for {lead.name} ({lead.niche}, {lead.city or lead.country})")
     template = choose_template(lead, theme, dry_run, log)
-    plan = think(SYSTEM, _prompt(lead), Plan, order=brains, log=log)
+    plan = think(system_for(lead.niche), _prompt(lead), Plan, order=brains, log=log)
     if plan.hours_are_guessed:
         log("MARK: no hours on the lead, used typical hours for the trade")
     labels = translate_labels(plan.language or lead.language or "en", label_brains or brains, log, niche=lead.niche)

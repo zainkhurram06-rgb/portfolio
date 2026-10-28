@@ -65,7 +65,7 @@ th { background: #faf9f7; font-size: .85rem; color: var(--muted); }
 <p>Every agent has a free <b>sample mode</b> that works now with made-up businesses, and a <b>real mode</b> that needs a key.</p>
 
 <div class="card agent">
-  <h3>EDITH, the lead tracker <span class="tag">sample works now</span><span class="tag need">real needs Apify</span></h3>
+  <h3>EDITH, the lead tracker <span class="tag">sample works now</span><span class="tag need">real needs a Google key</span></h3>
   <ol>
     <li>Plan a city and run it (sample data):
       <div class="cmd"><code>.venv\Scripts\python -m agents.edith plan add 2026-10-27 salon Dubai AE</code><button>copy</button></div>
@@ -73,9 +73,9 @@ th { background: #faf9f7; font-size: .85rem; color: var(--muted); }
     </li>
     <li>Open the board: new cards in Leads, best score first. Her report (link at the top of the board) shows why every other business was left out.</li>
     <li>Change her rules in <span class="file">agents\edith\rules.json</span> (reviews, days since last post, leads per city, spending cap).</li>
-    <li>Real run: set your Apify token, then switch her to live:
-      <div class="cmd"><code>$env:APIFY_TOKEN = "your-apify-token"; $env:EDITH_APIFY = "live"</code><button>copy</button></div>
-      Start with a small city. She prints the cost estimate and Apify stops at the cap.</li>
+    <li>Real run: put GOOGLE_PLACES_KEY in jarvis-agents\.env (COWORK-PROMPTS.md, job 2), then switch her to live:
+      <div class="cmd"><code>$env:EDITH_PLACES = "live"; $env:EDITH_SOCIAL = "live"</code><button>copy</button></div>
+      She stays inside Google's free allowance, and pauses at the daily social caps, carrying on next run.</li>
   </ol>
 </div>
 
@@ -134,7 +134,7 @@ th { background: #faf9f7; font-size: .85rem; color: var(--muted); }
 <h2>4. What each one needs from you for real runs</h2>
 <table>
   <tr><th>Agent</th><th>Needs</th><th>Where</th></tr>
-  <tr><td>EDITH</td><td>Apify API token, and a paid plan for full cities (about $8 a city)</td><td>apify.com, Settings, API &amp; Integrations</td></tr>
+  <tr><td>EDITH</td><td>Google Places API key (free allowance: about 6 to 15 cities a month)</td><td>COWORK-PROMPTS.md, job 2</td></tr>
   <tr><td>MARK</td><td>Claude CLI logged in plus the Claude in Chrome extension; an Anthropic or DeepSeek key, or Codex logged in</td><td>run <span class="file">claude</span> then <span class="file">/login</span></td></tr>
   <tr><td>HAPPY</td><td>nothing</td><td>just your rules</td></tr>
   <tr><td>FRIDAY</td><td>ElevenLabs key, a Twilio number imported into ElevenLabs, your phone for tests, your company name</td><td>elevenlabs.io, Agents, Phone numbers</td></tr>

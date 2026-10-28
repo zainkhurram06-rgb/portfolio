@@ -1,0 +1,2471 @@
+{
+ "hair salon": [
+  {
+   "id": "ChIJsample0002",
+   "displayName": {
+    "text": "Amber Hair Studio",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Hair salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 2, Al Barsha 1 Street, Al Barsha 1, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 2",
+     "shortText": "Shop 2",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Al Barsha 1 Street",
+     "shortText": "Al Barsha 1 St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Al Barsha 1",
+     "shortText": "Al Barsha 1",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.3,
+   "userRatingCount": 104,
+   "googleMapsUri": "https://maps.google.com/?cid=1002",
+   "internationalPhoneNumber": "+971 4 555 1002",
+   "nationalPhoneNumber": "04 555 1002",
+   "websiteUri": "https://www.instagram.com/amber.hair.studio/"
+  },
+  {
+   "id": "ChIJsample0007",
+   "displayName": {
+    "text": "Studio Mira Hair",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Hair salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 7, Mirdif Street, Mirdif, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 7",
+     "shortText": "Shop 7",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Mirdif Street",
+     "shortText": "Mirdif St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Mirdif",
+     "shortText": "Mirdif",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 697,
+   "googleMapsUri": "https://maps.google.com/?cid=1007",
+   "internationalPhoneNumber": "+971 4 555 1007",
+   "nationalPhoneNumber": "04 555 1007",
+   "websiteUri": "https://www.instagram.com/studio.mira.hair/"
+  },
+  {
+   "id": "ChIJsample0012",
+   "displayName": {
+    "text": "Curl Club Dubai",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Hair salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 12, Al Barsha 1 Street, Al Barsha 1, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 12",
+     "shortText": "Shop 12",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Al Barsha 1 Street",
+     "shortText": "Al Barsha 1 St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Al Barsha 1",
+     "shortText": "Al Barsha 1",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 650,
+   "googleMapsUri": "https://maps.google.com/?cid=1012",
+   "internationalPhoneNumber": "+971 4 555 1012",
+   "nationalPhoneNumber": "04 555 1012",
+   "websiteUri": "https://www.instagram.com/curl.club.dubai/"
+  },
+  {
+   "id": "ChIJsample0017",
+   "displayName": {
+    "text": "Pearl Hair and Beauty",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Hair salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 17, Mirdif Street, Mirdif, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 17",
+     "shortText": "Shop 17",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Mirdif Street",
+     "shortText": "Mirdif St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Mirdif",
+     "shortText": "Mirdif",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 359,
+   "googleMapsUri": "https://maps.google.com/?cid=1017",
+   "internationalPhoneNumber": "+971 4 555 1017",
+   "nationalPhoneNumber": "04 555 1017",
+   "websiteUri": "https://www.facebook.com/PearlHairandBeauty"
+  },
+  {
+   "id": "ChIJsample0019",
+   "displayName": {
+    "text": "Hair by Hana",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Hair salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 19, JVC Street, JVC, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 19",
+     "shortText": "Shop 19",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "JVC Street",
+     "shortText": "JVC St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "JVC",
+     "shortText": "JVC",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 130,
+   "googleMapsUri": "https://maps.google.com/?cid=1019",
+   "internationalPhoneNumber": "+971 4 555 1019",
+   "nationalPhoneNumber": "04 555 1019",
+   "websiteUri": "https://linktr.ee/hairbyhana"
+  },
+  {
+   "id": "ChIJsample0023",
+   "displayName": {
+    "text": "Luna Hair Studio",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Hair salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 23, Business Bay Street, Business Bay, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 23",
+     "shortText": "Shop 23",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Business Bay Street",
+     "shortText": "Business Bay St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Business Bay",
+     "shortText": "Business Bay",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 820,
+   "googleMapsUri": "https://maps.google.com/?cid=1023",
+   "internationalPhoneNumber": "+971 4 555 1023",
+   "nationalPhoneNumber": "04 555 1023",
+   "websiteUri": "https://lunahair.ae"
+  },
+  {
+   "id": "ChIJsample0030",
+   "displayName": {
+    "text": "Hair Lab Deira",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Hair salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 30, Jumeirah 1 Street, Jumeirah 1, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 30",
+     "shortText": "Shop 30",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Jumeirah 1 Street",
+     "shortText": "Jumeirah 1 St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Jumeirah 1",
+     "shortText": "Jumeirah 1",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 22,
+   "googleMapsUri": "https://maps.google.com/?cid=1030",
+   "internationalPhoneNumber": "+971 4 555 1030",
+   "nationalPhoneNumber": "04 555 1030",
+   "websiteUri": "https://instagram.com/hair.lab.deira"
+  },
+  {
+   "id": "ChIJsample0036",
+   "displayName": {
+    "text": "Sleepy Salon",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Hair salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 36, Karama Street, Karama, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 36",
+     "shortText": "Shop 36",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Karama Street",
+     "shortText": "Karama St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Karama",
+     "shortText": "Karama",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 284,
+   "googleMapsUri": "https://maps.google.com/?cid=1036",
+   "internationalPhoneNumber": "+971 4 555 1036",
+   "nationalPhoneNumber": "04 555 1036",
+   "websiteUri": "https://instagram.com/sleepy.salon"
+  },
+  {
+   "id": "ChIJsampleDUP1",
+   "displayName": {
+    "text": "Twin Search Beauty",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Beauty salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 41, JLT Cluster D Street, JLT Cluster D, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 41",
+     "shortText": "Shop 41",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "JLT Cluster D Street",
+     "shortText": "JLT Cluster D St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "JLT Cluster D",
+     "shortText": "JLT Cluster D",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 320,
+   "googleMapsUri": "https://maps.google.com/?cid=1041",
+   "internationalPhoneNumber": "+971 4 555 1041",
+   "nationalPhoneNumber": "04 555 1041",
+   "websiteUri": "https://instagram.com/twin.search"
+  }
+ ],
+ "nail salon": [
+  {
+   "id": "ChIJsample0001",
+   "displayName": {
+    "text": "Velvet Nail Lounge",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Nail salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 1, JLT Cluster D Street, JLT Cluster D, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 1",
+     "shortText": "Shop 1",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "JLT Cluster D Street",
+     "shortText": "JLT Cluster D St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "JLT Cluster D",
+     "shortText": "JLT Cluster D",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.9,
+   "userRatingCount": 386,
+   "googleMapsUri": "https://maps.google.com/?cid=1001",
+   "internationalPhoneNumber": "+971 4 555 1001",
+   "nationalPhoneNumber": "04 555 1001",
+   "websiteUri": "https://www.instagram.com/velvet.nail.lounge/"
+  },
+  {
+   "id": "ChIJsample0006",
+   "displayName": {
+    "text": "Nailed It JLT",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Nail salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 6, Karama Street, Karama, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 6",
+     "shortText": "Shop 6",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Karama Street",
+     "shortText": "Karama St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Karama",
+     "shortText": "Karama",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.3,
+   "userRatingCount": 634,
+   "googleMapsUri": "https://maps.google.com/?cid=1006",
+   "internationalPhoneNumber": "+971 4 555 1006",
+   "nationalPhoneNumber": "04 555 1006",
+   "websiteUri": "https://www.instagram.com/nailed.it.jlt/"
+  },
+  {
+   "id": "ChIJsample0011",
+   "displayName": {
+    "text": "Polished Nail Bar",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Nail salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 11, JLT Cluster D Street, JLT Cluster D, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 11",
+     "shortText": "Shop 11",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "JLT Cluster D Street",
+     "shortText": "JLT Cluster D St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "JLT Cluster D",
+     "shortText": "JLT Cluster D",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.8,
+   "userRatingCount": 628,
+   "googleMapsUri": "https://maps.google.com/?cid=1011",
+   "internationalPhoneNumber": "+971 4 555 1011",
+   "nationalPhoneNumber": "04 555 1011",
+   "websiteUri": "https://www.instagram.com/polished.nail.bar/"
+  },
+  {
+   "id": "ChIJsample0021",
+   "displayName": {
+    "text": "Bliss Nails Mirdif",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Nail salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 21, JLT Cluster D Street, JLT Cluster D, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 21",
+     "shortText": "Shop 21",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "JLT Cluster D Street",
+     "shortText": "JLT Cluster D St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "JLT Cluster D",
+     "shortText": "JLT Cluster D",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 97,
+   "googleMapsUri": "https://maps.google.com/?cid=1021",
+   "internationalPhoneNumber": "+971 4 555 1021",
+   "nationalPhoneNumber": "04 555 1021",
+   "websiteUri": "https://www.fresha.com/a/bliss-nails-dubai"
+  },
+  {
+   "id": "ChIJsample0022",
+   "displayName": {
+    "text": "Quick Nails",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Nail salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 22, Al Barsha 1 Street, Al Barsha 1, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 22",
+     "shortText": "Shop 22",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Al Barsha 1 Street",
+     "shortText": "Al Barsha 1 St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Al Barsha 1",
+     "shortText": "Al Barsha 1",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 310,
+   "googleMapsUri": "https://maps.google.com/?cid=1022",
+   "internationalPhoneNumber": "+971 4 555 1022",
+   "nationalPhoneNumber": "04 555 1022"
+  },
+  {
+   "id": "ChIJsample0024",
+   "displayName": {
+    "text": "The Nail Spa",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Nail salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 24, Dubai Marina Street, Dubai Marina, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 24",
+     "shortText": "Shop 24",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Dubai Marina Street",
+     "shortText": "Dubai Marina St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Dubai Marina",
+     "shortText": "Dubai Marina",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 693,
+   "googleMapsUri": "https://maps.google.com/?cid=1024",
+   "internationalPhoneNumber": "+971 4 555 1024",
+   "nationalPhoneNumber": "04 555 1024",
+   "websiteUri": "https://thenailspa.com"
+  },
+  {
+   "id": "ChIJsample0029",
+   "displayName": {
+    "text": "New Nails Studio",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Nail salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 29, JVC Street, JVC, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 29",
+     "shortText": "Shop 29",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "JVC Street",
+     "shortText": "JVC St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "JVC",
+     "shortText": "JVC",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 39,
+   "googleMapsUri": "https://maps.google.com/?cid=1029",
+   "internationalPhoneNumber": "+971 4 555 1029",
+   "nationalPhoneNumber": "04 555 1029",
+   "websiteUri": "https://instagram.com/new.nails.studio"
+  },
+  {
+   "id": "ChIJsample0033",
+   "displayName": {
+    "text": "Mystery Nails",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Nail salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 33, Business Bay Street, Business Bay, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 33",
+     "shortText": "Shop 33",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Business Bay Street",
+     "shortText": "Business Bay St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Business Bay",
+     "shortText": "Business Bay",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 120,
+   "googleMapsUri": "https://maps.google.com/?cid=1033",
+   "websiteUri": "https://instagram.com/mystery.nails"
+  },
+  {
+   "id": "ChIJsample0037",
+   "displayName": {
+    "text": "Faded Nails",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Nail salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 37, Mirdif Street, Mirdif, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 37",
+     "shortText": "Shop 37",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Mirdif Street",
+     "shortText": "Mirdif St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Mirdif",
+     "shortText": "Mirdif",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 147,
+   "googleMapsUri": "https://maps.google.com/?cid=1037",
+   "internationalPhoneNumber": "+971 4 555 1037",
+   "nationalPhoneNumber": "04 555 1037",
+   "websiteUri": "https://instagram.com/faded.nails"
+  },
+  {
+   "id": "ChIJsample0040",
+   "displayName": {
+    "text": "Gone Nails",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Nail salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 40, Jumeirah 1 Street, Jumeirah 1, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 40",
+     "shortText": "Shop 40",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Jumeirah 1 Street",
+     "shortText": "Jumeirah 1 St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Jumeirah 1",
+     "shortText": "Jumeirah 1",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 150,
+   "googleMapsUri": "https://maps.google.com/?cid=1040",
+   "internationalPhoneNumber": "+971 4 555 1040",
+   "nationalPhoneNumber": "04 555 1040",
+   "websiteUri": "https://instagram.com/gone.nails"
+  }
+ ],
+ "beauty salon": [
+  {
+   "id": "ChIJsample0005",
+   "displayName": {
+    "text": "Rose and Gold Beauty",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Beauty salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 5, Al Wasl Road Street, Al Wasl Road, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 5",
+     "shortText": "Shop 5",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Al Wasl Road Street",
+     "shortText": "Al Wasl Road St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Al Wasl Road",
+     "shortText": "Al Wasl Road",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.3,
+   "userRatingCount": 301,
+   "googleMapsUri": "https://maps.google.com/?cid=1005",
+   "internationalPhoneNumber": "+971 4 555 1005",
+   "nationalPhoneNumber": "04 555 1005",
+   "websiteUri": "https://www.instagram.com/rose.and.gold.beauty/"
+  },
+  {
+   "id": "ChIJsample0010",
+   "displayName": {
+    "text": "Glow Up Beauty Lounge",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Beauty salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 10, Jumeirah 1 Street, Jumeirah 1, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 10",
+     "shortText": "Shop 10",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Jumeirah 1 Street",
+     "shortText": "Jumeirah 1 St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Jumeirah 1",
+     "shortText": "Jumeirah 1",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 202,
+   "googleMapsUri": "https://maps.google.com/?cid=1010",
+   "internationalPhoneNumber": "+971 4 555 1010",
+   "nationalPhoneNumber": "04 555 1010",
+   "websiteUri": "https://www.instagram.com/glow.up.beauty.lounge/"
+  },
+  {
+   "id": "ChIJsample0014",
+   "displayName": {
+    "text": "Silk Beauty Spa",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Beauty salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 14, Dubai Marina Street, Dubai Marina, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 14",
+     "shortText": "Shop 14",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Dubai Marina Street",
+     "shortText": "Dubai Marina St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Dubai Marina",
+     "shortText": "Dubai Marina",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 116,
+   "googleMapsUri": "https://maps.google.com/?cid=1014",
+   "internationalPhoneNumber": "+971 4 555 1014",
+   "nationalPhoneNumber": "04 555 1014",
+   "websiteUri": "https://www.instagram.com/silk.beauty.spa/"
+  },
+  {
+   "id": "ChIJsample0015",
+   "displayName": {
+    "text": "Al Noor Ladies Salon",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Beauty salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 15, Al Wasl Road Street, Al Wasl Road, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 15",
+     "shortText": "Shop 15",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Al Wasl Road Street",
+     "shortText": "Al Wasl Road St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Al Wasl Road",
+     "shortText": "Al Wasl Road",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 332,
+   "googleMapsUri": "https://maps.google.com/?cid=1015",
+   "internationalPhoneNumber": "+971 4 555 1015",
+   "nationalPhoneNumber": "04 555 1015",
+   "websiteUri": "https://www.facebook.com/AlNoorLadiesSalon"
+  },
+  {
+   "id": "ChIJsample0018",
+   "displayName": {
+    "text": "Ladies Touch Salon",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Beauty salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 18, Deira Street, Deira, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 18",
+     "shortText": "Shop 18",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Deira Street",
+     "shortText": "Deira St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Deira",
+     "shortText": "Deira",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 240,
+   "googleMapsUri": "https://maps.google.com/?cid=1018",
+   "internationalPhoneNumber": "+971 4 555 1018",
+   "nationalPhoneNumber": "04 555 1018"
+  },
+  {
+   "id": "ChIJsample0027",
+   "displayName": {
+    "text": "Serene Beauty",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Beauty salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 27, Mirdif Street, Mirdif, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 27",
+     "shortText": "Shop 27",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Mirdif Street",
+     "shortText": "Mirdif St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Mirdif",
+     "shortText": "Mirdif",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 579,
+   "googleMapsUri": "https://maps.google.com/?cid=1027",
+   "internationalPhoneNumber": "+971 4 555 1027",
+   "nationalPhoneNumber": "04 555 1027",
+   "websiteUri": "https://serenebeauty.ae"
+  },
+  {
+   "id": "ChIJsample0034",
+   "displayName": {
+    "text": "Home Glam by Sara",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Beauty salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Dubai Marina",
+     "shortText": "Dubai Marina",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 120,
+   "googleMapsUri": "https://maps.google.com/?cid=1034",
+   "internationalPhoneNumber": "+971 4 555 1034",
+   "nationalPhoneNumber": "04 555 1034",
+   "websiteUri": "https://instagram.com/homeglam.sara"
+  },
+  {
+   "id": "ChIJsample0039",
+   "displayName": {
+    "text": "Hidden Site Beauty",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Beauty salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 39, JVC Street, JVC, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 39",
+     "shortText": "Shop 39",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "JVC Street",
+     "shortText": "JVC St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "JVC",
+     "shortText": "JVC",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 210,
+   "googleMapsUri": "https://maps.google.com/?cid=1039",
+   "internationalPhoneNumber": "+971 4 555 1039",
+   "nationalPhoneNumber": "04 555 1039",
+   "websiteUri": "https://instagram.com/hiddensite.beauty"
+  },
+  {
+   "id": "ChIJsampleDUP1",
+   "displayName": {
+    "text": "Twin Search Beauty",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Beauty salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 41, JLT Cluster D Street, JLT Cluster D, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 41",
+     "shortText": "Shop 41",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "JLT Cluster D Street",
+     "shortText": "JLT Cluster D St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "JLT Cluster D",
+     "shortText": "JLT Cluster D",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 320,
+   "googleMapsUri": "https://maps.google.com/?cid=1041",
+   "internationalPhoneNumber": "+971 4 555 1041",
+   "nationalPhoneNumber": "04 555 1041",
+   "websiteUri": "https://instagram.com/twin.search"
+  }
+ ],
+ "barber shop": [
+  {
+   "id": "ChIJsample0003",
+   "displayName": {
+    "text": "Fade Kings Barbers",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Barber shop",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 3, Business Bay Street, Business Bay, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 3",
+     "shortText": "Shop 3",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Business Bay Street",
+     "shortText": "Business Bay St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Business Bay",
+     "shortText": "Business Bay",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 429,
+   "googleMapsUri": "https://maps.google.com/?cid=1003",
+   "internationalPhoneNumber": "+971 4 555 1003",
+   "nationalPhoneNumber": "04 555 1003",
+   "websiteUri": "https://www.instagram.com/fade.kings.barbers/"
+  },
+  {
+   "id": "ChIJsample0008",
+   "displayName": {
+    "text": "The Gent's Chair",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Barber shop",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 8, Deira Street, Deira, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 8",
+     "shortText": "Shop 8",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Deira Street",
+     "shortText": "Deira St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Deira",
+     "shortText": "Deira",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.5,
+   "userRatingCount": 654,
+   "googleMapsUri": "https://maps.google.com/?cid=1008",
+   "internationalPhoneNumber": "+971 4 555 1008",
+   "nationalPhoneNumber": "04 555 1008",
+   "websiteUri": "https://www.instagram.com/the.gents.chair/"
+  },
+  {
+   "id": "ChIJsample0013",
+   "displayName": {
+    "text": "Sharp Line Barbers",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Barber shop",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 13, Business Bay Street, Business Bay, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 13",
+     "shortText": "Shop 13",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Business Bay Street",
+     "shortText": "Business Bay St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Business Bay",
+     "shortText": "Business Bay",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 154,
+   "googleMapsUri": "https://maps.google.com/?cid=1013",
+   "internationalPhoneNumber": "+971 4 555 1013",
+   "nationalPhoneNumber": "04 555 1013",
+   "websiteUri": "https://www.instagram.com/sharp.line.barbers/"
+  },
+  {
+   "id": "ChIJsample0016",
+   "displayName": {
+    "text": "Classic Cuts Karama",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Barber shop",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 16, Karama Street, Karama, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 16",
+     "shortText": "Shop 16",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Karama Street",
+     "shortText": "Karama St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Karama",
+     "shortText": "Karama",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 220,
+   "googleMapsUri": "https://maps.google.com/?cid=1016",
+   "internationalPhoneNumber": "+971 4 555 1016",
+   "nationalPhoneNumber": "04 555 1016",
+   "websiteUri": "https://www.facebook.com/ClassicCutsKarama"
+  },
+  {
+   "id": "ChIJsample0020",
+   "displayName": {
+    "text": "Corner Barber",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Barber shop",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 20, Jumeirah 1 Street, Jumeirah 1, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 20",
+     "shortText": "Shop 20",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Jumeirah 1 Street",
+     "shortText": "Jumeirah 1 St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Jumeirah 1",
+     "shortText": "Jumeirah 1",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 88,
+   "googleMapsUri": "https://maps.google.com/?cid=1020",
+   "internationalPhoneNumber": "+971 4 555 1020",
+   "nationalPhoneNumber": "04 555 1020"
+  },
+  {
+   "id": "ChIJsample0025",
+   "displayName": {
+    "text": "Blade and Co",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Barber shop",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 25, Al Wasl Road Street, Al Wasl Road, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 25",
+     "shortText": "Shop 25",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Al Wasl Road Street",
+     "shortText": "Al Wasl Road St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Al Wasl Road",
+     "shortText": "Al Wasl Road",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 588,
+   "googleMapsUri": "https://maps.google.com/?cid=1025",
+   "internationalPhoneNumber": "+971 4 555 1025",
+   "nationalPhoneNumber": "04 555 1025",
+   "websiteUri": "https://bladeandco.ae"
+  },
+  {
+   "id": "ChIJsample0028",
+   "displayName": {
+    "text": "Trim Barbers",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Barber shop",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 28, Deira Street, Deira, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 28",
+     "shortText": "Shop 28",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Deira Street",
+     "shortText": "Deira St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Deira",
+     "shortText": "Deira",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 247,
+   "googleMapsUri": "https://maps.google.com/?cid=1028",
+   "internationalPhoneNumber": "+971 4 555 1028",
+   "nationalPhoneNumber": "04 555 1028",
+   "websiteUri": "http://www.trimbarbers.com"
+  },
+  {
+   "id": "ChIJsample0032",
+   "displayName": {
+    "text": "Fresh Fade",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Barber shop",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 32, Al Barsha 1 Street, Al Barsha 1, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 32",
+     "shortText": "Shop 32",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Al Barsha 1 Street",
+     "shortText": "Al Barsha 1 St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Al Barsha 1",
+     "shortText": "Al Barsha 1",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 34,
+   "googleMapsUri": "https://maps.google.com/?cid=1032",
+   "internationalPhoneNumber": "+971 4 555 1032",
+   "nationalPhoneNumber": "04 555 1032",
+   "websiteUri": "https://instagram.com/fresh.fade"
+  },
+  {
+   "id": "ChIJsample0035",
+   "displayName": {
+    "text": "Old Town Barbers",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Barber shop",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 35, Al Wasl Road Street, Al Wasl Road, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 35",
+     "shortText": "Shop 35",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Al Wasl Road Street",
+     "shortText": "Al Wasl Road St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Al Wasl Road",
+     "shortText": "Al Wasl Road",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "CLOSED_PERMANENTLY",
+   "rating": 4.6,
+   "userRatingCount": 120,
+   "googleMapsUri": "https://maps.google.com/?cid=1035",
+   "internationalPhoneNumber": "+971 4 555 1035",
+   "nationalPhoneNumber": "04 555 1035",
+   "websiteUri": "https://instagram.com/oldtown.barbers"
+  },
+  {
+   "id": "ChIJsample0038",
+   "displayName": {
+    "text": "Quiet Cuts",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Barber shop",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 38, Deira Street, Deira, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 38",
+     "shortText": "Shop 38",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Deira Street",
+     "shortText": "Deira St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Deira",
+     "shortText": "Deira",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 246,
+   "googleMapsUri": "https://maps.google.com/?cid=1038",
+   "internationalPhoneNumber": "+971 4 555 1038",
+   "nationalPhoneNumber": "04 555 1038",
+   "websiteUri": "https://instagram.com/quiet.cuts"
+  }
+ ],
+ "lash and brow studio": [
+  {
+   "id": "ChIJsample0004",
+   "displayName": {
+    "text": "Lush Lash Bar",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Eyelash salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 4, Dubai Marina Street, Dubai Marina, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 4",
+     "shortText": "Shop 4",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Dubai Marina Street",
+     "shortText": "Dubai Marina St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Dubai Marina",
+     "shortText": "Dubai Marina",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.3,
+   "userRatingCount": 93,
+   "googleMapsUri": "https://maps.google.com/?cid=1004",
+   "internationalPhoneNumber": "+971 4 555 1004",
+   "nationalPhoneNumber": "04 555 1004",
+   "websiteUri": "https://www.instagram.com/lush.lash.bar/"
+  },
+  {
+   "id": "ChIJsample0009",
+   "displayName": {
+    "text": "Brow Theory",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Eyelash salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 9, JVC Street, JVC, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 9",
+     "shortText": "Shop 9",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "JVC Street",
+     "shortText": "JVC St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "JVC",
+     "shortText": "JVC",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.8,
+   "userRatingCount": 625,
+   "googleMapsUri": "https://maps.google.com/?cid=1009",
+   "internationalPhoneNumber": "+971 4 555 1009",
+   "nationalPhoneNumber": "04 555 1009",
+   "websiteUri": "https://www.instagram.com/brow.theory/"
+  },
+  {
+   "id": "ChIJsample0026",
+   "displayName": {
+    "text": "Lash Atelier",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Eyelash salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 26, Karama Street, Karama, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 26",
+     "shortText": "Shop 26",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "Karama Street",
+     "shortText": "Karama St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "Karama",
+     "shortText": "Karama",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 448,
+   "googleMapsUri": "https://maps.google.com/?cid=1026",
+   "internationalPhoneNumber": "+971 4 555 1026",
+   "nationalPhoneNumber": "04 555 1026",
+   "websiteUri": "https://lashatelier.com"
+  },
+  {
+   "id": "ChIJsample0031",
+   "displayName": {
+    "text": "Brow Bar JVC",
+    "languageCode": "en"
+   },
+   "primaryTypeDisplayName": {
+    "text": "Eyelash salon",
+    "languageCode": "en"
+   },
+   "formattedAddress": "Shop 31, JLT Cluster D Street, JLT Cluster D, Dubai, United Arab Emirates",
+   "addressComponents": [
+    {
+     "longText": "Shop 31",
+     "shortText": "Shop 31",
+     "types": [
+      "subpremise"
+     ]
+    },
+    {
+     "longText": "JLT Cluster D Street",
+     "shortText": "JLT Cluster D St",
+     "types": [
+      "route"
+     ]
+    },
+    {
+     "longText": "JLT Cluster D",
+     "shortText": "JLT Cluster D",
+     "types": [
+      "sublocality",
+      "political"
+     ]
+    },
+    {
+     "longText": "Dubai",
+     "shortText": "Dubai",
+     "types": [
+      "locality",
+      "political"
+     ]
+    },
+    {
+     "longText": "United Arab Emirates",
+     "shortText": "AE",
+     "types": [
+      "country",
+      "political"
+     ]
+    }
+   ],
+   "businessStatus": "OPERATIONAL",
+   "rating": 4.6,
+   "userRatingCount": 36,
+   "googleMapsUri": "https://maps.google.com/?cid=1031",
+   "internationalPhoneNumber": "+971 4 555 1031",
+   "nationalPhoneNumber": "04 555 1031",
+   "websiteUri": "https://instagram.com/brow.bar.jvc"
+  }
+ ]
+}

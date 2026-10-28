@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agents plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #16181c; --muted: #646a73; --line: #e3e5e8; --paper: #fbfaf7; --card: #fff; --go: #1f7a4d; --warn: #b4690e; --stop: #b42318; --brand: #2747d6; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--paper); color: var(--ink); font: 16px/1.6 "Hanken Grotesk", system-ui, sans-serif; padding: 48px 20px 80px; }
+main { max-width: 920px; margin: 0 auto; display: grid; gap: 28px; }
+h1 { font: 400 clamp(40px, 6vw, 64px)/1 "Instrument Serif", serif; }
+h1 em { color: var(--brand); }
+h2 { font: 400 32px/1.1 "Instrument Serif", serif; margin-block-end: 12px; }
+h3 { font-size: 18px; margin-block-end: 6px; }
+p, li { color: #2b2f36; }
+.lede { font-size: 18px; color: var(--muted); max-width: 62ch; }
+section { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 26px; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th, td { text-align: start; padding: 10px 8px; border-block-end: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.tag { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.go { background: #e3f4ea; color: var(--go); } .warn { background: #fdf0dc; color: var(--warn); } .stop { background: #fde7e5; color: var(--stop); }
+ol.steps { list-style: none; display: grid; gap: 14px; counter-reset: s; }
+ol.steps > li { counter-increment: s; display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding: 18px; border: 1px solid var(--line); border-radius: 14px; }
+ol.steps > li::before { content: counter(s); width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: #fff; font-weight: 700; }
+ul { padding-inline-start: 20px; display: grid; gap: 4px; }
+.opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-block-start: 10px; }
+.opt { border: 1px solid var(--line); border-radius: 12px; padding: 16px; display: grid; gap: 6px; align-content: start; }
+.opt.pick { border: 2px solid var(--brand); }
+.opt b { font-size: 16px; }
+.small { font-size: 14px; color: var(--muted); }
+.you li { padding-block: 4px; }
+code { background: #f0f1f3; padding: 1px 6px; border-radius: 5px; font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Finishing the <em>agents</em></h1>
+    <p class="lede">The plan to get EDITH, MARK, HAPPY and FRIDAY working on real businesses, then JARVIS running them as one machine. Nothing here is built yet. Same rhythm as before: build one, test it on real data, show you, then the next.</p>
+  </header>
+
+  <section>
+    <h2>Where each agent is today</h2>
+    <table>
+      <tr><th>Agent</th><th>Status</th><th>What's missing</th></tr>
+      <tr><td><b>EDITH</b><br><span class="small">finds leads</span></td><td><span class="tag stop">samples only</span></td><td>Still wired to Apify, which you said no to. Never run on a real city. Skips businesses whose Google listing has no social link.</td></tr>
+      <tr><td><b>MARK</b><br><span class="small">builds the demo</span></td><td><span class="tag warn">built, never live</span></td><td>His Chrome research and the AI writing have only run on sample files. He tries API keys first (we have none), so he should use your Claude and Codex subscriptions instead.</td></tr>
+      <tr><td><b>HAPPY</b><br><span class="small">checks quality</span></td><td><span class="tag go">working</span></td><td>Waiting on your quality rules. Needs to check the new 3D designs too (does the 3D load, is booking reachable on a phone).</td></tr>
+      <tr><td><b>FRIDAY</b><br><span class="small">sales calls</span></td><td><span class="tag warn">built, never live</span></td><td>ElevenLabs setup never tried for real. No public holiday check. After an "interested" call, the demo link isn't sent automatically.</td></tr>
+      <tr><td><b>JARVIS</b><br><span class="small">the manager</span></td><td><span class="tag stop">not connected</span></td><td>Nothing runs the chain yet. Each agent is started by hand.</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>The plan, in order</h2>
+    <ol class="steps">
+      <li><div>
+        <h3>EDITH v2: off Apify, onto your Claude and Codex</h3>
+        <ul>
+          <li>Finding businesses on Google Maps (see the decision below).</li>
+          <li>Instagram and Facebook "posted in the last 15 days" check through Claude in Chrome, only for the shortlist, with a daily cap so your accounts stay safe.</li>
+          <li>Codex (web search) as the backup and for businesses with no social link on Google: it searches their name to find the profile.</li>
+          <li>Runs a city over several days: remembers where it stopped and never checks the same business twice.</li>
+          <li>Test: one real city, salons, then I show you the report and the leads.</li>
+        </ul>
+      </div></li>
+      <li><div>
+        <h3>MARK live</h3>
+        <ul>
+          <li>Writes the words through Claude CLI and Codex on your plans, no API keys needed.</li>
+          <li>Real research in Chrome on 3 of EDITH's real leads: logo, colours, photos, reels, their own wording.</li>
+          <li>Fix whatever breaks, then build 3 real demos you can open.</li>
+        </ul>
+      </div></li>
+      <li><div>
+        <h3>HAPPY with your rules</h3>
+        <ul>
+          <li>I draft a starter list (no long dashes, phone tappable, booking works on a phone, no placeholder text, 3D loads or falls back cleanly, real photos only, page speed) and you edit it.</li>
+          <li>Runs on MARK's 3 real demos. Anything that fails goes back to MARK with the reason.</li>
+        </ul>
+      </div></li>
+      <li><div>
+        <h3>FRIDAY live, test mode first</h3>
+        <ul>
+          <li>Create her ElevenLabs agent from <code>pitch.md</code> on your account and make a real test call to your phone.</li>
+          <li>Public holidays per country, so she never calls on one.</li>
+          <li>After "interested": text or WhatsApp the demo link automatically (decision below).</li>
+          <li>Stays in test mode (calls only you) until you say <code>FRIDAY_LIVE=yes</code>.</li>
+        </ul>
+      </div></li>
+      <li><div>
+        <h3>JARVIS runs the chain</h3>
+        <ul>
+          <li>One command, or a daily schedule: EDITH finds, MARK builds, HAPPY checks, you approve on the pipeline board, FRIDAY calls.</li>
+          <li>A morning report page: what each agent did yesterday, what's waiting for you.</li>
+          <li>Hooking it to your voice Jarvis comes after this works.</li>
+        </ul>
+      </div></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Decision 1: how EDITH searches Google Maps</h2>
+    <p>This is the big one. A city means checking roughly 600 to 1,000 listings to keep 150 to 300 good leads.</p>
+    <div class="opts">
+      <div class="opt pick"><b>Google Places API (my pick)</b><span class="small">Google's official data: reviews, phone, address, website, open or closed. A city takes minutes. No risk to your Google or Instagram accounts. Google gives a free monthly allowance; I'll check today's pricing and set a hard spending cap before anything runs. Needs a Google Cloud key from you.</span></div>
+      <div class="opt"><b>Claude in Chrome browses Maps</b><span class="small">Free on your plan. But slow (a city could take a full day or more of your Chrome), uses up your Claude limits, and Google may show a "prove you're human" check, which I can't and won't solve.</span></div>
+      <div class="opt"><b>Codex web search only</b><span class="small">Free on your ChatGPT plan, but search results don't reliably give exact review counts or open/closed status, so the 50+ reviews rule gets shaky.</span></div>
+    </div>
+    <p class="small" style="margin-block-start:10px">Whatever you pick, the Instagram and Facebook checks still go through Claude in Chrome and Codex, as you asked.</p>
+  </section>
+
+  <section>
+    <h2>Decision 2: how FRIDAY sends the demo link</h2>
+    <div class="opts">
+      <div class="opt pick"><b>WhatsApp (my pick)</b><span class="small">Most business owners outside the US live on WhatsApp. Sent through Twilio, the same company as her phone number. Needs a one-time WhatsApp Business approval.</span></div>
+      <div class="opt"><b>SMS</b><span class="small">Works everywhere, nothing to approve, but easier to ignore.</span></div>
+      <div class="opt"><b>Both</b><span class="small">WhatsApp first, SMS if they're not on WhatsApp.</span></div>
+    </div>
+  </section>
+
+  <section class="you">
+    <h2>What I'll need from you (only when we reach that step)</h2>
+    <ul>
+      <li><b>Now:</b> log the Claude CLI in and keep the Claude in Chrome extension on. In PowerShell: <code>claude</code>, then type <code>/login</code>. Codex is already logged in.</li>
+      <li><b>EDITH:</b> a Google Cloud key with Places API on, if you pick it.</li>
+      <li><b>HAPPY:</b> 10 minutes to edit the rules list I draft.</li>
+      <li><b>FRIDAY:</b> ElevenLabs API key, a Twilio number, your phone number for test calls, and the company name she says.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Templates: paused, saved</h2>
+    <p>The 7 ported designs and the 4 new 3D flagships (Liquid, Showroom, Workshop, House) are saved. Left for later: a final phone pass on the flagships, Pulse for medical, Fade for barbers, and your review of all of them.</p>
+  </section>
+</main>
+</body>
+</html>
